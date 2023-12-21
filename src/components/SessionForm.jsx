@@ -19,7 +19,7 @@ const SessionForm = ({ onAddSession }) => {
       <label htmlFor="date">Date:</label>
       <input type="date" id="date" {...register('date', { required: true })} />
 
-      <button type="submit">Submit</button>
+      <button type="submit">SUBMIT</button>
     </form>
   );
 };
