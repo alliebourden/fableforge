@@ -9,16 +9,19 @@ const SessionForm = ({ onAddSession }) => {
   };
 
   return (
-    <form onSubmit={handleSubmit(onSubmit)}>
-      <label htmlFor="header">Session Title</label>
-      <input type="text" id="header" {...register('header', { required: true })} />
-
-      <label htmlFor="body">Body:</label>
-      <textarea id="body" {...register('body', { required: true })} />
-
-      <label htmlFor="date">Date:</label>
-      <input type="date" id="date" {...register('date', { required: true })} />
-
+    <form onSubmit={handleSubmit(onSubmit)} className="session-form">
+      <div className="form-section">
+        <label htmlFor="header">Session Title</label>
+        <input type="text" id="header" {...register('header', { required: true })} />
+      </div>
+      <div className="form-section">
+        <label htmlFor="body">Body:</label>
+        <textarea id="body" {...register('body', { required: true })} />
+      </div>
+      <div className="form-section">
+        <label htmlFor="date">Date:</label>
+        <input type="date" id="date" {...register('date', { required: true })} />
+      </div>
       <button type="submit">SUBMIT</button>
     </form>
   );
