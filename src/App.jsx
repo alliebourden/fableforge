@@ -1,6 +1,7 @@
-import { useState } from 'react';
-import SessionForm from './components/SessionForm';
-import SessionList from './components/SessionList';
+import { useState } from "react";
+import SessionForm from "./components/SessionForm";
+import SessionList from "./components/SessionList";
+import Layout from "./pages/Layout";
 
 const App = () => {
   const [sessions, setSessions] = useState([]);
