@@ -22,7 +22,9 @@ const SessionForm = ({ onAddSession }) => {
         <label htmlFor="date">Date:</label>
         <input type="date" id="date" {...register('date', { required: true })} />
       </div>
-      <button type="submit">SUBMIT</button>
+      <div className="form-section">
+        <button type="submit">SUBMIT</button>
+      </div>
     </form>
   );
 };
