@@ -2,6 +2,7 @@ import { useState } from "react";
 import SessionForm from "./components/SessionForm";
 import SessionList from "./components/SessionList";
 import Layout from "./pages/Layout";
+import Dashboard from "./pages/Dashboard";
 
 const App = () => {
   const [sessions, setSessions] = useState([]);
@@ -13,6 +14,7 @@ const App = () => {
   return (
     <div>
       <Layout />
+      <Dashboard />
       {/* <SessionForm onAddSession={handleAddSession} />
       <SessionList sessions={sessions} /> */}
     </div>
