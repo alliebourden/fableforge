@@ -14,14 +14,25 @@
 
 .top-logo {
   box-sizing: border-box;
-  margin: 10px 0 0 40px;
+  margin: 10px 0 0 67px;
 }
 
 .sidebar {
   width: 250px;
-  height: auto;
-  margin-top: 100px;
+  height: 925px;
   background-color: #1e1e1e;
+  overflow: auto;
+}
+
+.campaign-name {
+  background-color: #1e1e1e;
+  margin: 15px 0 0 20px;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
 }
 
 button {

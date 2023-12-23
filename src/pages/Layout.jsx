@@ -9,7 +9,9 @@ export default function Layout() {
       <div className="top-bar">
         <img src={Logo} height={80} className="top-logo" />
       </div>
-      <div className="sidebar"></div>
+      <div className="sidebar">
+        <p className="campaign-name">CAMPAIGN NAME</p>
+      </div>
     </div>
   );
 }
