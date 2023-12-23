@@ -74,7 +74,11 @@ export default function Layout() {
           </svg>
         </div>
         <div className="sidebar-links">
-          <a></a>
+          <a>Dashboard</a>
+          <a>Campaign Summary</a>
+          <a>Session List</a>
+          <a>Quest Tracker</a>
+          <a>Loot Manager</a>
         </div>
       </div>
     </div>
