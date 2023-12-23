@@ -35,6 +35,10 @@
   line-height: normal;
 }
 
+.sidebar-content {
+  display: flex;
+}
+
 .icons {
   display: flex;
   flex-direction: column;
@@ -46,6 +50,16 @@
 }
 
 .sidebar-links {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  margin: 10px 0 0 20px;
+}
+
+.sidebar-links a {
+  margin-bottom: 10px;
 }
 
 button {
