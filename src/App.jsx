@@ -13,8 +13,8 @@ const App = () => {
   return (
     <div>
       <Layout />
-      <SessionForm onAddSession={handleAddSession} />
-      <SessionList sessions={sessions} />
+      {/* <SessionForm onAddSession={handleAddSession} />
+      <SessionList sessions={sessions} /> */}
     </div>
   );
 };
