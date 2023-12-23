@@ -6,7 +6,7 @@ In 2023, I joined the Get Coding mentorship program. This program offers individ
 
 ## Module Two Project
 
-I am currently working on my second module, creating a RPG campaign manager application using React.js. By the end of this module I will be to:
+I am currently working on my second module, creating a RPG campaign manager application using React.js. By the end of this module I will be able to:
 
 1. Understands the 3-tier architecture, limitations and responsibilities of each tier.
 2. Create fairly complex front-ends using React.js without help.
