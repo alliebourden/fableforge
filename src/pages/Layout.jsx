@@ -7,7 +7,7 @@ export default function Layout() {
     <div>
       <RouterProvider router={router} />
       <div className="top-bar">
-        <img src={Logo}></img>
+        <img src={Logo} height={80} className="top-logo" />
       </div>
     </div>
   );
