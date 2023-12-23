@@ -35,6 +35,16 @@
   line-height: normal;
 }
 
+.icons {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 0 20px;
+}
+
+.icons svg {
+  margin-bottom: 10px;
+}
+
 button {
   all: unset;
   align-items: center;
