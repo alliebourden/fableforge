@@ -17,6 +17,13 @@
   margin: 10px 0 0 40px;
 }
 
+.sidebar {
+  width: 250px;
+  height: auto;
+  margin-top: 100px;
+  background-color: #1e1e1e;
+}
+
 button {
   all: unset;
   align-items: center;
