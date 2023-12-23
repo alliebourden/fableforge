@@ -1,12 +1,15 @@
 :root {
-  font-family: 'Poppins', sans-serif;
-
-  background-color: #132730;
-
+  font-family: "Poppins", sans-serif;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+.top-bar {
+  width: 1440px;
+  height: 100px;
+  background-color: #132730;
 }
 
 button {
@@ -34,7 +37,7 @@ button {
   width: fit-content;
 }
 
-.session-form{
+.session-form {
   max-width: 600px;
   margin: 0 auto;
   display: flex;
@@ -52,3 +55,6 @@ button {
   padding-bottom: 5px;
 }
 
+* {
+  margin: 0;
+}

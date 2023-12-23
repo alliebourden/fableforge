@@ -8,9 +8,7 @@ export default function Layout() {
   return (
     <div>
       <RouterProvider router={router} />
-      <header>
-        <span>TEST</span>
-      </header>
+      <div className="top-bar"></div>
     </div>
   );
 }
