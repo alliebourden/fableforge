@@ -2,7 +2,7 @@ export default function SessionEditor() {
   return (
     <div>
       <header>
-        <span></span>
+        <span>test</span>
       </header>
     </div>
   );

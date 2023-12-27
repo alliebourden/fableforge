@@ -2,8 +2,9 @@ import { useState } from "react";
 import SessionForm from "./components/SessionForm";
 import SessionList from "./components/SessionList";
 import Layout from "./pages/Layout";
-import Dashboard from "./pages/Dashboard";
 import "./App.css";
+import router from "./Routes";
+import { RouterProvider, Route } from "react-router-dom";
 
 const App = () => {
   const [sessions, setSessions] = useState([]);
@@ -13,12 +14,11 @@ const App = () => {
   };
 
   return (
-    <div>
-      {/* <Dashboard /> */}
-      <Layout />
-      {/* <SessionForm onAddSession={handleAddSession} />
-      <SessionList sessions={sessions} /> */}
-    </div>
+    <>
+      <RouterProvider router={router}>
+        <Route>{({ children }) => children}</Route>
+      </RouterProvider>
+    </>
   );
 };
 

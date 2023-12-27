@@ -1,11 +1,10 @@
-import router from "../Routes";
-import { RouterProvider } from "react-router-dom";
 import Logo from "./images/logo-small.png";
+import { useNavigate } from "react-router-dom";
 
-export default function Layout() {
+export default function Layout({ children }) {
+  const navigate = useNavigate();
   return (
     <div>
-      <RouterProvider router={router} />
       <div className="top-bar">
         <img src={Logo} height={80} className="top-logo" />
       </div>
@@ -75,7 +74,7 @@ export default function Layout() {
             </svg>
           </div>
           <div className="sidebar-links">
-            <a>Dashboard</a>
+            <a onClick={() => navigate("/")}>Dashboard</a>
             <a>Campaign Summary</a>
             <a>Session List</a>
             <a>Quest Tracker</a>
@@ -83,6 +82,7 @@ export default function Layout() {
           </div>
         </div>
       </div>
+      {children}
     </div>
   );
 }
