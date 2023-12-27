@@ -1,0 +1,113 @@
+.top-bar {
+  width: 100%;
+  height: 100px;
+  background-color: #132730;
+}
+
+.top-logo {
+  box-sizing: border-box;
+  margin: 10px 0 0 67px;
+}
+
+.sidebar {
+  width: 250px;
+  height: 925px;
+  background-color: #1e1e1e;
+  overflow: auto;
+}
+
+.campaign-name {
+  background-color: #1e1e1e;
+  margin: 15px 0 0 20px;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+
+.sidebar-content {
+  display: flex;
+}
+
+.icons {
+  display: flex;
+  flex-direction: column;
+  margin: 10px 0 0 20px;
+}
+
+.icons svg {
+  margin-bottom: 10px;
+}
+
+.sidebar-links {
+  display: flex;
+  flex-direction: column;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  margin: 10px 0 0 20px;
+}
+
+.sidebar-links a {
+  margin-bottom: 10px;
+}
+
+.last-session {
+  width: 675px;
+  height: 540px;
+  border-radius: 10px;
+  border: 3px solid #c2ac38;
+  background: #fff;
+  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
+  margin: 50px 0 0 275px;
+  display: flex;
+}
+
+button {
+  all: unset;
+  align-items: center;
+  background-color: #c2ac38;
+  border-radius: 10px;
+  box-sizing: border-box;
+  display: inline-flex;
+  gap: 10px;
+  height: 61px;
+  justify-content: center;
+  padding: 10px;
+  position: relative;
+}
+
+.button .text-wrapper {
+  color: #ffffff;
+  font-family: "Poppins-Bold", Helvetica;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0;
+  line-height: normal;
+  position: relative;
+  width: fit-content;
+}
+
+.session-form {
+  max-width: 600px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-transform: uppercase;
+  color: white;
+}
+
+.form-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 5px;
+  padding-bottom: 5px;
+}
+
+* {
+  margin: 0;
+}
