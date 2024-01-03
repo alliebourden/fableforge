@@ -4,7 +4,7 @@ import DashboardIcon from "./icons/Dashboard Icon.svg";
 import CampaignIcon from "./icons/Campaign Icon.svg";
 import SessionIcon from "./icons/Session List Icon.svg";
 import QuestIcon from "./icons/Quest Icon.svg";
-// import DashboardIcon from "./icons/Dashboard Icon.svg";
+import LootIcon from "./icons/Loot Management Icon.svg";
 
 export default function Layout() {
   return (
@@ -20,6 +20,7 @@ export default function Layout() {
             <img src={CampaignIcon} height={20} />
             <img src={SessionIcon} height={20} />
             <img src={QuestIcon} height={20} />
+            <img src={LootIcon} height={20} />
           </div>
           <div className="sidebar-links">
             <a>Dashboard</a>
