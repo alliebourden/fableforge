@@ -1,11 +1,9 @@
-import router from "../Routes";
-import { RouterProvider } from "react-router-dom";
 import Logo from "./images/logo-small.png";
+import { Outlet } from "react-router-dom";
 
 export default function Layout() {
   return (
     <div>
-      <RouterProvider router={router} />
       <div className="top-bar">
         <img src={Logo} height={80} className="top-logo" />
       </div>
@@ -83,6 +81,7 @@ export default function Layout() {
           </div>
         </div>
       </div>
+      <Outlet />
     </div>
   );
 }

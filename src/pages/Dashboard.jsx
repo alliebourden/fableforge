@@ -1,7 +1,3 @@
 export default function Dashboard() {
-  return (
-    <div>
-      <header></header>
-    </div>
-  );
+  return <div className="last-session">TEST</div>;
 }
