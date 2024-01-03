@@ -3,7 +3,7 @@ import { Outlet } from "react-router-dom";
 import DashboardIcon from "./icons/Dashboard Icon.svg";
 import CampaignIcon from "./icons/Campaign Icon.svg";
 import SessionIcon from "./icons/Session List Icon.svg";
-// import DashboardIcon from "./icons/Dashboard Icon.svg";
+import QuestIcon from "./icons/Quest Icon.svg";
 // import DashboardIcon from "./icons/Dashboard Icon.svg";
 
 export default function Layout() {
@@ -19,6 +19,7 @@ export default function Layout() {
             <img src={DashboardIcon} height={20} />
             <img src={CampaignIcon} height={20} />
             <img src={SessionIcon} height={20} />
+            <img src={QuestIcon} height={20} />
           </div>
           <div className="sidebar-links">
             <a>Dashboard</a>
