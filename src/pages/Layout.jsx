@@ -1,8 +1,7 @@
 import Logo from "./images/logo-small.png";
-import { useNavigate } from "react-router-dom";
+import { Outlet } from "react-router-dom";
 
-export default function Layout({ children }) {
-  const navigate = useNavigate();
+export default function Layout() {
   return (
     <div>
       <div className="top-bar">
@@ -74,7 +73,7 @@ export default function Layout({ children }) {
             </svg>
           </div>
           <div className="sidebar-links">
-            <a onClick={() => navigate("/")}>Dashboard</a>
+            <a>Dashboard</a>
             <a>Campaign Summary</a>
             <a>Session List</a>
             <a>Quest Tracker</a>
@@ -82,7 +81,7 @@ export default function Layout({ children }) {
           </div>
         </div>
       </div>
-      {children}
+      <Outlet />
     </div>
   );
 }
