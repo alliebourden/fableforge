@@ -1,6 +1,10 @@
 import Logo from "./images/logo-small.png";
 import { Outlet } from "react-router-dom";
 import DashboardIcon from "./icons/Dashboard Icon.svg";
+import CampaignIcon from "./icons/Campaign Icon.svg";
+// import DashboardIcon from "./icons/Dashboard Icon.svg";
+// import DashboardIcon from "./icons/Dashboard Icon.svg";
+// import DashboardIcon from "./icons/Dashboard Icon.svg";
 
 export default function Layout() {
   return (
@@ -13,6 +17,7 @@ export default function Layout() {
         <div className="sidebar-content">
           <div className="icons">
             <img src={DashboardIcon} height={20} />
+            <img src={CampaignIcon} height={20} />
           </div>
           <div className="sidebar-links">
             <a>Dashboard</a>
