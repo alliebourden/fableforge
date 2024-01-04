@@ -10,7 +10,7 @@ const SessionForm = ({ onAddSession }) => {
 
   return (
     <form onSubmit={handleSubmit(onSubmit)} className="session-form">
-      <div>
+      <div className="add-new-session">
         <p>Add New Session</p>
       </div>
       <div className="top-section">
