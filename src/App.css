@@ -65,31 +65,6 @@
   display: flex;
 }
 
-/* button {
-  all: unset;
-  align-items: center;
-  background-color: #c2ac38;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: inline-flex;
-  gap: 10px;
-  height: 61px;
-  justify-content: center;
-  padding: 10px;
-  position: relative;
-} */
-
-.button .text-wrapper {
-  color: #ffffff;
-  font-family: "Poppins-Bold", Helvetica;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: normal;
-  position: relative;
-  width: fit-content;
-}
-
 .session-form {
   max-width: 675px;
   min-height: 550px;
