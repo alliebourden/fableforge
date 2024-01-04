@@ -1,6 +1,6 @@
 import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
-import SessionEditor from "./pages/SessionEditor";
+import SessionForm from "./components/SessionForm";
 import Layout from "./pages/Layout";
 
 const router = createBrowserRouter([
@@ -9,7 +9,7 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Dashboard /> },
-      { path: "session-editor", element: <SessionEditor /> },
+      { path: "session-editor", element: <SessionForm /> },
     ],
   },
 ]);

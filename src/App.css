@@ -65,47 +65,128 @@
   display: flex;
 }
 
-button {
-  all: unset;
-  align-items: center;
-  background-color: #c2ac38;
-  border-radius: 10px;
-  box-sizing: border-box;
-  display: inline-flex;
-  gap: 10px;
-  height: 61px;
-  justify-content: center;
-  padding: 10px;
-  position: relative;
-}
-
-.button .text-wrapper {
-  color: #ffffff;
-  font-family: "Poppins-Bold", Helvetica;
-  font-size: 24px;
-  font-weight: 700;
-  letter-spacing: 0;
-  line-height: normal;
-  position: relative;
-  width: fit-content;
-}
-
 .session-form {
-  max-width: 600px;
+  max-width: 675px;
+  min-height: 550px;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   align-items: center;
   text-transform: uppercase;
-  color: white;
+  border-radius: 10px;
+  border: 3px solid #c2ac38;
+  background: #fff;
+  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
+  color: #1e1e1e;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
-.form-section {
+.add-new-session {
   display: flex;
   flex-direction: column;
+  width: 675px;
+  height: 43px;
+  border-radius: 10px 10px 0px 0px;
+  border-top: 3px solid #c2ac38;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  background: #132730;
+  color: #ffffff;
+}
+
+.add-new-session p {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin: 7px 0 0 20px;
+}
+
+.top-section {
+  align-self: start;
+  max-width: 675px;
+  display: flex;
+  margin-top: 16px;
+}
+
+.session-title {
+  display: flex;
+  flex-direction: column;
+  margin-left: 25px;
+}
+
+.session-title input {
+  width: 275px;
+  height: 25px;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #1e1e1e;
+  background: #d9d9d9;
+  margin-top: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.session-date {
+  display: flex;
+  flex-direction: column;
+  margin-left: 150px;
+}
+
+.session-date input {
+  width: 175px;
+  height: 25px;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #1e1e1e;
+  background: #d9d9d9;
+  margin-top: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.session-body {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  margin-left: 25px;
+  margin-top: 25px;
+}
+
+.session-body textarea {
+  margin-top: 20px;
+  width: 625px;
+  height: 250px;
+  border-radius: 5px 5px 0px 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #1e1e1e;
+  background: #d9d9d9;
+}
+
+.submit-btn button {
+  display: flex;
+  width: 156px;
+  height: 54px;
+  padding: 10px;
+  justify-content: center;
   align-items: center;
-  padding-top: 5px;
-  padding-bottom: 5px;
+  gap: 10px;
+  border-radius: 10px;
+  background: #c2ac38;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  margin-top: 20px;
 }
 
 * {
