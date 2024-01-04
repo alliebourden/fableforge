@@ -121,6 +121,13 @@ button {
   color: #ffffff;
 }
 
+.add-new-session p {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+}
+
 * {
   margin: 0;
 }
