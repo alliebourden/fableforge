@@ -1,3 +1,6 @@
+import React from "react";
+import SessionForm from "../components/SessionForm";
+
 export default function SessionEditor() {
   return (
     <div>
