@@ -96,7 +96,6 @@ button {
   margin: 0 auto;
   display: flex;
   flex-direction: column;
-  align-items: center;
   text-transform: uppercase;
   border-radius: 10px;
   border: 3px solid #c2ac38;
@@ -111,6 +110,8 @@ button {
 }
 
 .add-new-session {
+  display: flex;
+  flex-direction: column;
   width: 675px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
@@ -127,6 +128,21 @@ button {
   font-weight: 500;
   line-height: normal;
   margin: 7px 0 0 20px;
+}
+
+.top-section {
+  max-width: 675px;
+  display: flex;
+}
+
+.session-title {
+  display: flex;
+  flex-direction: column;
+}
+
+.session-date {
+  display: flex;
+  flex-direction: column;
 }
 
 * {
