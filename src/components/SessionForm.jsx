@@ -35,7 +35,7 @@ const SessionForm = ({ onAddSession }) => {
         <label htmlFor="body">Session details</label>
         <textarea id="body" {...register("body", { required: true })} />
       </div>
-      <div className="sumbit-btn">
+      <div className="submit-btn">
         <button type="submit">SUBMIT</button>
       </div>
     </form>
