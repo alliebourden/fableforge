@@ -13,10 +13,7 @@ const categoryStyle = {
     flexDirection: "column",
     alignItems: "center",
   },
-  title: {
-    fontSize: "20px",
-    fontWeight: "500",
-    marginBottom: "10px",
+  titleContainer: {
     borderRadius: "10px 10px 0px 0px",
     borderTop: "3px solid #C2AC38",
     borderRight: "3px solid #C2AC38",
@@ -24,8 +21,14 @@ const categoryStyle = {
     background: "#132730",
     width: "425px",
     height: "45px",
+  },
+  title: {
+    fontSize: "20px",
+    fontWeight: "500",
+    marginBottom: "10px",
     color: "#FFF",
     fontStyle: "italic",
+    padding: "8px 25px",
   },
 };
 
@@ -91,7 +94,9 @@ const SessionTags = () => {
 
   return (
     <div style={categoryStyle.container}>
-      <div style={categoryStyle.title}>Tag Categories</div>
+      <div style={categoryStyle.titleContainer}>
+        <div style={categoryStyle.title}>TAG CATEGORIES</div>
+      </div>
       <Select
         options={tags}
         styles={{
@@ -104,9 +109,6 @@ const SessionTags = () => {
         onChange={handleChange}
         isMulti
       />
-      {/* <div>
-        Selected Tags: {selectedTags.map((tag) => tag.label).join(", ")}
-      </div> */}
     </div>
   );
 };
