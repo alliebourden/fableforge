@@ -1,5 +1,5 @@
 import React from "react";
-import Select from "react-select'";
+import Select from "react-select";
 
 const tags = [
   { value: "combat", label: "Combat" },
@@ -10,6 +10,6 @@ const tags = [
   { value: "npc", label: "NPC" },
 ];
 
-const SessionTags = () => <Select tags={tags} />;
+const SessionTags = () => <Select options={tags} />;
 
 export default SessionTags;
