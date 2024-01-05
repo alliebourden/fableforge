@@ -17,6 +17,11 @@ const categoryStyle = {
     fontSize: "20px",
     fontWeight: "500",
     marginBottom: "10px",
+    borderRadius: "10px 10px 0px 0px",
+    borderTop: "3px solid #C2AC38",
+    borderRight: "3px solid #C2AC38",
+    borderLeft: "3px solid #C2AC38",
+    background: "#132730",
   },
 };
 
