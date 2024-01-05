@@ -22,6 +22,10 @@ const categoryStyle = {
     borderRight: "3px solid #C2AC38",
     borderLeft: "3px solid #C2AC38",
     background: "#132730",
+    width: "425px",
+    height: "45px",
+    color: "#FFF",
+    fontStyle: "italic",
   },
 };
 
