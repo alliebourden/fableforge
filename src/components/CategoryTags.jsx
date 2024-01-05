@@ -95,9 +95,9 @@ const SessionTags = () => {
         onChange={handleChange}
         isMulti
       />
-      <div>
+      {/* <div>
         Selected Tags: {selectedTags.map((tag) => tag.label).join(", ")}
-      </div>
+      </div> */}
     </div>
   );
 };
