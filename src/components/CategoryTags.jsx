@@ -16,7 +16,7 @@ const categoryStyle = {
 const tags = [
   { value: "combatBoss", label: "Combat: Boss Fight" },
   { value: "combatRandomEncounter", label: "Combat: Random Encounter" },
-  { value: "combat", label: "Combat" },
+  { value: "combatQuestRelated", label: "Combat: Quest Related" },
   { value: "storylinePlotTwist", label: "Storyline: Plot Twist" },
   {
     value: "storylineCharacterDevelopment",
