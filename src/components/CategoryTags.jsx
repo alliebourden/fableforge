@@ -1,16 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import Select from "react-select";
 
 const categoryStyle = {
-  container: (provided) => ({
-    ...provided,
+  container: {
     width: "425px",
     height: "250px",
     borderRadius: "10px",
     border: "3px solid #C2AC38",
     background: "#FFF",
     boxShadow: "5px 8px 10px 0px rgba(0, 0, 0, 0.10)",
-  }),
+    display: "flex",
+    flexDirection: "column",
+    alignItems: "center",
+  },
+  title: {
+    fontSize: "20px",
+    fontWeight: "500",
+    marginBottom: "10px",
+  },
 };
 
 const tags = [
@@ -66,6 +73,33 @@ const tags = [
   },
 ];
 
-const SessionTags = () => <Select options={tags} styles={categoryStyle} />;
+const SessionTags = () => {
+  const [selectedTags, setSelectedTags] = useState([]);
+
+  const handleChange = (selectedOptions) => {
+    setSelectedTags(selectedOptions);
+  };
+
+  return (
+    <div style={categoryStyle.container}>
+      <div style={categoryStyle.title}>Tag Categories</div>
+      <Select
+        options={tags}
+        styles={{
+          container: (provided) => ({
+            ...provided,
+            marginTop: "10px",
+          }),
+        }}
+        value={selectedTags}
+        onChange={handleChange}
+        isMulti
+      />
+      <div>
+        Selected Tags: {selectedTags.map((tag) => tag.label).join(", ")}
+      </div>
+    </div>
+  );
+};
 
 export default SessionTags;
