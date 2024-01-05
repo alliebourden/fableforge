@@ -1,7 +1,7 @@
 import React from "react";
 import Select from "react-select'";
 
-const CategoryTags = [
+const tags = [
   { value: "combat", label: "Combat" },
   { value: "shopping", label: "Shopping" },
   { value: "new quest", label: "New Quest" },
@@ -9,3 +9,7 @@ const CategoryTags = [
   { value: "pc backstory", label: "PC Backstory" },
   { value: "npc", label: "NPC" },
 ];
+
+const SessionTags = () => <Select tags={tags} />;
+
+export default SessionTags;
