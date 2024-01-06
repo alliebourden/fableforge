@@ -113,7 +113,7 @@ const SessionTags = () => {
             background: "#D9D9D9",
             boxShadow: state.isFocused ? "0 0 0 2px #C2AC38" : "none",
           }),
-          multiValueRemove: (provided, state) => ({
+          multiValueRemove: (provided) => ({
             ...provided,
             color: "#132730",
             backgroundColor: "#F0DFC8",
@@ -122,7 +122,7 @@ const SessionTags = () => {
               color: "#FFF",
             },
           }),
-          multiValue: (provided, state) => ({
+          multiValue: (provided) => ({
             ...provided,
             backgroundColor: "#F0DFC8",
             color: "#132730",
@@ -130,6 +130,13 @@ const SessionTags = () => {
           indicatorSeparator: (provided) => ({
             ...provided,
             backgroundColor: "#132730",
+          }),
+          dropdownIndicator: (provided, state) => ({
+            ...provided,
+            color: state.isFocused ? "#C2AC38" : "#132730",
+            ":hover": {
+              color: "#C2AC38",
+            },
           }),
         }}
         value={selectedTags}
