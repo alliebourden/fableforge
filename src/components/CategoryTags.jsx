@@ -4,7 +4,7 @@ import Select from "react-select";
 const categoryStyle = {
   container: {
     width: "425px",
-    minHeight: "150px",
+    maxHeight: "150px",
     borderRadius: "10px",
     border: "3px solid #C2AC38",
     background: "#FFF",

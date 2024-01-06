@@ -13,10 +13,10 @@ const router = createBrowserRouter([
       {
         path: "session-editor",
         element: (
-          <>
+          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr" }}>
             <SessionForm />
             <CategoryTags />
-          </>
+          </div>
         ),
       },
     ],
