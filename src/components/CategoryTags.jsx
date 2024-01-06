@@ -138,6 +138,13 @@ const SessionTags = () => {
               color: "#C2AC38",
             },
           }),
+          clearIndicator: (provided, state) => ({
+            ...provided,
+            color: state.isFocused ? "#C2AC38" : "#132730",
+            ":hover": {
+              color: "#C2AC38",
+            },
+          }),
         }}
         value={selectedTags}
         onChange={handleChange}
