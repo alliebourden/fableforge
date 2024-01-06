@@ -149,6 +149,10 @@ const SessionTags = () => {
             ...provided,
             fontSize: "12px",
           }),
+          menuList: (provided) => ({
+            ...provided,
+            maxHeight: "100px",
+          }),
         }}
         value={selectedTags}
         onChange={handleChange}
