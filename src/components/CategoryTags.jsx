@@ -113,6 +113,20 @@ const SessionTags = () => {
             background: "#D9D9D9",
             boxShadow: state.isFocused ? "0 0 0 2px #C2AC38" : "none",
           }),
+          multiValueRemove: (provided, state) => ({
+            ...provided,
+            color: "#132730",
+            backgroundColor: "#F0DFC8",
+            ":hover": {
+              backgroundColor: "#C2AC38",
+              color: "#FFF",
+            },
+          }),
+          multiValue: (provided, state) => ({
+            ...provided,
+            backgroundColor: "#F0DFC8",
+            color: "#132730",
+          }),
         }}
         value={selectedTags}
         onChange={handleChange}
