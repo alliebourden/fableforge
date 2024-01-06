@@ -127,6 +127,10 @@ const SessionTags = () => {
             backgroundColor: "#F0DFC8",
             color: "#132730",
           }),
+          indicatorSeparator: (provided) => ({
+            ...provided,
+            backgroundColor: "#132730",
+          }),
         }}
         value={selectedTags}
         onChange={handleChange}
