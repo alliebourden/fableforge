@@ -4,7 +4,7 @@ import Select from "react-select";
 const categoryStyle = {
   container: {
     width: "425px",
-    minHeight: "250px",
+    minHeight: "150px",
     borderRadius: "10px",
     border: "3px solid #C2AC38",
     background: "#FFF",
@@ -107,7 +107,7 @@ const SessionTags = () => {
           control: (provided, state) => ({
             ...provided,
             width: "375px",
-            height: "25px",
+            minHeight: "25px",
             borderRadius: "5px 5px 0px 0px",
             borderBottom: "1px solid #1E1E1E",
             background: "#D9D9D9",
@@ -144,6 +144,10 @@ const SessionTags = () => {
             ":hover": {
               color: "#C2AC38",
             },
+          }),
+          menu: (provided) => ({
+            ...provided,
+            fontSize: "12px",
           }),
         }}
         value={selectedTags}
