@@ -108,6 +108,9 @@ const SessionTags = () => {
             ...provided,
             width: "375px",
             height: "25px",
+            borderRadius: "5px 5px 0px 0px",
+            borderBottom: "1px solid #1E1E1E",
+            background: "D9D9D9",
           }),
         }}
         value={selectedTags}
