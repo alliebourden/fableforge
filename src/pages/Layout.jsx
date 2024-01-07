@@ -8,7 +8,7 @@ import LootIcon from "./icons/Loot Management Icon.svg";
 
 export default function Layout() {
   return (
-    <div>
+    <div className="layoutWrapper">
       <div className="top-bar">
         <img src={Logo} height={80} className="top-logo" />
       </div>
