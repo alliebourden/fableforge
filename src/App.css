@@ -2,6 +2,7 @@
   width: 100%;
   height: 100px;
   background-color: #132730;
+  position: fixed;
 }
 
 .top-logo {
@@ -14,6 +15,8 @@
   height: 925px;
   background-color: #1e1e1e;
   overflow: auto;
+  position: fixed;
+  margin-top: 100px;
 }
 
 .campaign-name {
@@ -187,6 +190,16 @@
   line-height: normal;
   border: none;
   margin-top: 20px;
+}
+
+.session-editor-content {
+  display: flex;
+  margin-top: 150px;
+  margin-left: 275px;
+}
+
+.layout-wrapper {
+  display: flex;
 }
 
 * {
