@@ -5,7 +5,7 @@ import { useForm } from "react-hook-form";
 const categoryStyle = {
   container: {
     width: "425px",
-    maxHeight: "150px",
+    height: "150px",
     borderRadius: "10px",
     border: "3px solid #C2AC38",
     background: "#FFF",
@@ -132,7 +132,7 @@ const SessionEditor = ({ onAddSession }) => {
           <button type="submit">SUBMIT</button>
         </div>
       </form>
-      <div className="category-tags" style={categoryStyle.container}>
+      <div style={categoryStyle.container}>
         <div style={categoryStyle.titleContainer}>
           <div style={categoryStyle.title}>TAG CATEGORIES</div>
         </div>
