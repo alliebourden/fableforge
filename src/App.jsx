@@ -1,6 +1,4 @@
 import { useState } from "react";
-import SessionForm from "./components/SessionForm";
-import SessionList from "./components/SessionList";
 import Layout from "./pages/Layout";
 import "./App.css";
 import router from "./Routes";
