@@ -4,6 +4,7 @@ import "./App.css";
 import router from "./Routes";
 import { RouterProvider, Route } from "react-router-dom";
 import SessionEditor from "./components/SessionEditor";
+import SessionList from "./components/SessionList";
 
 const App = () => {
   const [sessions, setSessions] = useState([]);
@@ -25,6 +26,7 @@ const App = () => {
             <Layout>
               {children}
               <SessionEditor onAddSession={handleAddSession} />
+              <SessionList sessions={sessions} />
             </Layout>
           )}
         </Route>
