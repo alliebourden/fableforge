@@ -96,7 +96,10 @@ const SessionEditor = ({ onAddSession }) => {
   };
 
   const onSubmit = (data) => {
-    onAddSession(data);
+    console.log(data);
+    if (typeof onAddSession === "function") {
+      onAddSession(data);
+    }
     reset();
   };
 

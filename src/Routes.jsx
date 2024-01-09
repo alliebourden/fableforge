@@ -2,6 +2,7 @@ import { createBrowserRouter } from "react-router-dom";
 import Dashboard from "./pages/Dashboard";
 import Layout from "./pages/Layout";
 import SessionEditor from "./components/SessionEditor";
+import SessionList from "./components/SessionList";
 
 const router = createBrowserRouter([
   {
@@ -14,6 +15,14 @@ const router = createBrowserRouter([
         element: (
           <div>
             <SessionEditor />
+          </div>
+        ),
+      },
+      {
+        path: "session-list",
+        element: (
+          <div>
+            <SessionList />
           </div>
         ),
       },
