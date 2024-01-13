@@ -89,6 +89,7 @@ const tags = [
 
 const SessionEditor = ({ onAddSession }) => {
   const [selectedTags, setSelectedTags] = useState([]);
+  const [sessions, setSessions] = useState([]);
   const { register, handleSubmit, reset } = useForm();
 
   const handleChange = (selectedOptions) => {
@@ -100,6 +101,9 @@ const SessionEditor = ({ onAddSession }) => {
     if (typeof onAddSession === "function") {
       onAddSession(data);
     }
+
+    setSessions((prevSessions) => [...prevSessions, data]);
+
     reset();
   };
 
@@ -200,6 +204,17 @@ const SessionEditor = ({ onAddSession }) => {
           onChange={handleChange}
           isMulti
         />
+      </div>
+      <div>
+        <h2>Sessions</h2>
+        <ul>
+          {sessions.map((session, index) => (
+            <li key={index}>
+              <strong>{session.header}</strong> - {session.date}
+              <p>{session.body}</p>
+            </li>
+          ))}
+        </ul>
       </div>
     </div>
   );
