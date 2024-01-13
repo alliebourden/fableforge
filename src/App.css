@@ -202,6 +202,12 @@
   display: flex;
 }
 
+.session-list {
+  display: flex;
+  margin-top: 125px;
+  margin-left: 275px;
+}
+
 * {
   margin: 0;
 }

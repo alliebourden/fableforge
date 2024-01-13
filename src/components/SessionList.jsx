@@ -2,7 +2,7 @@ import React from "react";
 
 const SessionList = ({ sessions }) => {
   return (
-    <div>
+    <div className="session-list">
       <h2>Sessions</h2>
       <ul>
         {sessions &&
