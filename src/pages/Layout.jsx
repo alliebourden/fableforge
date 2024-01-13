@@ -5,8 +5,10 @@ import CampaignIcon from "./icons/Campaign Icon.svg";
 import SessionIcon from "./icons/Session List Icon.svg";
 import QuestIcon from "./icons/Quest Icon.svg";
 import LootIcon from "./icons/Loot Management Icon.svg";
+import { useNavigate } from "react-router-dom";
 
 export default function Layout() {
+  const navigate = useNavigate();
   return (
     <div className="layout-wrapper">
       <div className="top-bar">
@@ -25,7 +27,9 @@ export default function Layout() {
           <div className="sidebar-links">
             <a>Dashboard</a>
             <a>Campaign Summary</a>
-            <a>Session List</a>
+            <div onClick={() => navigate("/session-list")}>
+              <p>Session List</p>
+            </div>
             <a>Quest Tracker</a>
             <a>Loot Manager</a>
           </div>

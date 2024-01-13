@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { SessionContext } from "./SessionContext";
 
 const categoryStyle = {
   container: {
@@ -87,9 +89,9 @@ const tags = [
   },
 ];
 
-const SessionEditor = ({ onAddSession }) => {
+const SessionEditor = () => {
+  const { sessions, handleAddSession } = useContext(SessionContext);
   const [selectedTags, setSelectedTags] = useState([]);
-  const [sessions, setSessions] = useState([]);
   const { register, handleSubmit, reset } = useForm();
 
   const handleChange = (selectedOptions) => {
@@ -97,18 +99,14 @@ const SessionEditor = ({ onAddSession }) => {
   };
 
   const onSubmit = (data) => {
-    console.log(data);
-    if (typeof onAddSession === "function") {
-      onAddSession(data);
-    }
-
-    setSessions((prevSessions) => [...prevSessions, data]);
+    handleAddSession(data);
 
     reset();
   };
 
   return (
     <div className="session-editor-content">
+      {JSON.stringify(sessions)}
       <form onSubmit={handleSubmit(onSubmit)} className="session-form">
         <div className="add-new-session">
           <p>Add New Session</p>
@@ -204,17 +202,6 @@ const SessionEditor = ({ onAddSession }) => {
           onChange={handleChange}
           isMulti
         />
-      </div>
-      <div>
-        <h2>Sessions</h2>
-        <ul>
-          {sessions.map((session, index) => (
-            <li key={index}>
-              <strong>{session.header}</strong> - {session.date}
-              <p>{session.body}</p>
-            </li>
-          ))}
-        </ul>
       </div>
     </div>
   );

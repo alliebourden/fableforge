@@ -1,6 +1,8 @@
-import React from "react";
+import { SessionContext } from "./SessionContext";
+import { useContext } from "react";
 
-const SessionList = ({ sessions }) => {
+const SessionList = () => {
+  const { sessions } = useContext(SessionContext);
   return (
     <div className="session-list">
       <h2>Sessions</h2>

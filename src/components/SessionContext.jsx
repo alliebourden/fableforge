@@ -1,25 +1,16 @@
-import React, { createContext, useContext, useState } from "react";
+import { createContext, useContext, useEffect, useState } from "react";
 
-const SessionContext = createContext();
+export const SessionContext = createContext();
 
 export const SessionProvider = ({ children }) => {
   const [sessions, setSessions] = useState([]);
-
-  const addSession = (newSession) => {
+  const handleAddSession = async (newSession) => {
     setSessions([...sessions, newSession]);
   };
-
+  useEffect(() => console.log(sessions), [sessions]);
   return (
-    <SessionContext.Provider value={{ sessions, addSession }}>
+    <SessionContext.Provider value={{ sessions, handleAddSession }}>
       {children}
     </SessionContext.Provider>
   );
-};
-
-export const useSession = () => {
-  const context = useContext(SessionContext);
-  if (!context) {
-    throw new Error("useSession must be used within a SessionProvider");
-  }
-  return context;
 };
