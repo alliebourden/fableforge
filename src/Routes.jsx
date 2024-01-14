@@ -10,6 +10,9 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Dashboard /> },
+      { path: "/campaign-summary", element: <div></div> },
+      { path: "/quest-tracker", element: <div></div> },
+      { path: "/loot-manager", element: <div></div> },
       {
         path: "session-editor",
         element: (

@@ -53,8 +53,12 @@
   margin: 10px 0 0 20px;
 }
 
-.sidebar-links a {
+.sidebar-links p {
   margin-bottom: 10px;
+}
+
+.sidebar-links p:hover {
+  color: #c2ac38;
 }
 
 .last-session {
@@ -202,7 +206,7 @@
   display: flex;
 }
 
-.session-list {
+.sessions {
   display: flex;
   margin-top: 125px;
   margin-left: 275px;
