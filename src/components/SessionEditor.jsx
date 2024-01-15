@@ -106,7 +106,7 @@ const SessionEditor = () => {
 
   return (
     <div className="session-editor-content">
-      {JSON.stringify(sessions)}
+      {/* {JSON.stringify(sessions)} */}
       <form onSubmit={handleSubmit(onSubmit)} className="session-form">
         <div className="add-new-session">
           <p>Add New Session</p>
