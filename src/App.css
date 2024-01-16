@@ -59,6 +59,7 @@
 
 .sidebar-links p:hover {
   color: #c2ac38;
+  transition: ease-in-out 0.3s;
 }
 
 .last-session {

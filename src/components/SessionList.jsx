@@ -16,6 +16,9 @@ const SessionList = () => {
             <strong>{sessions[sessions.length - 1].header}</strong> -{" "}
             {sessions[sessions.length - 1].date}
             <p>{sessions[sessions.length - 1].body}</p>
+            {sessions[sessions.length - 1].tags && (
+              <p>Tags: {sessions[sessions.length - 1].tags.join(", ")}</p>
+            )}
           </div>
         )}
       </div>
