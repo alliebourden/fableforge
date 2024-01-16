@@ -276,6 +276,16 @@
   margin: 520px 0 0 450px;
 }
 
+.add-new-btn:hover {
+  background: #132730;
+  transition: ease-in-out 0.3s;
+}
+
+.submit-new-session:hover {
+  background: #132730;
+  transition: ease-in-out 0.3s;
+}
+
 .all-sessions {
   display: flex;
   flex-direction: column;

@@ -134,7 +134,9 @@ const SessionEditor = () => {
           <textarea id="body" {...register("body", { required: true })} />
         </div>
         <div className="submit-btn">
-          <button type="submit">SUBMIT</button>
+          <button type="submit" className="submit-new-session">
+            SUBMIT
+          </button>
         </div>
       </form>
       <div style={categoryStyle.container}>

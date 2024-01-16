@@ -1,8 +1,10 @@
 import { SessionContext } from "./SessionContext";
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 const SessionList = () => {
   const { sessions } = useContext(SessionContext);
+  const navigate = useNavigate();
   return (
     <div className="sessions">
       <div className="recent-session">
@@ -17,7 +19,12 @@ const SessionList = () => {
           </div>
         )}
       </div>
-      <button className="add-new-btn">ADD NEW</button>
+      <button
+        className="add-new-btn"
+        onClick={() => navigate("/session-editor")}
+      >
+        ADD NEW
+      </button>
       <div className="all-sessions">
         <div className="all-sessions-top">
           <p>Session List</p>
