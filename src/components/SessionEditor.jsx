@@ -101,7 +101,7 @@ const SessionEditor = () => {
   const onSubmit = (data) => {
     const sessionData = {
       ...data,
-      tags: selectedTags.map((tag) => tag.value),
+      tags: selectedTags.map((tag) => tag.label),
     };
     handleAddSession(sessionData);
 
@@ -110,8 +110,8 @@ const SessionEditor = () => {
 
   return (
     <div className="session-editor-content">
-      {JSON.stringify(sessions)}
-      {JSON.stringify(selectedTags)}
+      {/* {JSON.stringify(sessions)}
+      {JSON.stringify(selectedTags)} */}
       <form onSubmit={handleSubmit(onSubmit)} className="session-form">
         <div className="add-new-session">
           <p>Add New Session</p>
