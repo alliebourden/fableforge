@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Select from "react-select";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { SessionContext } from "./SessionContext";
 
 const categoryStyle = {
   container: {
@@ -87,7 +89,8 @@ const tags = [
   },
 ];
 
-const SessionEditor = ({ onAddSession }) => {
+const SessionEditor = () => {
+  const { sessions, handleAddSession } = useContext(SessionContext);
   const [selectedTags, setSelectedTags] = useState([]);
   const { register, handleSubmit, reset } = useForm();
 
@@ -96,12 +99,19 @@ const SessionEditor = ({ onAddSession }) => {
   };
 
   const onSubmit = (data) => {
-    onAddSession(data);
+    const sessionData = {
+      ...data,
+      tags: selectedTags.map((tag) => tag.label),
+    };
+    handleAddSession(sessionData);
+
     reset();
   };
 
   return (
     <div className="session-editor-content">
+      {/* {JSON.stringify(sessions)}
+      {JSON.stringify(selectedTags)} */}
       <form onSubmit={handleSubmit(onSubmit)} className="session-form">
         <div className="add-new-session">
           <p>Add New Session</p>
@@ -129,7 +139,9 @@ const SessionEditor = ({ onAddSession }) => {
           <textarea id="body" {...register("body", { required: true })} />
         </div>
         <div className="submit-btn">
-          <button type="submit">SUBMIT</button>
+          <button type="submit" className="submit-new-session">
+            SUBMIT
+          </button>
         </div>
       </form>
       <div style={categoryStyle.container}>

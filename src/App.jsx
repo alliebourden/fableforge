@@ -1,21 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Layout from "./pages/Layout";
 import "./App.css";
 import router from "./Routes";
 import { RouterProvider, Route } from "react-router-dom";
+import SessionEditor from "./components/SessionEditor";
+import SessionList from "./components/SessionList";
+import { SessionContext } from "./components/SessionContext";
+import { SessionProvider } from "./components/SessionContext";
 
 const App = () => {
-  const [sessions, setSessions] = useState([]);
-
-  const handleAddSession = (newSession) => {
-    setSessions([...sessions, newSession]);
-  };
-
   return (
     <>
-      <RouterProvider router={router}>
-        <Route>{({ children }) => children}</Route>
-      </RouterProvider>
+      <SessionProvider>
+        <RouterProvider router={router}>
+          <Route>
+            {({ children }) => (
+              <Layout>
+                {children}
+                <SessionEditor />
+                <SessionList />
+              </Layout>
+            )}
+          </Route>
+        </RouterProvider>
+      </SessionProvider>
     </>
   );
 };
