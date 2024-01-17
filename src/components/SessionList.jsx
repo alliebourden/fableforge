@@ -22,16 +22,11 @@ const SessionList = () => {
           </div>
         )}
       </div>
-      <button
-        className="add-new-btn"
-        onClick={() => navigate("/session-editor")}
-      >
-        ADD NEW
-      </button>
       <div className="all-sessions">
         <div className="all-sessions-top">
           <p>Session List</p>
         </div>
+        {/* <div className="session-list-body"> */}
         {sessions &&
           sessions.map((session, index) => (
             <div key={index} className="session-list-body">
@@ -40,6 +35,15 @@ const SessionList = () => {
               </p>
             </div>
           ))}
+        {/* </div> */}
+        <div className="add-new-btn-container">
+          <button
+            className="add-new-btn"
+            onClick={() => navigate("/session-editor")}
+          >
+            ADD NEW
+          </button>
+        </div>
       </div>
     </div>
   );
