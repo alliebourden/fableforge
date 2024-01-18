@@ -3,6 +3,7 @@ import Dashboard from "./pages/Dashboard";
 import Layout from "./pages/Layout";
 import SessionEditor from "./components/SessionEditor";
 import SessionList from "./components/SessionList";
+import Calendar from "react-calendar";
 
 const router = createBrowserRouter([
   {
@@ -11,6 +12,14 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Dashboard /> },
       { path: "/campaign-summary", element: <div></div> },
+      {
+        path: "/calendar",
+        element: (
+          <div>
+            <Calendar />
+          </div>
+        ),
+      },
       { path: "/quest-tracker", element: <div></div> },
       { path: "/loot-manager", element: <div></div> },
       {
