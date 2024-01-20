@@ -3,7 +3,7 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 const SessionList = () => {
-  const { sessions } = useContext(SessionContext);
+  const { sessions, selectedDates } = useContext(SessionContext);
   const navigate = useNavigate();
   return (
     <div className="sessions">
@@ -22,16 +22,20 @@ const SessionList = () => {
           </div>
         )}
       </div>
+      <div className="next-session">
+        <h2>Next Session</h2>
+        <p>Selected Dates: {selectedDates.join(", ")}</p>
+      </div>
       <div className="all-sessions">
         <div className="all-sessions-top">
           <p>Session List</p>
         </div>
-        {/* <div className="session-list-body"> */}
         {sessions &&
           sessions.map((session, index) => (
             <div key={index} className="session-list-body">
               <p>
-                <strong>{session.header}</strong> - {session.date}{" "}
+                <strong>{session.header}</strong> -{" "}
+                {session.dates && session.dates.join(", ")}
               </p>
             </div>
           ))}

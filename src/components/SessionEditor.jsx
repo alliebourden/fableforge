@@ -3,6 +3,8 @@ import Select from "react-select";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
+import Calendar from "react-calendar";
+import "react-calendar/dist/Calendar.css";
 
 const categoryStyle = {
   container: {
@@ -90,7 +92,8 @@ const tags = [
 ];
 
 const SessionEditor = () => {
-  const { sessions, handleAddSession } = useContext(SessionContext);
+  const { sessions, handleAddSession, selectedDates, setSelectedDates } =
+    useContext(SessionContext);
   const [selectedTags, setSelectedTags] = useState([]);
   const { register, handleSubmit, reset } = useForm();
 
@@ -102,16 +105,22 @@ const SessionEditor = () => {
     const sessionData = {
       ...data,
       tags: selectedTags.map((tag) => tag.label),
+      dates: selectedDates.map((date) => date.toLocaleDateString()),
     };
     handleAddSession(sessionData);
 
     reset();
   };
 
+  const handleDateChange = (date) => {
+    setSelectedDates((prevDates) => [...prevDates, date]);
+  };
+
   return (
     <div className="session-editor-content">
-      {/* {JSON.stringify(sessions)}
-      {JSON.stringify(selectedTags)} */}
+      {JSON.stringify(sessions)}
+      {JSON.stringify(selectedTags)}
+      {JSON.stringify(selectedDates)}
       <form onSubmit={handleSubmit(onSubmit)} className="session-form">
         <div className="add-new-session">
           <p>Add New Session</p>
@@ -144,6 +153,17 @@ const SessionEditor = () => {
           </button>
         </div>
       </form>
+      <div className="session-calendar">
+        <Calendar onChange={handleDateChange} value={selectedDates} />
+        <div>
+          <h2>Selected Dates</h2>
+          <ul>
+            {selectedDates.map((date, index) => (
+              <li key={index}>{date.toLocaleDateString()}</li>
+            ))}
+          </ul>
+        </div>
+      </div>
       <div style={categoryStyle.container}>
         <div style={categoryStyle.titleContainer}>
           <div style={categoryStyle.title}>TAG CATEGORIES</div>

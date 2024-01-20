@@ -7,7 +7,6 @@ import SessionEditor from "./components/SessionEditor";
 import SessionList from "./components/SessionList";
 import { SessionContext } from "./components/SessionContext";
 import { SessionProvider } from "./components/SessionContext";
-import Calendar from "./components/Calendar";
 
 const App = () => {
   return (
