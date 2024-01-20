@@ -5,6 +5,10 @@ import { useNavigate } from "react-router-dom";
 const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
   const navigate = useNavigate();
+
+  const formatSelectedDate = (date) => {
+    return new Date(date).toLocaleDateString("en-US");
+  };
   return (
     <div className="sessions">
       <div className="recent-session">
@@ -22,31 +26,37 @@ const SessionList = () => {
           </div>
         )}
       </div>
-      <div className="next-session">
-        <h2>Next Session</h2>
-        <p>Selected Dates: {selectedDates.join(", ")}</p>
-      </div>
-      <div className="all-sessions">
-        <div className="all-sessions-top">
-          <p>Session List</p>
+      <div>
+        <div className="next-session">
+          <div className="next-session-top">
+            <p>Next Session</p>
+          </div>
+          <p>
+            Selected Date: {selectedDates.map(formatSelectedDate).join(", ")}
+          </p>
         </div>
-        {sessions &&
-          sessions.map((session, index) => (
-            <div key={index} className="session-list-body">
-              <p>
-                <strong>{session.header}</strong> -{" "}
-                {session.dates && session.dates.join(", ")}
-              </p>
-            </div>
-          ))}
-        {/* </div> */}
-        <div className="add-new-btn-container">
-          <button
-            className="add-new-btn"
-            onClick={() => navigate("/session-editor")}
-          >
-            ADD NEW
-          </button>
+        <div className="all-sessions">
+          <div className="all-sessions-top">
+            <p>Session List</p>
+          </div>
+          {sessions &&
+            sessions.map((session, index) => (
+              <div key={index} className="session-list-body">
+                <p>
+                  <strong>{session.header}</strong> -{" "}
+                  {session.dates && session.dates.join(", ")}
+                </p>
+              </div>
+            ))}
+          {/* </div> */}
+          <div className="add-new-btn-container">
+            <button
+              className="add-new-btn"
+              onClick={() => navigate("/session-editor")}
+            >
+              ADD NEW
+            </button>
+          </div>
         </div>
       </div>
     </div>

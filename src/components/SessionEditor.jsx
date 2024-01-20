@@ -226,7 +226,7 @@ const SessionEditor = () => {
             selectRange={false}
             onClickDay={(date) => handleDateChange(date)}
           />
-          <div>
+          <div className="selected-date">
             <h2>Selected Dates</h2>
             <ul>
               {selectedDates.map((date, index) => (
