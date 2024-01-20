@@ -4,7 +4,6 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
 import Calendar from "react-calendar";
-import "react-calendar/dist/Calendar.css";
 
 const categoryStyle = {
   container: {
@@ -113,14 +112,14 @@ const SessionEditor = () => {
   };
 
   const handleDateChange = (date) => {
-    setSelectedDates((prevDates) => [...prevDates, date]);
+    setSelectedDates([date]);
   };
 
   return (
     <div className="session-editor-content">
-      {JSON.stringify(sessions)}
+      {/* {JSON.stringify(sessions)}
       {JSON.stringify(selectedTags)}
-      {JSON.stringify(selectedDates)}
+      {JSON.stringify(selectedDates)} */}
       <form onSubmit={handleSubmit(onSubmit)} className="session-form">
         <div className="add-new-session">
           <p>Add New Session</p>
@@ -153,82 +152,89 @@ const SessionEditor = () => {
           </button>
         </div>
       </form>
-      <div className="session-calendar">
-        <Calendar onChange={handleDateChange} value={selectedDates} />
-        <div>
-          <h2>Selected Dates</h2>
-          <ul>
-            {selectedDates.map((date, index) => (
-              <li key={index}>{date.toLocaleDateString()}</li>
-            ))}
-          </ul>
+      <div>
+        <div style={categoryStyle.container}>
+          <div style={categoryStyle.titleContainer}>
+            <div style={categoryStyle.title}>TAG CATEGORIES</div>
+          </div>
+          <Select
+            options={tags}
+            styles={{
+              container: (provided) => ({
+                ...provided,
+                marginTop: "10px",
+              }),
+              control: (provided, state) => ({
+                ...provided,
+                width: "375px",
+                minHeight: "25px",
+                borderRadius: "5px 5px 0px 0px",
+                borderBottom: "1px solid #1E1E1E",
+                background: "#D9D9D9",
+                boxShadow: state.isFocused ? "0 0 0 2px #C2AC38" : "none",
+              }),
+              multiValueRemove: (provided) => ({
+                ...provided,
+                color: "#132730",
+                backgroundColor: "#F0DFC8",
+                ":hover": {
+                  backgroundColor: "#C2AC38",
+                  color: "#FFF",
+                },
+              }),
+              multiValue: (provided) => ({
+                ...provided,
+                backgroundColor: "#F0DFC8",
+                color: "#132730",
+              }),
+              indicatorSeparator: (provided) => ({
+                ...provided,
+                backgroundColor: "#132730",
+              }),
+              dropdownIndicator: (provided, state) => ({
+                ...provided,
+                color: state.isFocused ? "#C2AC38" : "#132730",
+                ":hover": {
+                  color: "#C2AC38",
+                },
+              }),
+              clearIndicator: (provided, state) => ({
+                ...provided,
+                color: state.isFocused ? "#C2AC38" : "#132730",
+                ":hover": {
+                  color: "#C2AC38",
+                },
+              }),
+              menu: (provided) => ({
+                ...provided,
+                fontSize: "12px",
+              }),
+              menuList: (provided) => ({
+                ...provided,
+                maxHeight: "100px",
+              }),
+            }}
+            value={selectedTags}
+            onChange={handleChange}
+            isMulti
+          />
         </div>
-      </div>
-      <div style={categoryStyle.container}>
-        <div style={categoryStyle.titleContainer}>
-          <div style={categoryStyle.title}>TAG CATEGORIES</div>
+        <div className="session-calendar">
+          <Calendar
+            onChange={handleDateChange}
+            value={selectedDates}
+            selectRange={false}
+            onClickDay={(date) => handleDateChange(date)}
+          />
+          <div>
+            <h2>Selected Dates</h2>
+            <ul>
+              {selectedDates.map((date, index) => (
+                <li key={index}>{date.toLocaleDateString()}</li>
+              ))}
+            </ul>
+          </div>
         </div>
-        <Select
-          options={tags}
-          styles={{
-            container: (provided) => ({
-              ...provided,
-              marginTop: "10px",
-            }),
-            control: (provided, state) => ({
-              ...provided,
-              width: "375px",
-              minHeight: "25px",
-              borderRadius: "5px 5px 0px 0px",
-              borderBottom: "1px solid #1E1E1E",
-              background: "#D9D9D9",
-              boxShadow: state.isFocused ? "0 0 0 2px #C2AC38" : "none",
-            }),
-            multiValueRemove: (provided) => ({
-              ...provided,
-              color: "#132730",
-              backgroundColor: "#F0DFC8",
-              ":hover": {
-                backgroundColor: "#C2AC38",
-                color: "#FFF",
-              },
-            }),
-            multiValue: (provided) => ({
-              ...provided,
-              backgroundColor: "#F0DFC8",
-              color: "#132730",
-            }),
-            indicatorSeparator: (provided) => ({
-              ...provided,
-              backgroundColor: "#132730",
-            }),
-            dropdownIndicator: (provided, state) => ({
-              ...provided,
-              color: state.isFocused ? "#C2AC38" : "#132730",
-              ":hover": {
-                color: "#C2AC38",
-              },
-            }),
-            clearIndicator: (provided, state) => ({
-              ...provided,
-              color: state.isFocused ? "#C2AC38" : "#132730",
-              ":hover": {
-                color: "#C2AC38",
-              },
-            }),
-            menu: (provided) => ({
-              ...provided,
-              fontSize: "12px",
-            }),
-            menuList: (provided) => ({
-              ...provided,
-              maxHeight: "100px",
-            }),
-          }}
-          value={selectedTags}
-          onChange={handleChange}
-          isMulti
-        />
       </div>
     </div>
   );

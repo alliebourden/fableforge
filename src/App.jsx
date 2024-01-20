@@ -19,7 +19,6 @@ const App = () => {
                 {children}
                 <SessionEditor />
                 <SessionList />
-                <Calendar />
               </Layout>
             )}
           </Route>
