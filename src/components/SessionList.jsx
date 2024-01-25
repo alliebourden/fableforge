@@ -2,6 +2,7 @@ import { SessionContext } from "./SessionContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionIcon from "../../assets/icons/SessionListIcon.svg";
+import NextSessionIcon from "../../assets/icons/NextSessionIcon.svg";
 
 const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
@@ -30,7 +31,10 @@ const SessionList = () => {
       <div>
         <div className="next-session">
           <div className="next-session-top">
-            <p>Next Session</p>
+            <div className="all-sessions-top">
+              <img src={NextSessionIcon} height={20} />
+              <p>Next Session</p>
+            </div>
           </div>
           <p className="session-date-display">
             <strong>Next Session Date:</strong>{" "}

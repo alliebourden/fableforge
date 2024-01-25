@@ -95,7 +95,7 @@
 
 .add-new-session {
   display: flex;
-  flex-direction: column;
+  align-items: center;
   width: 675px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
@@ -111,7 +111,19 @@
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin: 7px 0 0 20px;
+  margin-left: 8px;
+}
+.add-new-session img {
+  margin-left: 25px;
+}
+
+.category-top {
+  display: flex;
+  align-items: center;
+}
+
+.category-top img {
+  margin-left: 25px;
 }
 
 .top-section {
@@ -304,7 +316,7 @@
 .all-sessions-top {
   text-transform: uppercase;
   display: flex;
-  flex-direction: column;
+  align-items: center;
   width: 425px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
@@ -322,7 +334,11 @@
   font-style: italic;
   font-weight: 600;
   line-height: normal;
-  margin: 7px 0 0 20px;
+  margin-left: 8px;
+}
+
+.all-sessions-top img {
+  margin-left: 25px;
 }
 
 .session-list-body {
@@ -351,16 +367,6 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.next-session-top {
-  border-radius: 10px 10px 0px 0px;
-  border-top: 3px solid #c2ac38;
-  border-right: 3px solid #c2ac38;
-  border-left: 3px solid #c2ac38;
-  background: #132730;
-  width: 425px;
-  height: 45px;
 }
 
 .next-session-top p {

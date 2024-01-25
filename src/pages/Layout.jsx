@@ -1,10 +1,10 @@
 import Logo from "../../assets/images/logo-small.png";
 import { Outlet } from "react-router-dom";
-import DashboardIcon from "../../assets/icons/Dashboard Icon.svg";
-import CampaignIcon from "../../assets/icons/Campaign Icon.svg";
+import DashboardIcon from "../../assets/icons/DashboardIcon.svg";
+import CampaignIcon from "../../assets/icons/CampaignIcon.svg";
 import SessionIcon from "../../assets/icons/SessionListIcon.svg";
-import QuestIcon from "../../assets/icons/Quest Icon.svg";
-import LootIcon from "../../assets/icons/Loot Management Icon.svg";
+import QuestIcon from "../../assets/icons/QuestIcon.svg";
+import LootIcon from "../../assets/icons/LootManagementIcon.svg";
 import { useNavigate } from "react-router-dom";
 
 export default function Layout() {

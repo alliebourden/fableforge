@@ -4,6 +4,8 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
 import Calendar from "react-calendar";
+import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
+import CategoryTagIcon from "../../assets/icons/CategoryTagIcon.svg";
 
 const categoryStyle = {
   container: {
@@ -30,10 +32,9 @@ const categoryStyle = {
   title: {
     fontSize: "20px",
     fontWeight: "500",
-    marginBottom: "10px",
     color: "#FFF",
     fontStyle: "italic",
-    padding: "8px 25px",
+    padding: "8px 8px",
   },
 };
 
@@ -122,6 +123,7 @@ const SessionEditor = () => {
       {JSON.stringify(selectedDates)} */}
       <form onSubmit={handleSubmit(onSubmit)} className="session-form">
         <div className="add-new-session">
+          <img src={AddSessionIcon} height={20} />
           <p>Add New Session</p>
         </div>
         <div className="top-section">
@@ -154,7 +156,8 @@ const SessionEditor = () => {
       </form>
       <div>
         <div style={categoryStyle.container}>
-          <div style={categoryStyle.titleContainer}>
+          <div style={categoryStyle.titleContainer} className="category-top">
+            <img src={CategoryTagIcon} height={20} />
             <div style={categoryStyle.title}>TAG CATEGORIES</div>
           </div>
           <Select
