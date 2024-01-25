@@ -1,6 +1,7 @@
 import { SessionContext } from "./SessionContext";
 import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 
 const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
@@ -31,24 +32,27 @@ const SessionList = () => {
           <div className="next-session-top">
             <p>Next Session</p>
           </div>
-          <p>
-            Selected Date: {selectedDates.map(formatSelectedDate).join(", ")}
+          <p className="session-date-display">
+            <strong>Next Session Date:</strong>{" "}
+            {selectedDates.map(formatSelectedDate).join(", ")}
           </p>
         </div>
         <div className="all-sessions">
           <div className="all-sessions-top">
+            <img src={SessionIcon} height={20} />
             <p>Session List</p>
           </div>
-          {sessions &&
-            sessions.map((session, index) => (
-              <div key={index} className="session-list-body">
-                <p>
-                  <strong>{session.header}</strong> -{" "}
-                  {session.dates && session.dates.join(", ")}
-                </p>
-              </div>
-            ))}
-          {/* </div> */}
+          <div className="list-of-sessions">
+            {sessions &&
+              sessions.map((session, index) => (
+                <div key={index} className="session-list-body">
+                  <p>
+                    <strong>{session.header}</strong> -{" "}
+                    {session.dates && session.dates.join(", ")}
+                  </p>
+                </div>
+              ))}
+          </div>
           <div className="add-new-btn-container">
             <button
               className="add-new-btn"

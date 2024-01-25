@@ -226,8 +226,10 @@ const SessionEditor = () => {
             selectRange={false}
             onClickDay={(date) => handleDateChange(date)}
           />
-          <div className="selected-date">
-            <h2>Selected Dates</h2>
+          <div>
+            <p>
+              <strong>Next Session:</strong>
+            </p>
             <ul>
               {selectedDates.map((date, index) => (
                 <li key={index}>{date.toLocaleDateString()}</li>
