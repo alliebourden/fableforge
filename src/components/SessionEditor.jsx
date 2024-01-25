@@ -229,7 +229,7 @@ const SessionEditor = () => {
             selectRange={false}
             onClickDay={(date) => handleDateChange(date)}
           />
-          <div>
+          {/* <div>
             <p>
               <strong>Next Session:</strong>
             </p>
@@ -238,7 +238,7 @@ const SessionEditor = () => {
                 <li key={index}>{date.toLocaleDateString()}</li>
               ))}
             </ul>
-          </div>
+          </div> */}
         </div>
       </div>
     </div>
