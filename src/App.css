@@ -598,6 +598,16 @@
   transition: ease-in-out 0.3s;
 }
 
+dialog {
+  /* /* color: #c2ac38; */
+  border-radius: 10px;
+  border: none;
+}
+
+dialog::modal {
+  background-color: #cdcdcd;
+}
+
 * {
   margin: 0;
 }
