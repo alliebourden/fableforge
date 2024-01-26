@@ -91,7 +91,7 @@ const tags = [
   },
 ];
 
-const SessionEditor = () => {
+const SessionEditor = ({ closeModal }) => {
   const { sessions, handleAddSession, selectedDates, setSelectedDates } =
     useContext(SessionContext);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -109,6 +109,7 @@ const SessionEditor = () => {
     };
     handleAddSession(sessionData);
 
+    closeModal();
     reset();
   };
 
@@ -121,7 +122,11 @@ const SessionEditor = () => {
       {/* {JSON.stringify(sessions)}
       {JSON.stringify(selectedTags)}
       {JSON.stringify(selectedDates)} */}
-      <form onSubmit={handleSubmit(onSubmit)} className="session-form">
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="session-form"
+        method="dialog"
+      >
         <div className="add-new-session">
           <img src={AddSessionIcon} height={20} />
           <p>Add New Session</p>

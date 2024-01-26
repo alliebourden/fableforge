@@ -211,8 +211,6 @@
 
 .session-editor-content {
   display: flex;
-  margin-top: 150px;
-  margin-left: 275px;
 }
 
 .layout-wrapper {
@@ -269,6 +267,7 @@
 
 .last-session-body {
   margin: 10px 25px 0 25px;
+  width: 644px;
 }
 
 .last-session-date {
@@ -367,7 +366,6 @@
 .session-list-body {
   display: flex;
   justify-content: center;
-  height: 270px;
   width: 400px;
 }
 
@@ -597,6 +595,13 @@
 .react-calendar--selectRange .react-calendar__tile--hover {
   background-color: #e6e6e6;
   transition: ease-in-out 0.3s;
+}
+
+dialog {
+  border: none;
+  margin-left: 250px;
+  margin-top: 100px;
+  box-shadow: rgba(0, 0, 0, 0.1) 5px 8px 10px 0px;
 }
 
 * {
