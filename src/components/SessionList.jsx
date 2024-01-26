@@ -16,14 +16,14 @@ const SessionList = () => {
       <div className="recent-session">
         <div className="last-session-top">
           <p>Last Session</p>
-          <div className="last-session-top-date">
-            {sessions[sessions.length - 1].date}{" "}
-          </div>
         </div>
         {sessions.length > 0 && (
           <div className="last-session-body">
             <div className="session-subtitle">
               <div>
+                <div className="last-session-top-date">
+                  {sessions[sessions.length - 1].date}{" "}
+                </div>
                 <strong>{sessions[sessions.length - 1].header}</strong>
               </div>{" "}
               {sessions[sessions.length - 1].tags && (
@@ -60,8 +60,7 @@ const SessionList = () => {
               sessions.map((session, index) => (
                 <div key={index} className="session-list-body">
                   <p>
-                    <strong>{session.header}</strong> -{" "}
-                    {session.dates && session.dates.join(", ")}
+                    <strong>{session.header}</strong> - {session.date}{" "}
                   </p>
                 </div>
               ))}

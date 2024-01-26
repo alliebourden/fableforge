@@ -118,9 +118,9 @@ const SessionEditor = () => {
 
   return (
     <div className="session-editor-content">
-      {/* {JSON.stringify(sessions)}
+      {JSON.stringify(sessions)}
       {JSON.stringify(selectedTags)}
-      {JSON.stringify(selectedDates)} */}
+      {JSON.stringify(selectedDates)}
       <form onSubmit={handleSubmit(onSubmit)} className="session-form">
         <div className="add-new-session">
           <img src={AddSessionIcon} height={20} />

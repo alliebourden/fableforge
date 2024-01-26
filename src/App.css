@@ -367,7 +367,6 @@
 .session-list-body {
   display: flex;
   justify-content: center;
-  height: 270px;
   width: 400px;
 }
 
