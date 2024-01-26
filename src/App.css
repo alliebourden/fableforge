@@ -211,8 +211,6 @@
 
 .session-editor-content {
   display: flex;
-  margin-top: 150px;
-  margin-left: 275px;
 }
 
 .layout-wrapper {
@@ -269,6 +267,7 @@
 
 .last-session-body {
   margin: 10px 25px 0 25px;
+  width: 644px;
 }
 
 .last-session-date {
@@ -599,13 +598,10 @@
 }
 
 dialog {
-  /* /* color: #c2ac38; */
-  border-radius: 10px;
   border: none;
-}
-
-dialog::modal {
-  background-color: #cdcdcd;
+  margin-left: 250px;
+  margin-top: 100px;
+  box-shadow: rgba(0, 0, 0, 0.1) 5px 8px 10px 0px;
 }
 
 * {
