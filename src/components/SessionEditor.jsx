@@ -91,7 +91,7 @@ const tags = [
   },
 ];
 
-const SessionEditor = () => {
+const SessionEditor = ({ closeModal }) => {
   const { sessions, handleAddSession, selectedDates, setSelectedDates } =
     useContext(SessionContext);
   const [selectedTags, setSelectedTags] = useState([]);
@@ -109,7 +109,7 @@ const SessionEditor = () => {
     };
     handleAddSession(sessionData);
 
-    reset();
+    closeModal();
   };
 
   const handleDateChange = (date) => {

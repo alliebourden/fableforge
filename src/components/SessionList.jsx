@@ -1,15 +1,25 @@
 import { SessionContext } from "./SessionContext";
-import { useContext } from "react";
+import { useContext, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import NextSessionIcon from "../../assets/icons/NextSessionIcon.svg";
+import SessionEditor from "./SessionEditor";
 
 const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
   const navigate = useNavigate();
+  const modalRef = useRef(null);
 
   const formatSelectedDate = (date) => {
     return new Date(date).toLocaleDateString("en-US");
+  };
+
+  const openModal = () => {
+    modalRef.current.showModal();
+  };
+
+  const closeModal = () => {
+    modalRef.current.close();
   };
   return (
     <div className="sessions">
@@ -66,12 +76,12 @@ const SessionList = () => {
               ))}
           </div>
           <div className="add-new-btn-container">
-            <button
-              className="add-new-btn"
-              onClick={() => navigate("/session-editor")}
-            >
+            <button className="add-new-btn" onClick={openModal}>
               ADD NEW
             </button>
+            <dialog ref={modalRef}>
+              <SessionEditor closeModal={closeModal} />
+            </dialog>
           </div>
         </div>
       </div>
