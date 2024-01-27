@@ -32,7 +32,7 @@ const QuestTracker = () => {
       <div className="quest-tracker-main-contain">
         <div className="quest-list">
           <div className="main-quests-list">
-            <h2>Main Quests</h2>
+            <h3>Main Quests</h3>
             {mainQuests.map((quest, index) => (
               <div
                 key={index}
@@ -46,7 +46,7 @@ const QuestTracker = () => {
             ))}
           </div>
           <div className="side-quests-list">
-            <h2>Side Quests</h2>
+            <h3>Side Quests</h3>
             {sideQuests.map((quest, index) => (
               <div
                 key={index}
@@ -69,6 +69,7 @@ const QuestTracker = () => {
           </div>
         </div>
         <div className="selected-quest-details">
+          <h3>Selected Quest</h3>
           {selectedQuest && <SelectedQuestDetails quest={selectedQuest} />}
         </div>
       </div>

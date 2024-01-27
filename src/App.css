@@ -309,6 +309,8 @@
 
 .add-new-btn-container {
   display: flex;
+  align-items: center;
+  flex-direction: column;
 }
 
 .add-new-btn:hover {
@@ -700,17 +702,24 @@ dialog {
   width: 450px;
   display: flex;
   flex-direction: column;
-  margin-top: 25px;
-  margin-left: 25px;
+  margin-left: 40px;
+  border-right: solid 1px #132730;
 }
 
 .selected-quest-details {
   width: 650px;
   display: flex;
+  height: 600px;
+  margin-left: 25px;
+}
+
+.selected-quest-details h3 {
+  margin-top: 25px;
 }
 
 .main-quests-list {
   height: 250px;
+  margin-top: 25px;
 }
 
 .side-quests-list {
