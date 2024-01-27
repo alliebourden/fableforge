@@ -1,12 +1,13 @@
 import { SessionContext } from "./SessionContext";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import QuestTrackerForm from "./QuestTrackerForm";
+import SelectedQuestDetails from "./SelectedQuestDetails";
 
 const QuestTracker = () => {
   const { quests } = useContext(SessionContext);
   const modalRef = useRef(null);
+  const [selectedQuest, setSelectedQuest] = useState(null);
 
   const openModal = () => {
     modalRef.current.showModal();
@@ -14,6 +15,11 @@ const QuestTracker = () => {
 
   const closeModal = () => {
     modalRef.current.close();
+  };
+
+  const handleQuestClick = (quest) => {
+    setSelectedQuest(quest);
+    openModal();
   };
 
   const mainQuests = quests.filter((quest) => quest.type === "mainQuest");
@@ -28,7 +34,11 @@ const QuestTracker = () => {
         <div className="main-quests-list">
           <h2>Main Quests</h2>
           {mainQuests.map((quest, index) => (
-            <div key={index} className="quest-list-item">
+            <div
+              key={index}
+              className="quest-list-item"
+              onClick={() => handleQuestClick(quest)}
+            >
               <p>
                 <strong>{quest.header}</strong>
               </p>
@@ -38,7 +48,11 @@ const QuestTracker = () => {
         <div className="side-quests-list">
           <h2>Side Quests</h2>
           {sideQuests.map((quest, index) => (
-            <div key={index} className="quest-list-item">
+            <div
+              key={index}
+              className="quest-list-item"
+              onClick={() => handleQuestClick(quest)}
+            >
               <p>
                 <strong>{quest.header}</strong>
               </p>
@@ -54,15 +68,8 @@ const QuestTracker = () => {
           </dialog>
         </div>
       </div>
-      <div className="list-of-sessions">
-        {/* {sessions &&
-              sessions.map((session, index) => (
-                <div key={index} className="session-list-body">
-                  <p>
-                    <strong>{session.header}</strong> - {session.date}{" "}
-                  </p>
-                </div>
-              ))} */}
+      <div className="selected-quest-details">
+        {selectedQuest && <SelectedQuestDetails quest={selectedQuest} />}
       </div>
     </div>
   );

@@ -6,12 +6,17 @@ export const SessionProvider = ({ children }) => {
   const [sessions, setSessions] = useState([]);
   const [selectedDates, setSelectedDates] = useState([]);
   const [quests, setQuests] = useState([]);
+  const [selectedQuest, setSelectedQuest] = useState(null);
 
   const handleAddSession = (newSession) => {
     setSessions((prevSessions) => [...prevSessions, newSession]);
   };
   const handleAddQuest = (newQuest) => {
     setQuests((prevQuests) => [...prevQuests, newQuest]);
+  };
+
+  const handleSelectQuest = (quest) => {
+    setSelectedQuest(quest);
   };
 
   useEffect(() => console.log(quests), [quests]);
@@ -26,6 +31,8 @@ export const SessionProvider = ({ children }) => {
         setSelectedDates,
         quests,
         handleAddQuest,
+        selectedQuest,
+        handleSelectQuest,
       }}
     >
       {children}
