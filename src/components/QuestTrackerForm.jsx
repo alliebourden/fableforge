@@ -8,8 +8,7 @@ const QuestTrackerForm = ({ closeModal }) => {
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    const questData = { data };
-    handleAddQuest(questData);
+    handleAddQuest(data);
 
     closeModal();
     reset();
@@ -17,6 +16,7 @@ const QuestTrackerForm = ({ closeModal }) => {
 
   return (
     <div className="quest-form-content">
+      {JSON.stringify(quests)}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="quest-form"

@@ -15,25 +15,50 @@ const QuestTracker = () => {
   const closeModal = () => {
     modalRef.current.close();
   };
+
+  const mainQuests = quests.filter((quest) => quest.type === "mainQuest");
+  const sideQuests = quests.filter((quest) => quest.type === "sideQuest");
+
   return (
     <div className="quest-tracker">
-      <div className="recent-session">
-        <div className="last-session-top">
-          <p>Last Session</p>
-        </div>
-        {quests.length > 0 && (
-          <div className="last-session-body">
-            <div className="session-subtitle">
-              <div>
-                <div className="last-session-top-date">
-                  {quests[quests.length - 1].type}{" "}
-                </div>
-                <strong>{quests[quests.length - 1].header}</strong>
-              </div>{" "}
-            </div>
-            <p className="body-text">{quests[quests.length - 1].body}</p>
+      <div className="quest-tracker-top">
+        <p>Quest Tracker</p>
+      </div>
+      <div className="quest-list">
+        {mainQuests.length > 0 && (
+          <div className="main-quests-list">
+            <h2>Main Quests</h2>
+            {mainQuests.map((quest, index) => (
+              <div key={index} className="quest-list-item">
+                <p>
+                  <strong>{quest.header}</strong>
+                </p>
+                <p className="body-text">{quest.body}</p>
+              </div>
+            ))}
           </div>
         )}
+        {sideQuests.length > 0 && (
+          <div className="side-quests-list">
+            <h2>Side Quests</h2>
+            {sideQuests.map((quest, index) => (
+              <div key={index} className="quest-list-item">
+                <p>
+                  <strong>{quest.header}</strong>
+                </p>
+                <p className="body-text">{quest.body}</p>
+              </div>
+            ))}
+          </div>
+        )}
+        <div className="add-new-btn-container">
+          <button className="add-new-btn" onClick={openModal}>
+            NEW QUEST
+          </button>
+          <dialog className="modal" ref={modalRef}>
+            <QuestTrackerForm closeModal={closeModal} />
+          </dialog>
+        </div>
       </div>
       <div className="list-of-sessions">
         {/* {sessions &&
@@ -44,14 +69,6 @@ const QuestTracker = () => {
                   </p>
                 </div>
               ))} */}
-      </div>
-      <div className="add-new-btn-container">
-        <button className="add-new-btn" onClick={openModal}>
-          ADD NEW
-        </button>
-        <dialog className="modal" ref={modalRef}>
-          <QuestTrackerForm closeModal={closeModal} />
-        </dialog>
       </div>
     </div>
   );

@@ -119,9 +119,7 @@ const SessionEditor = ({ closeModal }) => {
 
   return (
     <div className="session-editor-content">
-      {/* {JSON.stringify(sessions)}
-      {JSON.stringify(selectedTags)}
-      {JSON.stringify(selectedDates)} */}
+      {JSON.stringify(sessions)}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="session-form"
