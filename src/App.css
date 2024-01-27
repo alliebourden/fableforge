@@ -604,6 +604,23 @@ dialog {
   box-shadow: rgba(0, 0, 0, 0.1) 5px 8px 10px 0px;
 }
 
+.quest-form-content {
+  display: flex;
+  margin-top: 125px;
+  margin-left: 275px;
+}
+
+.quest-form {
+  width: 1125px;
+  height: 550px;
+}
+
+.quest-tracker {
+  display: flex;
+  margin-top: 125px;
+  margin-left: 275px;
+}
+
 * {
   margin: 0;
 }

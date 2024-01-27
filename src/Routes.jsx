@@ -3,6 +3,8 @@ import Dashboard from "./pages/Dashboard";
 import Layout from "./pages/Layout";
 import SessionEditor from "./components/SessionEditor";
 import SessionList from "./components/SessionList";
+import QuestTracker from "./components/QuestTracker";
+import QuestTrackerForm from "./components/QuestTrackerForm";
 
 const router = createBrowserRouter([
   {
@@ -11,7 +13,14 @@ const router = createBrowserRouter([
     children: [
       { path: "/", element: <Dashboard /> },
       { path: "/campaign-summary", element: <div></div> },
-      { path: "/quest-tracker", element: <div></div> },
+      {
+        path: "/quest-tracker",
+        element: (
+          <div>
+            <QuestTracker />
+          </div>
+        ),
+      },
       { path: "/loot-manager", element: <div></div> },
       {
         path: "session-editor",
@@ -26,6 +35,14 @@ const router = createBrowserRouter([
         element: (
           <div>
             <SessionList />
+          </div>
+        ),
+      },
+      {
+        path: "/quest-tracker-form",
+        element: (
+          <div>
+            <QuestTrackerForm />
           </div>
         ),
       },
