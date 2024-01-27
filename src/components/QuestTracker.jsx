@@ -19,7 +19,6 @@ const QuestTracker = () => {
 
   const handleQuestClick = (quest) => {
     setSelectedQuest(quest);
-    openModal();
   };
 
   const mainQuests = quests.filter((quest) => quest.type === "mainQuest");
@@ -30,46 +29,48 @@ const QuestTracker = () => {
       <div className="quest-tracker-top">
         <p>Quest Tracker</p>
       </div>
-      <div className="quest-list">
-        <div className="main-quests-list">
-          <h2>Main Quests</h2>
-          {mainQuests.map((quest, index) => (
-            <div
-              key={index}
-              className="quest-list-item"
-              onClick={() => handleQuestClick(quest)}
-            >
-              <p>
-                <strong>{quest.header}</strong>
-              </p>
-            </div>
-          ))}
+      <div className="quest-tracker-main-contain">
+        <div className="quest-list">
+          <div className="main-quests-list">
+            <h2>Main Quests</h2>
+            {mainQuests.map((quest, index) => (
+              <div
+                key={index}
+                className="quest-list-item"
+                onClick={() => handleQuestClick(quest)}
+              >
+                <p>
+                  <strong>{quest.header}</strong>
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="side-quests-list">
+            <h2>Side Quests</h2>
+            {sideQuests.map((quest, index) => (
+              <div
+                key={index}
+                className="quest-list-item"
+                onClick={() => handleQuestClick(quest)}
+              >
+                <p>
+                  <strong>{quest.header}</strong>
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="add-new-btn-container">
+            <button className="add-new-btn" onClick={openModal}>
+              NEW QUEST
+            </button>
+            <dialog className="modal" ref={modalRef}>
+              <QuestTrackerForm closeModal={closeModal} />
+            </dialog>
+          </div>
         </div>
-        <div className="side-quests-list">
-          <h2>Side Quests</h2>
-          {sideQuests.map((quest, index) => (
-            <div
-              key={index}
-              className="quest-list-item"
-              onClick={() => handleQuestClick(quest)}
-            >
-              <p>
-                <strong>{quest.header}</strong>
-              </p>
-            </div>
-          ))}
+        <div className="selected-quest-details">
+          {selectedQuest && <SelectedQuestDetails quest={selectedQuest} />}
         </div>
-        <div className="add-new-btn-container">
-          <button className="add-new-btn" onClick={openModal}>
-            NEW QUEST
-          </button>
-          <dialog className="modal" ref={modalRef}>
-            <QuestTrackerForm closeModal={closeModal} />
-          </dialog>
-        </div>
-      </div>
-      <div className="selected-quest-details">
-        {selectedQuest && <SelectedQuestDetails quest={selectedQuest} />}
       </div>
     </div>
   );

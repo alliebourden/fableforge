@@ -691,6 +691,32 @@ dialog {
   margin-left: 20px;
 }
 
+.quest-tracker-main-contain {
+  display: flex;
+  align-items: center;
+}
+
+.quest-list {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  margin-top: 25px;
+  margin-left: 25px;
+}
+
+.selected-quest-details {
+  width: 650px;
+  display: flex;
+}
+
+.main-quests-list {
+  height: 250px;
+}
+
+.side-quests-list {
+  height: 250px;
+}
+
 * {
   margin: 0;
 }
