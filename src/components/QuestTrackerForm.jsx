@@ -16,7 +16,7 @@ const QuestTrackerForm = ({ closeModal }) => {
 
   return (
     <div className="quest-form-content">
-      {JSON.stringify(quests)}
+      {/* {JSON.stringify(quests)} */}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="quest-form"
@@ -25,7 +25,7 @@ const QuestTrackerForm = ({ closeModal }) => {
         <div className="add-new-quest">
           <p>Add New Quest</p>
         </div>
-        <div className="top-section">
+        <div className="quest-form-top-section">
           <div className="quest-title">
             <label htmlFor="header">Quest Title</label>
             <input

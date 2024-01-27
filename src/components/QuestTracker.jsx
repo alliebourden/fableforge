@@ -25,32 +25,26 @@ const QuestTracker = () => {
         <p>Quest Tracker</p>
       </div>
       <div className="quest-list">
-        {mainQuests.length > 0 && (
-          <div className="main-quests-list">
-            <h2>Main Quests</h2>
-            {mainQuests.map((quest, index) => (
-              <div key={index} className="quest-list-item">
-                <p>
-                  <strong>{quest.header}</strong>
-                </p>
-                <p className="body-text">{quest.body}</p>
-              </div>
-            ))}
-          </div>
-        )}
-        {sideQuests.length > 0 && (
-          <div className="side-quests-list">
-            <h2>Side Quests</h2>
-            {sideQuests.map((quest, index) => (
-              <div key={index} className="quest-list-item">
-                <p>
-                  <strong>{quest.header}</strong>
-                </p>
-                <p className="body-text">{quest.body}</p>
-              </div>
-            ))}
-          </div>
-        )}
+        <div className="main-quests-list">
+          <h2>Main Quests</h2>
+          {mainQuests.map((quest, index) => (
+            <div key={index} className="quest-list-item">
+              <p>
+                <strong>{quest.header}</strong>
+              </p>
+            </div>
+          ))}
+        </div>
+        <div className="side-quests-list">
+          <h2>Side Quests</h2>
+          {sideQuests.map((quest, index) => (
+            <div key={index} className="quest-list-item">
+              <p>
+                <strong>{quest.header}</strong>
+              </p>
+            </div>
+          ))}
+        </div>
         <div className="add-new-btn-container">
           <button className="add-new-btn" onClick={openModal}>
             NEW QUEST
