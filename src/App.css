@@ -291,6 +291,21 @@
   display: flex;
 }
 
+.next-session-calendar {
+  font-size: 20px;
+  color: #132730;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 10px;
+}
+
+.next-session-calendar-title {
+  display: flex;
+  align-items: center;
+  margin-left: 20px;
+}
+
 .react-calendar {
   width: 430px;
   max-width: 100%;

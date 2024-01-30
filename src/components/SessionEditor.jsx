@@ -6,6 +6,7 @@ import { SessionContext } from "./SessionContext";
 import Calendar from "react-calendar";
 import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
 import CategoryTagIcon from "../../assets/icons/CategoryTagIcon.svg";
+import NextSessionIconDark from "../../assets/icons/NextSessionIconDark.svg";
 
 const categoryStyle = {
   container: {
@@ -121,6 +122,10 @@ const SessionEditor = ({ closeModal }) => {
     <div className="session-editor-content">
       {/* {JSON.stringify(sessions)} */}
       <div>
+        <div className="next-session-calendar-title">
+          <img src={NextSessionIconDark} height={20} />
+          <p className="next-session-calendar">NEXT SESSION CALENDAR</p>
+        </div>
         <div className="session-calendar">
           <Calendar
             onChange={handleDateChange}
