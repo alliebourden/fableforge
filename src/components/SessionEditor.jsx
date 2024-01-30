@@ -18,7 +18,7 @@ const categoryStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginLeft: "25px",
+    marginTop: "25px",
   },
   titleContainer: {
     borderRadius: "10px 10px 0px 0px",
@@ -120,44 +120,25 @@ const SessionEditor = ({ closeModal }) => {
   return (
     <div className="session-editor-content">
       {/* {JSON.stringify(sessions)} */}
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="session-form"
-        method="dialog"
-      >
-        <div className="add-new-session">
-          <img src={AddSessionIcon} height={20} />
-          <p>Add New Session</p>
-        </div>
-        <div className="top-section">
-          <div className="session-title">
-            <label htmlFor="header">Session Title</label>
-            <input
-              type="text"
-              id="header"
-              {...register("header", { required: true })}
-            />
-          </div>
-          <div className="session-date">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              id="date"
-              {...register("date", { required: true })}
-            />
-          </div>
-        </div>
-        <div className="session-body">
-          <label htmlFor="body">Session details</label>
-          <textarea id="body" {...register("body", { required: true })} />
-        </div>
-        <div className="submit-btn">
-          <button type="submit" className="submit-new-session">
-            SUBMIT
-          </button>
-        </div>
-      </form>
       <div>
+        <div className="session-calendar">
+          <Calendar
+            onChange={handleDateChange}
+            value={selectedDates}
+            selectRange={false}
+            onClickDay={(date) => handleDateChange(date)}
+          />
+          {/* <div>
+            <p>
+              <strong>Next Session:</strong>
+            </p>
+            <ul>
+              {selectedDates.map((date, index) => (
+                <li key={index}>{date.toLocaleDateString()}</li>
+              ))}
+            </ul>
+          </div> */}
+        </div>
         <div style={categoryStyle.container}>
           <div style={categoryStyle.titleContainer} className="category-top">
             <img src={CategoryTagIcon} height={20} />
@@ -225,25 +206,44 @@ const SessionEditor = ({ closeModal }) => {
             isMulti
           />
         </div>
-        <div className="session-calendar">
-          <Calendar
-            onChange={handleDateChange}
-            value={selectedDates}
-            selectRange={false}
-            onClickDay={(date) => handleDateChange(date)}
-          />
-          {/* <div>
-            <p>
-              <strong>Next Session:</strong>
-            </p>
-            <ul>
-              {selectedDates.map((date, index) => (
-                <li key={index}>{date.toLocaleDateString()}</li>
-              ))}
-            </ul>
-          </div> */}
-        </div>
       </div>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="session-form"
+        method="dialog"
+      >
+        <div className="add-new-session">
+          <img src={AddSessionIcon} height={20} />
+          <p>Add New Session</p>
+        </div>
+        <div className="top-section">
+          <div className="session-title">
+            <label htmlFor="header">Session Title</label>
+            <input
+              type="text"
+              id="header"
+              {...register("header", { required: true })}
+            />
+          </div>
+          <div className="session-date">
+            <label htmlFor="date">Date</label>
+            <input
+              type="date"
+              id="date"
+              {...register("date", { required: true })}
+            />
+          </div>
+        </div>
+        <div className="session-body">
+          <label htmlFor="body">Session details</label>
+          <textarea id="body" {...register("body", { required: true })} />
+        </div>
+        <div className="submit-btn">
+          <button type="submit" className="submit-new-session">
+            SUBMIT
+          </button>
+        </div>
+      </form>
     </div>
   );
 };
