@@ -11,7 +11,7 @@ import NextSessionIconDark from "../../assets/icons/NextSessionIconDark.svg";
 const categoryStyle = {
   container: {
     width: "425px",
-    height: "150px",
+    minHeight: "150px",
     borderRadius: "10px",
     border: "3px solid #C2AC38",
     background: "#FFF",
@@ -155,6 +155,7 @@ const SessionEditor = ({ closeModal }) => {
               container: (provided) => ({
                 ...provided,
                 marginTop: "10px",
+                marginBottom: "10px",
               }),
               control: (provided, state) => ({
                 ...provided,
