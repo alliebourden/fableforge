@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
+import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
 
 const QuestTrackerForm = ({ closeModal }) => {
   const { quests, handleAddQuest } = useContext(SessionContext);
@@ -16,13 +17,13 @@ const QuestTrackerForm = ({ closeModal }) => {
 
   return (
     <div className="quest-form-content">
-      {/* {JSON.stringify(quests)} */}
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="quest-form"
         method="dialog"
       >
         <div className="add-new-quest">
+          <img src={AddSessionIcon} height={20} />
           <p>Add New Quest</p>
         </div>
         <div className="quest-form-top-section">

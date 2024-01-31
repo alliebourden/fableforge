@@ -185,6 +185,10 @@
   transition: ease-in-out 0.3s;
 }
 
+.submit-new-session {
+  margin-bottom: 10px;
+}
+
 .submit-new-session:hover {
   background: #132730;
   transition: ease-in-out 0.3s;
@@ -576,6 +580,7 @@ dialog {
 .session-date {
   display: flex;
   flex-direction: column;
+  margin-top: 10px;
 }
 
 .session-date input {
@@ -634,7 +639,7 @@ dialog {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 600px;
+  width: 400px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -656,11 +661,14 @@ dialog {
 
 .quest-form-top-section {
   display: flex;
+  width: 400px;
+  margin-left: 20px;
+  margin-top: 10px;
 }
 
 .quest-form {
-  width: 600px;
-  height: 550px;
+  width: 400px;
+  height: 525px;
   border-radius: 10px;
   border: 3px solid #c2ac38;
   background: #fff;
@@ -679,6 +687,7 @@ dialog {
 .quest-type {
   display: flex;
   flex-direction: column;
+  margin-left: 25px;
 }
 
 .quest-tracker {
@@ -730,6 +739,13 @@ dialog {
   border-right: solid 1px #132730;
 }
 
+.quest-details-body {
+  flex-direction: column;
+  display: flex;
+  width: 375px;
+  margin-top: 15px;
+}
+
 .selected-quest-details {
   width: 650px;
   display: flex;
@@ -748,6 +764,46 @@ dialog {
 
 .side-quests-list {
   height: 250px;
+}
+
+.add-new-quest img {
+  margin-left: 10px;
+}
+
+.quest-details-body textarea {
+  margin-top: 20px;
+  width: 375px;
+  height: 250px;
+  border-radius: 5px 5px 0px 0px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid #1e1e1e;
+  background: #d9d9d9;
+}
+
+.quest-title input {
+  width: 175px;
+  height: 25px;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #1e1e1e;
+  background: #d9d9d9;
+  margin-top: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
+.quest-type select {
+  width: 175px;
+  height: 25px;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #1e1e1e;
+  background: #d9d9d9;
+  margin-top: 20px;
+  border-top: none;
+  border-left: none;
+  border-right: none;
 }
 
 * {
