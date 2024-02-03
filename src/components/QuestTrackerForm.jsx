@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
+import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
 
 const QuestTrackerForm = ({ closeModal }) => {
   const { quests, handleAddQuest } = useContext(SessionContext);
   const { register, handleSubmit, reset } = useForm();
 
   const onSubmit = (data) => {
-    const questData = { data };
-    handleAddQuest(questData);
+    handleAddQuest(data);
 
     closeModal();
     reset();
@@ -23,9 +23,10 @@ const QuestTrackerForm = ({ closeModal }) => {
         method="dialog"
       >
         <div className="add-new-quest">
+          <img src={AddSessionIcon} height={20} />
           <p>Add New Quest</p>
         </div>
-        <div className="top-section">
+        <div className="quest-form-top-section">
           <div className="quest-title">
             <label htmlFor="header">Quest Title</label>
             <input

@@ -1,12 +1,13 @@
 import { SessionContext } from "./SessionContext";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import QuestTrackerForm from "./QuestTrackerForm";
+import SelectedQuestDetails from "./SelectedQuestDetails";
 
 const QuestTracker = () => {
   const { quests } = useContext(SessionContext);
   const modalRef = useRef(null);
+  const [selectedQuest, setSelectedQuest] = useState(null);
 
   const openModal = () => {
     modalRef.current.showModal();
@@ -15,43 +16,62 @@ const QuestTracker = () => {
   const closeModal = () => {
     modalRef.current.close();
   };
+
+  const handleQuestClick = (quest) => {
+    setSelectedQuest(quest);
+  };
+
+  const mainQuests = quests.filter((quest) => quest.type === "mainQuest");
+  const sideQuests = quests.filter((quest) => quest.type === "sideQuest");
+
   return (
     <div className="quest-tracker">
-      <div className="recent-session">
-        <div className="last-session-top">
-          <p>Last Session</p>
-        </div>
-        {quests.length > 0 && (
-          <div className="last-session-body">
-            <div className="session-subtitle">
-              <div>
-                <div className="last-session-top-date">
-                  {quests[quests.length - 1].type}{" "}
-                </div>
-                <strong>{quests[quests.length - 1].header}</strong>
-              </div>{" "}
-            </div>
-            <p className="body-text">{quests[quests.length - 1].body}</p>
+      <div className="quest-tracker-top">
+        <p>Quest Tracker</p>
+      </div>
+      <div className="quest-tracker-main-contain">
+        <div className="quest-list">
+          <div className="main-quests-list">
+            <h3>Main Quests</h3>
+            {mainQuests.map((quest, index) => (
+              <div
+                key={index}
+                className="quest-list-item"
+                onClick={() => handleQuestClick(quest)}
+              >
+                <p>
+                  <strong>{quest.header}</strong>
+                </p>
+              </div>
+            ))}
           </div>
-        )}
-      </div>
-      <div className="list-of-sessions">
-        {/* {sessions &&
-              sessions.map((session, index) => (
-                <div key={index} className="session-list-body">
-                  <p>
-                    <strong>{session.header}</strong> - {session.date}{" "}
-                  </p>
-                </div>
-              ))} */}
-      </div>
-      <div className="add-new-btn-container">
-        <button className="add-new-btn" onClick={openModal}>
-          ADD NEW
-        </button>
-        <dialog className="modal" ref={modalRef}>
-          <QuestTrackerForm closeModal={closeModal} />
-        </dialog>
+          <div className="side-quests-list">
+            <h3>Side Quests</h3>
+            {sideQuests.map((quest, index) => (
+              <div
+                key={index}
+                className="quest-list-item"
+                onClick={() => handleQuestClick(quest)}
+              >
+                <p>
+                  <strong>{quest.header}</strong>
+                </p>
+              </div>
+            ))}
+          </div>
+          <div className="add-new-btn-container">
+            <button className="add-new-btn" onClick={openModal}>
+              NEW QUEST
+            </button>
+            <dialog className="modal" ref={modalRef}>
+              <QuestTrackerForm closeModal={closeModal} />
+            </dialog>
+          </div>
+        </div>
+        <div className="selected-quest-details">
+          <h3>Selected Quest</h3>
+          {selectedQuest && <SelectedQuestDetails quest={selectedQuest} />}
+        </div>
       </div>
     </div>
   );
