@@ -6,11 +6,12 @@ import { SessionContext } from "./SessionContext";
 import Calendar from "react-calendar";
 import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
 import CategoryTagIcon from "../../assets/icons/CategoryTagIcon.svg";
+import NextSessionIconDark from "../../assets/icons/NextSessionIconDark.svg";
 
 const categoryStyle = {
   container: {
     width: "425px",
-    height: "150px",
+    minHeight: "150px",
     borderRadius: "10px",
     border: "3px solid #C2AC38",
     background: "#FFF",
@@ -18,7 +19,7 @@ const categoryStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginLeft: "25px",
+    marginTop: "25px",
   },
   titleContainer: {
     borderRadius: "10px 10px 0px 0px",
@@ -119,47 +120,30 @@ const SessionEditor = ({ closeModal }) => {
 
   return (
     <div className="session-editor-content">
-      {/* {JSON.stringify(sessions)}
-      {JSON.stringify(selectedTags)}
-      {JSON.stringify(selectedDates)} */}
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="session-form"
-        method="dialog"
-      >
-        <div className="add-new-session">
-          <img src={AddSessionIcon} height={20} />
-          <p>Add New Session</p>
-        </div>
-        <div className="top-section">
-          <div className="session-title">
-            <label htmlFor="header">Session Title</label>
-            <input
-              type="text"
-              id="header"
-              {...register("header", { required: true })}
-            />
-          </div>
-          <div className="session-date">
-            <label htmlFor="date">Date</label>
-            <input
-              type="date"
-              id="date"
-              {...register("date", { required: true })}
-            />
-          </div>
-        </div>
-        <div className="session-body">
-          <label htmlFor="body">Session details</label>
-          <textarea id="body" {...register("body", { required: true })} />
-        </div>
-        <div className="submit-btn">
-          <button type="submit" className="submit-new-session">
-            SUBMIT
-          </button>
-        </div>
-      </form>
+      {/* {JSON.stringify(sessions)} */}
       <div>
+        <div className="next-session-calendar-title">
+          <img src={NextSessionIconDark} height={20} />
+          <p className="next-session-calendar">NEXT SESSION CALENDAR</p>
+        </div>
+        <div className="session-calendar">
+          <Calendar
+            onChange={handleDateChange}
+            value={selectedDates}
+            selectRange={false}
+            onClickDay={(date) => handleDateChange(date)}
+          />
+          {/* <div>
+            <p>
+              <strong>Next Session:</strong>
+            </p>
+            <ul>
+              {selectedDates.map((date, index) => (
+                <li key={index}>{date.toLocaleDateString()}</li>
+              ))}
+            </ul>
+          </div> */}
+        </div>
         <div style={categoryStyle.container}>
           <div style={categoryStyle.titleContainer} className="category-top">
             <img src={CategoryTagIcon} height={20} />
@@ -171,6 +155,7 @@ const SessionEditor = ({ closeModal }) => {
               container: (provided) => ({
                 ...provided,
                 marginTop: "10px",
+                marginBottom: "10px",
               }),
               control: (provided, state) => ({
                 ...provided,
@@ -227,25 +212,44 @@ const SessionEditor = ({ closeModal }) => {
             isMulti
           />
         </div>
-        <div className="session-calendar">
-          <Calendar
-            onChange={handleDateChange}
-            value={selectedDates}
-            selectRange={false}
-            onClickDay={(date) => handleDateChange(date)}
-          />
-          {/* <div>
-            <p>
-              <strong>Next Session:</strong>
-            </p>
-            <ul>
-              {selectedDates.map((date, index) => (
-                <li key={index}>{date.toLocaleDateString()}</li>
-              ))}
-            </ul>
-          </div> */}
-        </div>
       </div>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="session-form"
+        method="dialog"
+      >
+        <div className="add-new-session">
+          <img src={AddSessionIcon} height={20} />
+          <p>Add New Session</p>
+        </div>
+        <div className="top-section">
+          <div className="session-title">
+            <label htmlFor="header">Session Title</label>
+            <input
+              type="text"
+              id="header"
+              {...register("header", { required: true })}
+            />
+          </div>
+          <div className="session-date">
+            <label htmlFor="date">Date</label>
+            <input
+              type="date"
+              id="date"
+              {...register("date", { required: true })}
+            />
+          </div>
+        </div>
+        <div className="session-body">
+          <label htmlFor="body">Session details</label>
+          <textarea id="body" {...register("body", { required: true })} />
+        </div>
+        <div className="submit-btn">
+          <button type="submit" className="submit-new-session">
+            SUBMIT
+          </button>
+        </div>
+      </form>
     </div>
   );
 };

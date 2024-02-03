@@ -79,7 +79,7 @@ const SessionList = () => {
             <button className="add-new-btn" onClick={openModal}>
               ADD NEW
             </button>
-            <dialog ref={modalRef}>
+            <dialog className="modal" ref={modalRef}>
               <SessionEditor closeModal={closeModal} />
             </dialog>
           </div>

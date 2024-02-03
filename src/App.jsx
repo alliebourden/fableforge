@@ -7,6 +7,9 @@ import SessionEditor from "./components/SessionEditor";
 import SessionList from "./components/SessionList";
 import { SessionContext } from "./components/SessionContext";
 import { SessionProvider } from "./components/SessionContext";
+import QuestTracker from "./components/QuestTracker";
+import QuestTrackerForm from "./components/QuestTrackerForm";
+import SelectedQuestDetails from "./components/SelectedQuestDetails";
 
 const App = () => {
   return (
@@ -19,6 +22,9 @@ const App = () => {
                 {children}
                 <SessionEditor />
                 <SessionList />
+                <QuestTracker />
+                <QuestTrackerForm />
+                <SelectedQuestDetails />
               </Layout>
             )}
           </Route>
