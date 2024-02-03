@@ -821,6 +821,15 @@ dialog {
   font-style: italic;
 }
 
+.npc-generator {
+  margin-left: 300px;
+  margin-top: 200px;
+}
+
+.generated-npc {
+  margin-left: 300px;
+}
+
 * {
   margin: 0;
 }

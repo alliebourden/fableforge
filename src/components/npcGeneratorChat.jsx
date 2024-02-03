@@ -5,7 +5,7 @@ const openai = new OpenAI({
   dangerouslyAllowBrowser: true,
 });
 
-async function generateNPCchat() {
+async function generateNPCchat(userInput) {
   try {
     const response = await openai.chat.completions.create({
       messages: [
@@ -16,7 +16,7 @@ async function generateNPCchat() {
         },
         {
           role: "user",
-          content: "Generate a random NPC that works at a town market.",
+          content: userInput,
         },
       ],
       temperature: 1,
