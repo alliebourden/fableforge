@@ -674,7 +674,7 @@ dialog {
   background: #fff;
   box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
   display: flex;
-  margin-top: 25px;
+  /* margin-top: 25px; */
   flex-direction: column;
   align-items: center;
 }
@@ -735,7 +735,7 @@ dialog {
   width: 450px;
   display: flex;
   flex-direction: column;
-  margin-left: 40px;
+  /* margin-left: 40px; */
   border-right: solid 1px #132730;
 }
 
@@ -747,8 +747,9 @@ dialog {
 }
 
 .selected-quest-details {
-  width: 650px;
+  width: 550px;
   display: flex;
+  flex-direction: column;
   height: 600px;
   margin-left: 25px;
 }
@@ -782,6 +783,10 @@ dialog {
   background: #d9d9d9;
 }
 
+.quest-details h2 {
+  color: #c2ac38;
+}
+
 .quest-title input {
   width: 175px;
   height: 25px;
@@ -804,6 +809,16 @@ dialog {
   border-top: none;
   border-left: none;
   border-right: none;
+}
+
+.quest-list-item p:hover {
+  color: #c2ac38;
+  transition: ease-in-out 0.3s;
+}
+
+.quest-tracker-main-contain h3 {
+  text-transform: uppercase;
+  font-style: italic;
 }
 
 * {
