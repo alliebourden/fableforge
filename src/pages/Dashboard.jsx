@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import generateNPCchat from "../components/npcGeneratorChat";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const chatHistoryRef = useRef(null);
 
   const handleUserInput = (event) => {
     setUserInput(event.target.value);
@@ -25,7 +26,11 @@ export default function Dashboard() {
         <div>
           {Object.entries(content).map(([key, value]) => (
             <div key={key}>
-              {key === "friendliness" ? (
+              {key === "Race" ? (
+                <div>
+                  <strong>{key}:</strong> {value.Race}
+                </div>
+              ) : key === "friendliness" ? (
                 <div>
                   <strong>{key}:</strong> {value}/10
                 </div>
@@ -43,10 +48,14 @@ export default function Dashboard() {
     }
   };
 
+  useEffect(() => {
+    chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
+  }, [chatHistory]);
+
   return (
     <div>
       <div className="chat-container">
-        <div className="chat-history">
+        <div className="chat-history" ref={chatHistoryRef}>
           {chatHistory.map((message, index) => (
             <div key={index} className={`chat-message ${message.role}`}>
               {renderContent(
@@ -58,7 +67,12 @@ export default function Dashboard() {
           ))}
         </div>
         <div className="user-input">
-          <input type="text" value={userInput} onChange={handleUserInput} />
+          <input
+            type="text"
+            value={userInput}
+            onChange={handleUserInput}
+            placeholder="Type your message here..."
+          />
           <button onClick={handleGenerateNPC} className="add-new-btn">
             Generate
           </button>

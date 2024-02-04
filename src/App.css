@@ -858,7 +858,14 @@ dialog {
 .user-input {
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 10px;
+}
+
+.user-input input {
+  width: 475px;
+  border-radius: 5px;
+  max-height: 200px;
 }
 
 * {
