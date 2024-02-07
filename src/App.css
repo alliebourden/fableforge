@@ -821,6 +821,67 @@ dialog {
   font-style: italic;
 }
 
+.chat-container {
+  display: flex;
+  flex-direction: column;
+  width: 475px;
+  margin: auto;
+  margin-left: 275px;
+  margin-top: 125px;
+}
+
+.chat-container-top {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 470px;
+  height: 43px;
+  border-radius: 10px 10px 0px 0px;
+  border-top: 3px solid #c2ac38;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  background: #132730;
+  color: #ffffff;
+  justify-content: space-between;
+}
+
+.chat-history {
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  overflow-y: auto;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  margin-bottom: 10px;
+}
+
+.chat-message {
+  margin-bottom: 5px;
+  padding: 8px;
+  border-radius: 5px;
+}
+
+.user {
+  background-color: #e6e6e6;
+}
+
+.npc {
+  background-color: #fff;
+}
+
+.user-input {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.user-input input {
+  width: 475px;
+  border-radius: 5px;
+  max-height: 200px;
+}
+
 * {
   margin: 0;
 }
