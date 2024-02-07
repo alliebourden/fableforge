@@ -55,6 +55,7 @@ export default function Dashboard() {
   return (
     <div>
       <div className="chat-container">
+        <div className="chat-container-top"></div>
         <div className="chat-history" ref={chatHistoryRef}>
           {chatHistory.map((message, index) => (
             <div key={index} className={`chat-message ${message.role}`}>
@@ -71,7 +72,7 @@ export default function Dashboard() {
             type="text"
             value={userInput}
             onChange={handleUserInput}
-            placeholder="Type your message here..."
+            placeholder="What kind of NPC do you need?"
           />
           <button onClick={handleGenerateNPC} className="add-new-btn">
             Generate
