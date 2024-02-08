@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import generateNPCchat from "../components/npcGeneratorChat";
+import DiceRoller from "../components/DiceRoller";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
@@ -78,6 +79,9 @@ export default function Dashboard() {
             Generate
           </button>
         </div>
+      </div>
+      <div className="dice-roller">
+        <DiceRoller />
       </div>
     </div>
   );
