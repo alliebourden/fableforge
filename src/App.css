@@ -821,13 +821,22 @@ dialog {
   font-style: italic;
 }
 
+/* dashboard css */
+
+.dashboard-content {
+  display: flex;
+
+  margin-left: 275px;
+  margin-top: 125px;
+}
+
+/* npc generator css */
+
 .chat-container {
   display: flex;
   flex-direction: column;
   width: 475px;
   margin: auto;
-  margin-left: 275px;
-  margin-top: 125px;
 }
 
 .chat-container-top {
@@ -880,6 +889,12 @@ dialog {
   width: 475px;
   border-radius: 5px;
   max-height: 200px;
+}
+
+/* dice roller css */
+
+.dice-roller {
+  margin-left: 25px;
 }
 
 * {

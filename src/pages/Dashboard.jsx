@@ -55,33 +55,35 @@ export default function Dashboard() {
 
   return (
     <div>
-      <div className="chat-container">
-        <div className="chat-container-top"></div>
-        <div className="chat-history" ref={chatHistoryRef}>
-          {chatHistory.map((message, index) => (
-            <div key={index} className={`chat-message ${message.role}`}>
-              {renderContent(
-                message.role === "npc"
-                  ? JSON.parse(message.content)
-                  : message.content
-              )}
-            </div>
-          ))}
+      <div className="dashboard-content">
+        <div className="chat-container">
+          <div className="chat-container-top"></div>
+          <div className="chat-history" ref={chatHistoryRef}>
+            {chatHistory.map((message, index) => (
+              <div key={index} className={`chat-message ${message.role}`}>
+                {renderContent(
+                  message.role === "npc"
+                    ? JSON.parse(message.content)
+                    : message.content
+                )}
+              </div>
+            ))}
+          </div>
+          <div className="user-input">
+            <input
+              type="text"
+              value={userInput}
+              onChange={handleUserInput}
+              placeholder="What kind of NPC do you need?"
+            />
+            <button onClick={handleGenerateNPC} className="add-new-btn">
+              Generate
+            </button>
+          </div>
         </div>
-        <div className="user-input">
-          <input
-            type="text"
-            value={userInput}
-            onChange={handleUserInput}
-            placeholder="What kind of NPC do you need?"
-          />
-          <button onClick={handleGenerateNPC} className="add-new-btn">
-            Generate
-          </button>
+        <div className="dice-roller">
+          <DiceRoller />
         </div>
-      </div>
-      <div className="dice-roller">
-        <DiceRoller />
       </div>
     </div>
   );
