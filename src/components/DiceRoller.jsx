@@ -31,6 +31,7 @@ const DiceRoller = () => {
           <option value={10}>10-sided</option>
           <option value={12}>12-sided</option>
           <option value={20}>20-sided</option>
+          <option value={100}>100-sided</option>
         </select>
       </label>
       <br />
