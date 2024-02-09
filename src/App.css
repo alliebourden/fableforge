@@ -835,15 +835,17 @@ dialog {
 .chat-container {
   display: flex;
   flex-direction: column;
+  align-items: center;
   width: 475px;
-  margin: auto;
+  border: 3px solid #c2ac38;
+  border-radius: 10px;
 }
 
 .chat-container-top {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 470px;
+  width: 475px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -854,13 +856,19 @@ dialog {
   justify-content: space-between;
 }
 
+.chat-container-top p {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 20px;
+}
+
 .chat-history {
   display: flex;
   flex-direction: column;
-  height: 500px;
+  height: 400px;
   overflow-y: auto;
-  border-right: 3px solid #c2ac38;
-  border-left: 3px solid #c2ac38;
   margin-bottom: 10px;
 }
 
@@ -886,7 +894,7 @@ dialog {
 }
 
 .user-input input {
-  width: 475px;
+  width: 450px;
   border-radius: 5px;
   max-height: 200px;
 }
@@ -895,6 +903,43 @@ dialog {
 
 .dice-roller {
   margin-left: 25px;
+}
+
+.dice-roller-container {
+  width: 300px;
+  height: 195px;
+  border: 3px solid #c2ac38;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.dice-roller-top {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 43px;
+  border-radius: 10px 10px 0px 0px;
+  border-top: 3px solid #c2ac38;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  background: #132730;
+  color: #ffffff;
+  justify-content: space-between;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.dice-roller-top p {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 20px;
 }
 
 * {

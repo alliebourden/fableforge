@@ -57,7 +57,9 @@ export default function Dashboard() {
     <div>
       <div className="dashboard-content">
         <div className="chat-container">
-          <div className="chat-container-top"></div>
+          <div className="chat-container-top">
+            <p>NPC Generator</p>
+          </div>
           <div className="chat-history" ref={chatHistoryRef}>
             {chatHistory.map((message, index) => (
               <div key={index} className={`chat-message ${message.role}`}>
