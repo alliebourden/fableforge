@@ -21,7 +21,7 @@ const DiceRoller = () => {
       <div className="dice-roller-top">
         <p>Dice Roller</p>
       </div>
-      <div>
+      <div className="dice-roller-content">
         <label>
           Dice Type:
           <select
@@ -47,17 +47,20 @@ const DiceRoller = () => {
             onChange={(e) => setNumDice(Number(e.target.value))}
           />
         </label>
-        <br />
-        <button onClick={rollDice}>Roll Dice</button>
 
-        {result && (
-          <div>
-            <h3>Result:</h3>
-            <p>Rolls: {result.rolls.join(", ")}</p>
-            <p>Total: {result.totalResult}</p>
-          </div>
-        )}
+        <div className="roll-dice-btn-container">
+          <button onClick={rollDice} className="roll-dice-btn">
+            Roll Dice
+          </button>
+        </div>
       </div>
+      {result && (
+        <div>
+          <h3>Result:</h3>
+          <p>Rolls: {result.rolls.join(", ")}</p>
+          <p>Total: {result.totalResult}</p>
+        </div>
+      )}
     </div>
   );
 };
