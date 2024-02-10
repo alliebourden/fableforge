@@ -1,46 +1,85 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const LootManager = () => {
   const [lootItems, setLootItems] = useState([]);
-  const [newItem, setNewItem] = useState("");
-  const [foundLocation, setFoundLocation] = useState("");
-  const [inventoryOwner, setInventoryOwner] = useState("");
-  const [notes, setNotes] = useState("");
+  const [newItemIndex, setNewItemIndex] = useState("");
+  const [selectedItem, setSelectedItem] = useState(null);
+  const [availableItems, setAvailableItems] = useState([]);
+
+  useEffect(() => {
+    if (newItemIndex) {
+      fetch(`https://www.dnd5eapi.co/api/magic-items/${newItemIndex}`)
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error(`HTTP error! Status: ${response.status}`);
+          }
+          return response.json();
+        })
+        .then((data) => {
+          setSelectedItem({
+            index: data.index,
+            name: data.name,
+            rarity: data.rarity ? data.rarity.name : "Unknown",
+            desc:
+              data.desc && data.desc.length > 0
+                ? data.desc.join("\n")
+                : "No description",
+          });
+        })
+        .catch((error) =>
+          console.error(`Error fetching details for ${newItemIndex}:`, error)
+        );
+    }
+  }, [newItemIndex]);
+
+  useEffect(() => {
+    fetch("https://www.dnd5eapi.co/api/magic-items")
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (!data || !data.results) {
+          throw new Error("Invalid API response format");
+        }
+
+        const itemsArray = data.results.map((item) => ({
+          index: item.index,
+          name: item.name,
+        }));
+
+        setAvailableItems(itemsArray);
+      })
+      .catch((error) => console.error("Error fetching items:", error));
+  }, []);
 
   const addLootItem = () => {
-    const newItemObject = {
-      item: newItem,
-      location: foundLocation,
-      owner: inventoryOwner,
-      notes: notes,
-    };
-
-    setLootItems([...lootItems, newItemObject]);
-    setNewItem("");
-    setFoundLocation("");
-    setInventoryOwner("");
-    setNotes("");
+    if (selectedItem) {
+      setLootItems([...lootItems, selectedItem]);
+      setNewItemIndex("");
+      setSelectedItem(null);
+    }
   };
 
   return (
-    <div>
+    <div className="loot-manager-table">
       <h2>Loot Manager</h2>
       <table>
         <thead>
           <tr>
             <th>Item</th>
-            <th>Found Location</th>
-            <th>Inventory Owner</th>
-            <th>Notes</th>
+            <th>Rarity</th>
+            <th>Description</th>
           </tr>
         </thead>
         <tbody>
           {lootItems.map((item, index) => (
             <tr key={index}>
-              <td>{item.item}</td>
-              <td>{item.location}</td>
-              <td>{item.owner}</td>
-              <td>{item.notes}</td>
+              <td>{item.name}</td>
+              <td>{item.rarity}</td>
+              <td>{item.desc}</td>
             </tr>
           ))}
         </tbody>
@@ -48,32 +87,20 @@ const LootManager = () => {
       <div>
         <h3>Add New Item</h3>
         <label>
-          Item:
-          <input
-            type="text"
-            value={newItem}
-            onChange={(e) => setNewItem(e.target.value)}
-          />
-        </label>
-        <label>
-          Found Location:
-          <input
-            type="text"
-            value={foundLocation}
-            onChange={(e) => setFoundLocation(e.target.value)}
-          />
-        </label>
-        <label>
-          Inventory Owner:
-          <input
-            type="text"
-            value={inventoryOwner}
-            onChange={(e) => setInventoryOwner(e.target.value)}
-          />
-        </label>
-        <label>
-          Notes:
-          <textarea value={notes} onChange={(e) => setNotes(e.target.value)} />
+          Select Item:
+          <select
+            value={newItemIndex}
+            onChange={(e) => setNewItemIndex(e.target.value)}
+          >
+            <option value="" disabled>
+              Select an item
+            </option>
+            {availableItems.map((item) => (
+              <option key={item.index} value={item.index}>
+                {item.name}
+              </option>
+            ))}
+          </select>
         </label>
         <button onClick={addLootItem}>Add Item</button>
       </div>

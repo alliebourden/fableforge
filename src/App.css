@@ -998,6 +998,13 @@ dialog {
   margin-top: 10px;
 }
 
+/* loot manager css */
+
+.loot-manager-table {
+  margin-left: 275px;
+  margin-top: 125px;
+}
+
 * {
   margin: 0;
 }
