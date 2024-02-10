@@ -5,6 +5,7 @@ import SessionEditor from "./components/SessionEditor";
 import SessionList from "./components/SessionList";
 import QuestTracker from "./components/QuestTracker";
 import QuestTrackerForm from "./components/QuestTrackerForm";
+import LootManager from "./components/LootManagerTable";
 
 const router = createBrowserRouter([
   {
@@ -21,7 +22,14 @@ const router = createBrowserRouter([
           </div>
         ),
       },
-      { path: "/loot-manager", element: <div></div> },
+      {
+        path: "/loot-manager",
+        element: (
+          <div>
+            <LootManager />
+          </div>
+        ),
+      },
       {
         path: "session-editor",
         element: (
