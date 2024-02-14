@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 
 const LootManager = () => {
   const [lootItems, setLootItems] = useState([]);
   const [newItemIndex, setNewItemIndex] = useState("");
   const [selectedItem, setSelectedItem] = useState(null);
   const [availableItems, setAvailableItems] = useState([]);
+  const [predictions, setPredictions] = useState([]);
+  const inputRef = useRef(null);
 
   useEffect(() => {
     if (newItemIndex) {
@@ -63,6 +65,25 @@ const LootManager = () => {
     }
   };
 
+  const handleInputChange = (value) => {
+    setNewItemIndex(value);
+    if (value) {
+      const filteredItems = availableItems.filter((item) =>
+        item.name.toLowerCase().includes(value.toLowerCase())
+      );
+      setPredictions(filteredItems);
+    } else {
+      setPredictions([]);
+    }
+  };
+
+  const handlePredictionClick = (index) => {
+    const selectedPrediction = predictions[index];
+    inputRef.current.value = selectedPrediction.name;
+    setNewItemIndex(selectedPrediction.index);
+    setPredictions([]);
+  };
+
   return (
     <div className="loot-manager-table">
       <h2>Loot Manager</h2>
@@ -88,19 +109,23 @@ const LootManager = () => {
         <h3>Add New Item</h3>
         <label>
           Select Item:
-          <select
+          <input
+            ref={inputRef}
+            type="text"
             value={newItemIndex}
-            onChange={(e) => setNewItemIndex(e.target.value)}
-          >
-            <option value="" disabled>
-              Select an item
-            </option>
-            {availableItems.map((item) => (
-              <option key={item.index} value={item.index}>
-                {item.name}
-              </option>
-            ))}
-          </select>
+            onChange={(e) => handleInputChange(e.target.value)}
+          />
+          {predictions.length > 0 && (
+            <div>
+              <ul>
+                {predictions.map((item, index) => (
+                  <li key={index} onClick={() => handlePredictionClick(index)}>
+                    {item.name}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </label>
         <button onClick={addLootItem}>Add Item</button>
       </div>
