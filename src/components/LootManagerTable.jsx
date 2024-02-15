@@ -104,8 +104,10 @@ const LootManager = () => {
   const handleInputChange = (value) => {
     setNewItemIndex(value);
     if (value) {
-      const filteredItems = availableItems.filter((item) =>
-        item.name.toLowerCase().includes(value.toLowerCase())
+      const filteredItems = availableItems.filter(
+        (item) =>
+          item.name.toLowerCase().includes(value.toLowerCase()) ||
+          item.index.toLowerCase().includes(value.toLowerCase())
       );
       setPredictions(filteredItems);
     } else {
@@ -143,7 +145,7 @@ const LootManager = () => {
           {lootItems.map((item, index) => (
             <tr key={index} onClick={() => openModal(item)}>
               <td>{item.name}</td>
-              <td>{item.note}</td> {/* Display the note in the table */}
+              <td>{item.note}</td>
             </tr>
           ))}
         </tbody>
@@ -158,17 +160,22 @@ const LootManager = () => {
             value={newItemIndex}
             onChange={(e) => handleInputChange(e.target.value)}
           />
-          {predictions.length > 0 && (
-            <div>
-              <ul>
-                {predictions.map((item, index) => (
-                  <li key={index} onClick={() => handlePredictionClick(index)}>
-                    {item.name}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          )}
+          <div className="predictions">
+            {predictions.length > 0 && (
+              <div>
+                <ul>
+                  {predictions.map((item, index) => (
+                    <li
+                      key={index}
+                      onClick={() => handlePredictionClick(index)}
+                    >
+                      {item.name}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
         </label>
         <label>
           Note:

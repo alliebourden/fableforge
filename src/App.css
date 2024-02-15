@@ -1005,6 +1005,15 @@ dialog {
   margin-top: 125px;
 }
 
+.predictions {
+  position: absolute;
+  /* top: 100%;
+  left: 0; */
+  background-color: white;
+  border: 1px solid #ccc;
+  z-index: 1;
+}
+
 * {
   margin: 0;
 }
