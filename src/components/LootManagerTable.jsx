@@ -7,6 +7,7 @@ const LootManager = () => {
   const [availableItems, setAvailableItems] = useState([]);
   const [predictions, setPredictions] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [note, setNote] = useState("");
   const inputRef = useRef(null);
 
   useEffect(() => {
@@ -90,10 +91,13 @@ const LootManager = () => {
   }, []);
 
   const addLootItem = () => {
+    console.log("Note:", note);
     if (selectedItem) {
-      setLootItems([...lootItems, selectedItem]);
+      const newItem = { ...selectedItem, note };
+      setLootItems([...lootItems, newItem]);
       setNewItemIndex("");
       setSelectedItem(null);
+      setNote("");
     }
   };
 
@@ -132,12 +136,14 @@ const LootManager = () => {
         <thead>
           <tr>
             <th>Item</th>
+            <th>Note</th>
           </tr>
         </thead>
         <tbody>
           {lootItems.map((item, index) => (
             <tr key={index} onClick={() => openModal(item)}>
               <td>{item.name}</td>
+              <td>{item.note}</td> {/* Display the note in the table */}
             </tr>
           ))}
         </tbody>
@@ -164,6 +170,14 @@ const LootManager = () => {
             </div>
           )}
         </label>
+        <label>
+          Note:
+          <input
+            type="text"
+            value={note}
+            onChange={(e) => setNote(e.target.value)}
+          />
+        </label>
         <button onClick={addLootItem}>Add Item</button>
       </div>
       {selectedItem && (
@@ -172,6 +186,7 @@ const LootManager = () => {
           {selectedItem.desc && selectedItem.desc.length > 0 && (
             <p>Description: {selectedItem.desc}</p>
           )}
+          {note && <p>Note: {note}</p>}
           <button onClick={closeModal}>Close</button>
         </dialog>
       )}
