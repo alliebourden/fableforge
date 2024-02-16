@@ -133,23 +133,9 @@ const LootManager = () => {
 
   return (
     <div className="loot-manager-table">
-      <h2>Loot Manager</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Note</th>
-          </tr>
-        </thead>
-        <tbody>
-          {lootItems.map((item, index) => (
-            <tr key={index} onClick={() => openModal(item)}>
-              <td>{item.name}</td>
-              <td>{item.note}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
+      <div className="loot-manager-top">
+        <p>Loot Manager</p>
+      </div>
       <div>
         <h3>Add New Item</h3>
         <label>
@@ -187,6 +173,22 @@ const LootManager = () => {
         </label>
         <button onClick={addLootItem}>Add Item</button>
       </div>
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Note</th>
+          </tr>
+        </thead>
+        <tbody>
+          {lootItems.map((item, index) => (
+            <tr key={index} onClick={() => openModal(item)}>
+              <td>{item.name}</td>
+              <td>{item.note}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
       {selectedItem && (
         <dialog open={isModalOpen} onClose={closeModal}>
           <h2>{selectedItem.name}</h2>

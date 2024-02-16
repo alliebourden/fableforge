@@ -1003,12 +1003,43 @@ dialog {
 .loot-manager-table {
   margin-left: 275px;
   margin-top: 125px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  border: 3px solid #c2ac38;
+  border-radius: 10px;
+}
+
+.loot-manager-top {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 43px;
+  border-radius: 10px 10px 0px 0px;
+  border-top: 3px solid #c2ac38;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  background: #132730;
+  color: #ffffff;
+  justify-content: space-between;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.loot-manager-top p {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 20px;
 }
 
 .predictions {
   position: absolute;
-  /* top: 100%;
-  left: 0; */
   background-color: white;
   border: 1px solid #ccc;
   z-index: 1;
