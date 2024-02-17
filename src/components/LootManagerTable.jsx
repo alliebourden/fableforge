@@ -136,69 +136,79 @@ const LootManager = () => {
       <div className="loot-manager-top">
         <p>Loot Manager</p>
       </div>
-      <div>
+      <div className="loot-manager-add-new">
         <h3>Add New Item</h3>
-        <label>
-          Select Item:
-          <input
-            ref={inputRef}
-            type="text"
-            value={newItemIndex}
-            onChange={(e) => handleInputChange(e.target.value)}
-          />
-          <div className="predictions">
-            {predictions.length > 0 && (
-              <div>
-                <ul>
-                  {predictions.map((item, index) => (
-                    <li
-                      key={index}
-                      onClick={() => handlePredictionClick(index)}
-                    >
-                      {item.name}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-          </div>
-        </label>
-        <label>
-          Note:
-          <input
-            type="text"
-            value={note}
-            onChange={(e) => setNote(e.target.value)}
-          />
-        </label>
-        <button onClick={addLootItem}>Add Item</button>
+        <div className="add-new-item-input">
+          <label>
+            Select Item:
+            <input
+              ref={inputRef}
+              type="text"
+              value={newItemIndex}
+              onChange={(e) => handleInputChange(e.target.value)}
+            />
+            <div className="predictions">
+              {predictions.length > 0 && (
+                <div>
+                  <ul>
+                    {predictions.map((item, index) => (
+                      <li
+                        key={index}
+                        onClick={() => handlePredictionClick(index)}
+                      >
+                        {item.name}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+            </div>
+          </label>
+          <label className="note-label">
+            Note:
+            <input
+              type="text"
+              value={note}
+              onChange={(e) => setNote(e.target.value)}
+            />
+          </label>
+        </div>
+        <div className="add-new-item-btn">
+          <button onClick={addLootItem}>Add Item</button>
+        </div>
       </div>
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Note</th>
-          </tr>
-        </thead>
-        <tbody>
-          {lootItems.map((item, index) => (
-            <tr key={index} onClick={() => openModal(item)}>
-              <td>{item.name}</td>
-              <td>{item.note}</td>
+      <div className="loot-manager-table-content">
+        <table>
+          <thead>
+            <tr>
+              <th className="item-name">Item</th>
+              <th className="item-note">Note</th>
             </tr>
-          ))}
-        </tbody>
-      </table>
-      {selectedItem && (
-        <dialog open={isModalOpen} onClose={closeModal}>
-          <h2>{selectedItem.name}</h2>
-          {selectedItem.desc && selectedItem.desc.length > 0 && (
-            <p>Description: {selectedItem.desc}</p>
-          )}
-          {note && <p>Note: {note}</p>}
-          <button onClick={closeModal}>Close</button>
-        </dialog>
-      )}
+          </thead>
+          <tbody>
+            {lootItems.map((item, index) => (
+              <tr
+                key={index}
+                onClick={() => openModal(item)}
+                className="loot-item"
+              >
+                <td>{item.name}</td>
+                <td>{item.note}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+        {selectedItem && (
+          <dialog open={isModalOpen} onClose={closeModal}>
+            <h2>{selectedItem.name}</h2>
+            {selectedItem.desc && selectedItem.desc.length > 0 && (
+              <p>Description: {selectedItem.desc}</p>
+            )}
+            {note && <p>Note: {note}</p>}
+            <button onClick={closeModal}>Close</button>
+          </dialog>
+        )}
+      </div>
     </div>
   );
 };
