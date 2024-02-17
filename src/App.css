@@ -961,7 +961,8 @@ dialog {
   border-top: none;
   border-left: none;
   border-right: none;
-  margin-left: 10px;
+  margin-left: 57px;
+  width: 80px;
 }
 
 .dice-roller-content input {
@@ -1003,6 +1004,10 @@ dialog {
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+}
+
+.dice-results {
+  max-width: 275px;
 }
 
 /* loot manager css */
