@@ -174,11 +174,13 @@ const LootManager = () => {
           </label>
         </div>
         <div className="add-new-item-btn">
-          <button onClick={addLootItem}>Add Item</button>
+          <button onClick={addLootItem} className="add-item-btn">
+            Add Item
+          </button>
         </div>
       </div>
       <div className="loot-manager-table-content">
-        <table>
+        <table className="item-table">
           <thead>
             <tr>
               <th className="item-name">Item</th>
@@ -205,7 +207,9 @@ const LootManager = () => {
               <p>Description: {selectedItem.desc}</p>
             )}
             {note && <p>Note: {note}</p>}
-            <button onClick={closeModal}>Close</button>
+            <button onClick={closeModal} className="close-modal-btn">
+              Close
+            </button>
           </dialog>
         )}
       </div>

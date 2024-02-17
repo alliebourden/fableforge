@@ -1072,12 +1072,10 @@ dialog {
   margin-top: 10px;
 }
 
-.add-new-item-input {
-  display: flex;
-}
-
 .loot-manager-table-content {
   display: flex;
+  margin-top: 20px;
+  border-top: 1px solid #1e1e1e;
 }
 
 .note-label {
@@ -1090,6 +1088,52 @@ dialog {
 
 .item-note {
   width: 375px;
+}
+
+.add-new-item-btn {
+  display: flex;
+  justify-content: center;
+}
+
+.add-item-btn {
+  display: flex;
+  width: 156px;
+  height: 54px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #c2ac38;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  margin-top: 20px;
+}
+
+.close-modal-btn {
+  display: flex;
+
+  width: 156px;
+  height: 54px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  border-radius: 10px;
+  background: #c2ac38;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border: none;
+  margin-top: 20px;
 }
 
 /* body {
