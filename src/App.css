@@ -1149,6 +1149,12 @@ dialog {
   margin-top: 20px;
 }
 
+.add-item-btn:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
 .close-modal-btn {
   display: flex;
 
