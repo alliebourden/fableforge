@@ -646,6 +646,12 @@ dialog {
   margin-top: 20px;
 }
 
+.submit-btn button:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
 .add-new-quest {
   text-transform: uppercase;
   display: flex;
