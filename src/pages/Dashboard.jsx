@@ -21,23 +21,34 @@ export default function Dashboard() {
     setUserInput("");
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleGenerateNPC();
+    }
+  };
+
   const renderContent = (content) => {
+    const capitalizeFirstLetter = (str) => {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
     if (typeof content === "object") {
       return (
         <div>
           {Object.entries(content).map(([key, value]) => (
             <div key={key}>
-              {key === "Race" ? (
+              {typeof value === "object" ? (
                 <div>
-                  <strong>{key}:</strong> {value.Race}
+                  <strong>{capitalizeFirstLetter(key)}:</strong>{" "}
+                  {JSON.stringify(value)}
                 </div>
               ) : key === "friendliness" ? (
                 <div>
-                  <strong>{key}:</strong> {value}/10
+                  <strong>{capitalizeFirstLetter(key)}:</strong> {value}/10
                 </div>
               ) : (
                 <div>
-                  <strong>{key}:</strong> {value}
+                  <strong>{capitalizeFirstLetter(key)}:</strong> {value}
                 </div>
               )}
             </div>
@@ -76,6 +87,7 @@ export default function Dashboard() {
               type="text"
               value={userInput}
               onChange={handleUserInput}
+              onKeyPress={handleKeyPress}
               placeholder="What kind of NPC do you need?"
             />
             <button onClick={handleGenerateNPC} className="add-new-btn">

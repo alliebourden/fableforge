@@ -64,6 +64,11 @@
 .sidebar-links p:hover {
   color: #c2ac38;
   transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.sidebar-links div.active {
+  color: #c2ac38;
 }
 
 /* 
@@ -183,6 +188,7 @@
 .add-new-btn:hover {
   background: #132730;
   transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .submit-new-session {
@@ -192,6 +198,7 @@
 .submit-new-session:hover {
   background: #132730;
   transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .all-sessions {
@@ -279,6 +286,10 @@
   width: 425px;
   margin-top: 10px;
   margin-left: 40px;
+}
+
+.selected-date-display {
+  margin-left: 5px;
 }
 
 .list-of-sessions {
@@ -635,6 +646,12 @@ dialog {
   margin-top: 20px;
 }
 
+.submit-btn button:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
 .add-new-quest {
   text-transform: uppercase;
   display: flex;
@@ -901,8 +918,14 @@ dialog {
 }
 
 .chat-message.user {
-  width: 450px;
+  width: 425px;
   margin-top: 5px;
+  margin-right: 10px;
+}
+
+.chat-message.npc {
+  width: 425px;
+  margin-right: 10px;
 }
 
 /* dice roller css */
@@ -960,7 +983,8 @@ dialog {
   border-top: none;
   border-left: none;
   border-right: none;
-  margin-left: 10px;
+  margin-left: 57px;
+  width: 80px;
 }
 
 .dice-roller-content input {
@@ -991,11 +1015,21 @@ dialog {
   border-style: none;
 }
 
+.roll-dice-btn:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
 .roll-dice-btn-container {
   display: flex;
   justify-content: center;
   align-items: center;
   margin-top: 10px;
+}
+
+.dice-results {
+  max-width: 275px;
 }
 
 /* loot manager css */
@@ -1113,6 +1147,12 @@ dialog {
   line-height: normal;
   border: none;
   margin-top: 20px;
+}
+
+.add-item-btn:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .close-modal-btn {

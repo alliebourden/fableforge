@@ -27,6 +27,7 @@ const DiceRoller = () => {
           <select
             value={diceType}
             onChange={(e) => setDiceType(Number(e.target.value))}
+            className="dice-select"
           >
             <option value={4}>4-sided</option>
             <option value={6}>6-sided</option>
@@ -55,10 +56,14 @@ const DiceRoller = () => {
         </div>
       </div>
       {result && (
-        <div>
+        <div className="dice-results">
           <h3>Result:</h3>
-          <p>Rolls: {result.rolls.join(", ")}</p>
-          <p>Total: {result.totalResult}</p>
+          <p>
+            <strong>Rolls:</strong> {result.rolls.join(", ")}
+          </p>
+          <p>
+            <strong>Total:</strong> {result.totalResult}
+          </p>
         </div>
       )}
     </div>
