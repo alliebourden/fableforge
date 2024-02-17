@@ -56,8 +56,10 @@ const SessionList = () => {
             </div>
           </div>
           <p className="session-date-display">
-            <strong>Next Session Date:</strong>{" "}
-            {selectedDates.map(formatSelectedDate).join(", ")}
+            <strong>Next Session Date:</strong>
+            <span className="selected-date-display">
+              {selectedDates.map(formatSelectedDate).join(", ")}
+            </span>
           </p>
         </div>
         <div className="all-sessions">

@@ -287,6 +287,10 @@
   margin-left: 40px;
 }
 
+.selected-date-display {
+  margin-left: 5px;
+}
+
 .list-of-sessions {
   height: 260px;
 }
