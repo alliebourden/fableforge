@@ -21,6 +21,12 @@ export default function Dashboard() {
     setUserInput("");
   };
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      handleGenerateNPC();
+    }
+  };
+
   const renderContent = (content) => {
     const capitalizeFirstLetter = (str) => {
       return str.charAt(0).toUpperCase() + str.slice(1);
@@ -80,6 +86,7 @@ export default function Dashboard() {
               type="text"
               value={userInput}
               onChange={handleUserInput}
+              onKeyPress={handleKeyPress}
               placeholder="What kind of NPC do you need?"
             />
             <button onClick={handleGenerateNPC} className="add-new-btn">
