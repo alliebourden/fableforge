@@ -22,6 +22,10 @@ export default function Dashboard() {
   };
 
   const renderContent = (content) => {
+    const capitalizeFirstLetter = (str) => {
+      return str.charAt(0).toUpperCase() + str.slice(1);
+    };
+
     if (typeof content === "object") {
       return (
         <div>
@@ -29,15 +33,15 @@ export default function Dashboard() {
             <div key={key}>
               {key === "Race" ? (
                 <div>
-                  <strong>{key}:</strong> {value.Race}
+                  <strong>{capitalizeFirstLetter(key)}:</strong> {value.Race}
                 </div>
               ) : key === "friendliness" ? (
                 <div>
-                  <strong>{key}:</strong> {value}/10
+                  <strong>{capitalizeFirstLetter(key)}:</strong> {value}/10
                 </div>
               ) : (
                 <div>
-                  <strong>{key}:</strong> {value}
+                  <strong>{capitalizeFirstLetter(key)}:</strong> {value}
                 </div>
               )}
             </div>
