@@ -37,9 +37,10 @@ export default function Dashboard() {
         <div>
           {Object.entries(content).map(([key, value]) => (
             <div key={key}>
-              {key === "Race" ? (
+              {typeof value === "object" ? (
                 <div>
-                  <strong>{capitalizeFirstLetter(key)}:</strong> {value.Race}
+                  <strong>{capitalizeFirstLetter(key)}:</strong>{" "}
+                  {JSON.stringify(value)}
                 </div>
               ) : key === "friendliness" ? (
                 <div>
