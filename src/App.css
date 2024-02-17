@@ -183,6 +183,7 @@
 .add-new-btn:hover {
   background: #132730;
   transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .submit-new-session {
@@ -989,6 +990,12 @@ dialog {
   font-size: 14px;
   font-weight: 500;
   border-style: none;
+}
+
+.roll-dice-btn:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .roll-dice-btn-container {
