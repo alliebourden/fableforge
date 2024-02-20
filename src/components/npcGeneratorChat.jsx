@@ -1,12 +1,19 @@
 import OpenAI from "openai";
+import { useContext } from "react";
+import { SessionContext } from "./SessionContext";
 
-const openai = new OpenAI({
-  apiKey: import.meta.env.VITE_OPENAI_API_KEY,
-  dangerouslyAllowBrowser: true,
-});
-
-async function generateNPCchat(userInput) {
+async function generateNPCchat(userInput, apiKey) {
   try {
+    if (!apiKey) {
+      console.error("API key is missing");
+      return null;
+    }
+
+    const openai = new OpenAI({
+      apiKey: apiKey,
+      dangerouslyAllowBrowser: true,
+    });
+
     const response = await openai.chat.completions.create({
       messages: [
         {

@@ -7,6 +7,7 @@ export const SessionProvider = ({ children }) => {
   const [selectedDates, setSelectedDates] = useState([]);
   const [quests, setQuests] = useState([]);
   const [selectedQuest, setSelectedQuest] = useState(null);
+  const [apiKey, setApiKey] = useState("");
 
   const handleAddSession = (newSession) => {
     setSessions((prevSessions) => [...prevSessions, newSession]);
@@ -33,6 +34,8 @@ export const SessionProvider = ({ children }) => {
         handleAddQuest,
         selectedQuest,
         handleSelectQuest,
+        apiKey,
+        setApiKey,
       }}
     >
       {children}

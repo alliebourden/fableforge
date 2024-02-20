@@ -1,24 +1,45 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import generateNPCchat from "../components/npcGeneratorChat";
 import DiceRoller from "../components/DiceRoller";
+import { SessionContext } from "../components/SessionContext";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
   const [chatHistory, setChatHistory] = useState([]);
+  const { apiKey, setApiKey } = useContext(SessionContext);
+  const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
   const chatHistoryRef = useRef(null);
+
+  const handleApiKeySubmission = () => {
+    console.log("Current API Key:", apiKey);
+    setApiKey(apiKey);
+    console.log("API Key saved:", apiKey);
+    setShowApiKeyPrompt(false);
+  };
 
   const handleUserInput = (event) => {
     setUserInput(event.target.value);
   };
 
   const handleGenerateNPC = async () => {
-    const response = await generateNPCchat(userInput);
-    setChatHistory([
-      ...chatHistory,
-      { role: "user", content: userInput },
-      { role: "npc", content: response },
-    ]);
-    setUserInput("");
+    if (!apiKey) {
+      setShowApiKeyPrompt(true);
+      return;
+    }
+
+    try {
+      const response = await generateNPCchat(userInput, apiKey);
+      console.log("NPC Response:", response);
+
+      setChatHistory([
+        ...chatHistory,
+        { role: "user", content: userInput },
+        { role: "npc", content: response },
+      ]);
+      setUserInput("");
+    } catch (error) {
+      console.error("Error generating NPC:", error);
+    }
   };
 
   const handleKeyPress = (event) => {
@@ -61,7 +82,9 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
-    chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
+    if (chatHistoryRef.current) {
+      chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
+    }
   }, [chatHistory]);
 
   return (
@@ -99,6 +122,18 @@ export default function Dashboard() {
           <DiceRoller />
         </div>
       </div>
+
+      {showApiKeyPrompt && (
+        <dialog open>
+          <p>Please enter your OpenAI API key:</p>
+          <input
+            type="text"
+            value={apiKey}
+            onChange={(e) => setApiKey(e.target.value)}
+          />
+          <button onClick={handleApiKeySubmission}>Submit</button>
+        </dialog>
+      )}
     </div>
   );
 }
