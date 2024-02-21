@@ -9,6 +9,7 @@ export default function Dashboard() {
   const { apiKey, setApiKey } = useContext(SessionContext);
   const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
   const chatHistoryRef = useRef(null);
+  const [npcDescriptions, setNpcDescriptions] = useState([]);
 
   const handleApiKeySubmission = () => {
     console.log("Current API Key:", apiKey);
@@ -29,7 +30,15 @@ export default function Dashboard() {
 
     try {
       const response = await generateNPCchat(userInput, apiKey);
-      console.log("NPC Response:", response);
+
+      const npcContent = JSON.parse(response);
+      const npcDescription = JSON.stringify(npcContent.description);
+      console.log(npcDescription);
+
+      setNpcDescriptions((prevDescriptions) => [
+        ...prevDescriptions,
+        npcDescription,
+      ]);
 
       setChatHistory([
         ...chatHistory,
