@@ -1,6 +1,4 @@
 import OpenAI from "openai";
-import { useContext } from "react";
-import { SessionContext } from "./SessionContext";
 
 async function generateNPCchat(userInput, apiKey) {
   try {

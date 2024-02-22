@@ -8,6 +8,7 @@ export const SessionProvider = ({ children }) => {
   const [quests, setQuests] = useState([]);
   const [selectedQuest, setSelectedQuest] = useState(null);
   const [apiKey, setApiKey] = useState("");
+  const [npcDescriptions, setNpcDescriptions] = useState([]);
 
   const handleAddSession = (newSession) => {
     setSessions((prevSessions) => [...prevSessions, newSession]);
@@ -36,6 +37,8 @@ export const SessionProvider = ({ children }) => {
         handleSelectQuest,
         apiKey,
         setApiKey,
+        npcDescriptions,
+        setNpcDescriptions,
       }}
     >
       {children}
