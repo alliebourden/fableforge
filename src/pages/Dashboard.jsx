@@ -15,11 +15,26 @@ export default function Dashboard() {
   const [generatedImageURL, setGeneratedImageURL] = useState(null);
   const [loading, setLoading] = useState(false);
 
+  const generateNPCchatbtn = useRef(null);
+
   const handleApiKeySubmission = () => {
     console.log("Current API Key:", apiKey);
     setApiKey(apiKey);
     console.log("API Key saved:", apiKey);
     setShowApiKeyPrompt(false);
+    if (generateNPCchatbtn.current) {
+      generateNPCchatbtn.current.click();
+    }
+  };
+
+  const handleApiKeyInputChange = (e) => {
+    setApiKey(e.target.value);
+  };
+
+  const handleApiKeyInputKeyPress = (e) => {
+    if (e.key === "Enter") {
+      handleApiKeySubmission();
+    }
   };
 
   const handleUserInput = (event) => {
@@ -155,7 +170,11 @@ export default function Dashboard() {
               onKeyPress={handleKeyPress}
               placeholder="What kind of NPC do you need?"
             />
-            <button onClick={handleGenerateNPC} className="add-new-btn">
+            <button
+              onClick={handleGenerateNPC}
+              className="add-new-btn"
+              ref={generateNPCchatbtn}
+            >
               Generate
             </button>
             {npcGenerated && (
@@ -179,7 +198,8 @@ export default function Dashboard() {
           <input
             type="text"
             value={apiKey}
-            onChange={(e) => setApiKey(e.target.value)}
+            onChange={handleApiKeyInputChange}
+            onKeyPress={handleApiKeyInputKeyPress}
           />
           <button onClick={handleApiKeySubmission}>Submit</button>
         </dialog>
