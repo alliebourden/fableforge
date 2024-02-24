@@ -1,6 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
-import { useContext, useState } from "react";
+import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
 import generateImage from "../components/ImageGeneration";
 
@@ -10,6 +10,7 @@ const ImageForm = () => {
   const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
   const [loading, setLoading] = useState(false);
   const [generatedImageURL, setGeneratedImageURL] = useState(null);
+  const [promptText, setPromptText] = useState("");
 
   const onSubmit = async (data) => {
     const prompt = data.prompt;
@@ -35,23 +36,75 @@ const ImageForm = () => {
     setShowApiKeyPrompt(false);
   };
 
-  const downloadImage = () => {
-    if (generatedImageURL) {
+  const handlePromptInputChange = (e) => {
+    setPromptText(e.target.value);
+  };
+
+  const handleApiKeyInputKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleApiKeySubmission();
+      handleSubmit(onSubmit)();
     }
   };
+
+  const handlePromptInputKeyPress = (e) => {
+    if (e.key === "Enter" && !e.shiftKey) {
+      e.preventDefault();
+
+      if (!apiKey) {
+        setShowApiKeyPrompt(true);
+      } else {
+        handleSubmit(onSubmit)();
+      }
+    }
+  };
+
+  const handleKeyPress = (e) => {
+    if (e.key === "Enter") {
+      e.preventDefault();
+      handleSubmit(onSubmit)();
+    }
+  };
+
+  const downloadImage = () => {
+    if (generatedImageURL) {
+      window.open(generatedImageURL, "_blank");
+    }
+  };
+
+  useEffect(() => {
+    const textarea = document.getElementById("prompt");
+    if (textarea) {
+      textarea.style.height = "auto";
+      textarea.style.height = textarea.scrollHeight + "px";
+    }
+  }, [promptText]);
 
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="image-generation-form">
-        <div>
+        <div className="image-generation-form-top">
           <p>IMAGE GENERATION</p>
         </div>
-        <div className="session-body">
-          <label htmlFor="prompt">Enter prompt:</label>
-          <input id="prompt" {...register("prompt", { required: true })} />
+        <div className="image-generation-form-body">
+          <label htmlFor="prompt">Enter your prompt:</label>
+          <textarea
+            id="prompt"
+            {...register("prompt", { required: true })}
+            value={promptText}
+            onChange={handlePromptInputChange}
+            onKeyPress={handlePromptInputKeyPress}
+          />
         </div>
         <div>
-          <button type="submit">SUBMIT</button>
+          <button
+            type="submit"
+            onKeyPress={handleKeyPress}
+            className="image-generation-button-form"
+          >
+            SUBMIT
+          </button>
         </div>
       </form>
 
@@ -62,6 +115,7 @@ const ImageForm = () => {
             type="text"
             value={apiKey}
             onChange={(e) => setApiKey(e.target.value)}
+            onKeyPress={handleApiKeyInputKeyPress}
           />
           <button onClick={handleApiKeySubmission}>Submit</button>
         </dialog>

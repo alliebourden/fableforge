@@ -148,53 +148,76 @@ export default function Dashboard() {
   return (
     <div>
       <div className="dashboard-content">
-        <div className="chat-container">
-          <div className="chat-container-top">
-            <p>NPC Generator</p>
+        <div className="dashboard-content-left">
+          <div className="npc-generator-info">
+            <p>
+              Enter in the type of NPC you are looking for. The NPC Generator
+              will produce an NPC based on your input, with a name, race,
+              profession, description, frienliness scale and specific traits.
+              Once you have an NPC you want to use, enhance your player
+              experience by generating an NPC image based on the description
+              value.
+            </p>
           </div>
-          <div className="chat-history" ref={chatHistoryRef}>
-            {chatHistory.map((message, index) => (
-              <div key={index} className={`chat-message ${message.role}`}>
-                {renderContent(
-                  message.role === "npc"
-                    ? JSON.parse(message.content)
-                    : message.content
+          <div className="chat-container">
+            <div className="chat-container-top">
+              <p>NPC Generator</p>
+            </div>
+            <div className="chat-history" ref={chatHistoryRef}>
+              {chatHistory.map((message, index) => (
+                <div key={index} className={`chat-message ${message.role}`}>
+                  {renderContent(
+                    message.role === "npc"
+                      ? JSON.parse(message.content)
+                      : message.content
+                  )}
+                </div>
+              ))}
+            </div>
+            <div className="user-input">
+              <input
+                type="text"
+                value={userInput}
+                onChange={handleUserInput}
+                onKeyPress={handleKeyPress}
+                placeholder="What kind of NPC do you need?"
+              />
+              <div>
+                <button
+                  onClick={handleGenerateNPC}
+                  className="generate-npc-chat-button"
+                  ref={generateNPCchatbtn}
+                >
+                  Generate NPC Details
+                </button>
+                {npcGenerated && (
+                  <button
+                    className="image-generation-button"
+                    onClick={handleGenerateImage}
+                  >
+                    Generate NPC Image
+                  </button>
                 )}
               </div>
-            ))}
-          </div>
-          <div className="user-input">
-            <input
-              type="text"
-              value={userInput}
-              onChange={handleUserInput}
-              onKeyPress={handleKeyPress}
-              placeholder="What kind of NPC do you need?"
-            />
-            <div>
-              <button
-                onClick={handleGenerateNPC}
-                className="generate-npc-chat-button"
-                ref={generateNPCchatbtn}
-              >
-                Generate NPC Details
-              </button>
-              {npcGenerated && (
-                <button
-                  className="image-generation-button"
-                  onClick={handleGenerateImage}
-                >
-                  Generate NPC Image
-                </button>
-              )}
             </div>
           </div>
         </div>
-        <div>
-          <ImageForm />
-        </div>
-        <div className="dice-roller">
-          <DiceRoller />
+
+        <div className="dashboard-content-right">
+          <div className="image-generation-form-info">
+            <p>
+              Use the image generator to help create your fantasy world maps or
+              magic items. Enter your prompt below and see what you get!{" "}
+              <strong>Tip:</strong>
+              Try ending your prompt in TTRPG for the best results.
+            </p>
+          </div>
+          <div className="image-form">
+            <ImageForm />
+          </div>
+          <div className="dice-roller">
+            <DiceRoller />
+          </div>
         </div>
       </div>
 
