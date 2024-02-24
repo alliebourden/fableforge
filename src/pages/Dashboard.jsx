@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef, useContext } from "react";
 import generateNPCchat from "../components/npcGeneratorChat";
 import DiceRoller from "../components/DiceRoller";
 import { SessionContext } from "../components/SessionContext";
+import NpcImageGeneration from "../components/NpcImageGeneration";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
@@ -10,6 +11,8 @@ export default function Dashboard() {
   const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
   const chatHistoryRef = useRef(null);
   const [npcDescriptions, setNpcDescriptions] = useState([]);
+  const [npcGenerated, setNpcGenerated] = useState(false);
+  const [generatedImageURL, setGeneratedImageURL] = useState(null);
 
   const handleApiKeySubmission = () => {
     console.log("Current API Key:", apiKey);
@@ -35,10 +38,7 @@ export default function Dashboard() {
       const npcDescription = JSON.stringify(npcContent.description);
       console.log(npcDescription);
 
-      setNpcDescriptions((prevDescriptions) => [
-        ...prevDescriptions,
-        npcDescription,
-      ]);
+      setNpcDescriptions([npcDescription]);
 
       setChatHistory([
         ...chatHistory,
@@ -46,6 +46,7 @@ export default function Dashboard() {
         { role: "npc", content: response },
       ]);
       setUserInput("");
+      setNpcGenerated(true);
     } catch (error) {
       console.error("Error generating NPC:", error);
     }
@@ -54,6 +55,22 @@ export default function Dashboard() {
   const handleKeyPress = (event) => {
     if (event.key === "Enter") {
       handleGenerateNPC();
+    }
+  };
+
+  const handleGenerateImage = async () => {
+    try {
+      const imageResponse = await NpcImageGeneration(apiKey, npcDescriptions);
+      console.log("Full Image Response:", imageResponse);
+
+      if (imageResponse) {
+        setGeneratedImageURL(imageResponse);
+        console.log("Generated NPC Image:", imageResponse);
+      } else {
+        console.error("Error: Invalid response format", imageResponse);
+      }
+    } catch (error) {
+      console.error("Error generating NPC image:", error);
     }
   };
 
@@ -94,7 +111,8 @@ export default function Dashboard() {
     if (chatHistoryRef.current) {
       chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
     }
-  }, [chatHistory]);
+    console.log("Generated Image URL:", generatedImageURL);
+  }, [chatHistory, generatedImageURL]);
 
   return (
     <div>
@@ -125,6 +143,14 @@ export default function Dashboard() {
             <button onClick={handleGenerateNPC} className="add-new-btn">
               Generate
             </button>
+            {npcGenerated && (
+              <button
+                className="image-generation-button"
+                onClick={handleGenerateImage}
+              >
+                NPC Image
+              </button>
+            )}
           </div>
         </div>
         <div className="dice-roller">
@@ -141,6 +167,12 @@ export default function Dashboard() {
             onChange={(e) => setApiKey(e.target.value)}
           />
           <button onClick={handleApiKeySubmission}>Submit</button>
+        </dialog>
+      )}
+      {generatedImageURL && (
+        <dialog open>
+          <img src={generatedImageURL} alt="Generated NPC Image" />
+          <button onClick={() => setGeneratedImageURL(null)}>Close</button>
         </dialog>
       )}
     </div>

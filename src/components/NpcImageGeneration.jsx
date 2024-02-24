@@ -12,7 +12,8 @@ async function generateNPCimage(apiKey, npcDescriptions) {
       dangerouslyAllowBrowser: true,
     });
 
-    const descriptionString = npcDescriptions.join(" ");
+    const noText = ", photographic, scenic";
+    const descriptionString = npcDescriptions.join(" ") + " " + noText;
 
     const image = await openai.images.generate({
       model: "dall-e-3",
@@ -20,7 +21,7 @@ async function generateNPCimage(apiKey, npcDescriptions) {
       size: "1024x1024",
     });
 
-    return image.data;
+    return image.data[0]?.url || null;
   } catch (error) {
     console.error("Error generating NPC image", error);
     return null;
