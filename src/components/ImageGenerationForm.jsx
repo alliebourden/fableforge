@@ -8,6 +8,8 @@ const ImageForm = () => {
   const { handleSubmit, register } = useForm();
   const { apiKey, setApiKey } = useContext(SessionContext);
   const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [generatedImageURL, setGeneratedImageURL] = useState(null);
 
   const onSubmit = async (data) => {
     const prompt = data.prompt;
@@ -17,12 +19,25 @@ const ImageForm = () => {
       return;
     }
 
-    await generateImage(apiKey, prompt);
+    try {
+      setLoading(true);
+      const imageResponse = await generateImage(apiKey, prompt);
+      setGeneratedImageURL(imageResponse);
+    } catch (error) {
+      console.error("Error generating image", error);
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleApiKeySubmission = () => {
     setApiKey(apiKey);
     setShowApiKeyPrompt(false);
+  };
+
+  const downloadImage = () => {
+    if (generatedImageURL) {
+    }
   };
 
   return (
@@ -39,6 +54,7 @@ const ImageForm = () => {
           <button type="submit">SUBMIT</button>
         </div>
       </form>
+
       {showApiKeyPrompt && (
         <dialog open>
           <p>Please enter your OpenAI API key:</p>
@@ -48,6 +64,27 @@ const ImageForm = () => {
             onChange={(e) => setApiKey(e.target.value)}
           />
           <button onClick={handleApiKeySubmission}>Submit</button>
+        </dialog>
+      )}
+
+      {generatedImageURL && (
+        <dialog open className="generated-image-modal">
+          <img
+            className="generated-image"
+            src={generatedImageURL}
+            alt="Generated Image"
+            style={{ width: "100%", height: "auto" }}
+          />
+          <div>
+            <button onClick={() => setGeneratedImageURL(null)}>Close</button>
+            <button onClick={downloadImage}>Download</button>
+          </div>
+        </dialog>
+      )}
+
+      {loading && (
+        <dialog open className="loading-modal">
+          <p>Generating Image...</p>
         </dialog>
       )}
     </div>
