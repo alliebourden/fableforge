@@ -114,6 +114,17 @@ export default function Dashboard() {
     console.log("Generated Image URL:", generatedImageURL);
   }, [chatHistory, generatedImageURL]);
 
+  const downloadImage = () => {
+    if (generatedImageURL) {
+      const downloadLink = document.createElement("a");
+      downloadLink.href = generatedImageURL;
+      downloadLink.download = "generated_npc_image.png";
+      document.body.appendChild(downloadLink);
+      downloadLink.click();
+      document.body.removeChild(downloadLink);
+    }
+  };
+
   return (
     <div>
       <div className="dashboard-content">
@@ -170,9 +181,17 @@ export default function Dashboard() {
         </dialog>
       )}
       {generatedImageURL && (
-        <dialog open>
-          <img src={generatedImageURL} alt="Generated NPC Image" />
-          <button onClick={() => setGeneratedImageURL(null)}>Close</button>
+        <dialog open className="generated-image-modal">
+          <img
+            className="generated-image"
+            src={generatedImageURL}
+            alt="Generated NPC Image"
+            style={{ width: "100%", height: "auto" }}
+          />
+          <div>
+            <button onClick={() => setGeneratedImageURL(null)}>Close</button>
+            <button onClick={downloadImage}>Download</button>
+          </div>
         </dialog>
       )}
     </div>
