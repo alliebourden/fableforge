@@ -3,6 +3,7 @@ import generateNPCchat from "../components/npcGeneratorChat";
 import DiceRoller from "../components/DiceRoller";
 import { SessionContext } from "../components/SessionContext";
 import NpcImageGeneration from "../components/NpcImageGeneration";
+import ImageForm from "../components/ImageGenerationForm";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
@@ -170,22 +171,27 @@ export default function Dashboard() {
               onKeyPress={handleKeyPress}
               placeholder="What kind of NPC do you need?"
             />
-            <button
-              onClick={handleGenerateNPC}
-              className="add-new-btn"
-              ref={generateNPCchatbtn}
-            >
-              Generate
-            </button>
-            {npcGenerated && (
+            <div>
               <button
-                className="image-generation-button"
-                onClick={handleGenerateImage}
+                onClick={handleGenerateNPC}
+                className="generate-npc-chat-button"
+                ref={generateNPCchatbtn}
               >
-                NPC Image
+                Generate NPC Details
               </button>
-            )}
+              {npcGenerated && (
+                <button
+                  className="image-generation-button"
+                  onClick={handleGenerateImage}
+                >
+                  Generate NPC Image
+                </button>
+              )}
+            </div>
           </div>
+        </div>
+        <div>
+          <ImageForm />
         </div>
         <div className="dice-roller">
           <DiceRoller />

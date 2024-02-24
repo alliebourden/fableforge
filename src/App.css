@@ -928,6 +928,27 @@ dialog {
   margin-right: 10px;
 }
 
+.generate-npc-chat-button {
+  width: 155px;
+  height: 55px;
+  padding: 10px;
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #c2ac38;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-style: none;
+}
+
 .image-generation-button {
   width: 155px;
   height: 55px;
@@ -942,11 +963,17 @@ dialog {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: #fff;
   font-family: Poppins;
-  font-size: 20px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
   border-style: none;
+}
+
+.generate-npc-chat-button:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .image-generation-button:hover {
@@ -954,11 +981,6 @@ dialog {
   transition: ease-in-out 0.3s;
   cursor: pointer;
 }
-
-/* .generated-image-modal {
-  /* position: absolute; */
-  transform: translate(-50%, -50%);
-} */
 
 .generated-image {
   height: 25%;
