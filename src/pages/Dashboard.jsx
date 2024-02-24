@@ -13,6 +13,7 @@ export default function Dashboard() {
   const [npcDescriptions, setNpcDescriptions] = useState([]);
   const [npcGenerated, setNpcGenerated] = useState(false);
   const [generatedImageURL, setGeneratedImageURL] = useState(null);
+  const [loading, setLoading] = useState(false);
 
   const handleApiKeySubmission = () => {
     console.log("Current API Key:", apiKey);
@@ -60,6 +61,7 @@ export default function Dashboard() {
 
   const handleGenerateImage = async () => {
     try {
+      setLoading(true);
       const imageResponse = await NpcImageGeneration(apiKey, npcDescriptions);
       console.log("Full Image Response:", imageResponse);
 
@@ -71,6 +73,8 @@ export default function Dashboard() {
       }
     } catch (error) {
       console.error("Error generating NPC image:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -192,6 +196,11 @@ export default function Dashboard() {
             <button onClick={() => setGeneratedImageURL(null)}>Close</button>
             <button onClick={downloadImage}>Download</button>
           </div>
+        </dialog>
+      )}
+      {loading && (
+        <dialog open className="loading-modal">
+          <p>Generating Image...</p>
         </dialog>
       )}
     </div>
