@@ -3,7 +3,7 @@ import generateNPCchat from "../components/npcGeneratorChat";
 import DiceRoller from "../components/DiceRoller";
 import { SessionContext } from "../components/SessionContext";
 import NpcImageGeneration from "../components/NpcImageGeneration";
-import ImageForm from "../components/ImageGenerationForm";
+import ImageForm from "../components/MapGenerationForm";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
@@ -149,16 +149,6 @@ export default function Dashboard() {
     <div>
       <div className="dashboard-content">
         <div className="dashboard-content-left">
-          <div className="npc-generator-info">
-            <p>
-              Enter in the type of NPC you are looking for. The NPC Generator
-              will produce an NPC based on your input, with a name, race,
-              profession, description, frienliness scale and specific traits.
-              Once you have an NPC you want to use, enhance your player
-              experience by generating an NPC image based on the description
-              value.
-            </p>
-          </div>
           <div className="chat-container">
             <div className="chat-container-top">
               <p>NPC Generator</p>
@@ -204,14 +194,14 @@ export default function Dashboard() {
         </div>
 
         <div className="dashboard-content-right">
-          <div className="image-generation-form-info">
+          {/* <div className="image-generation-form-info">
             <p>
               Use the image generator to help create your fantasy world maps or
               magic items. Enter your prompt below and see what you get!{" "}
               <strong>Tip:</strong>
               Try ending your prompt in TTRPG for the best results.
             </p>
-          </div>
+          </div> */}
           <div className="image-form">
             <ImageForm />
           </div>

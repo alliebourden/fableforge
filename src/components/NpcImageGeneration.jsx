@@ -12,7 +12,7 @@ async function generateNPCimage(apiKey, npcDescriptions) {
       dangerouslyAllowBrowser: true,
     });
 
-    const noText = ", photographic, scenic";
+    const noText = ", photographic";
     const descriptionString = npcDescriptions.join(" ") + " " + noText;
 
     const image = await openai.images.generate({

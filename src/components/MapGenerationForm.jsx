@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
-import generateImage from "../components/ImageGeneration";
+import generateMapImage from "./MapGeneration";
 
 const ImageForm = () => {
   const { handleSubmit, register } = useForm();
   const { apiKey, setApiKey } = useContext(SessionContext);
   const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [generatedImageURL, setGeneratedImageURL] = useState(null);
+  const [generatedMapImageURL, setGeneratedMapImageURL] = useState(null);
   const [promptText, setPromptText] = useState("");
 
   const onSubmit = async (data) => {
@@ -22,8 +22,8 @@ const ImageForm = () => {
 
     try {
       setLoading(true);
-      const imageResponse = await generateImage(apiKey, prompt);
-      setGeneratedImageURL(imageResponse);
+      const imageResponse = await generateMapImage(apiKey, prompt);
+      setGeneratedMapImageURL(imageResponse);
     } catch (error) {
       console.error("Error generating image", error);
     } finally {
@@ -67,9 +67,9 @@ const ImageForm = () => {
     }
   };
 
-  const downloadImage = () => {
-    if (generatedImageURL) {
-      window.open(generatedImageURL, "_blank");
+  const downloadMapImage = () => {
+    if (generatedMapImageURL) {
+      window.open(generatedMapImageURL, "_blank");
     }
   };
 
@@ -85,11 +85,12 @@ const ImageForm = () => {
     <div>
       <form onSubmit={handleSubmit(onSubmit)} className="image-generation-form">
         <div className="image-generation-form-top">
-          <p>IMAGE GENERATION</p>
+          <p>MAP GENERATION</p>
         </div>
         <div className="image-generation-form-body">
-          <label htmlFor="prompt">Enter your prompt:</label>
+          {/* <label htmlFor="prompt">Enter your prompt:</label> */}
           <textarea
+            placeholder="What kind of map do you need?"
             id="prompt"
             {...register("prompt", { required: true })}
             value={promptText}
@@ -121,17 +122,17 @@ const ImageForm = () => {
         </dialog>
       )}
 
-      {generatedImageURL && (
+      {generatedMapImageURL && (
         <dialog open className="generated-image-modal">
           <img
             className="generated-image"
-            src={generatedImageURL}
-            alt="Generated Image"
+            src={generatedMapImageURL}
+            alt="Generated Map Image"
             style={{ width: "100%", height: "auto" }}
           />
           <div>
-            <button onClick={() => setGeneratedImageURL(null)}>Close</button>
-            <button onClick={downloadImage}>Download</button>
+            <button onClick={() => setGeneratedMapImageURL(null)}>Close</button>
+            <button onClick={downloadMapImage}>Download</button>
           </div>
         </dialog>
       )}

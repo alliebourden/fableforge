@@ -1,6 +1,6 @@
 import OpenAI from "openai";
 
-async function generateImage(apiKey, prompt) {
+async function generateMapImage(apiKey, prompt) {
   try {
     if (!apiKey) {
       console.error("API key is missing");
@@ -12,9 +12,12 @@ async function generateImage(apiKey, prompt) {
       dangerouslyAllowBrowser: true,
     });
 
+    const ttrpg = ", TTRPG";
+    const addTTRPG = prompt.join(" ") + ttrpg;
+
     const image = await openai.images.generate({
       model: "dall-e-3",
-      prompt: prompt,
+      prompt: addTTRPG,
       size: "1024x1024",
     });
 
@@ -25,4 +28,4 @@ async function generateImage(apiKey, prompt) {
   }
 }
 
-export default generateImage;
+export default generateMapImage;

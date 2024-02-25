@@ -1063,7 +1063,7 @@ dialog {
   align-self: start;
   margin-left: 25px;
   margin-top: 25px;
-  min-height: 18px;
+  min-height: 25px;
 }
 
 .image-generation-form-body label {
