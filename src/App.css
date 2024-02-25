@@ -845,9 +845,22 @@ dialog {
 
   margin-left: 275px;
   margin-top: 125px;
+  margin-bottom: 25px;
 }
 
 /* npc generator css */
+
+.npc-generator-info {
+  width: 475px;
+  display: flex;
+  justify-content: center;
+}
+
+.npc-generator-info p {
+  font-size: 14px;
+  margin-bottom: 10px;
+  width: 450px;
+}
 
 .chat-container {
   display: flex;
@@ -928,6 +941,162 @@ dialog {
   margin-right: 10px;
 }
 
+.generate-npc-chat-button {
+  width: 155px;
+  height: 55px;
+  padding: 10px;
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #c2ac38;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-style: none;
+}
+
+.image-generation-button {
+  width: 155px;
+  height: 55px;
+  padding: 10px;
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #c2ac38;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-style: none;
+}
+
+.generate-npc-chat-button:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.image-generation-button:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.generated-image {
+  height: 25%;
+  width: 25%;
+}
+
+/* image generation */
+
+.image-form {
+  margin-left: 25px;
+  margin-bottom: 25px;
+}
+
+.image-generation-form {
+  width: 300px;
+  min-height: 195px;
+  border: 3px solid #c2ac38;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.image-generation-form-info {
+  width: 300px;
+  display: flex;
+  justify-content: center;
+  margin-left: 25px;
+  margin-bottom: 10px;
+}
+
+.image-generation-form-info p {
+  width: 250px;
+  font-size: 14px;
+}
+
+.image-generation-form-top {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 300px;
+  height: 43px;
+  border-radius: 10px 10px 0px 0px;
+  border-top: 3px solid #c2ac38;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  background: #132730;
+  color: #ffffff;
+  justify-content: space-between;
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.image-generation-form-top p {
+  font-size: 20px;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 20px;
+}
+
+.image-generation-form-body {
+  display: flex;
+  flex-direction: column;
+  align-self: start;
+  margin-left: 25px;
+  margin-top: 25px;
+  min-height: 25px;
+}
+
+.image-generation-form-body label {
+  margin-bottom: 10px;
+}
+
+.image-generation-form-body textarea {
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #1e1e1e;
+  background: #d9d9d9;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 250px;
+  font-family: Poppins;
+}
+
+.image-generation-button-form {
+  width: 100px;
+  height: 40px;
+  padding: 10px;
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: #c2ac38;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-weight: 500;
+  border-style: none;
+}
 /* dice roller css */
 
 .dice-roller {
@@ -1175,13 +1344,6 @@ dialog {
   border: none;
   margin-top: 20px;
 }
-
-/* body {
-  background-image: url("../../assets/images/Loot-Manager-Background.jpg");
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-} */
 
 * {
   margin: 0;
