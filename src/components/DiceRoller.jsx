@@ -72,12 +72,11 @@ const DiceRoller = () => {
       )}
       {result && (
         <div className="dice-results">
-          <h3>Result:</h3>
           <p>
             <strong>Rolls:</strong> {result.rolls.join(", ")}
           </p>
           <p>
-            <strong>Total:</strong> {result.totalResult}
+            <strong>Total Results:</strong> {result.totalResult}
           </p>
         </div>
       )}

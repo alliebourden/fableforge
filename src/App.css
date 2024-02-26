@@ -1197,7 +1197,9 @@ dialog {
 }
 
 .dice-results {
-  max-width: 275px;
+  width: 250px;
+  margin-bottom: 10px;
+  font-size: 20px;
 }
 
 .gif-container {
