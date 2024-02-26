@@ -223,7 +223,7 @@ export default function Dashboard() {
             alt="Generated NPC Image"
             style={{ width: "100%", height: "auto" }}
           />
-          <div>
+          <div className="npc-image-modal-btns">
             <button onClick={() => setGeneratedImageURL(null)}>Close</button>
             <button onClick={downloadImage}>Download</button>
           </div>
