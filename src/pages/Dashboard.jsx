@@ -182,7 +182,7 @@ export default function Dashboard() {
                 </button>
                 {npcGenerated && (
                   <button
-                    className="image-generation-button"
+                    className="generate-npc-image-btn"
                     onClick={handleGenerateImage}
                   >
                     Generate NPC Image
@@ -194,14 +194,6 @@ export default function Dashboard() {
         </div>
 
         <div className="dashboard-content-right">
-          {/* <div className="image-generation-form-info">
-            <p>
-              Use the image generator to help create your fantasy world maps or
-              magic items. Enter your prompt below and see what you get!{" "}
-              <strong>Tip:</strong>
-              Try ending your prompt in TTRPG for the best results.
-            </p>
-          </div> */}
           <div className="image-form">
             <ImageForm />
           </div>
