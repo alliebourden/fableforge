@@ -14,4 +14,4 @@ I am currently working on my second module, creating a RPG campaign manager appl
 
 ## FableForge
 
-As an avid player of Dungeons and Dragons, I wanted to design a campaign manager that was easy to navigate and had the features I look for as a Dungeon Master or player. This project is a work in progress.
+Being a passionate Dungeons and Dragons enthusiast, I aimed to create an intuitive campaign manager with the essential features for both Dungeon Masters and players. Although it's currently a project in development, I intend to enhance the application's capabilities in my upcoming module.
