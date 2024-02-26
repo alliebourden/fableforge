@@ -1141,7 +1141,6 @@ dialog {
 }
 
 .dice-roller-content {
-  /* margin-left: 20px; */
   margin-top: 10px;
 }
 
@@ -1198,7 +1197,16 @@ dialog {
 }
 
 .dice-results {
-  max-width: 275px;
+  width: 250px;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.gif-container {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 /* loot manager css */
