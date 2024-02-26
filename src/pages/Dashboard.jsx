@@ -212,7 +212,12 @@ export default function Dashboard() {
             onChange={handleApiKeyInputChange}
             onKeyPress={handleApiKeyInputKeyPress}
           />
-          <button onClick={handleApiKeySubmission}>Submit</button>
+          <button
+            className="submit-api-button"
+            onClick={handleApiKeySubmission}
+          >
+            Submit
+          </button>
         </dialog>
       )}
       {generatedImageURL && (

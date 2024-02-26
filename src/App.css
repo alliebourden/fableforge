@@ -1084,6 +1084,37 @@ dialog {
   border-style: none;
 }
 
+.submit-api-button {
+  width: 80px;
+  height: 40px;
+  margin: 10px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #c2ac38;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-style: none;
+}
+
+dialog input {
+  height: 25px;
+  border-radius: 5px 5px 0px 0px;
+  border-bottom: 1px solid #1e1e1e;
+  background: #d9d9d9;
+
+  border-top: none;
+  border-left: none;
+  border-right: none;
+}
+
 /* map generation */
 
 .image-form {

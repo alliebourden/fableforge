@@ -118,7 +118,12 @@ const ImageForm = () => {
             onChange={(e) => setApiKey(e.target.value)}
             onKeyPress={handleApiKeyInputKeyPress}
           />
-          <button onClick={handleApiKeySubmission}>Submit</button>
+          <button
+            className="submit-api-button"
+            onClick={handleApiKeySubmission}
+          >
+            Submit
+          </button>
         </dialog>
       )}
 
