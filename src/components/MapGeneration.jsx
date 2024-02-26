@@ -11,13 +11,14 @@ async function generateMapImage(apiKey, prompt) {
       apiKey: apiKey,
       dangerouslyAllowBrowser: true,
     });
+    const promptArray = Array.isArray(prompt) ? prompt : [prompt];
 
-    const ttrpg = ", TTRPG";
-    const addTTRPG = prompt.join(" ") + ttrpg;
+    const addTTRPG = ", TTRPG";
+    const promptString = promptArray.join(" ") + " " + addTTRPG;
 
     const image = await openai.images.generate({
       model: "dall-e-3",
-      prompt: addTTRPG,
+      prompt: promptString,
       size: "1024x1024",
     });
 
