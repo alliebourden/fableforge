@@ -1,19 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 
 const DiceRoller = () => {
   const [diceType, setDiceType] = useState(20);
   const [numDice, setNumDice] = useState(1);
   const [result, setResult] = useState(null);
+  const [showGif, setShowGif] = useState(false);
 
   const rollDice = () => {
-    const rolls = Array.from(
-      { length: numDice },
-      () => Math.floor(Math.random() * diceType) + 1
-    );
+    setShowGif(true);
+    const gifURL =
+      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmgybmZ2N3BwMXBpbjB1czFxOHBxMnl2dGNtdXE2a3NqMXVocHFraCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oriNPdeu2W1aelciY/giphy.gif";
+    const gifDuration = 1440;
 
-    const totalResult = rolls.reduce((sum, roll) => sum + roll, 0);
+    setTimeout(() => {
+      setShowGif(false);
 
-    setResult({ rolls, totalResult });
+      const rolls = Array.from(
+        { length: numDice },
+        () => Math.floor(Math.random() * diceType) + 1
+      );
+
+      const totalResult = rolls.reduce((sum, roll) => sum + roll, 0);
+
+      setResult({ rolls, totalResult });
+    }, gifDuration);
   };
 
   return (
@@ -55,6 +65,11 @@ const DiceRoller = () => {
           </button>
         </div>
       </div>
+      {showGif && (
+        <div className="gif-container">
+          <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmgybmZ2N3BwMXBpbjB1czFxOHBxMnl2dGNtdXE2a3NqMXVocHFraCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oriNPdeu2W1aelciY/giphy.gif" />
+        </div>
+      )}
       {result && (
         <div className="dice-results">
           <h3>Result:</h3>
