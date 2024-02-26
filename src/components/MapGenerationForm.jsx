@@ -75,10 +75,22 @@ const ImageForm = () => {
 
   useEffect(() => {
     const textarea = document.getElementById("prompt");
+
+    const handleEscKey = (e) => {
+      if (e.key === "Escape" || e.keyCode === 27) {
+        setShowApiKeyPrompt(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscKey);
+
     if (textarea) {
       textarea.style.height = "auto";
       textarea.style.height = textarea.scrollHeight + "px";
     }
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+    };
   }, [promptText]);
 
   return (

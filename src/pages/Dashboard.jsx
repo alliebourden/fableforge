@@ -128,10 +128,22 @@ export default function Dashboard() {
   };
 
   useEffect(() => {
+    const handleEscKey = (e) => {
+      if (e.key === "Escape" || e.keyCode === 27) {
+        setShowApiKeyPrompt(false);
+      }
+    };
+
+    document.addEventListener("keydown", handleEscKey);
+
     if (chatHistoryRef.current) {
       chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
     }
     console.log("Generated Image URL:", generatedImageURL);
+
+    return () => {
+      document.removeEventListener("keydown", handleEscKey);
+    };
   }, [chatHistory, generatedImageURL]);
 
   const downloadImage = () => {
@@ -204,7 +216,7 @@ export default function Dashboard() {
       </div>
 
       {showApiKeyPrompt && (
-        <dialog open>
+        <dialog open className="api-prompt">
           <p>Please enter your OpenAI API key:</p>
           <input
             type="text"
