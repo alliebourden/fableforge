@@ -9,10 +9,68 @@ const LootManager = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [note, setNote] = useState("");
   const inputRef = useRef(null);
+  const [selectedItemIndex, setSelectedItemIndex] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
-    if (newItemIndex) {
-      const [category, itemIndex] = newItemIndex.split("/");
+    Promise.all([
+      fetch("https://www.dnd5eapi.co/api/magic-items").then((response) =>
+        response.json()
+      ),
+      fetch("https://www.dnd5eapi.co/api/equipment").then((response) =>
+        response.json()
+      ),
+    ])
+      .then(([magicItemsData, equipmentData]) => {
+        if (!magicItemsData.results || !equipmentData.results) {
+          throw new Error("Invalid API response format");
+        }
+
+        const magicItems = magicItemsData.results.map((item) => ({
+          index: `magic-items/${item.index}`,
+          name: item.name,
+        }));
+
+        const equipment = equipmentData.results.map((item) => ({
+          index: `equipment/${item.index}`,
+          name: item.name,
+        }));
+
+        setAvailableItems([...magicItems, ...equipment]);
+      })
+      .catch((error) => console.error("Error fetching items:", error));
+  }, []);
+
+  const addLootItem = () => {
+    if (selectedItemIndex) {
+      const newItem = { index: selectedItemIndex, name: newItemIndex, note };
+      setLootItems((prevItems) => [...prevItems, newItem]);
+      setNewItemIndex("");
+      setSelectedItemIndex("");
+      setNote("");
+    }
+  };
+
+  const handleInputChange = (value) => {
+    setNewItemIndex(value);
+    const filteredItems = availableItems.filter(
+      (item) =>
+        item.name.toLowerCase().includes(value.toLowerCase()) ||
+        item.index.toLowerCase().includes(value.toLowerCase())
+    );
+    setPredictions(filteredItems);
+  };
+
+  const handlePredictionClick = (index) => {
+    const selectedPrediction = predictions[index];
+    setNewItemIndex(selectedPrediction.name);
+    setSelectedItemIndex(selectedPrediction.index);
+    setPredictions([]);
+  };
+
+  const openModal = (item) => {
+    if (!item.desc) {
+      const [category, itemIndex] = item.index.split("/");
       let apiUrl = "";
 
       if (category === "magic-items" || category === "equipment") {
@@ -39,96 +97,35 @@ const LootManager = () => {
                 ? data.desc.join("\n")
                 : data.desc),
           });
+          setIsModalOpen(true);
         })
         .catch((error) =>
-          console.error(`Error fetching details for ${newItemIndex}:`, error)
+          console.error(`Error fetching details for ${item.index}:`, error)
         );
-    }
-  }, [newItemIndex]);
-
-  useEffect(() => {
-    fetch("https://www.dnd5eapi.co/api/magic-items")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (!data || !data.results) {
-          throw new Error("Invalid API response format");
-        }
-
-        const magicItems = data.results.map((item) => ({
-          index: `magic-items/${item.index}`,
-          name: item.name,
-        }));
-
-        setAvailableItems(magicItems);
-      })
-      .catch((error) => console.error("Error fetching magic items:", error));
-
-    fetch("https://www.dnd5eapi.co/api/equipment")
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (!data || !data.results) {
-          throw new Error("Invalid API response format");
-        }
-
-        const equipment = data.results.map((item) => ({
-          index: `equipment/${item.index}`,
-          name: item.name,
-        }));
-
-        setAvailableItems((prevItems) => [...prevItems, ...equipment]);
-      })
-      .catch((error) => console.error("Error fetching equipment:", error));
-  }, []);
-
-  const addLootItem = () => {
-    console.log("Note:", note);
-    if (selectedItem) {
-      const newItem = { ...selectedItem, note };
-      setLootItems([...lootItems, newItem]);
-      setNewItemIndex("");
-      setSelectedItem(null);
-      setNote("");
-    }
-  };
-
-  const handleInputChange = (value) => {
-    setNewItemIndex(value);
-    if (value) {
-      const filteredItems = availableItems.filter(
-        (item) =>
-          item.name.toLowerCase().includes(value.toLowerCase()) ||
-          item.index.toLowerCase().includes(value.toLowerCase())
-      );
-      setPredictions(filteredItems);
     } else {
-      setPredictions([]);
+      setSelectedItem(item);
+      setIsModalOpen(true);
     }
-  };
-
-  const handlePredictionClick = (index) => {
-    const selectedPrediction = predictions[index];
-    inputRef.current.value = selectedPrediction.name;
-    setNewItemIndex(selectedPrediction.index);
-    setPredictions([]);
-  };
-
-  const openModal = (item) => {
-    setSelectedItem(item);
-    setIsModalOpen(true);
   };
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleSort = () => {
+    setSortOrder((prevSortOrder) => (prevSortOrder === "asc" ? "desc" : "asc"));
+    setLootItems((prevItems) =>
+      [...prevItems].sort((a, b) => {
+        const comparison = a.name.localeCompare(b.name);
+        return sortOrder === "asc" ? comparison : -comparison;
+      })
+    );
+  };
+
+  const removeItem = (indexToRemove) => {
+    setLootItems((prevItems) =>
+      prevItems.filter((_, index) => index !== indexToRemove)
+    );
   };
 
   return (
@@ -183,18 +180,28 @@ const LootManager = () => {
         <table className="item-table">
           <thead>
             <tr>
-              <th className="item-name">Item</th>
+              <th className="item-name" onClick={handleSort}>
+                Item
+                {sortOrder === "asc" ? " ▲" : " ▼"}
+              </th>
               <th className="item-note">Note</th>
             </tr>
           </thead>
           <tbody>
             {lootItems.map((item, index) => (
-              <tr
-                key={index}
-                onClick={() => openModal(item)}
-                className="loot-item"
-              >
-                <td>{item.name}</td>
+              <tr key={index} className="loot-item">
+                <td onClick={() => openModal(item)}>
+                  {item.name}
+                  <span
+                    className="remove-icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeItem(index);
+                    }}
+                  >
+                    &#10006;
+                  </span>
+                </td>
                 <td>{item.note}</td>
               </tr>
             ))}
