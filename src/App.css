@@ -1413,6 +1413,12 @@ dialog input {
   width: 375px;
 }
 
+.item-name:hover {
+  color: #c2ac38;
+  cursor: pointer;
+  transition: ease-in-out 0.3s;
+}
+
 .item-note {
   width: 375px;
 }
