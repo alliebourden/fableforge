@@ -1414,9 +1414,18 @@ dialog input {
 }
 
 .item-name:hover {
-  color: #c2ac38;
-  cursor: pointer;
   transition: ease-in-out 0.3s;
+}
+
+.remove-icon {
+  display: none;
+  cursor: pointer;
+  margin-left: 10px;
+  color: #132730;
+}
+
+.loot-item:hover .remove-icon {
+  display: inline;
 }
 
 .item-note {

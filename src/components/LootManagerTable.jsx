@@ -122,6 +122,12 @@ const LootManager = () => {
     );
   };
 
+  const removeItem = (indexToRemove) => {
+    setLootItems((prevItems) =>
+      prevItems.filter((_, index) => index !== indexToRemove)
+    );
+  };
+
   return (
     <div className="loot-manager-table">
       <div className="loot-manager-top">
@@ -183,12 +189,19 @@ const LootManager = () => {
           </thead>
           <tbody>
             {lootItems.map((item, index) => (
-              <tr
-                key={index}
-                onClick={() => openModal(item)}
-                className="loot-item"
-              >
-                <td>{item.name}</td>
+              <tr key={index} className="loot-item">
+                <td onClick={() => openModal(item)}>
+                  {item.name}
+                  <span
+                    className="remove-icon"
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      removeItem(index);
+                    }}
+                  >
+                    &#10006;
+                  </span>
+                </td>
                 <td>{item.note}</td>
               </tr>
             ))}
