@@ -10,6 +10,7 @@ const LootManager = () => {
   const [note, setNote] = useState("");
   const inputRef = useRef(null);
   const [selectedItemIndex, setSelectedItemIndex] = useState("");
+  const [sortOrder, setSortOrder] = useState("asc");
 
   useEffect(() => {
     Promise.all([
@@ -41,7 +42,6 @@ const LootManager = () => {
   }, []);
 
   const addLootItem = () => {
-    console.log("Note:", note);
     if (selectedItemIndex) {
       const newItem = { index: selectedItemIndex, name: newItemIndex, note };
       setLootItems((prevItems) => [...prevItems, newItem]);
@@ -107,8 +107,19 @@ const LootManager = () => {
       setIsModalOpen(true);
     }
   };
+
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const handleSort = () => {
+    setSortOrder((prevSortOrder) => (prevSortOrder === "asc" ? "desc" : "asc"));
+    setLootItems((prevItems) =>
+      [...prevItems].sort((a, b) => {
+        const comparison = a.name.localeCompare(b.name);
+        return sortOrder === "asc" ? comparison : -comparison;
+      })
+    );
   };
 
   return (
@@ -163,7 +174,10 @@ const LootManager = () => {
         <table className="item-table">
           <thead>
             <tr>
-              <th className="item-name">Item</th>
+              <th className="item-name" onClick={handleSort}>
+                Item
+                {sortOrder === "asc" ? " ▲" : " ▼"}
+              </th>
               <th className="item-note">Note</th>
             </tr>
           </thead>
