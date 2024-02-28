@@ -31,7 +31,7 @@ const SessionList = () => {
     <div className="sessions">
       <div className="recent-session">
         <div className="last-session-top">
-          <p>Last Session</p>
+          <p>Session Details</p>
         </div>
         {selectedSession && (
           <div className="last-session-body">
