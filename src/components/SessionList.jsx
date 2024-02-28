@@ -1,5 +1,5 @@
 import { SessionContext } from "./SessionContext";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import NextSessionIcon from "../../assets/icons/NextSessionIcon.svg";
@@ -9,6 +9,7 @@ const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
   const navigate = useNavigate();
   const modalRef = useRef(null);
+  const [selectedSession, setSelectedSession] = useState(null);
 
   const formatSelectedDate = (date) => {
     return new Date(date).toLocaleDateString("en-US");
@@ -21,29 +22,33 @@ const SessionList = () => {
   const closeModal = () => {
     modalRef.current.close();
   };
+
+  const handleSessionClick = (index) => {
+    setSelectedSession(sessions[index]);
+  };
+
   return (
     <div className="sessions">
       <div className="recent-session">
         <div className="last-session-top">
           <p>Last Session</p>
         </div>
-        {sessions.length > 0 && (
+        {selectedSession && (
           <div className="last-session-body">
             <div className="session-subtitle">
               <div>
                 <div className="last-session-top-date">
-                  {sessions[sessions.length - 1].date}{" "}
+                  {selectedSession.date}{" "}
                 </div>
-                <strong>{sessions[sessions.length - 1].header}</strong>
+                <strong>{selectedSession.header}</strong>
               </div>{" "}
-              {sessions[sessions.length - 1].tags && (
+              {selectedSession.tags && (
                 <p className="last-session-tags">
-                  <strong>Tags:</strong>{" "}
-                  {sessions[sessions.length - 1].tags.join(", ")}
+                  <strong>Tags:</strong> {selectedSession.tags.join(", ")}
                 </p>
               )}
             </div>
-            <p className="body-text">{sessions[sessions.length - 1].body}</p>
+            <p className="body-text">{selectedSession.body}</p>
           </div>
         )}
       </div>
@@ -70,7 +75,11 @@ const SessionList = () => {
           <div className="list-of-sessions">
             {sessions &&
               sessions.map((session, index) => (
-                <div key={index} className="session-list-body">
+                <div
+                  key={index}
+                  className="session-list-body"
+                  onClick={() => handleSessionClick(index)}
+                >
                   <p>
                     <strong>{session.header}</strong> - {session.date}{" "}
                   </p>
