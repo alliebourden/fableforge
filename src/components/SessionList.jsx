@@ -4,23 +4,30 @@ import { useNavigate } from "react-router-dom";
 import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import NextSessionIcon from "../../assets/icons/NextSessionIcon.svg";
 import SessionEditor from "./SessionEditor";
+import NextSessionCalendar from "./NextSessionCalendar";
 
 const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
   const navigate = useNavigate();
-  const modalRef = useRef(null);
+  const calendarModal = useRef(null);
+  const editorModal = useRef(null);
   const [selectedSession, setSelectedSession] = useState(null);
 
   const formatSelectedDate = (date) => {
     return new Date(date).toLocaleDateString("en-US");
   };
 
-  const openModal = () => {
-    modalRef.current.showModal();
+  const openCalendarModal = () => {
+    calendarModal.current.showModal();
+  };
+
+  const openEditorModal = () => {
+    editorModal.current.showModal();
   };
 
   const closeModal = () => {
-    modalRef.current.close();
+    calendarModal.current.close();
+    editorModal.current.close();
   };
 
   const handleSessionClick = (index) => {
@@ -60,12 +67,20 @@ const SessionList = () => {
               <p>Next Session</p>
             </div>
           </div>
-          <p className="session-date-display">
-            <strong>Next Session Date:</strong>
-            <span className="selected-date-display">
-              {selectedDates.map(formatSelectedDate).join(", ")}
-            </span>
-          </p>
+          <div className="next-session-body">
+            <p className="session-date-display">
+              <strong>Next Session Date:</strong>
+              <span className="selected-date-display">
+                {selectedDates.map(formatSelectedDate).join(", ")}
+              </span>
+            </p>
+            <button className="next-session-button" onClick={openCalendarModal}>
+              ADD NEXT SESSION
+            </button>
+            <dialog className="modal" ref={calendarModal}>
+              <NextSessionCalendar closeModal={closeModal} />
+            </dialog>
+          </div>
         </div>
         <div className="all-sessions">
           <div className="all-sessions-top">
@@ -87,10 +102,10 @@ const SessionList = () => {
               ))}
           </div>
           <div className="add-new-btn-container">
-            <button className="add-new-btn" onClick={openModal}>
+            <button className="add-new-btn" onClick={openEditorModal}>
               ADD NEW
             </button>
-            <dialog className="modal" ref={modalRef}>
+            <dialog className="modal" ref={editorModal}>
               <SessionEditor closeModal={closeModal} />
             </dialog>
           </div>
