@@ -3,10 +3,8 @@ import Select from "react-select";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
-import Calendar from "react-calendar";
 import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
 import CategoryTagIcon from "../../assets/icons/CategoryTagIcon.svg";
-import NextSessionIconDark from "../../assets/icons/NextSessionIconDark.svg";
 
 const categoryStyle = {
   container: {
@@ -19,7 +17,6 @@ const categoryStyle = {
     display: "flex",
     flexDirection: "column",
     alignItems: "center",
-    marginTop: "25px",
   },
   titleContainer: {
     borderRadius: "10px 10px 0px 0px",
@@ -93,8 +90,7 @@ const tags = [
 ];
 
 const SessionEditor = ({ closeModal }) => {
-  const { sessions, handleAddSession, selectedDates, setSelectedDates } =
-    useContext(SessionContext);
+  const { sessions, handleAddSession } = useContext(SessionContext);
   const [selectedTags, setSelectedTags] = useState([]);
   const { register, handleSubmit, reset } = useForm();
 
@@ -106,7 +102,6 @@ const SessionEditor = ({ closeModal }) => {
     const sessionData = {
       ...data,
       tags: selectedTags.map((tag) => tag.label),
-      dates: selectedDates.map((date) => date.toLocaleDateString()),
     };
     handleAddSession(sessionData);
 
@@ -114,36 +109,10 @@ const SessionEditor = ({ closeModal }) => {
     reset();
   };
 
-  const handleDateChange = (date) => {
-    setSelectedDates([date]);
-  };
-
   return (
     <div className="session-editor-content">
       {/* {JSON.stringify(sessions)} */}
       <div>
-        <div className="next-session-calendar-title">
-          <img src={NextSessionIconDark} height={20} />
-          <p className="next-session-calendar">NEXT SESSION CALENDAR</p>
-        </div>
-        <div className="session-calendar">
-          <Calendar
-            onChange={handleDateChange}
-            value={selectedDates}
-            selectRange={false}
-            onClickDay={(date) => handleDateChange(date)}
-          />
-          {/* <div>
-            <p>
-              <strong>Next Session:</strong>
-            </p>
-            <ul>
-              {selectedDates.map((date, index) => (
-                <li key={index}>{date.toLocaleDateString()}</li>
-              ))}
-            </ul>
-          </div> */}
-        </div>
         <div style={categoryStyle.container}>
           <div style={categoryStyle.titleContainer} className="category-top">
             <img src={CategoryTagIcon} height={20} />

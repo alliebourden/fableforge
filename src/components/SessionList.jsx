@@ -1,49 +1,61 @@
 import { SessionContext } from "./SessionContext";
-import { useContext, useRef } from "react";
+import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import NextSessionIcon from "../../assets/icons/NextSessionIcon.svg";
 import SessionEditor from "./SessionEditor";
+import NextSessionCalendar from "./NextSessionCalendar";
 
 const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
   const navigate = useNavigate();
-  const modalRef = useRef(null);
+  const calendarModal = useRef(null);
+  const editorModal = useRef(null);
+  const [selectedSession, setSelectedSession] = useState(null);
 
   const formatSelectedDate = (date) => {
     return new Date(date).toLocaleDateString("en-US");
   };
 
-  const openModal = () => {
-    modalRef.current.showModal();
+  const openCalendarModal = () => {
+    calendarModal.current.showModal();
+  };
+
+  const openEditorModal = () => {
+    editorModal.current.showModal();
   };
 
   const closeModal = () => {
-    modalRef.current.close();
+    calendarModal.current.close();
+    editorModal.current.close();
   };
+
+  const handleSessionClick = (index) => {
+    setSelectedSession(sessions[index]);
+  };
+
   return (
     <div className="sessions">
       <div className="recent-session">
         <div className="last-session-top">
-          <p>Last Session</p>
+          <p>Session Details</p>
         </div>
-        {sessions.length > 0 && (
+        {selectedSession && (
           <div className="last-session-body">
             <div className="session-subtitle">
               <div>
                 <div className="last-session-top-date">
-                  {sessions[sessions.length - 1].date}{" "}
+                  {selectedSession.date}{" "}
                 </div>
-                <strong>{sessions[sessions.length - 1].header}</strong>
+                <strong>{selectedSession.header}</strong>
               </div>{" "}
-              {sessions[sessions.length - 1].tags && (
+              {selectedSession.tags && (
                 <p className="last-session-tags">
-                  <strong>Tags:</strong>{" "}
-                  {sessions[sessions.length - 1].tags.join(", ")}
+                  <strong>Tags:</strong> {selectedSession.tags.join(", ")}
                 </p>
               )}
             </div>
-            <p className="body-text">{sessions[sessions.length - 1].body}</p>
+            <p className="body-text">{selectedSession.body}</p>
           </div>
         )}
       </div>
@@ -55,12 +67,20 @@ const SessionList = () => {
               <p>Next Session</p>
             </div>
           </div>
-          <p className="session-date-display">
-            <strong>Next Session Date:</strong>
-            <span className="selected-date-display">
-              {selectedDates.map(formatSelectedDate).join(", ")}
-            </span>
-          </p>
+          <div className="next-session-body">
+            <p className="session-date-display">
+              <strong>Next Session Date:</strong>
+              <span className="selected-date-display">
+                {selectedDates.map(formatSelectedDate).join(", ")}
+              </span>
+            </p>
+            <button className="next-session-button" onClick={openCalendarModal}>
+              ADD NEXT SESSION
+            </button>
+            <dialog className="modal" ref={calendarModal}>
+              <NextSessionCalendar closeModal={closeModal} />
+            </dialog>
+          </div>
         </div>
         <div className="all-sessions">
           <div className="all-sessions-top">
@@ -70,7 +90,11 @@ const SessionList = () => {
           <div className="list-of-sessions">
             {sessions &&
               sessions.map((session, index) => (
-                <div key={index} className="session-list-body">
+                <div
+                  key={index}
+                  className="session-list-body"
+                  onClick={() => handleSessionClick(index)}
+                >
                   <p>
                     <strong>{session.header}</strong> - {session.date}{" "}
                   </p>
@@ -78,10 +102,10 @@ const SessionList = () => {
               ))}
           </div>
           <div className="add-new-btn-container">
-            <button className="add-new-btn" onClick={openModal}>
+            <button className="add-new-btn" onClick={openEditorModal}>
               ADD NEW
             </button>
-            <dialog className="modal" ref={modalRef}>
+            <dialog className="modal" ref={editorModal}>
               <SessionEditor closeModal={closeModal} />
             </dialog>
           </div>
