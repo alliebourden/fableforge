@@ -6,6 +6,7 @@ import SessionList from "./components/SessionList";
 import QuestTracker from "./components/QuestTracker";
 import QuestTrackerForm from "./components/QuestTrackerForm";
 import LootManager from "./components/LootManagerTable";
+import CampaignSummary from "./components/CampaignSummary";
 
 const router = createBrowserRouter([
   {
@@ -13,7 +14,14 @@ const router = createBrowserRouter([
     element: <Layout />,
     children: [
       { path: "/", element: <Dashboard /> },
-      { path: "/campaign-summary", element: <div></div> },
+      {
+        path: "/campaign-summary",
+        element: (
+          <div>
+            <CampaignSummary />
+          </div>
+        ),
+      },
       {
         path: "/quest-tracker",
         element: (
