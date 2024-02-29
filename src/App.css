@@ -249,6 +249,10 @@
   cursor: pointer;
 }
 
+.list-of-sessions {
+  min-height: 300px;
+}
+
 /* next session calendar */
 
 .next-session {
@@ -316,10 +320,9 @@
 .next-session-button {
   width: 90px;
   height: 40px;
-  margin: 10px;
+  margin: 5px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   flex-shrink: 0;
   border-radius: 10px;
   background: #c2ac38;
@@ -331,6 +334,12 @@
   font-weight: 500;
   line-height: normal;
   border-style: none;
+}
+
+.next-session-button:hover {
+  background: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .next-session-body {

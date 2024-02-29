@@ -75,7 +75,7 @@ const SessionList = () => {
               </span>
             </p>
             <button className="next-session-button" onClick={openCalendarModal}>
-              Add Next Session
+              ADD NEXT SESSION
             </button>
             <dialog className="modal" ref={calendarModal}>
               <NextSessionCalendar closeModal={closeModal} />
