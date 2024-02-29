@@ -133,16 +133,6 @@ const SessionEditor = ({ closeModal }) => {
             selectRange={false}
             onClickDay={(date) => handleDateChange(date)}
           />
-          {/* <div>
-            <p>
-              <strong>Next Session:</strong>
-            </p>
-            <ul>
-              {selectedDates.map((date, index) => (
-                <li key={index}>{date.toLocaleDateString()}</li>
-              ))}
-            </ul>
-          </div> */}
         </div>
         <div style={categoryStyle.container}>
           <div style={categoryStyle.titleContainer} className="category-top">
