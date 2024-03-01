@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, useRef } from "react";
 import CampaignSummarizer from "./CampaignSummarizer";
 import { SessionContext } from "./SessionContext";
 
@@ -8,34 +8,27 @@ export default function CampaignSummary() {
   const [summaryResponse, setSummaryResponse] = useState(null);
   const [loading, setLoading] = useState(false);
 
-  const handleApiKeySubmission = async () => {
-    if (!apiKey) {
-      console.error("API key cannot be empty");
-      return;
-    }
+  const generateSummarybtn = useRef(null);
 
+  const handleApiKeySubmission = () => {
     console.log("Current API Key:", apiKey);
-
-    try {
-      setLoading(true);
-      const response = await CampaignSummarizer(sessions, apiKey);
-      setSummaryResponse(response);
-    } catch (error) {
-      console.error("Error fetching campaign summary:", error);
-    } finally {
-      setLoading(false);
-      setShowApiKeyPrompt(false);
+    setApiKey(apiKey);
+    console.log("API Key saved:", apiKey);
+    setShowApiKeyPrompt(false);
+    if (generateSummarybtn.current) {
+      generateSummarybtn.current.click();
     }
   };
 
   const handleGenerateSummary = async () => {
     if (!apiKey) {
-      console.error("API key is missing");
+      setShowApiKeyPrompt(true);
       return;
     }
 
     try {
       setLoading(true);
+      console.log("Sessions:", sessions);
       const response = await CampaignSummarizer(sessions, apiKey);
       setSummaryResponse(response);
     } catch (error) {
@@ -81,7 +74,10 @@ export default function CampaignSummary() {
         </button>
         {loading && <p>Loading...</p>}
         {summaryResponse && (
-          <pre>{JSON.stringify(summaryResponse, null, 2)}</pre>
+          <div>
+            <h3>Generated Summary:</h3>
+            <p>{summaryResponse}</p>
+          </div>
         )}
       </div>
     </div>

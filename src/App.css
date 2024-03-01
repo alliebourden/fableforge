@@ -1506,6 +1506,11 @@ dialog input {
   margin-top: 20px;
 }
 
+.campaign-summary-content {
+  margin-left: 275px;
+  margin-top: 125px;
+}
+
 * {
   margin: 0;
 }
