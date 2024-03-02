@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import DiceIcon from "../../assets/icons/DiceIcon.svg";
 
 const DiceRoller = () => {
   const [diceType, setDiceType] = useState(20);
@@ -29,6 +30,7 @@ const DiceRoller = () => {
   return (
     <div className="dice-roller-container">
       <div className="dice-roller-top">
+        <img src={DiceIcon} height={20} />
         <p>Dice Roller</p>
       </div>
       <div className="dice-roller-content">

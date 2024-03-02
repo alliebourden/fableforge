@@ -5,6 +5,7 @@ import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import NextSessionIcon from "../../assets/icons/NextSessionIcon.svg";
 import SessionEditor from "./SessionEditor";
 import NextSessionCalendar from "./NextSessionCalendar";
+import SessionIconDetails from "../../assets/icons/SessionIcon.svg";
 
 const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
@@ -38,6 +39,7 @@ const SessionList = () => {
     <div className="sessions">
       <div className="recent-session">
         <div className="last-session-top">
+          <img src={SessionIconDetails} height={20} />
           <p>Session Details</p>
         </div>
         {selectedSession && (

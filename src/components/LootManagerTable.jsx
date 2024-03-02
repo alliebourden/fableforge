@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from "react";
+import LootManagementIcon from "../../assets/icons/LootManagementIcon.svg";
 
 const LootManager = () => {
   const [lootItems, setLootItems] = useState([]);
@@ -131,6 +132,7 @@ const LootManager = () => {
   return (
     <div className="loot-manager-table">
       <div className="loot-manager-top">
+        <img src={LootManagementIcon} height={20} />
         <p>Loot Manager</p>
       </div>
       <div className="loot-manager-add-new">

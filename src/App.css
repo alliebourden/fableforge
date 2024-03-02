@@ -110,7 +110,6 @@ html {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
 }
 
 .last-session-top p {
@@ -118,7 +117,11 @@ html {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.last-session-top img {
+  margin-left: 25px;
 }
 
 .last-session-body {
@@ -719,7 +722,6 @@ dialog {
   background: #fff;
   box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
   display: flex;
-  /* margin-top: 25px; */
   flex-direction: column;
   align-items: center;
 }
@@ -760,7 +762,6 @@ dialog {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
 }
 
 .quest-tracker-top p {
@@ -768,7 +769,11 @@ dialog {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.quest-tracker-top img {
+  margin-left: 25px;
 }
 
 .quest-tracker-main-contain {
@@ -950,7 +955,7 @@ dialog {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
+
   width: 100%;
 }
 
@@ -959,7 +964,11 @@ dialog {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.chat-container img {
+  margin-left: 25px;
 }
 
 .chat-history {
@@ -1208,7 +1217,6 @@ dialog input {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
   font-size: 1.5rem;
   font-style: italic;
   font-weight: 500;
@@ -1220,7 +1228,11 @@ dialog input {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.image-generation-form-top img {
+  margin-left: 25px;
 }
 
 .image-generation-form-body {
@@ -1292,7 +1304,6 @@ dialog input {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
   font-size: 1.25rem;
   font-style: italic;
   font-weight: 500;
@@ -1303,7 +1314,11 @@ dialog input {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.dice-roller-top img {
+  margin-left: 25px;
 }
 
 .dice-roller-content {
@@ -1411,7 +1426,6 @@ dialog input {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
   font-size: 20px;
   font-style: italic;
   font-weight: 500;
@@ -1423,7 +1437,11 @@ dialog input {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.loot-manager-top img {
+  margin-left: 25px;
 }
 
 .predictions {
