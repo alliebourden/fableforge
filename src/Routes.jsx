@@ -17,7 +17,7 @@ export const paths = {
 
 const router = createBrowserRouter([
   {
-    path: prefix,
+    path: "/fableforge",
     element: <Dashboard />,
   },
   // children: [
