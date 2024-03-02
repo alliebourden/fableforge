@@ -1,3 +1,9 @@
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
 /* top bar css */
 
 .top-bar {
@@ -862,42 +868,81 @@ dialog {
 
 /* dashboard css */
 
+.dashboard {
+  width: 80%;
+}
+
 .dashboard-content {
   display: flex;
-
   margin-left: 275px;
   margin-top: 125px;
   margin-bottom: 25px;
+  width: 100%;
+}
+
+.dashboard-content-left,
+.dashboard-content-right {
+  flex: 1;
+  overflow: hidden;
+}
+
+.dashboard-content-right {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+@media (max-width: 975px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .dashboard-content-left {
+    width: 75%;
+  }
+  .dashboard-content-right {
+    width: 75%;
+    margin-top: 20px;
+  }
+
+  .image-form {
+    margin: 0 !important;
+  }
+
+  .image-form-container {
+    width: 100%;
+  }
+
+  .image-generation-form {
+    width: 99% !important;
+    height: 100%;
+  }
+
+  .dice-roller {
+    margin-left: 0 !important;
+    margin-top: 20px;
+  }
+
+  .dice-roller-container {
+    width: 99% !important;
+  }
 }
 
 /* npc generator css */
-
-.npc-generator-info {
-  width: 475px;
-  display: flex;
-  justify-content: center;
-}
-
-.npc-generator-info p {
-  font-size: 14px;
-  margin-bottom: 10px;
-  width: 450px;
-}
 
 .chat-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 475px;
   border: 3px solid #c2ac38;
   border-radius: 10px;
+  flex: 1;
 }
 
 .chat-container-top {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 475px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -906,10 +951,11 @@ dialog {
   background: #132730;
   color: #ffffff;
   justify-content: space-between;
+  width: 100%;
 }
 
 .chat-container-top p {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
@@ -923,12 +969,15 @@ dialog {
   height: 400px;
   overflow-y: auto;
   margin-bottom: 10px;
+  width: 100%;
 }
 
 .chat-message {
+  display: flex;
   margin-bottom: 5px;
   padding: 8px;
   border-radius: 5px;
+  width: 90%;
 }
 
 .user {
@@ -943,25 +992,18 @@ dialog {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+  width: 90%;
 }
 
 .user-input input {
-  width: 450px;
+  width: 100%;
   border-radius: 5px;
   max-height: 200px;
   font-family: Poppins;
 }
 
 .chat-message.user {
-  width: 425px;
   margin-top: 5px;
-  margin-right: 10px;
-}
-
-.chat-message.npc {
-  width: 425px;
-  margin-right: 10px;
 }
 
 .generate-npc-chat-button {
@@ -1145,8 +1187,8 @@ dialog input {
 }
 
 .image-generation-form {
-  width: 300px;
-  min-height: 195px;
+  width: 75%;
+  height: 100%;
   border: 3px solid #c2ac38;
   display: flex;
   flex-direction: column;
@@ -1154,24 +1196,11 @@ dialog input {
   border-radius: 10px;
 }
 
-.image-generation-form-info {
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  margin-left: 25px;
-  margin-bottom: 10px;
-}
-
-.image-generation-form-info p {
-  width: 250px;
-  font-size: 14px;
-}
-
 .image-generation-form-top {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 100%;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -1180,7 +1209,7 @@ dialog input {
   background: #132730;
   color: #ffffff;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 1.5rem;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
@@ -1197,10 +1226,11 @@ dialog input {
 .image-generation-form-body {
   display: flex;
   flex-direction: column;
-  align-self: start;
-  margin-left: 25px;
   margin-top: 25px;
   min-height: 25px;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-generation-form-body label {
@@ -1214,7 +1244,7 @@ dialog input {
   border-top: none;
   border-left: none;
   border-right: none;
-  width: 250px;
+  width: 100% !important;
   font-family: Poppins;
 }
 
@@ -1224,15 +1254,14 @@ dialog input {
   padding: 10px;
   margin: 8px;
   justify-content: center;
-  align-items: center;
   border-radius: 10px;
   background: #c2ac38;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: #fff;
   font-family: Poppins;
-  font-size: 14px;
   font-weight: 500;
   border-style: none;
+  display: flex;
 }
 
 /* dice roller css */
@@ -1242,8 +1271,8 @@ dialog input {
 }
 
 .dice-roller-container {
-  width: 300px;
-  min-height: 195px;
+  width: 75%;
+  height: 100%;
   border: 3px solid #c2ac38;
   display: flex;
   flex-direction: column;
@@ -1255,7 +1284,7 @@ dialog input {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 100%;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -1264,14 +1293,13 @@ dialog input {
   background: #132730;
   color: #ffffff;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
 }
 
 .dice-roller-top p {
-  font-size: 20px;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
@@ -1280,27 +1308,37 @@ dialog input {
 
 .dice-roller-content {
   margin-top: 10px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
 }
 
-.dice-roller-content select {
+.dice-type {
+  width: 100%;
+  display: flex;
+}
+
+.dice-type select {
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
   border-top: none;
   border-left: none;
   border-right: none;
-  margin-left: 57px;
-  width: 80px;
+  margin-left: 10px;
 }
 
-.dice-roller-content input {
+.number-of-dice {
+  width: 100%;
+}
+
+.number-of-dice input {
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
   border-top: none;
   border-left: none;
   border-right: none;
-  width: 80px;
   margin-left: 10px;
 }
 

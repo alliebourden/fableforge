@@ -32,32 +32,35 @@ const DiceRoller = () => {
         <p>Dice Roller</p>
       </div>
       <div className="dice-roller-content">
-        <label>
-          Dice Type:
-          <select
-            value={diceType}
-            onChange={(e) => setDiceType(Number(e.target.value))}
-            className="dice-select"
-          >
-            <option value={4}>4-sided</option>
-            <option value={6}>6-sided</option>
-            <option value={8}>8-sided</option>
-            <option value={10}>10-sided</option>
-            <option value={12}>12-sided</option>
-            <option value={20}>20-sided</option>
-            <option value={100}>100-sided</option>
-          </select>
-        </label>
-        <br />
-        <label>
-          Number of Dice:
-          <input
-            type="number"
-            min="1"
-            value={numDice}
-            onChange={(e) => setNumDice(Number(e.target.value))}
-          />
-        </label>
+        <div className="dice-type">
+          <label>
+            Dice Type:
+            <select
+              value={diceType}
+              onChange={(e) => setDiceType(Number(e.target.value))}
+              className="dice-select"
+            >
+              <option value={4}>4-sided</option>
+              <option value={6}>6-sided</option>
+              <option value={8}>8-sided</option>
+              <option value={10}>10-sided</option>
+              <option value={12}>12-sided</option>
+              <option value={20}>20-sided</option>
+              <option value={100}>100-sided</option>
+            </select>
+          </label>
+        </div>
+        <div className="number-of-dice">
+          <label>
+            # of Dice:
+            <input
+              type="number"
+              min="1"
+              value={numDice}
+              onChange={(e) => setNumDice(Number(e.target.value))}
+            />
+          </label>
+        </div>
 
         <div className="roll-dice-btn-container">
           <button onClick={rollDice} className="roll-dice-btn">

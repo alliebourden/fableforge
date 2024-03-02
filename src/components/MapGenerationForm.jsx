@@ -94,7 +94,7 @@ const ImageForm = () => {
   }, [promptText]);
 
   return (
-    <div>
+    <div className="image-form-container">
       <form onSubmit={handleSubmit(onSubmit)} className="image-generation-form">
         <div className="image-generation-form-top">
           <p>MAP GENERATION</p>
