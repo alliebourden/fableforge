@@ -16,7 +16,7 @@ export default function CampaignSummary() {
   const generateSummarybtn = useRef(null);
 
   useEffect(() => {
-    const storedSummary = localStorage.getItem("generatedSummary");
+    const storedSummary = sessionStorage.getItem("generatedSummary");
     if (storedSummary) {
       setGeneratedSummary(storedSummary);
     }
@@ -40,11 +40,9 @@ export default function CampaignSummary() {
 
     try {
       setLoading(true);
-      console.log("Sessions:", sessions);
       const response = await CampaignSummarizer(sessions, contextApiKey);
       setGeneratedSummary(response);
-
-      localStorage.setItem("generatedSummary", response);
+      sessionStorage.setItem("generatedSummary", response);
     } catch (error) {
       console.error("Error generating campaign summary:", error);
     } finally {
