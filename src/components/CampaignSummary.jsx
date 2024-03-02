@@ -75,7 +75,6 @@ export default function CampaignSummary() {
         {loading && <p>Loading...</p>}
         {summaryResponse && (
           <div>
-            <h3>Generated Summary:</h3>
             <p>{summaryResponse}</p>
           </div>
         )}
