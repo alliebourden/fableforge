@@ -5,6 +5,7 @@ import { SessionContext } from "../components/SessionContext";
 import NpcImageGeneration from "../components/NpcImageGeneration";
 import ImageForm from "../components/MapGenerationForm";
 import NpcIcon from "../../assets/icons/NpcIcon.svg";
+import Layout from "./Layout";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
@@ -160,6 +161,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
+      <Layout />
       <div className="dashboard-content">
         <div className="dashboard-content-left">
           <div className="chat-container">

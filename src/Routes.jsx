@@ -18,59 +18,58 @@ export const paths = {
 const router = createBrowserRouter([
   {
     path: prefix,
-    element: <Layout />,
-    children: [
-      { path: paths.dashboard, element: <Dashboard /> },
-      {
-        path: paths.campaignsummary,
-        element: (
-          <div>
-            <CampaignSummary />
-          </div>
-        ),
-      },
-      // {
-      //   path: "/fableforge/quest-tracker",
-      //   element: (
-      //     <div>
-      //       <QuestTracker />
-      //     </div>
-      //   ),
-      // },
-      // {
-      //   path: "/fableforge/loot-manager",
-      //   element: (
-      //     <div>
-      //       <LootManager />
-      //     </div>
-      //   ),
-      // },
-      // {
-      //   path: "/fableforge/session-editor",
-      //   element: (
-      //     <div>
-      //       <SessionEditor />
-      //     </div>
-      //   ),
-      // },
-      // {
-      //   path: "/fableforge/session-list",
-      //   element: (
-      //     <div>
-      //       <SessionList />
-      //     </div>
-      //   ),
-      // },
-      // {
-      //   path: "/fableforge/quest-tracker-form",
-      //   element: (
-      //     <div>
-      //       <QuestTrackerForm />
-      //     </div>
-      //   ),
-      // },
-    ],
+    element: <Dashboard />,
   },
+  // children: [
+  //   { path: paths.dashboard, element: <Dashboard /> },
+  //   {
+  //     path: paths.campaignsummary,
+  //     element: (
+  //       <div>
+  //         <CampaignSummary />
+  //       </div>
+  //     ),
+
+  // {
+  //   path: "/fableforge/quest-tracker",
+  //   element: (
+  //     <div>
+  //       <QuestTracker />
+  //     </div>
+  //   ),
+  // },
+  // {
+  //   path: "/fableforge/loot-manager",
+  //   element: (
+  //     <div>
+  //       <LootManager />
+  //     </div>
+  //   ),
+  // },
+  // {
+  //   path: "/fableforge/session-editor",
+  //   element: (
+  //     <div>
+  //       <SessionEditor />
+  //     </div>
+  //   ),
+  // },
+  // {
+  //   path: "/fableforge/session-list",
+  //   element: (
+  //     <div>
+  //       <SessionList />
+  //     </div>
+  //   ),
+  // },
+  // {
+  //   path: "/fableforge/quest-tracker-form",
+  //   element: (
+  //     <div>
+  //       <QuestTrackerForm />
+  //     </div>
+  //   ),
+  // },
 ]);
 
 export default router;
