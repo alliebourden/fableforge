@@ -892,6 +892,42 @@ dialog {
   height: 100%;
 }
 
+@media (max-width: 975px) {
+  .dashboard-content {
+    flex-direction: column;
+  }
+
+  .dashboard-content-left {
+    width: 75%;
+  }
+  .dashboard-content-right {
+    width: 75%;
+    margin-top: 20px;
+  }
+
+  .image-form {
+    margin: 0 !important;
+  }
+
+  .image-form-container {
+    width: 100%;
+  }
+
+  .image-generation-form {
+    width: 99% !important;
+    height: 100%;
+  }
+
+  .dice-roller {
+    margin-left: 0 !important;
+    margin-top: 20px;
+  }
+
+  .dice-roller-container {
+    width: 99% !important;
+  }
+}
+
 /* npc generator css */
 
 .chat-container {
