@@ -10,12 +10,12 @@ import CampaignSummary from "./components/CampaignSummary";
 
 const router = createBrowserRouter([
   {
-    path: "/",
+    path: "/fableforge",
     element: <Layout />,
     children: [
-      { path: "/", element: <Dashboard /> },
+      { path: "/fableforge", element: <Dashboard /> },
       {
-        path: "/campaign-summary",
+        path: "/fableforge/campaign-summary",
         element: (
           <div>
             <CampaignSummary />
@@ -23,7 +23,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/quest-tracker",
+        path: "/fableforge/quest-tracker",
         element: (
           <div>
             <QuestTracker />
@@ -31,7 +31,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/loot-manager",
+        path: "/fableforge/loot-manager",
         element: (
           <div>
             <LootManager />
@@ -39,7 +39,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "session-editor",
+        path: "/fableforge/session-editor",
         element: (
           <div>
             <SessionEditor />
@@ -47,7 +47,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "session-list",
+        path: "/fableforge/session-list",
         element: (
           <div>
             <SessionList />
@@ -55,7 +55,7 @@ const router = createBrowserRouter([
         ),
       },
       {
-        path: "/quest-tracker-form",
+        path: "/fableforge/quest-tracker-form",
         element: (
           <div>
             <QuestTrackerForm />
