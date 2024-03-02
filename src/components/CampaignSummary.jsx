@@ -1,19 +1,31 @@
 import React, { useState, useEffect, useContext, useRef } from "react";
 import CampaignSummarizer from "./CampaignSummarizer";
 import { SessionContext } from "./SessionContext";
+import CampaignIcon from "../../assets/icons/CampaignIcon.svg";
 
 export default function CampaignSummary() {
-  const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(true);
-  const { apiKey, setApiKey, sessions } = useContext(SessionContext);
-  const [summaryResponse, setSummaryResponse] = useState(null);
+  const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
+  const {
+    apiKey: contextApiKey,
+    setApiKey: setContextApiKey,
+    sessions,
+  } = useContext(SessionContext);
   const [loading, setLoading] = useState(false);
+  const [generatedSummary, setGeneratedSummary] = useState(null);
 
   const generateSummarybtn = useRef(null);
 
+  useEffect(() => {
+    const storedSummary = localStorage.getItem("generatedSummary");
+    if (storedSummary) {
+      setGeneratedSummary(storedSummary);
+    }
+  }, []);
+
   const handleApiKeySubmission = () => {
-    console.log("Current API Key:", apiKey);
-    setApiKey(apiKey);
-    console.log("API Key saved:", apiKey);
+    console.log("Current API Key:", contextApiKey);
+    localStorage.setItem("apiKey", contextApiKey);
+    console.log("API Key saved:", contextApiKey);
     setShowApiKeyPrompt(false);
     if (generateSummarybtn.current) {
       generateSummarybtn.current.click();
@@ -21,7 +33,7 @@ export default function CampaignSummary() {
   };
 
   const handleGenerateSummary = async () => {
-    if (!apiKey) {
+    if (!contextApiKey) {
       setShowApiKeyPrompt(true);
       return;
     }
@@ -29,8 +41,10 @@ export default function CampaignSummary() {
     try {
       setLoading(true);
       console.log("Sessions:", sessions);
-      const response = await CampaignSummarizer(sessions, apiKey);
-      setSummaryResponse(response);
+      const response = await CampaignSummarizer(sessions, contextApiKey);
+      setGeneratedSummary(response);
+
+      localStorage.setItem("generatedSummary", response);
     } catch (error) {
       console.error("Error generating campaign summary:", error);
     } finally {
@@ -39,7 +53,7 @@ export default function CampaignSummary() {
   };
 
   const handleApiKeyInputChange = (e) => {
-    setApiKey(e.target.value);
+    setContextApiKey(e.target.value);
   };
 
   const handleApiKeyInputKeyPress = (e) => {
@@ -49,13 +63,30 @@ export default function CampaignSummary() {
   };
 
   return (
-    <div>
+    <div className="campaign-container">
+      <div className="campaign-summary-content">
+        <div className="campaign-summary-top">
+          <img src={CampaignIcon} height={20} />
+          <p>Campaign Summary</p>
+        </div>
+        <div className="campaign-summary-btn-container">
+          <button onClick={handleGenerateSummary}>
+            Generate Campaign Summary
+          </button>
+        </div>
+        {generatedSummary && (
+          <div className="campaign-summary-generation">
+            {loading && <p>Loading...</p>}
+            <p>{generatedSummary}</p>
+          </div>
+        )}
+      </div>
       {showApiKeyPrompt && (
         <dialog open className="api-prompt">
           <p>Please enter your OpenAI API key:</p>
           <input
             type="text"
-            value={apiKey}
+            value={contextApiKey}
             onChange={handleApiKeyInputChange}
             onKeyPress={handleApiKeyInputKeyPress}
           />
@@ -67,18 +98,6 @@ export default function CampaignSummary() {
           </button>
         </dialog>
       )}
-      <div className="campaign-summary-content">
-        <h2>Campaign Summary</h2>
-        <button onClick={handleGenerateSummary}>
-          Generate Campaign Summary
-        </button>
-        {loading && <p>Loading...</p>}
-        {summaryResponse && (
-          <div>
-            <p>{summaryResponse}</p>
-          </div>
-        )}
-      </div>
     </div>
   );
 }
