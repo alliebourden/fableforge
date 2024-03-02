@@ -8,14 +8,16 @@ import QuestTrackerForm from "./components/QuestTrackerForm";
 import LootManager from "./components/LootManagerTable";
 import CampaignSummary from "./components/CampaignSummary";
 
+const prefix = "/main";
+
 export const paths = {
-  dashboard: "/fableforge/dashboard",
-  campaignsummary: "fableforge/campaign-summary",
+  dashboard: `${prefix}/dashboard`,
+  campaignsummary: `${prefix}/campaign-summary`,
 };
 
 const router = createBrowserRouter([
   {
-    path: "/fableforge",
+    path: prefix,
     element: <Layout />,
     children: [
       { path: paths.dashboard, element: <Dashboard /> },
@@ -27,46 +29,46 @@ const router = createBrowserRouter([
           </div>
         ),
       },
-      {
-        path: "/fableforge/quest-tracker",
-        element: (
-          <div>
-            <QuestTracker />
-          </div>
-        ),
-      },
-      {
-        path: "/fableforge/loot-manager",
-        element: (
-          <div>
-            <LootManager />
-          </div>
-        ),
-      },
-      {
-        path: "/fableforge/session-editor",
-        element: (
-          <div>
-            <SessionEditor />
-          </div>
-        ),
-      },
-      {
-        path: "/fableforge/session-list",
-        element: (
-          <div>
-            <SessionList />
-          </div>
-        ),
-      },
-      {
-        path: "/fableforge/quest-tracker-form",
-        element: (
-          <div>
-            <QuestTrackerForm />
-          </div>
-        ),
-      },
+      // {
+      //   path: "/fableforge/quest-tracker",
+      //   element: (
+      //     <div>
+      //       <QuestTracker />
+      //     </div>
+      //   ),
+      // },
+      // {
+      //   path: "/fableforge/loot-manager",
+      //   element: (
+      //     <div>
+      //       <LootManager />
+      //     </div>
+      //   ),
+      // },
+      // {
+      //   path: "/fableforge/session-editor",
+      //   element: (
+      //     <div>
+      //       <SessionEditor />
+      //     </div>
+      //   ),
+      // },
+      // {
+      //   path: "/fableforge/session-list",
+      //   element: (
+      //     <div>
+      //       <SessionList />
+      //     </div>
+      //   ),
+      // },
+      // {
+      //   path: "/fableforge/quest-tracker-form",
+      //   element: (
+      //     <div>
+      //       <QuestTrackerForm />
+      //     </div>
+      //   ),
+      // },
     ],
   },
 ]);

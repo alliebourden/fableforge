@@ -17,6 +17,7 @@ export default function Layout() {
   const handleNavigation = (path) => {
     setActivePage(path);
     navigate(path);
+    console.log(location.pathname);
   };
 
   return (
