@@ -73,7 +73,7 @@ const router = createBrowserRouter(
       ],
     },
   ],
-  { basename: import.meta.env.DEV ? "/" : "/react-vite-gh-pages/" }
+  { basename: import.meta.env.DEV ? "/" : "/fableforge/" }
 );
 
 export default router;
