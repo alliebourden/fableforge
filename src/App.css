@@ -110,7 +110,6 @@ html {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
 }
 
 .last-session-top p {
@@ -118,7 +117,11 @@ html {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.last-session-top img {
+  margin-left: 25px;
 }
 
 .last-session-body {
