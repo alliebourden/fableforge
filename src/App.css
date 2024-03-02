@@ -889,6 +889,7 @@ dialog {
 .dashboard-content-right {
   display: flex;
   flex-direction: column;
+  height: 100%;
 }
 
 /* npc generator css */
@@ -1151,7 +1152,7 @@ dialog input {
 
 .image-generation-form {
   width: 75%;
-  min-height: 195px;
+  height: 100%;
   border: 3px solid #c2ac38;
   display: flex;
   flex-direction: column;
@@ -1191,7 +1192,7 @@ dialog input {
   flex-direction: column;
   margin-top: 25px;
   min-height: 25px;
-  max-width: 90%;
+  width: 90%;
   justify-content: center;
   align-items: center;
 }
@@ -1207,9 +1208,8 @@ dialog input {
   border-top: none;
   border-left: none;
   border-right: none;
-  width: 100%;
+  width: 100% !important;
   font-family: Poppins;
-  resize: none;
 }
 
 .image-generation-button-form {
@@ -1218,15 +1218,14 @@ dialog input {
   padding: 10px;
   margin: 8px;
   justify-content: center;
-  align-items: center;
   border-radius: 10px;
   background: #c2ac38;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: #fff;
   font-family: Poppins;
-  font-size: 14px;
   font-weight: 500;
   border-style: none;
+  display: flex;
 }
 
 /* dice roller css */
@@ -1236,8 +1235,8 @@ dialog input {
 }
 
 .dice-roller-container {
-  width: 300px;
-  min-height: 195px;
+  width: 75%;
+  height: 100%;
   border: 3px solid #c2ac38;
   display: flex;
   flex-direction: column;
@@ -1249,7 +1248,7 @@ dialog input {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 100%;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -1258,14 +1257,13 @@ dialog input {
   background: #132730;
   color: #ffffff;
   justify-content: space-between;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
 }
 
 .dice-roller-top p {
-  font-size: 20px;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
@@ -1274,27 +1272,37 @@ dialog input {
 
 .dice-roller-content {
   margin-top: 10px;
+  width: 90%;
+  display: flex;
+  flex-direction: column;
 }
 
-.dice-roller-content select {
+.dice-type {
+  width: 100%;
+  display: flex;
+}
+
+.dice-type select {
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
   border-top: none;
   border-left: none;
   border-right: none;
-  margin-left: 57px;
-  width: 80px;
+  margin-left: 10px;
 }
 
-.dice-roller-content input {
+.number-of-dice {
+  width: 100%;
+}
+
+.number-of-dice input {
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
   border-top: none;
   border-left: none;
   border-right: none;
-  width: 80px;
   margin-left: 10px;
 }
 
