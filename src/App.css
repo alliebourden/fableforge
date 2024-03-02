@@ -950,7 +950,7 @@ dialog {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
+
   width: 100%;
 }
 
@@ -959,7 +959,11 @@ dialog {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.chat-container img {
+  margin-left: 25px;
 }
 
 .chat-history {
@@ -1208,7 +1212,6 @@ dialog input {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
   font-size: 1.5rem;
   font-style: italic;
   font-weight: 500;
@@ -1220,7 +1223,11 @@ dialog input {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.image-generation-form-top img {
+  margin-left: 25px;
 }
 
 .image-generation-form-body {
@@ -1292,7 +1299,6 @@ dialog input {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  justify-content: space-between;
   font-size: 1.25rem;
   font-style: italic;
   font-weight: 500;
@@ -1303,7 +1309,11 @@ dialog input {
   font-style: italic;
   font-weight: 500;
   line-height: normal;
-  margin-left: 20px;
+  margin-left: 10px;
+}
+
+.dice-roller-top img {
+  margin-left: 25px;
 }
 
 .dice-roller-content {

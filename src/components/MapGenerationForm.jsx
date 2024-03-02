@@ -3,6 +3,7 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
 import generateMapImage from "./MapGeneration";
+import MapIcon from "../../assets/icons/MapIcon.svg";
 
 const ImageForm = () => {
   const { handleSubmit, register } = useForm();
@@ -97,6 +98,7 @@ const ImageForm = () => {
     <div className="image-form-container">
       <form onSubmit={handleSubmit(onSubmit)} className="image-generation-form">
         <div className="image-generation-form-top">
+          <img src={MapIcon} height={20} />
           <p>MAP GENERATION</p>
         </div>
         <div className="image-generation-form-body">

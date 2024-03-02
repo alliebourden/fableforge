@@ -4,6 +4,7 @@ import DiceRoller from "../components/DiceRoller";
 import { SessionContext } from "../components/SessionContext";
 import NpcImageGeneration from "../components/NpcImageGeneration";
 import ImageForm from "../components/MapGenerationForm";
+import NpcIcon from "../../assets/icons/NpcIcon.svg";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
@@ -163,6 +164,7 @@ export default function Dashboard() {
         <div className="dashboard-content-left">
           <div className="chat-container">
             <div className="chat-container-top">
+              <img src={NpcIcon} height={20} />
               <p>NPC Generator</p>
             </div>
             <div className="chat-history" ref={chatHistoryRef}>
