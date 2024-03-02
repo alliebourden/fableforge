@@ -864,31 +864,30 @@ dialog {
 
 .dashboard-content {
   display: flex;
-
+  width: 100%;
   margin-left: 275px;
   margin-top: 125px;
   margin-bottom: 25px;
 }
 
-/* npc generator css */
-
-.npc-generator-info {
-  width: 475px;
+.dashboard-content-left {
   display: flex;
-  justify-content: center;
+  width: 50%;
 }
 
-.npc-generator-info p {
-  font-size: 14px;
-  margin-bottom: 10px;
-  width: 450px;
+.dashboard-content-right {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
 }
+
+/* npc generator css */
 
 .chat-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 475px;
+  width: 100%;
   border: 3px solid #c2ac38;
   border-radius: 10px;
 }
@@ -897,7 +896,7 @@ dialog {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 475px;
+  width: 100%;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -943,24 +942,25 @@ dialog {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
+
+  width: 100%;
 }
 
 .user-input input {
-  width: 450px;
+  width: 90%;
   border-radius: 5px;
   max-height: 200px;
   font-family: Poppins;
 }
 
 .chat-message.user {
-  width: 425px;
+  width: 90%;
   margin-top: 5px;
   margin-right: 10px;
 }
 
 .chat-message.npc {
-  width: 425px;
+  width: 90%;
   margin-right: 10px;
 }
 
@@ -1131,7 +1131,6 @@ dialog input {
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
-
   border-top: none;
   border-left: none;
   border-right: none;
@@ -1145,7 +1144,7 @@ dialog input {
 }
 
 .image-generation-form {
-  width: 300px;
+  width: 100%;
   min-height: 195px;
   border: 3px solid #c2ac38;
   display: flex;
@@ -1154,24 +1153,11 @@ dialog input {
   border-radius: 10px;
 }
 
-.image-generation-form-info {
-  width: 300px;
-  display: flex;
-  justify-content: center;
-  margin-left: 25px;
-  margin-bottom: 10px;
-}
-
-.image-generation-form-info p {
-  width: 250px;
-  font-size: 14px;
-}
-
 .image-generation-form-top {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 100%;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -1214,7 +1200,7 @@ dialog input {
   border-top: none;
   border-left: none;
   border-right: none;
-  width: 250px;
+  width: 90%;
   font-family: Poppins;
 }
 
@@ -1242,7 +1228,7 @@ dialog input {
 }
 
 .dice-roller-container {
-  width: 300px;
+  width: 100%;
   min-height: 195px;
   border: 3px solid #c2ac38;
   display: flex;
@@ -1255,7 +1241,7 @@ dialog input {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 300px;
+  width: 100%;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
