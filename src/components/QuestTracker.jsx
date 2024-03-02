@@ -3,6 +3,7 @@ import { useContext, useRef, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import QuestTrackerForm from "./QuestTrackerForm";
 import SelectedQuestDetails from "./SelectedQuestDetails";
+import QuestIcon from "../../assets/icons/QuestIcon.svg";
 
 const QuestTracker = () => {
   const { quests } = useContext(SessionContext);
@@ -27,6 +28,7 @@ const QuestTracker = () => {
   return (
     <div className="quest-tracker">
       <div className="quest-tracker-top">
+        <img src={QuestIcon} height={20} />
         <p>Quest Tracker</p>
       </div>
       <div className="quest-tracker-main-contain">
