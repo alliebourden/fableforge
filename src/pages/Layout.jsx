@@ -7,6 +7,7 @@ import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import QuestIcon from "../../assets/icons/QuestIcon.svg";
 import LootIcon from "../../assets/icons/LootManagementIcon.svg";
 import { useNavigate } from "react-router-dom";
+import { paths } from "../Routes";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -35,13 +36,13 @@ export default function Layout() {
           </div>
           <div className="sidebar-links">
             <div
-              onClick={() => handleNavigation("/")}
-              className={activePage === "/" ? "active" : ""}
+              onClick={() => handleNavigation(paths.dashboard)}
+              className={activePage === paths.dashboard ? "active" : ""}
             >
               <p>Dashboard</p>
             </div>
             <div
-              onClick={() => handleNavigation("/campaign-summary")}
+              onClick={() => handleNavigation(paths.campaignsummary)}
               className={activePage === "/campaign-summary" ? "active" : ""}
             >
               <p>Campaign Summary</p>

@@ -8,14 +8,19 @@ import QuestTrackerForm from "./components/QuestTrackerForm";
 import LootManager from "./components/LootManagerTable";
 import CampaignSummary from "./components/CampaignSummary";
 
+export const paths = {
+  dashboard: "/fableforge/dashboard",
+  campaignsummary: "fableforge/campaign-summary",
+};
+
 const router = createBrowserRouter([
   {
     path: "/fableforge",
     element: <Layout />,
     children: [
-      { path: "/fableforge", element: <Dashboard /> },
+      { path: paths.dashboard, element: <Dashboard /> },
       {
-        path: "/fableforge/campaign-summary",
+        path: paths.campaignsummary,
         element: (
           <div>
             <CampaignSummary />
