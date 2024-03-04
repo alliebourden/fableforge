@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import DiceIcon from "../../assets/icons/DiceIcon.svg";
 
 const DiceRoller = () => {
@@ -9,8 +9,6 @@ const DiceRoller = () => {
 
   const rollDice = () => {
     setShowGif(true);
-    const gifURL =
-      "https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExNmgybmZ2N3BwMXBpbjB1czFxOHBxMnl2dGNtdXE2a3NqMXVocHFraCZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/3oriNPdeu2W1aelciY/giphy.gif";
     const gifDuration = 1440;
 
     setTimeout(() => {
