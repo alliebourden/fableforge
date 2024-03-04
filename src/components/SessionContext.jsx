@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
 export const SessionContext = createContext();
 
@@ -20,9 +20,6 @@ export const SessionProvider = ({ children }) => {
   const handleSelectQuest = (quest) => {
     setSelectedQuest(quest);
   };
-
-  useEffect(() => console.log(quests), [quests]);
-  useEffect(() => console.log(sessions), [sessions]);
 
   return (
     <SessionContext.Provider
