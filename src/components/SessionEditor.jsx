@@ -111,7 +111,6 @@ const SessionEditor = ({ closeModal }) => {
 
   return (
     <div className="session-editor-content">
-      {/* {JSON.stringify(sessions)} */}
       <div>
         <div style={categoryStyle.container}>
           <div style={categoryStyle.titleContainer} className="category-top">

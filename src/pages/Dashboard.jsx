@@ -5,7 +5,6 @@ import { SessionContext } from "../components/SessionContext";
 import NpcImageGeneration from "../components/NpcImageGeneration";
 import ImageForm from "../components/MapGenerationForm";
 import NpcIcon from "../../assets/icons/NpcIcon.svg";
-import Layout from "./Layout";
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
@@ -55,7 +54,6 @@ export default function Dashboard() {
 
       const npcContent = JSON.parse(response);
       const npcDescription = JSON.stringify(npcContent.description);
-      console.log(npcDescription);
 
       setNpcDescriptions([npcDescription]);
 
@@ -81,11 +79,9 @@ export default function Dashboard() {
     try {
       setLoading(true);
       const imageResponse = await NpcImageGeneration(apiKey, npcDescriptions);
-      console.log("Full Image Response:", imageResponse);
 
       if (imageResponse) {
         setGeneratedImageURL(imageResponse);
-        console.log("Generated NPC Image:", imageResponse);
       } else {
         console.error("Error: Invalid response format", imageResponse);
       }
@@ -141,7 +137,6 @@ export default function Dashboard() {
     if (chatHistoryRef.current) {
       chatHistoryRef.current.scrollTop = chatHistoryRef.current.scrollHeight;
     }
-    console.log("Generated Image URL:", generatedImageURL);
 
     return () => {
       document.removeEventListener("keydown", handleEscKey);
