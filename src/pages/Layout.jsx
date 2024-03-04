@@ -7,7 +7,6 @@ import SessionIcon from "../../assets/icons/SessionListIcon.svg";
 import QuestIcon from "../../assets/icons/QuestIcon.svg";
 import LootIcon from "../../assets/icons/LootManagementIcon.svg";
 import { useNavigate } from "react-router-dom";
-// import { paths } from "../Routes";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -17,7 +16,6 @@ export default function Layout() {
   const handleNavigation = (path) => {
     setActivePage(path);
     navigate(path);
-    console.log(location.pathname);
   };
 
   return (

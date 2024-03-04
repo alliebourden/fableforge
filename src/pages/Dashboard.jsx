@@ -161,7 +161,7 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
-      <Layout />
+      {/* <Layout /> */}
       <div className="dashboard-content">
         <div className="dashboard-content-left">
           <div className="chat-container">
