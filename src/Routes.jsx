@@ -8,12 +8,10 @@ import QuestTrackerForm from "./components/QuestTrackerForm";
 import LootManager from "./components/LootManagerTable";
 import CampaignSummary from "./components/CampaignSummary";
 
-// const prefix = "/main";
-
-export const paths = {
-  dashboard: `/dashboard`,
-  campaignsummary: `/campaign-summary`,
-};
+// export const paths = {
+//   dashboard: `/dashboard`,
+//   campaignsummary: `/campaign-summary`,
+// };
 
 const router = createBrowserRouter(
   [
@@ -21,9 +19,9 @@ const router = createBrowserRouter(
       path: "/",
       element: <Layout />,
       children: [
-        { path: paths.dashboard, element: <Dashboard /> },
+        { path: "/dashboard", element: <Dashboard /> },
         {
-          path: paths.campaignsummary,
+          path: "campaign-summary",
           element: (
             <div>
               <CampaignSummary />
