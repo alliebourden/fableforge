@@ -8,11 +8,6 @@ import QuestTrackerForm from "./components/QuestTrackerForm";
 import LootManager from "./components/LootManagerTable";
 import CampaignSummary from "./components/CampaignSummary";
 
-// export const paths = {
-//   dashboard: `/dashboard`,
-//   campaignsummary: `/campaign-summary`,
-// };
-
 const router = createBrowserRouter(
   [
     {
