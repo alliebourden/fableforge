@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Outlet, useLocation } from "react-router-dom";
 import Logo from "../../assets/images/logo-small.png";
 import DashboardIcon from "../../assets/icons/DashboardIcon.svg";
@@ -13,7 +13,7 @@ export default function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
   const [activePage, setActivePage] = useState(location.pathname);
-  const [openMenu, setOpenMenu] = useState(false);
+  const [openMenu, setOpenMenu] = useState(window.innerWidth <= 700);
 
   const handleNavigation = (path) => {
     setActivePage(path);
@@ -22,8 +22,23 @@ export default function Layout() {
   };
 
   const toggleMenu = () => {
-    setOpenMenu(!openMenu);
+    if (window.innerWidth <= 700) {
+      setOpenMenu(!openMenu);
+    } else {
+      setOpenMenu(false);
+    }
   };
+
+  useEffect(() => {
+    const handleResize = () => {
+      setOpenMenu(window.innerWidth <= 700);
+    };
+
+    window.addEventListener("resize", handleResize);
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   return (
     <div className="layout-wrapper">
@@ -39,52 +54,51 @@ export default function Layout() {
           />
         </div>
       </div>
-      {openMenu && window.innerWidth <= 700 && (
-        <div className="sidebar">
-          <p className="campaign-tools">CAMPAIGN TOOLS</p>
-          <div className="sidebar-content">
-            <div className="icons">
-              <img src={DashboardIcon} height={20} alt="Dashboard" />
-              <img src={CampaignIcon} height={20} alt="Campaign" />
-              <img src={SessionIcon} height={20} alt="Session" />
-              <img src={QuestIcon} height={20} alt="Quest" />
-              <img src={LootIcon} height={20} alt="Loot" />
+      <div className={`sidebar ${openMenu ? "open" : ""}`}>
+        <p className="campaign-tools">CAMPAIGN TOOLS</p>
+        <div className="sidebar-content">
+          <div className="icons">
+            <img src={DashboardIcon} height={20} alt="Dashboard" />
+            <img src={CampaignIcon} height={20} alt="Campaign" />
+            <img src={SessionIcon} height={20} alt="Session" />
+            <img src={QuestIcon} height={20} alt="Quest" />
+            <img src={LootIcon} height={20} alt="Loot" />
+          </div>
+          <div className="sidebar-links">
+            <div
+              onClick={() => handleNavigation("/dashboard")}
+              className={activePage === "/dashboard" ? "active" : ""}
+            >
+              <p>Dashboard</p>
             </div>
-            <div className="sidebar-links">
-              <div
-                onClick={() => handleNavigation("/dashboard")}
-                className={activePage === "/dashboard" ? "active" : ""}
-              >
-                <p>Dashboard</p>
-              </div>
-              <div
-                onClick={() => handleNavigation("/campaign-summary")}
-                className={activePage === "/campaign-summary" ? "active" : ""}
-              >
-                <p>Campaign Summary</p>
-              </div>
-              <div
-                onClick={() => handleNavigation("/session-list")}
-                className={activePage === "/session-list" ? "active" : ""}
-              >
-                <p>Session List</p>
-              </div>
-              <div
-                onClick={() => handleNavigation("/quest-tracker")}
-                className={activePage === "/quest-tracker" ? "active" : ""}
-              >
-                <p>Quest Tracker</p>
-              </div>
-              <div
-                onClick={() => handleNavigation("/loot-manager")}
-                className={activePage === "/loot-manager" ? "active" : ""}
-              >
-                <p>Loot Manager</p>
-              </div>
+            <div
+              onClick={() => handleNavigation("/campaign-summary")}
+              className={activePage === "/campaign-summary" ? "active" : ""}
+            >
+              <p>Campaign Summary</p>
+            </div>
+            <div
+              onClick={() => handleNavigation("/session-list")}
+              className={activePage === "/session-list" ? "active" : ""}
+            >
+              <p>Session List</p>
+            </div>
+            <div
+              onClick={() => handleNavigation("/quest-tracker")}
+              className={activePage === "/quest-tracker" ? "active" : ""}
+            >
+              <p>Quest Tracker</p>
+            </div>
+            <div
+              onClick={() => handleNavigation("/loot-manager")}
+              className={activePage === "/loot-manager" ? "active" : ""}
+            >
+              <p>Loot Manager</p>
             </div>
           </div>
         </div>
-      )}
+      </div>
+
       <Outlet />
     </div>
   );

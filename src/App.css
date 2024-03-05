@@ -116,12 +116,24 @@ html {
   }
 
   .sidebar {
-    width: 200px;
-    height: 175px;
+    height: 200px;
     background-color: #1e1e1e;
-    overflow: auto;
+    overflow: hidden;
+    height: 0;
+    transition: height ease-in-out 0.3s;
     position: fixed;
-    margin-top: 100px;
+    margin-top: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar.open {
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
   }
 
   .campaign-tools {
@@ -130,6 +142,15 @@ html {
 
   .sidebar-content {
     display: flex;
+  }
+
+  .sidebar-links p {
+    display: flex;
+    justify-content: center;
+  }
+
+  .icons {
+    margin: 0;
   }
 
   .icons img {
@@ -141,7 +162,6 @@ html {
     flex-direction: column;
     color: #fff;
     font-family: Poppins;
-    margin: 10px 0 0 0px;
   }
 
   .dashboard {
