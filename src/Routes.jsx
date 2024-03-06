@@ -50,7 +50,7 @@ const router = createBrowserRouter(
         {
           path: "/session-list",
           element: (
-            <div>
+            <div className="sessions">
               <SessionList />
             </div>
           ),

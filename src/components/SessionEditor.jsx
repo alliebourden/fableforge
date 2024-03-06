@@ -6,36 +6,6 @@ import { SessionContext } from "./SessionContext";
 import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
 import CategoryTagIcon from "../../assets/icons/CategoryTagIcon.svg";
 
-const categoryStyle = {
-  container: {
-    width: "425px",
-    minHeight: "150px",
-    borderRadius: "10px",
-    border: "3px solid #C2AC38",
-    background: "#FFF",
-    boxShadow: "5px 8px 10px 0px rgba(0, 0, 0, 0.10)",
-    display: "flex",
-    flexDirection: "column",
-    alignItems: "center",
-  },
-  titleContainer: {
-    borderRadius: "10px 10px 0px 0px",
-    borderTop: "3px solid #C2AC38",
-    borderRight: "3px solid #C2AC38",
-    borderLeft: "3px solid #C2AC38",
-    background: "#132730",
-    width: "425px",
-    height: "45px",
-  },
-  title: {
-    fontSize: "20px",
-    fontWeight: "500",
-    color: "#FFF",
-    fontStyle: "italic",
-    padding: "8px 8px",
-  },
-};
-
 const tags = [
   { value: "combatBoss", label: "Combat: Boss Fight" },
   { value: "combatRandomEncounter", label: "Combat: Random Encounter" },
@@ -111,20 +81,16 @@ const SessionEditor = ({ closeModal }) => {
 
   return (
     <div className="session-editor-content">
-      <div>
-        <div style={categoryStyle.container}>
-          <div style={categoryStyle.titleContainer} className="category-top">
+      <div className="category-tags-container">
+        <div className="category-tags">
+          <div className="category-tags-top">
             <img src={CategoryTagIcon} height={20} />
-            <div style={categoryStyle.title}>TAG CATEGORIES</div>
+            <p>TAG CATEGORIES</p>
           </div>
+          <div className="select-c"></div>
           <Select
             options={tags}
             styles={{
-              container: (provided) => ({
-                ...provided,
-                marginTop: "10px",
-                marginBottom: "10px",
-              }),
               control: (provided, state) => ({
                 ...provided,
                 width: "375px",
@@ -215,6 +181,13 @@ const SessionEditor = ({ closeModal }) => {
         <div className="submit-btn">
           <button type="submit" className="submit-new-session">
             SUBMIT
+          </button>
+          <button
+            type="button"
+            className="submit-new-session"
+            onClick={closeModal}
+          >
+            CLOSE
           </button>
         </div>
       </form>

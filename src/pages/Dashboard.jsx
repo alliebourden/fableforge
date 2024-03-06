@@ -156,7 +156,6 @@ export default function Dashboard() {
 
   return (
     <div className="dashboard">
-      {/* <Layout /> */}
       <div className="dashboard-content">
         <div className="dashboard-content-left">
           <div className="chat-container">
@@ -203,7 +202,6 @@ export default function Dashboard() {
             </div>
           </div>
         </div>
-
         <div className="dashboard-content-right">
           <div className="image-form">
             <ImageForm />

@@ -4,6 +4,10 @@ html {
   padding: 0;
 }
 
+.layout-wrapper {
+  display: flex;
+}
+
 /* top bar css */
 
 .top-bar {
@@ -84,29 +88,47 @@ html {
 /* session list css */
 
 .sessions {
-  display: flex;
-  margin-top: 125px;
-  margin-left: 275px;
+  width: 80%;
 }
 
-.recent-session {
+.sessions-content {
+  display: flex;
+  margin-left: 275px;
+  margin-top: 125px;
+  margin-bottom: 25px;
+  width: 100%;
+}
+
+.sessions-left,
+.sessions-right {
+  flex: 1;
+}
+
+.sessions-right {
+  flex-direction: column;
+  margin-left: 25px;
+  margin-right: 80px;
+  display: flex;
+}
+
+/* session details */
+
+.session-details {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 675px;
-  min-height: 540px;
-  flex-shrink: 0;
+  flex: 1;
   border-radius: 10px;
   border: 3px solid #c2ac38;
   background: #fff;
   box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
+  height: 100%;
 }
 
-.last-session-top {
+.session-details-top {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 675px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -114,113 +136,60 @@ html {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
+  width: 100%;
 }
 
-.last-session-top p {
-  font-size: 20px;
+.session-details-top p {
+  font-size: 1.25rem;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
   margin-left: 10px;
 }
 
-.last-session-top img {
+.session-details-top img {
   margin-left: 25px;
 }
 
-.last-session-body {
-  margin: 10px 25px 0 25px;
-  width: 644px;
+.session-details-body {
+  width: 90%;
 }
 
-.last-session-date {
-  margin-left: 30px;
-}
-
-.last-session-top-date {
+.session-details-date {
   margin-right: 25px;
   font-style: italic;
   color: #c2ac38;
 }
 
-.layout-wrapper {
-  display: flex;
-}
-
-.body-text {
-  margin-top: 10px;
-  margin-bottom: 10px;
-  font-size: 14px;
-  border-top: solid 1px #c2ac38;
-}
-
-.last-session-tags {
-  font-size: 14px;
+.session-details-tags {
+  font-size: 1rem;
   margin-top: 8px;
 }
 
-.add-new-btn {
-  width: 155px;
-  height: 55px;
-  padding: 10px;
-  margin: 8px;
-  justify-content: center;
-  align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
-  border-radius: 10px;
-  background: #c2ac38;
-  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
-  color: #fff;
-  font-family: Poppins;
-  font-size: 20px;
-  font-style: normal;
-  font-weight: 500;
-  line-height: normal;
-  border-style: none;
-}
-
-.add-new-btn-container {
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-}
-
-.add-new-btn:hover {
-  background: #132730;
-  transition: ease-in-out 0.3s;
-  cursor: pointer;
-}
-
-.submit-new-session {
+.session-details-body {
+  margin-top: 10px;
   margin-bottom: 10px;
+  font-size: 1rem;
+  border-top: solid 1px #c2ac38;
 }
 
-.submit-new-session:hover {
-  background: #132730;
-  transition: ease-in-out 0.3s;
-  cursor: pointer;
-}
+/* next session calendar */
 
-.all-sessions {
+.next-session {
+  width: 99%;
+  height: 100%;
+  border: 3px solid #c2ac38;
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 425px;
-  min-height: 410px;
-  flex-shrink: 0;
   border-radius: 10px;
-  border: 3px solid #c2ac38;
-  background: #fff;
-  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
-  margin-left: 25px;
 }
 
-.all-sessions-top {
+.next-session-top {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 425px;
+  width: 100%;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -228,77 +197,36 @@ html {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-}
-
-.all-sessions-top p {
-  color: #fff;
-  font-family: Poppins;
-  font-size: 20px;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
-  margin-left: 8px;
-}
-
-.all-sessions-top img {
-  margin-left: 25px;
-}
-
-.session-list-body {
-  display: flex;
-  justify-content: center;
-  width: 400px;
-}
-
-.session-list-body p {
-  margin: 10px 0 10px 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.session-list-body p:hover {
-  color: #c2ac38;
-  transition: ease-in-out 0.3s;
-  cursor: pointer;
-}
-
-.list-of-sessions {
-  min-height: 300px;
-}
-
-/* next session calendar */
-
-.next-session {
-  border-radius: 10px;
-  border: 3px solid #c2ac38;
-  background: #fff;
-  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
-  width: 425px;
-  height: 99px;
-  flex-shrink: 0;
-  margin-left: 25px;
-  margin-bottom: 25px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 }
 
 .next-session-top p {
-  color: #fff;
-  font-family: Poppins;
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: italic;
-  font-weight: 600;
+  font-weight: 500;
   line-height: normal;
-  margin-left: 8px;
-  text-transform: uppercase;
+  margin-left: 10px;
 }
 
-.session-date-display {
+.next-session-top img {
+  margin-left: 25px;
+}
+
+.next-session-body {
   display: flex;
-  width: 425px;
+  flex-direction: column;
   margin-top: 10px;
-  margin-left: 40px;
+  min-height: 25px;
+  width: 90%;
+  justify-content: center;
+  align-items: center;
+}
+
+.next-session-date-display {
+  display: flex;
+  margin-top: 10px;
 }
 
 .selected-date-display {
@@ -355,10 +283,163 @@ html {
   cursor: pointer;
 }
 
-.next-session-body {
-  display: flex;
-  width: 400px;
+/* session list */
+
+.add-new-btn {
+  width: 155px;
+  height: 55px;
+  padding: 10px;
+  margin: 8px;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #c2ac38;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-style: none;
 }
+
+.add-new-btn-container {
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+
+.add-new-btn:hover {
+  background: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.submit-new-session {
+  margin-bottom: 10px;
+}
+
+.submit-new-session:hover {
+  background: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.session-list-container {
+  margin-top: 25px;
+}
+
+.session-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 99%;
+  height: 100%;
+  border-radius: 10px;
+  border: 3px solid #c2ac38;
+  background: #fff;
+  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.session-list-top {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 43px;
+  border-radius: 10px 10px 0px 0px;
+  border-top: 3px solid #c2ac38;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  background: #132730;
+  color: #ffffff;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.session-list-top p {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 10px;
+}
+
+.session-list-top img {
+  margin-left: 25px;
+}
+
+.session-list-body {
+  display: flex;
+  justify-content: center;
+}
+
+.session-list-body p {
+  margin: 10px 0 10px 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.session-list-body p:hover {
+  color: #c2ac38;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
+}
+
+.list-of-sessions {
+  min-height: 300px;
+  margin-top: 10px;
+  width: 100%;
+}
+
+/* session editor content */
+
+.category-tags {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 3px solid #c2ac38;
+  background: #fff;
+  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
+}
+
+.category-tags-top {
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  height: 43px;
+  border-radius: 10px 10px 0px 0px;
+  border-top: 3px solid #c2ac38;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  background: #132730;
+  color: #ffffff;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+}
+
+.category-tags-top p {
+  font-size: 1.25rem;
+  font-style: italic;
+  font-weight: 500;
+  line-height: normal;
+  margin-left: 10px;
+}
+
+.category-tags-top img {
+  margin-left: 25px;
+}
+
+/* next session react calendar */
 
 .react-calendar {
   width: 430px;
@@ -537,7 +618,7 @@ html {
 dialog {
   border-radius: 5px;
   border: none;
-  max-width: 500px;
+  max-height: 70%;
   margin-top: 25px;
   position: absolute;
   left: 50%;
@@ -661,24 +742,25 @@ dialog {
   background: #d9d9d9;
 }
 
+.submit-btn {
+  display: flex;
+}
+
 .submit-btn button {
   display: flex;
-  width: 156px;
-  height: 54px;
+  width: 80px;
+  height: 50px;
   padding: 10px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
   border-radius: 10px;
   background: #c2ac38;
   color: #fff;
   font-family: Poppins;
-  font-size: 20px;
-  font-style: normal;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: normal;
   border: none;
-  margin-top: 20px;
+  margin: 10px;
 }
 
 .submit-btn button:hover {
@@ -892,7 +974,6 @@ dialog {
 .dashboard-content-left,
 .dashboard-content-right {
   flex: 1;
-  overflow: hidden;
 }
 
 .dashboard-content-right {
@@ -903,7 +984,7 @@ dialog {
   margin-right: 80px;
 }
 
-@media (max-width: 975px) {
+@media (max-width: 990px) {
   .dashboard-content {
     flex-direction: column;
   }
@@ -915,6 +996,23 @@ dialog {
     margin-top: 20px;
     margin-left: 0;
     margin-right: 120px;
+  }
+
+  .sessions-content {
+    flex-direction: column;
+  }
+
+  .sessions-left {
+    margin-right: 120px;
+  }
+  .sessions-right {
+    margin-top: 20px;
+    margin-left: 0;
+    margin-right: 120px;
+  }
+
+  .session-details {
+    min-height: 200px;
   }
 }
 
@@ -1032,6 +1130,26 @@ dialog {
   .dice-roller-container {
     margin-right: 40px;
   }
+
+  .sessions {
+    width: 100%;
+  }
+
+  .sessions-content {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 100px;
+    margin-bottom: 25px;
+  }
+
+  .sessions-left {
+    display: flex;
+    margin-right: 40px;
+  }
+
+  .sessions-right {
+    margin-right: 40px;
+  }
 }
 
 @media (max-width: 450px) {
@@ -1055,8 +1173,20 @@ dialog {
     font-size: 0.85rem;
   }
 
-  .generate-npc-chat-button {
-    width: 100%;
+  .session-details-top p {
+    font-size: 1rem;
+  }
+
+  .next-session-top p {
+    font-size: 1rem;
+  }
+
+  .session-list-top p {
+    font-size: 1rem;
+  }
+
+  .next-session-date-display {
+    font-size: 0.85rem;
   }
 }
 
@@ -1069,6 +1199,7 @@ dialog {
   border: 3px solid #c2ac38;
   border-radius: 10px;
   flex: 1;
+  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .chat-container-top {
@@ -1082,7 +1213,6 @@ dialog {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-
   width: 100%;
 }
 
