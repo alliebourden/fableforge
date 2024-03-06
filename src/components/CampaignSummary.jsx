@@ -20,6 +20,13 @@ export default function CampaignSummary() {
     if (storedSummary) {
       setGeneratedSummary(storedSummary);
     }
+
+    window.addEventListener("beforeunload", () => {
+      sessionStorage.removeItem("generatedSummary");
+    });
+    window.removeEventListener("beforeunload", () => {
+      sessionStorage.removeItem("generatedSummary");
+    });
   }, []);
 
   const handleApiKeySubmission = () => {
@@ -35,6 +42,13 @@ export default function CampaignSummary() {
   const handleGenerateSummary = async () => {
     if (!contextApiKey) {
       setShowApiKeyPrompt(true);
+      return;
+    }
+
+    if (sessions.length === 0) {
+      alert(
+        "No session data available. Please add sessions before generating a summary."
+      );
       return;
     }
 
@@ -67,17 +81,21 @@ export default function CampaignSummary() {
           <img src={CampaignIcon} height={20} />
           <p>Campaign Summary</p>
         </div>
-        <div className="campaign-summary-btn-container">
-          <button onClick={handleGenerateSummary}>
-            Generate Campaign Summary
-          </button>
-        </div>
-        {generatedSummary && (
-          <div className="campaign-summary-generation">
-            {loading && <p>Loading...</p>}
-            <p>{generatedSummary}</p>
+        <div className="campaign-summary-main">
+          <div className="campaign-summary-generation-container">
+            {generatedSummary && (
+              <div className="campaign-summary-generation">
+                {loading && <p>Loading...</p>}
+                <p>{generatedSummary}</p>
+              </div>
+            )}
           </div>
-        )}
+          <div className="campaign-summary-btn-container">
+            <button onClick={handleGenerateSummary}>
+              Generate Campaign Summary
+            </button>
+          </div>
+        </div>
       </div>
       {showApiKeyPrompt && (
         <dialog open className="api-prompt">

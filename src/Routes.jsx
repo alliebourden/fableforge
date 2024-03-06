@@ -18,7 +18,7 @@ const router = createBrowserRouter(
         {
           path: "campaign-summary",
           element: (
-            <div>
+            <div className="campaign-summary">
               <CampaignSummary />
             </div>
           ),

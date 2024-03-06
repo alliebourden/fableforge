@@ -1176,6 +1176,11 @@ dialog {
   dialog {
     width: 80%;
   }
+
+  .campaign-container {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
 }
 
 @media (max-width: 450px) {
@@ -1230,6 +1235,10 @@ dialog {
 
   dialog {
     width: 90%;
+  }
+
+  .campaign-summary-top p {
+    font-size: 1rem !important;
   }
 }
 
@@ -1855,25 +1864,27 @@ dialog input {
 
 /* campaign summary css */
 
-.campaign-container {
+.campaign-summary {
   width: 100%;
-  display: flex;
 }
 
-.campaign-summary-content {
+.campaign-container {
   display: flex;
   margin-left: 275px;
   margin-top: 125px;
   margin-bottom: 25px;
-  width: 100%;
+  margin-right: 40px;
+}
+
+.campaign-summary-content {
+  display: flex;
+  flex: 1;
   flex-direction: column;
   align-items: center;
   border: 3px solid #c2ac38;
-  border-radius: 10px 10px 10px 10px;
-  border-top: none;
-  border-right: 3px solid #c2ac38;
-  border-left: 3px solid #c2ac38;
-  margin-right: 50px;
+  border-radius: 10px;
+
+  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
 }
 
 .campaign-summary-top {
@@ -1888,14 +1899,14 @@ dialog input {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
-  font-size: 20px;
+  font-size: 1rem;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
 }
 
 .campaign-summary-top p {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
@@ -1906,15 +1917,56 @@ dialog input {
   margin-left: 25px;
 }
 
+.campaign-summary-main {
+  min-height: 200px;
+}
+
+.campaign-summary-generation-container {
+  min-height: 200px;
+}
+
 .campaign-summary-btn-container {
-  width: 100%;
   display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.campaign-summary-btn-container button {
+  -webkit-animation: shake-horizontal 0.8s
+    cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
+  width: 150px;
+  height: 60px;
+  margin: 5px;
+  justify-content: center;
+  align-items: center;
+  flex-shrink: 0;
+  border-radius: 10px;
+  background: #c2ac38;
+  box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  color: #fff;
+  font-family: Poppins;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  border-style: none;
+}
+
+.campaign-summary-btn-container button:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .campaign-summary-generation {
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-top: 10px;
+  margin-right: 10px;
+  margin-left: 10px;
 }
 
 * {
