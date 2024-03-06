@@ -81,118 +81,6 @@ html {
   color: #c2ac38;
 }
 
-@media (max-width: 700px) {
-  .top-bar {
-    width: 100%;
-    height: 75px;
-    background-color: #132730;
-    position: fixed;
-    display: flex;
-  }
-
-  .top-logo {
-    height: 80%;
-  }
-
-  .hamburger-icon {
-    height: 50%;
-  }
-
-  .top-logo {
-    box-sizing: border-box;
-    margin: 8px 0 0 10px;
-  }
-
-  .hamburger-icon {
-    display: flex;
-  }
-
-  .collapsed-bar {
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    display: flex;
-    margin-right: 75px;
-  }
-
-  .sidebar {
-    height: 200px;
-    background-color: #1e1e1e;
-    overflow: hidden;
-    height: 0;
-    transition: height ease-in-out 0.3s;
-    position: fixed;
-    margin-top: 75px;
-    width: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
-
-  .sidebar.open {
-    height: 200px;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-  }
-
-  .campaign-tools {
-    display: none;
-  }
-
-  .sidebar-content {
-    display: flex;
-  }
-
-  .sidebar-links p {
-    display: flex;
-    justify-content: center;
-  }
-
-  .icons {
-    margin: 0;
-  }
-
-  .icons img {
-    display: none;
-  }
-
-  .sidebar-links {
-    display: flex;
-    flex-direction: column;
-    color: #fff;
-    font-family: Poppins;
-  }
-
-  .dashboard {
-    width: 100% !important;
-  }
-
-  .dashboard-content {
-    display: flex !important;
-    margin-left: 20px !important;
-    margin-top: 100px !important;
-    margin-bottom: 25px;
-  }
-
-  .dashboard-content-left {
-    width: 100% !important;
-  }
-
-  .chat-container {
-    margin-right: 40px;
-  }
-
-  .dashboard-content-right {
-    width: 100% !important;
-  }
-
-  .image-form {
-    margin-left: 0;
-    margin-right: 40px !important;
-  }
-}
-
 /* session list css */
 
 .sessions {
@@ -1030,6 +918,148 @@ dialog {
   }
 }
 
+@media (max-width: 800px) {
+  .top-bar {
+    width: 100%;
+    height: 75px;
+    background-color: #132730;
+    position: fixed;
+    display: flex;
+  }
+
+  .top-logo {
+    height: 80%;
+  }
+
+  .hamburger-icon {
+    height: 50%;
+  }
+
+  .top-logo {
+    box-sizing: border-box;
+    margin: 8px 0 0 10px;
+  }
+
+  .hamburger-icon {
+    display: flex;
+  }
+
+  .collapsed-bar {
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    display: flex;
+    margin-right: 75px;
+  }
+
+  .sidebar {
+    height: 200px;
+    background-color: #1e1e1e;
+    overflow: hidden;
+    height: 0;
+    transition: height ease-in-out 0.3s;
+    position: fixed;
+    margin-top: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .sidebar.open {
+    height: 200px;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+  }
+
+  .campaign-tools {
+    display: none;
+  }
+
+  .sidebar-content {
+    display: flex;
+  }
+
+  .sidebar-links p {
+    display: flex;
+    justify-content: center;
+  }
+
+  .icons {
+    margin: 0;
+  }
+
+  .icons img {
+    display: none;
+  }
+
+  .sidebar-links {
+    display: flex;
+    flex-direction: column;
+    color: #fff;
+    font-family: Poppins;
+  }
+
+  .dashboard {
+    width: 100%;
+  }
+
+  .dashboard-content {
+    display: flex;
+    margin-left: 20px;
+    margin-top: 100px;
+    margin-bottom: 25px;
+  }
+
+  .dashboard-content-left {
+    width: 100%;
+  }
+
+  .chat-container {
+    margin-right: 40px;
+  }
+
+  .dashboard-content-right {
+    width: 100%;
+  }
+
+  .image-form {
+    margin-left: 0;
+    margin-right: 40px;
+  }
+
+  .dice-roller-container {
+    margin-right: 40px;
+  }
+}
+
+@media (max-width: 450px) {
+  .chat-container-top p {
+    font-size: 1rem !important;
+  }
+
+  .image-generation-form-top p {
+    font-size: 1rem !important;
+  }
+
+  .dice-roller-top p {
+    font-size: 1rem !important;
+  }
+
+  .chat-message.user {
+    font-size: 0.85rem;
+  }
+
+  .chat-message.npc {
+    font-size: 0.85rem;
+  }
+
+  .generate-npc-chat-button {
+    width: 100%;
+  }
+}
+
 /* npc generator css */
 
 .chat-container {
@@ -1113,23 +1143,24 @@ dialog {
 }
 
 .generate-npc-chat-button {
-  width: 155px;
+  width: 100px;
   height: 55px;
   margin: 10px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
   border-radius: 10px;
   background: #c2ac38;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: #fff;
   font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: normal;
   border-style: none;
+}
+
+.chat-buttons {
+  display: flex;
+  justify-content: center;
 }
 
 .generate-npc-chat-button:hover {
@@ -1153,22 +1184,18 @@ dialog {
   -webkit-animation: shake-horizontal 0.8s
     cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
   animation: shake-horizontal 0.8s cubic-bezier(0.455, 0.03, 0.515, 0.955) both;
-  width: 155px;
+  width: 100px;
   height: 55px;
   margin: 10px;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  flex-shrink: 0;
   border-radius: 10px;
   background: #c2ac38;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
   color: #fff;
   font-family: Poppins;
-  font-size: 14px;
-  font-style: normal;
+  font-size: 1rem;
   font-weight: 500;
-  line-height: normal;
   border-style: none;
 }
 
@@ -1375,7 +1402,6 @@ dialog input {
 }
 
 .dice-roller-container {
-  width: 99%;
   height: 100%;
   border: 3px solid #c2ac38;
   display: flex;

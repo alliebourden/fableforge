@@ -183,20 +183,20 @@ export default function Dashboard() {
                 onKeyPress={handleKeyPress}
                 placeholder="What kind of NPC do you need?"
               />
-              <div>
+              <div className="chat-buttons">
                 <button
                   onClick={handleGenerateNPC}
                   className="generate-npc-chat-button"
                   ref={generateNPCchatbtn}
                 >
-                  Generate NPC Details
+                  GENERATE NPC
                 </button>
                 {npcGenerated && (
                   <button
                     className="generate-npc-image-btn"
                     onClick={handleGenerateImage}
                   >
-                    Generate NPC Image
+                    NPC IMAGE
                   </button>
                 )}
               </div>

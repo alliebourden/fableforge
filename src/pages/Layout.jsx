@@ -13,7 +13,7 @@ export default function Layout() {
   const navigate = useNavigate();
   const location = useLocation();
   const [activePage, setActivePage] = useState(location.pathname);
-  const [openMenu, setOpenMenu] = useState(window.innerWidth <= 700);
+  const [openMenu, setOpenMenu] = useState(window.innerWidth <= 800);
 
   const handleNavigation = (path) => {
     setActivePage(path);
@@ -22,7 +22,7 @@ export default function Layout() {
   };
 
   const toggleMenu = () => {
-    if (window.innerWidth <= 700) {
+    if (window.innerWidth <= 800) {
       setOpenMenu(!openMenu);
     } else {
       setOpenMenu(false);
@@ -31,7 +31,7 @@ export default function Layout() {
 
   useEffect(() => {
     const handleResize = () => {
-      setOpenMenu(window.innerWidth <= 700);
+      setOpenMenu(window.innerWidth > 800);
     };
 
     window.addEventListener("resize", handleResize);
