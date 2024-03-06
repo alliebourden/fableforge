@@ -398,6 +398,16 @@ html {
 
 /* session editor content */
 
+.category-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  border: 3px solid #c2ac38;
+}
+
 .category-tags {
   display: flex;
   flex-direction: column;
@@ -437,6 +447,10 @@ html {
 
 .category-tags-top img {
   margin-left: 25px;
+}
+
+dialog::backdrop {
+  background-color: rgba(117, 117, 117, 0.5);
 }
 
 /* next session react calendar */
@@ -1153,6 +1167,14 @@ dialog {
 }
 
 @media (max-width: 450px) {
+  .react-calendar__navigation button {
+    font-size: 0.75rem;
+  }
+  .react-calendar {
+    font-size: 0.85rem;
+    max-width: 250px;
+  }
+
   .chat-container-top p {
     font-size: 1rem !important;
   }
