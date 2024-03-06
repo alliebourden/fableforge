@@ -8,7 +8,6 @@ import CategoryTagIcon from "../../assets/icons/CategoryTagIcon.svg";
 
 const categoryStyle = {
   container: {
-    width: "300px",
     minHeight: "150px",
     borderRadius: "10px",
     border: "3px solid #C2AC38",
@@ -24,7 +23,6 @@ const categoryStyle = {
     borderRight: "3px solid #C2AC38",
     borderLeft: "3px solid #C2AC38",
     background: "#132730",
-    width: "30dd0px",
     height: "45px",
   },
   title: {
@@ -127,9 +125,10 @@ const SessionEditor = ({ closeModal }) => {
               }),
               control: (provided, state) => ({
                 ...provided,
-                marginLeft: "25px",
-                width: "250px",
+                width: "200px",
                 minHeight: "25px",
+                marginRight: "10px",
+                marginLeft: "10px",
                 borderRadius: "5px 5px 0px 0px",
                 borderBottom: "1px solid #1E1E1E",
                 background: "#D9D9D9",
