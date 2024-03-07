@@ -12,6 +12,7 @@ import ScreenshotPhoto from "../../assets/images/screenshot.png";
 import ManageCampaignsIcon from "../../assets/icons/ManageCampaignsIcon.svg";
 import AiToolsIcon from "../../assets/icons/AiToolsIcon.svg";
 import TrackLandingIcon from "../../assets/icons/TrackLandingIcon.svg";
+import Headshot from "../../assets/images/Headshot.jpg";
 import "animate.css";
 
 export default function Layout() {
@@ -52,7 +53,10 @@ export default function Layout() {
   return (
     <div className="layout-wrapper">
       <div className="top-bar">
-        <img src={Logo} height={80} className="top-logo" alt="Logo" />
+        <div className="top-bar-children">
+          <img src={Logo} height={80} className="top-logo" alt="Logo" />
+        </div>
+
         <div className="collapsed-bar">
           <img
             src={HamburgerIcon}
@@ -61,6 +65,9 @@ export default function Layout() {
             className="hamburger-icon"
             onClick={toggleMenu}
           />
+        </div>
+        <div className="top-bar-children-2">
+          <img src={Headshot} className="headshot" />
         </div>
       </div>
       {location.pathname !== "/" && (
@@ -144,9 +151,8 @@ export default function Layout() {
             <div className="landing-info-card">
               <img src={TrackLandingIcon} height={40} alt="Loot" />
               <p>
-                Sort sessions, quests, and loot effortlessly to enhance your
-                tabletop role-playing experience, ensuring a structured
-                adventure for you and your players.
+                Sort sessions, quests, and loot effortlessly, ensuring a
+                structured adventure for both you and your players.
               </p>
             </div>
           </div>
