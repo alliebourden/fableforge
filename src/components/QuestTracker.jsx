@@ -26,7 +26,7 @@ const QuestTracker = () => {
   const sideQuests = quests.filter((quest) => quest.type === "sideQuest");
 
   return (
-    <div className="quest-tracker">
+    <div className="quest-tracker-container">
       <div className="quest-tracker-top">
         <img src={QuestIcon} height={20} />
         <p>Quest Tracker</p>
@@ -61,8 +61,8 @@ const QuestTracker = () => {
               </div>
             ))}
           </div>
-          <div className="add-new-btn-container">
-            <button className="add-new-btn" onClick={openModal}>
+          <div className="add-new-quest-btn-container">
+            <button className="add-new-quest-btn" onClick={openModal}>
               NEW QUEST
             </button>
             <dialog className="modal" ref={modalRef}>

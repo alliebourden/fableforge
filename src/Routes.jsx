@@ -26,7 +26,7 @@ const router = createBrowserRouter(
         {
           path: "/quest-tracker",
           element: (
-            <div>
+            <div className="quest-tracker">
               <QuestTracker />
             </div>
           ),

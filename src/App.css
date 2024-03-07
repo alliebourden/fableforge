@@ -632,12 +632,11 @@ dialog::backdrop {
 dialog {
   border-radius: 5px;
   border: none;
-  max-height: 70%;
+  max-height: 80%;
   margin-top: 25px;
   position: absolute;
   left: 50%;
   top: 50%;
-  width: 50%;
   transform: translate(-50%, -50%);
   box-shadow: rgba(0, 0, 0, 0.1) 5px 8px 10px 0px;
 }
@@ -791,7 +790,6 @@ dialog {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 400px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -799,11 +797,8 @@ dialog {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
+  width: 100%;
 }
-
-/* .session-editor-content {
-  width 100%;
-} */
 
 .add-new-quest p {
   color: #fff;
@@ -817,14 +812,14 @@ dialog {
 
 .quest-form-top-section {
   display: flex;
-  width: 400px;
+  width: 100%;
   margin-left: 20px;
   margin-top: 10px;
 }
 
 .quest-form {
-  width: 400px;
-  height: 525px;
+  width: 100%;
+  height: 100%;
   border-radius: 10px;
   border: 3px solid #c2ac38;
   background: #fff;
@@ -832,6 +827,7 @@ dialog {
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: center;
 }
 
 .quest-title {
@@ -846,15 +842,21 @@ dialog {
 }
 
 .quest-tracker {
+  width: 90%;
+}
+
+.quest-tracker-container {
   display: flex;
-  margin-top: 125px;
   margin-left: 275px;
-  width: 1125px;
-  border-radius: 10px;
-  border: 3px solid #c2ac38;
-  background: #fff;
-  box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
+  margin-top: 125px;
+  margin-bottom: 25px;
+  max-width: 100%;
   flex-direction: column;
+  border-radius: 10px 10px 10px 10px;
+  border-right: 3px solid #c2ac38;
+  border-left: 3px solid #c2ac38;
+  border-bottom: 3px solid #c2ac38;
+  justify-content: center;
   align-items: center;
 }
 
@@ -862,7 +864,6 @@ dialog {
   text-transform: uppercase;
   display: flex;
   align-items: center;
-  width: 1125px;
   height: 43px;
   border-radius: 10px 10px 0px 0px;
   border-top: 3px solid #c2ac38;
@@ -870,10 +871,11 @@ dialog {
   border-left: 3px solid #c2ac38;
   background: #132730;
   color: #ffffff;
+  width: 100%;
 }
 
 .quest-tracker-top p {
-  font-size: 20px;
+  font-size: 1.25rem;
   font-style: italic;
   font-weight: 500;
   line-height: normal;
@@ -887,21 +889,49 @@ dialog {
 .quest-tracker-main-contain {
   display: flex;
   align-items: center;
+  width: 90%;
 }
 
 .quest-list {
-  width: 450px;
-  display: flex;
-  flex-direction: column;
-  /* margin-left: 40px; */
-  border-right: solid 1px #132730;
+  border-right: solid #c2ac38 2px;
+  width: 300px;
 }
 
 .quest-details-body {
   flex-direction: column;
   display: flex;
-  width: 375px;
+  width: 100%;
+  margin-left: 20px;
   margin-top: 15px;
+}
+
+.add-new-quest-btn-container {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+}
+
+.add-new-quest-btn-container button {
+  display: flex;
+  width: 80px;
+  height: 50px;
+  padding: 10px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10px;
+  background: #c2ac38;
+  color: #fff;
+  font-family: Poppins;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  margin: 10px;
+}
+
+.add-new-quest-btn-container button:hover {
+  background-color: #132730;
+  transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .selected-quest-details {
@@ -1181,6 +1211,15 @@ dialog {
     margin-left: 20px !important;
     margin-right: 20px !important;
   }
+
+  .quest-tracker {
+    width: 100%;
+  }
+
+  .quest-tracker-container {
+    margin-left: 20px !important;
+    margin-right: 20px !important;
+  }
 }
 
 @media (max-width: 450px) {
@@ -1239,6 +1278,10 @@ dialog {
 
   .campaign-summary-top p {
     font-size: 1rem !important;
+  }
+
+  .quest-tracker-container {
+    min-width: 400px;
   }
 }
 
