@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Outlet, useLocation } from "react-router-dom";
+import { Outlet, Link, useLocation } from "react-router-dom";
 import Logo from "../../assets/images/logo-small.png";
 import DashboardIcon from "../../assets/icons/DashboardIcon.svg";
 import CampaignIcon from "../../assets/icons/CampaignIcon.svg";
@@ -54,7 +54,15 @@ export default function Layout() {
     <div className="layout-wrapper">
       <div className="top-bar">
         <div className="top-bar-children">
-          <img src={Logo} height={80} className="top-logo" alt="Logo" />
+          <Link to="/">
+            <img
+              src={Logo}
+              height={80}
+              className="top-logo"
+              alt="Logo"
+              style={{ cursor: "pointer" }}
+            />
+          </Link>
         </div>
 
         <div className="collapsed-bar">
@@ -66,11 +74,15 @@ export default function Layout() {
             onClick={toggleMenu}
           />
         </div>
-        <div
-          className="top-bar-children-2"
-          onClick={() => handleNavigation("/about")}
-        >
-          <img src={Headshot} className="headshot" />
+        <div className="top-bar-children-2">
+          <Link to="/about">
+            <img
+              src={Headshot}
+              className="headshot"
+              style={{ cursor: "pointer" }}
+              alt="Headshot"
+            />
+          </Link>
         </div>
       </div>
       {location.pathname !== "/" && (
