@@ -1438,9 +1438,8 @@ dialog {
   cursor: pointer;
 }
 
-.generated-image {
-  height: 25%;
-  width: 25%;
+.generated-image-modal {
+  width: 35%;
 }
 
 .generate-npc-image-btn {

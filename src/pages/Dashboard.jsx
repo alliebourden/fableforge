@@ -50,6 +50,7 @@ export default function Dashboard() {
     }
 
     try {
+      setLoading(true);
       const response = await generateNPCchat(userInput, apiKey);
 
       const npcContent = JSON.parse(response);
@@ -66,6 +67,8 @@ export default function Dashboard() {
       setNpcGenerated(true);
     } catch (error) {
       console.error("Error generating NPC:", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -245,7 +248,7 @@ export default function Dashboard() {
       )}
       {loading && (
         <dialog open className="loading-modal">
-          <p>Generating Image...</p>
+          <h2>Loading</h2>
         </dialog>
       )}
     </div>
