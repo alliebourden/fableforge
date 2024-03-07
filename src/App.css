@@ -65,6 +65,52 @@ html {
   cursor: pointer;
 }
 
+.landing-info {
+  margin-top: 40px;
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.landing-info-card {
+  border: solid #c2ac38 3px;
+  border-radius: 10px;
+  margin: 10px;
+  width: 15%;
+  height: 275px;
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+.landing-info-card p {
+  font-size: 0.8em;
+  margin-top: 15px;
+  margin-left: 10px;
+  margin-right: 10px;
+  color: #fff;
+}
+
+.landing-page img {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+}
+
+@media (max-width: 1075px) {
+  .landing-info-card p {
+    font-size: 0.65rem;
+  }
+}
+
+@media (max-width: 950px) {
+  .landing-info-card p {
+    font-size: 0.65rem;
+  }
+}
+
 /* top bar css */
 
 .top-bar {
@@ -1140,6 +1186,40 @@ dialog {
 }
 
 @media (max-width: 800px) {
+  .landing-page {
+    margin-top: 75px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .landing-info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .try-button-container {
+    margin-top: 10px;
+  }
+
+  .landing-info-card {
+    width: 250px;
+    height: 175px;
+  }
+
+  .hero-header h1 {
+    font-size: 1rem;
+  }
+
+  .hero img {
+    width: 40%;
+  }
+
+  .try-button {
+    width: 125px;
+    font-size: 1rem;
+  }
+
   .top-bar {
     width: 100%;
     height: 75px;

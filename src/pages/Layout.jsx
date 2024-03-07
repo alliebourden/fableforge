@@ -9,6 +9,9 @@ import LootIcon from "../../assets/icons/LootManagementIcon.svg";
 import { useNavigate } from "react-router-dom";
 import HamburgerIcon from "../../assets/icons/HamburgerIcon.svg";
 import ScreenshotPhoto from "../../assets/images/screenshot.png";
+import ManageCampaignsIcon from "../../assets/icons/ManageCampaignsIcon.svg";
+import AiToolsIcon from "../../assets/icons/AiToolsIcon.svg";
+import TrackLandingIcon from "../../assets/icons/TrackLandingIcon.svg";
 import "animate.css";
 
 export default function Layout() {
@@ -122,7 +125,31 @@ export default function Layout() {
               </div>
             </div>
           </div>
-          <div className="landing-info"></div>
+          <div className="landing-info">
+            <div className="landing-info-card">
+              {" "}
+              <img src={ManageCampaignsIcon} height={40} alt="Loot" />
+              <p>
+                Enhance your Dungeon Master experience with FableForge! Utilize
+                intuitive tools for streamlined campaign organization.
+              </p>
+            </div>
+            <div className="landing-info-card">
+              <img src={AiToolsIcon} height={40} alt="Loot" />
+              <p>
+                Effortlessly craft dynamic NPCs, intricate maps, and insightful
+                campaign summaries with FableForge's AI tools.
+              </p>
+            </div>
+            <div className="landing-info-card">
+              <img src={TrackLandingIcon} height={40} alt="Loot" />
+              <p>
+                Sort sessions, quests, and loot effortlessly to enhance your
+                tabletop role-playing experience, ensuring a structured
+                adventure for you and your players.
+              </p>
+            </div>
+          </div>
         </div>
       )}
       <Outlet />
