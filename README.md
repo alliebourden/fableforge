@@ -6,11 +6,11 @@ In 2023, I joined the Get Coding mentorship program. This program offers individ
 
 ## Module Two Project
 
-As of March 2024, I have completed my second Get Coding project, FableForge. This application was written inReact.js. By completing this module I:
+As of March 2024, I have completed my second Get Coding project, FableForge. This application was written inReact.js. By completing this module now I can:
 
 1. Understand the 3-tier architecture, limitations and responsibilities of each tier.
-2. Can create fairly complex front-ends using React.js without help.
-3. Can be hired as a junior front-end developer.
+2. Create fairly complex front-ends using React.js without help.
+3. Be hired as a junior front-end developer.
 
 ## FableForge
 
