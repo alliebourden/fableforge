@@ -6,12 +6,15 @@ In 2023, I joined the Get Coding mentorship program. This program offers individ
 
 ## Module Two Project
 
-I am currently working on my second module, creating a RPG campaign manager application using React.js. By the end of this module I will be able to:
+As of March 2024, I have completed my second Get Coding project, FableForge. This application was written inReact.js. By completing this module now I can:
 
-1. Understands the 3-tier architecture, limitations and responsibilities of each tier.
+1. Understand the 3-tier architecture, limitations and responsibilities of each tier.
 2. Create fairly complex front-ends using React.js without help.
-3. Be hireable as a junior front-end developer.
+3. Be hired as a junior front-end developer.
 
 ## FableForge
 
-Being a passionate Dungeons and Dragons enthusiast, I aimed to create an intuitive campaign manager with the essential features for both Dungeon Masters and players. Although it's currently a project in development, I intend to enhance the application's capabilities in my upcoming module.
+FableForge is a toolkit designed for 5th edition Dungeon Masters. With FableForge, users can easily organize sessions, quests, and loot. Elevate your storytelling experience with AI tools for NPC creation, TTRPG maps, and campaign summaries.
+The initial idea behind FableForge was to create an application for storing and sorting through session data. FableForge provides tools to log sessions, display them individually, and create a comprehensive campaign summary based on the gathered data. The Quest Tracker allows you to log both main and side quests, while the Loot Manager utilizes an API, enabling users to log their items and access associated descriptions.
+
+Storing API keys directly in a React application without a backend poses security risks, therefore you will need a OpenAI API key to use the AI tools on FableForge.
