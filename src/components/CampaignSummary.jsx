@@ -34,11 +34,11 @@ export default function CampaignSummary() {
     localStorage.setItem("apiKey", contextApiKey);
     console.log("API Key saved:", contextApiKey);
     setShowApiKeyPrompt(false);
+
     if (generateSummarybtn.current) {
       generateSummarybtn.current.click();
     }
   };
-
   const handleGenerateSummary = async () => {
     if (!contextApiKey) {
       setShowApiKeyPrompt(true);
@@ -91,7 +91,7 @@ export default function CampaignSummary() {
             )}
           </div>
           <div className="campaign-summary-btn-container">
-            <button onClick={handleGenerateSummary}>
+            <button ref={generateSummarybtn} onClick={handleGenerateSummary}>
               Generate Campaign Summary
             </button>
           </div>

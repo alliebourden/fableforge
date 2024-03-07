@@ -68,7 +68,7 @@ html {
   color: #fff;
   font-family: Poppins;
   font-size: 14px;
-  margin: 10px 0 0 20px;
+  margin: 8px 0 0 20px;
 }
 
 .sidebar-links p {
@@ -633,6 +633,7 @@ dialog {
   border-radius: 5px;
   border: none;
   max-height: 80%;
+  min-width: 400px;
   margin-top: 25px;
   position: absolute;
   left: 50%;
@@ -909,6 +910,8 @@ dialog {
   display: flex;
   flex-direction: column;
   width: 80%;
+  justify-content: center;
+  align-items: center;
 }
 
 .add-new-quest-btn-container button {
@@ -935,7 +938,7 @@ dialog {
 }
 
 .selected-quest-details {
-  width: 550px;
+  width: 80%;
   display: flex;
   flex-direction: column;
   height: 600px;
@@ -975,6 +978,10 @@ dialog {
   color: #c2ac38;
 }
 
+.quest-details p {
+  font-size: 0.85rem;
+}
+
 .quest-title input {
   width: 175px;
   height: 25px;
@@ -999,14 +1006,21 @@ dialog {
   border-right: none;
 }
 
+.quest-list-item p {
+  margin-top: 8px;
+  margin-right: 5px;
+}
+
 .quest-list-item p:hover {
   color: #c2ac38;
   transition: ease-in-out 0.3s;
+  cursor: pointer;
 }
 
 .quest-tracker-main-contain h3 {
   text-transform: uppercase;
   font-style: italic;
+  border-bottom: solid #c2ac38 1px;
 }
 
 /* dashboard css */
@@ -1303,6 +1317,10 @@ dialog {
     height: 45px !important;
     font-size: 1rem !important;
   }
+
+  .quest-details h2 {
+    font-size: 1rem;
+  }
 }
 
 /* npc generator css */
@@ -1546,15 +1564,37 @@ dialog {
   border-style: none;
 }
 
+.api-prompt {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.api-prompt-overlay {
+  position: fixed;
+  display: none;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 2;
+  cursor: pointer;
+}
+
 dialog input {
   height: 25px;
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
-
+  width: 80%;
   border-top: none;
   border-left: none;
   border-right: none;
+  margin-top: 10px;
 }
 
 /* map generation */
@@ -1931,7 +1971,7 @@ dialog input {
 /* campaign summary css */
 
 .campaign-summary {
-  width: 100%;
+  width: 80%;
 }
 
 .campaign-container {
@@ -1939,7 +1979,6 @@ dialog input {
   margin-left: 275px;
   margin-top: 125px;
   margin-bottom: 25px;
-  margin-right: 40px;
 }
 
 .campaign-summary-content {
