@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "animate.css": "^4.1.1",
     "gh-pages": "^6.1.0",
     "langsmith": "^0.1.11",
     "openai": "^4.26.0",
