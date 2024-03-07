@@ -138,39 +138,43 @@ const LootManager = () => {
       <div className="loot-manager-add-new">
         <h3>Add New Item</h3>
         <div className="add-new-item-input">
-          <label>
-            Select Item:
-            <input
-              ref={inputRef}
-              type="text"
-              value={newItemIndex}
-              onChange={(e) => handleInputChange(e.target.value)}
-            />
-            <div className="predictions">
-              {predictions.length > 0 && (
-                <div>
-                  <ul>
-                    {predictions.map((item, index) => (
-                      <li
-                        key={index}
-                        onClick={() => handlePredictionClick(index)}
-                      >
-                        {item.name}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-            </div>
-          </label>
-          <label className="note-label">
-            Note:
-            <input
-              type="text"
-              value={note}
-              onChange={(e) => setNote(e.target.value)}
-            />
-          </label>
+          <div className="select-item">
+            <label>
+              Item:
+              <input
+                ref={inputRef}
+                type="text"
+                value={newItemIndex}
+                onChange={(e) => handleInputChange(e.target.value)}
+              />
+              <div className="predictions">
+                {predictions.length > 0 && (
+                  <div>
+                    <ul>
+                      {predictions.map((item, index) => (
+                        <li
+                          key={index}
+                          onClick={() => handlePredictionClick(index)}
+                        >
+                          {item.name}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
+            </label>
+          </div>
+          <div className="note">
+            <label className="note-label">
+              Note:
+              <input
+                type="text"
+                value={note}
+                onChange={(e) => setNote(e.target.value)}
+              />
+            </label>
+          </div>
         </div>
         <div className="add-new-item-btn">
           <button onClick={addLootItem} className="add-item-btn">

@@ -34,7 +34,7 @@ const router = createBrowserRouter(
         {
           path: "/loot-manager",
           element: (
-            <div>
+            <div className="loot-manager">
               <LootManager />
             </div>
           ),
