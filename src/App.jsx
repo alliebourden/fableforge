@@ -11,6 +11,7 @@ import QuestTracker from "./components/QuestTracker";
 import QuestTrackerForm from "./components/QuestTrackerForm";
 import SelectedQuestDetails from "./components/SelectedQuestDetails";
 import CampaignSummary from "./components/CampaignSummary";
+import About from "./pages/About";
 
 const App = () => {
   return (
@@ -27,6 +28,7 @@ const App = () => {
                 <QuestTrackerForm />
                 <SelectedQuestDetails />
                 <CampaignSummary />
+                <About />
               </Layout>
             )}
           </Route>

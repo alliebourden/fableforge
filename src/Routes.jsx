@@ -7,6 +7,7 @@ import QuestTracker from "./components/QuestTracker";
 import QuestTrackerForm from "./components/QuestTrackerForm";
 import LootManager from "./components/LootManagerTable";
 import CampaignSummary from "./components/CampaignSummary";
+import About from "./pages/About";
 
 const router = createBrowserRouter(
   [
@@ -60,6 +61,15 @@ const router = createBrowserRouter(
           element: (
             <div>
               <QuestTrackerForm />
+            </div>
+          ),
+        },
+
+        {
+          path: "/about",
+          element: (
+            <div>
+              <About />
             </div>
           ),
         },

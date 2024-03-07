@@ -130,8 +130,8 @@ html {
 
 .top-bar-children-2 {
   display: flex;
-  margin-top: 10px;
-  margin-right: 20px;
+  margin-top: 25px;
+  margin-right: 25px;
 }
 
 .top-logo {
@@ -1404,6 +1404,17 @@ dialog {
     margin-left: 20px !important;
     margin-top: 100px !important;
     width: 90% !important;
+  }
+
+  .top-bar-children-2 {
+    margin-top: 12px;
+  }
+
+  .headshot {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
   }
 }
 

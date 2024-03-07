@@ -66,7 +66,10 @@ export default function Layout() {
             onClick={toggleMenu}
           />
         </div>
-        <div className="top-bar-children-2">
+        <div
+          className="top-bar-children-2"
+          onClick={() => handleNavigation("/about")}
+        >
           <img src={Headshot} className="headshot" />
         </div>
       </div>
