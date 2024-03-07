@@ -112,6 +112,25 @@ html {
   }
 }
 
+/* about page */
+
+.about {
+  width: 80%;
+}
+
+.about-content {
+  font-size: 1.25rem;
+  display: flex;
+  margin-left: 275px;
+  margin-top: 125px;
+  margin-bottom: 25px;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-self: center;
+}
+
 /* top bar css */
 
 .top-bar {
@@ -143,6 +162,7 @@ html {
   height: 50px;
   border-radius: 50%;
   display: flex;
+  border: 2px solid #c2ac38;
 }
 
 .hamburger-icon {
@@ -1416,6 +1436,18 @@ dialog {
     border-radius: 50%;
     display: flex;
   }
+  .about {
+    width: 100%;
+  }
+
+  .about-content {
+    font-size: 1rem;
+    display: flex;
+    margin-left: 25px;
+    margin-top: 100px;
+    margin-bottom: 25px;
+    width: 90%;
+  }
 }
 
 @media (max-width: 450px) {
@@ -1492,6 +1524,10 @@ dialog {
 
   .quest-details h2 {
     font-size: 1rem;
+  }
+
+  .about-content {
+    font-size: 0.85rem;
   }
 }
 
