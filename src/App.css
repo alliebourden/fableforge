@@ -1680,6 +1680,12 @@ dialog {
   border-style: none;
 }
 
+.loading-modal {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+}
+
 .submit-api-button {
   width: 80px;
   height: 40px;
