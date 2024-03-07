@@ -99,7 +99,12 @@ export default function CampaignSummary() {
       </div>
       {showApiKeyPrompt && (
         <dialog open className="api-prompt">
-          <p>Please enter your OpenAI API key:</p>
+          <p>
+            {" "}
+            To use our AI features, simply input your OpenAI API key once. Your
+            key remains secure, granting access to FableForge's AI suite until
+            you refresh your page.
+          </p>
           <input
             type="text"
             value={contextApiKey}
