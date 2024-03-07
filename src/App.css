@@ -2271,6 +2271,7 @@ dialog input {
   font-weight: 500;
   line-height: normal;
   border-style: none;
+  margin-bottom: 15px;
 }
 
 .campaign-summary-btn-container button:hover {
