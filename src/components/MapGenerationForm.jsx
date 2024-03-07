@@ -149,9 +149,19 @@ const ImageForm = () => {
             alt="Generated Map Image"
             style={{ width: "100%", height: "auto" }}
           />
-          <div>
-            <button onClick={() => setGeneratedMapImageURL(null)}>Close</button>
-            <button onClick={downloadMapImage}>Download</button>
+          <div className="generated-image-btn-container">
+            <button
+              className="generate-npc-image-btn"
+              onClick={() => setGeneratedMapImageURL(null)}
+            >
+              Close
+            </button>
+            <button
+              className="generate-npc-image-btn"
+              onClick={downloadMapImage}
+            >
+              Download
+            </button>
           </div>
         </dialog>
       )}

@@ -13,8 +13,18 @@ export const SessionProvider = ({ children }) => {
   const handleAddSession = (newSession) => {
     setSessions((prevSessions) => [...prevSessions, newSession]);
   };
+
   const handleAddQuest = (newQuest) => {
     setQuests((prevQuests) => [...prevQuests, newQuest]);
+  };
+
+  const handleRemoveQuest = (questToRemove) => {
+    setQuests((prevQuests) =>
+      prevQuests.filter((quest) => quest !== questToRemove)
+    );
+    if (selectedQuest === questToRemove) {
+      setSelectedQuest(null);
+    }
   };
 
   const handleSelectQuest = (quest) => {
@@ -30,6 +40,7 @@ export const SessionProvider = ({ children }) => {
         setSelectedDates,
         quests,
         handleAddQuest,
+        handleRemoveQuest,
         selectedQuest,
         handleSelectQuest,
         apiKey,

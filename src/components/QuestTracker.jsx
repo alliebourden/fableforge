@@ -6,7 +6,7 @@ import SelectedQuestDetails from "./SelectedQuestDetails";
 import QuestIcon from "../../assets/icons/QuestIcon.svg";
 
 const QuestTracker = () => {
-  const { quests } = useContext(SessionContext);
+  const { quests, handleRemoveQuest } = useContext(SessionContext);
   const modalRef = useRef(null);
   const [selectedQuest, setSelectedQuest] = useState(null);
 
@@ -20,6 +20,16 @@ const QuestTracker = () => {
 
   const handleQuestClick = (quest) => {
     setSelectedQuest(quest);
+  };
+
+  const handleRemoveQuestClick = (quest) => {
+    handleRemoveQuest(quest);
+    setSelectedQuest((prevSelectedQuest) => {
+      if (prevSelectedQuest && prevSelectedQuest === quest) {
+        return null;
+      }
+      return prevSelectedQuest;
+    });
   };
 
   const mainQuests = quests.filter((quest) => quest.type === "mainQuest");
@@ -38,11 +48,19 @@ const QuestTracker = () => {
             {mainQuests.map((quest, index) => (
               <div
                 key={index}
-                className="quest-list-item"
+                className={`quest-list-item ${
+                  selectedQuest === quest ? "selected" : ""
+                }`}
                 onClick={() => handleQuestClick(quest)}
               >
                 <p>
                   <strong>{quest.header}</strong>
+                </p>
+                <p
+                  className="remove-quest-btn"
+                  onClick={() => handleRemoveQuestClick(quest)}
+                >
+                  &#10006;
                 </p>
               </div>
             ))}
@@ -52,12 +70,23 @@ const QuestTracker = () => {
             {sideQuests.map((quest, index) => (
               <div
                 key={index}
-                className="quest-list-item"
+                className={`quest-list-item ${
+                  selectedQuest === quest ? "selected" : ""
+                }`}
                 onClick={() => handleQuestClick(quest)}
               >
                 <p>
                   <strong>{quest.header}</strong>
                 </p>
+                <button
+                  className="remove-quest-btn"
+                  onClick={(e) => {
+                    e.stopPropagation();
+                    handleRemoveQuestClick(quest);
+                  }}
+                >
+                  X
+                </button>
               </div>
             ))}
           </div>

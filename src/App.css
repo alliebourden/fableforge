@@ -139,10 +139,34 @@ html {
 
 .about-content p {
   width: 90%;
+  text-align: center;
 }
 
 .last-para {
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  border-bottom: #c2ac38 solid 1px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+}
+
+.about-allie {
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  text-align: center;
+}
+
+.about-icons {
+  justify-content: center;
+  align-items: center;
+  display: flex;
+  width: 100%;
+}
+
+.about-icons img {
+  margin: 10px;
 }
 
 /* top bar css */
@@ -1055,6 +1079,10 @@ dialog {
   width: 300px;
 }
 
+.quest-list-item.selected {
+  color: #c2ac38;
+}
+
 .quest-details-body {
   flex-direction: column;
   display: flex;
@@ -1161,6 +1189,10 @@ dialog {
   border-top: none;
   border-left: none;
   border-right: none;
+}
+
+.quest-list-item {
+  display: flex;
 }
 
 .quest-list-item p {
@@ -1916,6 +1948,11 @@ dialog input {
   font-weight: 500;
   border-style: none;
   display: flex;
+}
+
+.generated-image-btn-container {
+  display: flex;
+  justify-content: center;
 }
 
 /* dice roller css */

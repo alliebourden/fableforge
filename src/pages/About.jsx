@@ -1,5 +1,8 @@
 import React from "react";
 import SwordIcon from "../../assets/icons/sword.png";
+import LinkedIn from "../../assets/icons/LinkedInIcon.svg";
+import GitHub from "../../assets/icons/GitHubIcon.svg";
+import { Link } from "react-router-dom";
 
 export default function About() {
   return (
@@ -25,6 +28,26 @@ export default function About() {
         effortlessly. Whether you're a seasoned DM or new to the game, let
         FableForge assist you in creating enjoyable and unforgettable campaigns.
       </p>
+
+      <div className="about-allie">
+        <h3>Website designed by Allie Bourden</h3>
+        <div className="about-icons">
+          <Link
+            to="https://github.com/alliebourden"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={GitHub} height={50} />
+          </Link>
+          <Link
+            to="https://www.linkedin.com/in/alexandreabourden"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={LinkedIn} height={50} />
+          </Link>
+        </div>
+      </div>
     </div>
   );
 }
