@@ -24,9 +24,12 @@ export default function CampaignSummary() {
     window.addEventListener("beforeunload", () => {
       sessionStorage.removeItem("generatedSummary");
     });
-    window.removeEventListener("beforeunload", () => {
-      sessionStorage.removeItem("generatedSummary");
-    });
+
+    return () => {
+      window.removeEventListener("beforeunload", () => {
+        sessionStorage.removeItem("generatedSummary");
+      });
+    };
   }, []);
 
   const handleApiKeySubmission = () => {
@@ -39,6 +42,7 @@ export default function CampaignSummary() {
       generateSummarybtn.current.click();
     }
   };
+
   const handleGenerateSummary = async () => {
     if (!contextApiKey) {
       setShowApiKeyPrompt(true);
@@ -116,6 +120,12 @@ export default function CampaignSummary() {
           >
             Submit
           </button>
+        </dialog>
+      )}
+
+      {loading && (
+        <dialog open className="loading-modal">
+          <h2>Loading Summary</h2>
         </dialog>
       )}
     </div>
