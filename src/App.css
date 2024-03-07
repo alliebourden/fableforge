@@ -2086,6 +2086,7 @@ dialog input {
   border-left: none;
   border-right: none;
   width: 50%;
+  height: 35px;
 }
 
 .note input {
