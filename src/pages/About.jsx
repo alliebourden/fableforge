@@ -20,7 +20,7 @@ export default function About() {
         experience.
       </p>
       <img src={SwordIcon} height={100} />
-      <p>
+      <p className="last-para">
         Discover the convenience of FableForge for crafting memorable adventures
         effortlessly. Whether you're a seasoned DM or new to the game, let
         FableForge assist you in creating enjoyable and unforgettable campaigns.
