@@ -12,6 +12,9 @@
     "deploy": "gh-pages -d build"
   },
   "dependencies": {
+    "@emotion/react": "^11.11.4",
+    "@emotion/styled": "^11.11.5",
+    "@mui/material": "^5.15.15",
     "animate.css": "^4.1.1",
     "gh-pages": "^6.1.0",
     "langsmith": "^0.1.11",
