@@ -30,7 +30,15 @@ async function insertInto() {
     console.log(res)
 }
 
-insertInto();
+// insertInto();
+
+async function deleteItem() {
+    let res = await pool.query("delete from loot_mananger where item='rapier'")
+    console.log(res)
+}
+
+deleteItem();
+
 
 /**
  * Exercise:
