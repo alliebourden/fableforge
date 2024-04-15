@@ -19,11 +19,18 @@ async function select() {
 // select();
 
 async function update() {
-    let res = await pool.query("update loot_manager set item = 'sword' where loot_id = 2")
+    let res = await pool.query("update loot_manager set item = 'rapier' where loot_id = 2")
     console.log(res)
 }
 
-update();
+// update();
+
+async function insertInto() {
+    let res = await pool.query("insert loot_manager (item, description, note) values ('potion of flying', 'When you drink this potion, you gain a flying speed equal to your walking speed for 1 hour and can hover.' , 'purchased from a merchant')")
+    console.log(res)
+}
+
+insertInto();
 
 /**
  * Exercise:
