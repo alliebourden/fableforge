@@ -53,7 +53,14 @@ async function alter() {
     console.log(res)
 }
 
-alter();
+// alter();
+
+async function alterColumnHeader() {
+    let res = await pool.query("alter table testtable rename column title to header")
+    console.log(res)
+}
+
+alterColumnHeader();
 
 /**
  * Exercise:
