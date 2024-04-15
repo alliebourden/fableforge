@@ -11,6 +11,8 @@ app.use(express.json())
 app.use('/api/user', userRouter)
 app.use('/api/session', SessionRouter)
 
+
+
 async function select() {
     let res = await pool.query("select * from loot_manager where item = 'crossbow'")
     console.log(res)
@@ -44,8 +46,13 @@ async function create() {
     console.log(res)
 }
 
-create();
+// create();
 
+async function alter() {
+    let res = await pool.query("alter table testtable add date string")
+}
+
+alter();
 
 /**
  * Exercise:
