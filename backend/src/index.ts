@@ -11,12 +11,19 @@ app.use(express.json())
 app.use('/api/user', userRouter)
 app.use('/api/session', SessionRouter)
 
-async function test() {
+async function select() {
     let res = await pool.query("select * from loot_manager where item = 'crossbow'")
     console.log(res)
 }
 
-test();
+// select();
+
+async function update() {
+    let res = await pool.query("update loot_manager set item = 'sword' where loot_id = 2")
+    console.log(res)
+}
+
+update();
 
 /**
  * Exercise:
