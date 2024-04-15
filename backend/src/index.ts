@@ -49,7 +49,8 @@ async function create() {
 // create();
 
 async function alter() {
-    let res = await pool.query("alter table testtable add date string")
+    let res = await pool.query("alter table testtable add comments varchar(400)")
+    console.log(res)
 }
 
 alter();
