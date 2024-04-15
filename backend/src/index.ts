@@ -33,11 +33,18 @@ async function insertInto() {
 // insertInto();
 
 async function deleteItem() {
-    let res = await pool.query("delete from loot_mananger where item='rapier'")
+    let res = await pool.query("delete from loot_manager where item='rapier'")
     console.log(res)
 }
 
-deleteItem();
+// deleteItem();
+
+async function create() {
+    let res = await pool.query("CREATE TABLE TestTable (test_id int, tile varchar(255), body varchar(600))")
+    console.log(res)
+}
+
+create();
 
 
 /**
