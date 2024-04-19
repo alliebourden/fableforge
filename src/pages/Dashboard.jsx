@@ -39,8 +39,7 @@ export default function Dashboard() {
       },
     },
     typography: {
-      MuiButton: {
-          fontSize: '16px',
+      button: {
           fontWeight: 'bold',
           color: '#F7F7F7',
       }
