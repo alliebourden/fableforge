@@ -5,6 +5,9 @@ import { SessionContext } from "../components/SessionContext";
 import NpcImageGeneration from "../components/NpcImageGeneration";
 import ImageForm from "../components/MapGenerationForm";
 import NpcIcon from "../../assets/icons/NpcIcon.svg";
+import { Button, ThemeProvider, createTheme } from "@mui/material";
+import { yellow } from '@mui/material/colors';
+
 
 export default function Dashboard() {
   const [userInput, setUserInput] = useState("");
@@ -16,6 +19,33 @@ export default function Dashboard() {
   const [npcGenerated, setNpcGenerated] = useState(false);
   const [generatedImageURL, setGeneratedImageURL] = useState(null);
   const [loading, setLoading] = useState(false);
+  
+  const theme = createTheme({
+    palette: {
+      primary: {
+        main: '#c2ab38',
+        light: '#cebb5f',
+      }
+    },
+    components: {
+      MuiButton: {
+        styleOverrides: {
+          root: {
+            '&:hover': {
+              backgroundColor: '#132730',
+            },
+          },
+        },
+      },
+    },
+    typography: {
+      MuiButton: {
+          fontSize: '16px',
+          fontWeight: 'bold',
+          color: '#F7F7F7',
+      }
+    }
+  });
 
   const generateNPCchatbtn = useRef(null);
 
@@ -158,6 +188,7 @@ export default function Dashboard() {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="dashboard">
       <div className="dashboard-content">
         <div className="dashboard-content-left">
@@ -186,20 +217,22 @@ export default function Dashboard() {
                 placeholder="What kind of NPC do you need?"
               />
               <div className="chat-buttons">
-                <button
+                <Button variant="contained" color="primary"
                   onClick={handleGenerateNPC}
                   className="generate-npc-chat-button"
                   ref={generateNPCchatbtn}
                 >
                   GENERATE NPC
-                </button>
+                </Button>
                 {npcGenerated && (
-                  <button
-                    className="generate-npc-image-btn"
+                  <Button
+                  variant="contained"
+                  color="primary"
+                  className="generate-npc-image-btn"
                     onClick={handleGenerateImage}
                   >
                     NPC IMAGE
-                  </button>
+                  </Button>
                 )}
               </div>
             </div>
@@ -256,5 +289,6 @@ export default function Dashboard() {
         </dialog>
       )}
     </div>
+    </ThemeProvider>
   );
 }
