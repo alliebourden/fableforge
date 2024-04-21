@@ -24,13 +24,14 @@ export default function Dashboard() {
     palette: {
       primary: {
         main: '#c2ab38',
-        light: '#cebb5f',
-      }
+        contrastText: "#FFFFFF"
+      },
     },
     components: {
       MuiButton: {
         styleOverrides: {
           root: {
+            borderRadius: '10px', 
             '&:hover': {
               backgroundColor: '#132730',
             },
@@ -41,7 +42,7 @@ export default function Dashboard() {
     typography: {
       button: {
           fontWeight: 'bold',
-          color: '#F7F7F7',
+          fontPalette: '#FFFFFF',
       }
     }
   });
@@ -220,6 +221,7 @@ export default function Dashboard() {
                   onClick={handleGenerateNPC}
                   className="generate-npc-chat-button"
                   ref={generateNPCchatbtn}
+                  sx={{ my: 1, }}
                 >
                   GENERATE NPC
                 </Button>
