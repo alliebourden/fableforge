@@ -14,6 +14,8 @@ import AiToolsIcon from "../../assets/icons/AiToolsIcon.svg";
 import TrackLandingIcon from "../../assets/icons/TrackLandingIcon.svg";
 import Headshot from "../../assets/images/Headshot.jpg";
 import "animate.css";
+import { Button, ThemeProvider } from "@mui/material";
+import theme from "../Theme";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -51,6 +53,7 @@ export default function Layout() {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="layout-wrapper">
       <div className="top-bar">
         <div className="top-bar-children">
@@ -141,9 +144,20 @@ export default function Layout() {
                 <h1>Managing Myths</h1>
               </strong>
               <div className="try-button-container">
-                <button className="try-button" onClick={startFableForge}>
-                  START FABLEFORGE
-                </button>
+              <Button
+              variant="contained"
+              color="primary"
+              className="try-button"
+              sx={{
+                '&:hover': {
+                  backgroundColor: 'initial', 
+                    color: 'initial',
+                },
+              }}
+              onClick={startFableForge}
+               >
+              START FABLEFORGE
+              </Button>
               </div>
             </div>
           </div>
@@ -175,5 +189,6 @@ export default function Layout() {
       )}
       <Outlet />
     </div>
+    </ThemeProvider>
   );
 }

@@ -8,6 +8,7 @@ import QuestTrackerForm from "./components/QuestTrackerForm";
 import LootManager from "./components/LootManagerTable";
 import CampaignSummary from "./components/CampaignSummary";
 import About from "./pages/About";
+import AccountLanding from "./pages/AccountLanding";
 
 const router = createBrowserRouter(
   [
@@ -15,6 +16,7 @@ const router = createBrowserRouter(
       path: "/",
       element: <Layout />,
       children: [
+        { path: "/account-landing", element: <div className="account-landing"><AccountLanding /></div> },
         { path: "/dashboard", element: <Dashboard /> },
         {
           path: "campaign-summary",
