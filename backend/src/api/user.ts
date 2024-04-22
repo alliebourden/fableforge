@@ -1,11 +1,10 @@
 import { Router, type Request, type Response } from "express";
 import { error, success } from "../utils/rest";
 import { type User, validateUser } from "../models";
-
+import { hashPassword } from "salthash";
 
 const router = Router();
 
-const { hashPassword, verifyPassword } = require('../utils/salthash');
 
 const DEMO_USERS: User[] = [];
 DEMO_USERS.push({

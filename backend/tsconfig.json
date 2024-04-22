@@ -6,10 +6,11 @@
     "outDir": "dist",
     "strict": true,
     "esModuleInterop": true,
+    "jsx": "react"
   },
   "include": [
     "src/**/*.ts"
-  ],
+, "src/db/salthash.ts"  ],
   "exclude": [
     "node_modules"
   ]
