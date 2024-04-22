@@ -142,6 +142,8 @@ router.put("/:id", (req: Request, res: Response) => {
   return res.status(200).json(success(updatedUserContent));
 });
 
+// DELETE user by ID
+
 router.delete("/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   const selectedUser = DEMO_USERS.findIndex((user) => user.id === id);
