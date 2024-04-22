@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import CampaignSummarizer from "./CampaignSummarizer";
 import { SessionContext } from "./SessionContext";
 import CampaignIcon from "../../assets/icons/CampaignIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 export default function CampaignSummary() {
   const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
@@ -79,6 +81,7 @@ export default function CampaignSummary() {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="campaign-container">
       <div className="campaign-summary-content">
         <div className="campaign-summary-top">
@@ -95,9 +98,11 @@ export default function CampaignSummary() {
             )}
           </div>
           <div className="campaign-summary-btn-container">
-            <button ref={generateSummarybtn} onClick={handleGenerateSummary}>
+            <Button 
+            variant="contained" color="primary"
+            ref={generateSummarybtn} onClick={handleGenerateSummary}>
               Generate Campaign Summary
-            </button>
+            </Button>
           </div>
         </div>
       </div>
@@ -114,12 +119,14 @@ export default function CampaignSummary() {
             onChange={handleApiKeyInputChange}
             onKeyPress={handleApiKeyInputKeyPress}
           />
-          <button
+          <Button
+          variant="contained" color="primary"
             className="submit-api-button"
             onClick={handleApiKeySubmission}
+            sx={{ my: 1,}}
           >
             Submit
-          </button>
+          </Button>
         </dialog>
       )}
 
@@ -129,5 +136,6 @@ export default function CampaignSummary() {
         </dialog>
       )}
     </div>
+    </ThemeProvider>
   );
 }
