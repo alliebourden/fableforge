@@ -43,7 +43,7 @@ router.get("/:id", (req: Request, res: Response) => {
     return res.status(400).json(error("Invalid user ID"));
   }
 
-  const user = DEMO_USERS.find((u) => u.id === id);
+  const user = DEMO_USERS.find((u) => u.user_id === id);
   if (user === undefined) {
     return res.status(404).json(error("User not found"));
   }
@@ -53,7 +53,7 @@ router.get("/:id", (req: Request, res: Response) => {
 
 router.put("/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const users = DEMO_USERS.findIndex((user) => user.id === id);
+  const users = DEMO_USERS.findIndex((user) => user.user_id === id);
 
   if (users === -1) {
     return res.status(404).json(error("User not found"));
@@ -83,7 +83,7 @@ router.put("/:id", (req: Request, res: Response) => {
 
 router.delete("/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const selectedUser = DEMO_USERS.findIndex((user) => user.id === id);
+  const selectedUser = DEMO_USERS.findIndex((user) => user.user_id === id);
 
   if (selectedUser === -1) {
     return res.status(404).json(error("User not found"));
@@ -95,19 +95,5 @@ router.delete("/:id", (req: Request, res: Response) => {
     return res.status(500).json(error("Error deleting user"));
   }
 });
-
-/**
- * Exercise:
- * 1. Implement PUT /api/user/:id
- *  - Put user should update the properties of an existing user given an ID, and the properties to update.
- *  - The body of the request will effectively be the same as the post, but instead of creating a new user, you
- *    should find the user that matches the given ID and update the properties of that user.
- *  - Be sure to validate the body of the request to ensure that the user data is formatted correctly.
- *  - Check your implementation by using postman to send a PUT request to http://localhost:3000/api/user/{{some_id}}
- *
- * 2. Implement DELETE /api/user/:id
- *  - Delete user should delete the user with the given ID.
- *  - Check your implementation by using postman to send a DELETE request to http://localhost:3000/api/user/{{some_id}}
- */
 
 export default router;
