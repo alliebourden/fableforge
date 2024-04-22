@@ -2,10 +2,13 @@ import express from 'express'
 import { userRouter, SessionRouter } from './api'
 import pool from './db/connection'
 
+var cors = require('cors')
+
 const PORT = process.env.PORT ?? 5001
 
 const app = express()
 
+app.use(cors())
 app.use(express.json())
 
 app.use('/api/user', userRouter)
