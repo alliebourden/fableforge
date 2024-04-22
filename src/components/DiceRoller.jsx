@@ -69,7 +69,9 @@ const DiceRoller = () => {
 
         <div className="roll-dice-btn-container">
           <Button variant="contained" color="primary" 
-         sx={{ my: 1, }} onClick={rollDice} className="roll-dice-btn">
+         sx={{ my: 1, }} onClick={rollDice} 
+        //  className="roll-dice-btn"
+         >
             Roll
           </Button>
         </div>

@@ -105,7 +105,6 @@ const ImageForm = () => {
           <p>MAP GENERATION</p>
         </div>
         <div className="image-generation-form-body">
-          {/* <label htmlFor="prompt">Enter your prompt:</label> */}
           <textarea
             placeholder="What kind of map do you need?"
             id="prompt"
@@ -138,7 +137,7 @@ const ImageForm = () => {
           />
           <Button
           variant="contained" color="primary"
-            className="submit-api-button"
+            // className="submit-api-button"
             onClick={handleApiKeySubmission}
           >
             Submit

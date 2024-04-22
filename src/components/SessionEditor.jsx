@@ -218,13 +218,15 @@ const SessionEditor = ({ closeModal }) => {
         <div className="submit-btn">
           <Button
            variant="contained" color="primary"
-           type="submit" className="submit-new-session">
+           type="submit" 
+          //  className="submit-new-session"
+           >
             SUBMIT
           </Button>
           <Button
-            variant="contained" color="primary"
+            variant="outlined" color="primary"
             type="button"
-            className="submit-new-session"
+            // className="submit-new-session"
             onClick={closeModal}
           >
             CLOSE
