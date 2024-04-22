@@ -11,7 +11,7 @@ function CreateAccount() {
     event.preventDefault();
 
     try {
-      const response = await fetch('/rcreate-account', {
+      const response = await fetch('/create-account', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'

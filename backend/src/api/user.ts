@@ -110,7 +110,7 @@ router.get("/username/:username", (req: Request, res: Response) => {
   return res.status(200).json(success(user));
 });
 
-// UPDATE account
+// UPDATE account by ID
 
 router.put("/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
