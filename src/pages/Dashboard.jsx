@@ -5,8 +5,9 @@ import { SessionContext } from "../components/SessionContext";
 import NpcImageGeneration from "../components/NpcImageGeneration";
 import ImageForm from "../components/MapGenerationForm";
 import NpcIcon from "../../assets/icons/NpcIcon.svg";
-import { Button, ThemeProvider, createTheme } from "@mui/material";
-import { yellow } from '@mui/material/colors';
+import { Button, ThemeProvider } from "@mui/material";
+import theme from "../Theme";
+
 
 
 export default function Dashboard() {
@@ -20,33 +21,6 @@ export default function Dashboard() {
   const [generatedImageURL, setGeneratedImageURL] = useState(null);
   const [loading, setLoading] = useState(false);
   
-  const theme = createTheme({
-    palette: {
-      primary: {
-        main: '#c2ab38',
-        contrastText: "#FFFFFF"
-      },
-    },
-    components: {
-      MuiButton: {
-        styleOverrides: {
-          root: {
-            borderRadius: '10px', 
-            '&:hover': {
-              backgroundColor: '#132730',
-            },
-          },
-        },
-      },
-    },
-    typography: {
-      button: {
-          fontWeight: 'bold',
-          fontPalette: '#FFFFFF',
-      }
-    }
-  });
-
   const generateNPCchatbtn = useRef(null);
 
   const handleApiKeySubmission = () => {
@@ -262,12 +236,13 @@ export default function Dashboard() {
             onChange={handleApiKeyInputChange}
             onKeyPress={handleApiKeyInputKeyPress}
           />
-          <button
+          <Button variant="contained" color="primary"
+          sx={{ my: 1, }}
             className="submit-api-button"
             onClick={handleApiKeySubmission}
           >
             Submit
-          </button>
+          </Button>
         </dialog>
       )}
       {generatedImageURL && (
@@ -279,8 +254,8 @@ export default function Dashboard() {
             style={{ width: "100%", height: "auto" }}
           />
           <div className="npc-image-modal-btns">
-            <button onClick={() => setGeneratedImageURL(null)}>Close</button>
-            <button onClick={downloadImage}>Download</button>
+            <Button variant="contained" color="primary" onClick={() => setGeneratedImageURL(null)}>Close</Button>
+            <Button variant="contained" color="primary" onClick={downloadImage}>Download</Button>
           </div>
         </dialog>
       )}

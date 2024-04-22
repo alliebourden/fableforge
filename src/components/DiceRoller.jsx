@@ -7,6 +7,8 @@ const DiceRoller = () => {
   const [result, setResult] = useState(null);
   const [showGif, setShowGif] = useState(false);
 
+ 
+
   const rollDice = () => {
     setShowGif(true);
     const gifDuration = 1440;
