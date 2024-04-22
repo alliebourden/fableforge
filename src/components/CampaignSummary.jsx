@@ -107,28 +107,39 @@ export default function CampaignSummary() {
         </div>
       </div>
       {showApiKeyPrompt && (
-        <dialog open className="api-prompt">
-          <p>
-            To use our AI features, simply input your OpenAI API key once. Your
-            key remains secure, granting access to FableForge's AI suite until
-            you refresh your page.
-          </p>
-          <input
-            type="text"
-            value={contextApiKey}
-            onChange={handleApiKeyInputChange}
-            onKeyPress={handleApiKeyInputKeyPress}
-          />
-          <Button
-          variant="contained" color="primary"
-            className="submit-api-button"
-            onClick={handleApiKeySubmission}
-            sx={{ my: 1,}}
-          >
-            Submit
-          </Button>
-        </dialog>
-      )}
+  <dialog open className="api-prompt">
+    <p>
+      To use our AI features, simply input your OpenAI API key once. Your
+      key remains secure, granting access to FableForge's AI suite until
+      you refresh your page.
+    </p>
+    <input
+      type="text"
+      value={contextApiKey}
+      onChange={handleApiKeyInputChange}
+      onKeyPress={handleApiKeyInputKeyPress}
+    />
+    <div className="api-prompt-buttons">
+      <Button
+        variant="contained"
+        color="primary"
+        className="submit-api-button"
+        onClick={handleApiKeySubmission}
+        sx={{ my: 1 }}
+      >
+        Submit
+      </Button>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => setShowApiKeyPrompt(false)} // Close the dialog
+        sx={{ my: 1, ml: 1 }}
+      >
+        Close
+      </Button>
+    </div>
+  </dialog>
+)}
 
       {loading && (
         <dialog open className="loading-modal">
