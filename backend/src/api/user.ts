@@ -34,6 +34,8 @@ function verifyPassword(password: string, salt: string, hash: string) {
   return hash === verifyHash;
 }
 
+// LOGIN request
+
 router.post("/login", (req: Request, res: Response) => {
   const { username, password } = req.body;
 
@@ -50,7 +52,9 @@ router.post("/login", (req: Request, res: Response) => {
   return res.status(200).json(success("Login successful"));
 });
 
-router.post("/", (req: Request, res: Response) => {
+// CREATE user account
+
+router.post("/create-account", (req: Request, res: Response) => {
   const user = validateUser(req.body);
   if (user === null) {
     return res.status(400).json(error("User data is not formatted correctly"));
@@ -76,7 +80,9 @@ router.post("/", (req: Request, res: Response) => {
   return res.status(200).json(success(createdUser));
 });
 
-router.get("/:id", (req: Request, res: Response) => {
+// FIND user by USER ID
+
+router.get("/id/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
   if (Number.isNaN(id)) {
     return res.status(400).json(error("Invalid user ID"));
@@ -89,6 +95,22 @@ router.get("/:id", (req: Request, res: Response) => {
 
   return res.status(200).json(success(user));
 });
+
+// FIND by USERNAME
+
+router.get("/username/:username", (req: Request, res: Response) => {
+  const username = req.params.username;
+
+  const user = DEMO_USERS.find((u) => u.username === username);
+  
+  if (!user) {
+    return res.status(404).json(error("User not found"));
+  }
+
+  return res.status(200).json(success(user));
+});
+
+// UPDATE account
 
 router.put("/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
