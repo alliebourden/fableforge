@@ -3,6 +3,8 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
 import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 const QuestTrackerForm = ({ closeModal }) => {
   const { quests, handleAddQuest } = useContext(SessionContext);
@@ -16,6 +18,7 @@ const QuestTrackerForm = ({ closeModal }) => {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="quest-form-content">
       <form
         onSubmit={handleSubmit(onSubmit)}
@@ -49,12 +52,17 @@ const QuestTrackerForm = ({ closeModal }) => {
           <textarea id="body" {...register("body", { required: true })} />
         </div>
         <div className="submit-btn">
-          <button type="submit" className="submit-new-quest">
+          <Button 
+          variant="contained" color="primary"
+          type="submit" 
+          // className="submit-new-quest">
+          >
             SUBMIT
-          </button>
+          </Button>
         </div>
       </form>
     </div>
+    </ThemeProvider>
   );
 };
 

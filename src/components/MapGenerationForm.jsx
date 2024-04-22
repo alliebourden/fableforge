@@ -4,6 +4,8 @@ import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
 import generateMapImage from "./MapGeneration";
 import MapIcon from "../../assets/icons/MapIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 const ImageForm = () => {
   const { handleSubmit, register } = useForm();
@@ -95,6 +97,7 @@ const ImageForm = () => {
   }, [promptText]);
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="image-form-container">
       <form onSubmit={handleSubmit(onSubmit)} className="image-generation-form">
         <div className="image-generation-form-top">
@@ -102,7 +105,6 @@ const ImageForm = () => {
           <p>MAP GENERATION</p>
         </div>
         <div className="image-generation-form-body">
-          {/* <label htmlFor="prompt">Enter your prompt:</label> */}
           <textarea
             placeholder="What kind of map do you need?"
             id="prompt"
@@ -113,13 +115,14 @@ const ImageForm = () => {
           />
         </div>
         <div>
-          <button
+          <Button variant="contained" color="primary"
             type="submit"
             onKeyPress={handleKeyPress}
             className="image-generation-button-form"
+            sx={{ my: 1, }}
           >
             SUBMIT
-          </button>
+          </Button>
         </div>
       </form>
 
@@ -132,12 +135,13 @@ const ImageForm = () => {
             onChange={(e) => setApiKey(e.target.value)}
             onKeyPress={handleApiKeyInputKeyPress}
           />
-          <button
-            className="submit-api-button"
+          <Button
+          variant="contained" color="primary"
+            // className="submit-api-button"
             onClick={handleApiKeySubmission}
           >
             Submit
-          </button>
+          </Button>
         </dialog>
       )}
 
@@ -150,18 +154,22 @@ const ImageForm = () => {
             style={{ width: "100%", height: "auto" }}
           />
           <div className="generated-image-btn-container">
-            <button
-              className="generate-npc-image-btn"
+            <Button
+            variant="contained" color="primary"
+            sx={{ my: 1, mr: 1 }}
+              // className="generate-npc-image-btn"
               onClick={() => setGeneratedMapImageURL(null)}
             >
               Close
-            </button>
-            <button
-              className="generate-npc-image-btn"
+            </Button>
+            <Button
+            variant="outlined" color="primary"
+              // className="generate-npc-image-btn"
               onClick={downloadMapImage}
+              sx={{ my: 1, ml: 1 }}
             >
               Download
-            </button>
+            </Button>
           </div>
         </dialog>
       )}
@@ -172,6 +180,7 @@ const ImageForm = () => {
         </dialog>
       )}
     </div>
+    </ThemeProvider>
   );
 };
 

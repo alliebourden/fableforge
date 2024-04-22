@@ -1,11 +1,15 @@
 import React, { useState } from "react";
 import DiceIcon from "../../assets/icons/DiceIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 const DiceRoller = () => {
   const [diceType, setDiceType] = useState(20);
   const [numDice, setNumDice] = useState(1);
   const [result, setResult] = useState(null);
   const [showGif, setShowGif] = useState(false);
+
+ 
 
   const rollDice = () => {
     setShowGif(true);
@@ -26,6 +30,7 @@ const DiceRoller = () => {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="dice-roller-container">
       <div className="dice-roller-top">
         <img src={DiceIcon} height={20} />
@@ -63,9 +68,12 @@ const DiceRoller = () => {
         </div>
 
         <div className="roll-dice-btn-container">
-          <button onClick={rollDice} className="roll-dice-btn">
-            Roll Dice
-          </button>
+          <Button variant="contained" color="primary" 
+         sx={{ my: 1, }} onClick={rollDice} 
+        //  className="roll-dice-btn"
+         >
+            Roll
+          </Button>
         </div>
       </div>
       {showGif && (
@@ -84,6 +92,7 @@ const DiceRoller = () => {
         </div>
       )}
     </div>
+    </ThemeProvider>
   );
 };
 

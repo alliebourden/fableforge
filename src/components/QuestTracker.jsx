@@ -4,6 +4,8 @@ import { useNavigate } from "react-router-dom";
 import QuestTrackerForm from "./QuestTrackerForm";
 import SelectedQuestDetails from "./SelectedQuestDetails";
 import QuestIcon from "../../assets/icons/QuestIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 const QuestTracker = () => {
   const { quests, handleRemoveQuest } = useContext(SessionContext);
@@ -36,6 +38,7 @@ const QuestTracker = () => {
   const sideQuests = quests.filter((quest) => quest.type === "sideQuest");
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="quest-tracker-container">
       <div className="quest-tracker-top">
         <img src={QuestIcon} height={20} />
@@ -78,15 +81,12 @@ const QuestTracker = () => {
                 <p>
                   <strong>{quest.header}</strong>
                 </p>
-                <button
+                <p
                   className="remove-quest-btn"
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    handleRemoveQuestClick(quest);
-                  }}
+                  onClick={() => handleRemoveQuestClick(quest)}
                 >
-                  X
-                </button>
+                  &#10006;
+                </p>
               </div>
             ))}
           </div>
@@ -105,6 +105,7 @@ const QuestTracker = () => {
         </div>
       </div>
     </div>
+  </ThemeProvider>
   );
 };
 

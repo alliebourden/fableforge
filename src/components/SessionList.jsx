@@ -6,6 +6,8 @@ import NextSessionIcon from "../../assets/icons/NextSessionIcon.svg";
 import SessionEditor from "./SessionEditor";
 import NextSessionCalendar from "./NextSessionCalendar";
 import SessionIconDetails from "../../assets/icons/SessionIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 const SessionList = () => {
   const { sessions, selectedDates } = useContext(SessionContext);
@@ -36,6 +38,7 @@ const SessionList = () => {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="sessions-content">
       <div className="sessions-left">
         <div className="session-details">
@@ -77,12 +80,15 @@ const SessionList = () => {
                   {selectedDates.map(formatSelectedDate).join(", ")}
                 </span>
               </p>
-              <button
-                className="next-session-button"
+              <Button
+              variant="contained" color="primary"
+                // className="next-session-button"
                 onClick={openCalendarModal}
+                sx={{ mb: 1,
+                }}
               >
-                ADD NEXT SESSION
-              </button>
+                NEXT SESSION
+              </Button>
               <dialog className="modal" ref={calendarModal}>
                 <NextSessionCalendar closeModal={closeModal} />
               </dialog>
@@ -110,9 +116,14 @@ const SessionList = () => {
                 ))}
             </div>
             <div className="add-new-btn-container">
-              <button className="add-new-btn" onClick={openEditorModal}>
+              <Button 
+              variant="contained" color="primary"
+              sx={{ mb: 1,
+              }}
+              // className="add-new-btn" 
+              onClick={openEditorModal}>
                 ADD NEW
-              </button>
+              </Button>
               <dialog className="modal" ref={editorModal}>
                 <SessionEditor closeModal={closeModal} />
               </dialog>
@@ -121,6 +132,7 @@ const SessionList = () => {
         </div>
       </div>
     </div>
+    </ThemeProvider>
   );
 };
 

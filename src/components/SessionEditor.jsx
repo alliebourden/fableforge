@@ -5,6 +5,8 @@ import { useContext } from "react";
 import { SessionContext } from "./SessionContext";
 import AddSessionIcon from "../../assets/icons/AddSessionIcon.svg";
 import CategoryTagIcon from "../../assets/icons/CategoryTagIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 const categoryStyle = {
   container: {
@@ -108,6 +110,7 @@ const SessionEditor = ({ closeModal }) => {
   };
 
   return (
+    <ThemeProvider theme={theme} >
     <div className="session-editor-content">
       <div>
         <div className="category-container">
@@ -213,19 +216,25 @@ const SessionEditor = ({ closeModal }) => {
           <textarea id="body" {...register("body", { required: true })} />
         </div>
         <div className="submit-btn">
-          <button type="submit" className="submit-new-session">
+          <Button
+           variant="contained" color="primary"
+           type="submit" 
+          //  className="submit-new-session"
+           >
             SUBMIT
-          </button>
-          <button
+          </Button>
+          <Button
+            variant="outlined" color="primary"
             type="button"
-            className="submit-new-session"
+            // className="submit-new-session"
             onClick={closeModal}
           >
             CLOSE
-          </button>
+          </Button>
         </div>
       </form>
     </div>
+    </ThemeProvider>
   );
 };
 
