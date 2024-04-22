@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import { Button, ThemeProvider } from "@mui/material";
+import theme from "../Theme";
 
 function CreateAccount() {
   const [name, setName] = useState('');
@@ -31,6 +33,7 @@ function CreateAccount() {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div>
       <h2>Create Account</h2>
       <form onSubmit={handleSubmit}>
@@ -78,10 +81,13 @@ function CreateAccount() {
             required
           />
         </div>
-        <button type="submit">Create Account</button>
+        <Button 
+        variant='contained'
+        type="submit">Create Account</Button>
       </form>
       <div>{message}</div>
     </div>
+    </ThemeProvider>
   );
 }
 
