@@ -157,15 +157,17 @@ const ImageForm = () => {
           <div className="generated-image-btn-container">
             <Button
             variant="contained" color="primary"
-              className="generate-npc-image-btn"
+            sx={{ my: 1, mr: 1 }}
+              // className="generate-npc-image-btn"
               onClick={() => setGeneratedMapImageURL(null)}
             >
               Close
             </Button>
             <Button
-            variant="contained" color="primary"
-              className="generate-npc-image-btn"
+            variant="outlined" color="primary"
+              // className="generate-npc-image-btn"
               onClick={downloadMapImage}
+              sx={{ my: 1, ml: 1 }}
             >
               Download
             </Button>

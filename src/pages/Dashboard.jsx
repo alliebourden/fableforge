@@ -202,7 +202,7 @@ export default function Dashboard() {
                 </Button>
                 {npcGenerated && (
                   <Button
-                  variant="contained"
+                  variant="outlined"
                   color="primary"
                   className="generate-npc-image-btn"
                     onClick={handleGenerateImage}
@@ -256,8 +256,13 @@ export default function Dashboard() {
             style={{ width: "100%", height: "auto" }}
           />
           <div className="npc-image-modal-btns">
-            <Button variant="contained" color="primary" onClick={() => setGeneratedImageURL(null)}>Close</Button>
-            <Button variant="contained" color="primary" onClick={downloadImage}>Download</Button>
+            <Button variant="contained" color="primary" onClick={() => setGeneratedImageURL(null)}
+            sx={{ my: 1, mr: 1 }}>Close</Button>
+            <Button 
+            variant="outlined" 
+            color="primary" 
+            onClick={downloadImage}
+            sx={{ my: 1, ml: 1 }}>Download</Button>
           </div>
         </dialog>
       )}
