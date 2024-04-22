@@ -178,10 +178,10 @@ export default function Dashboard() {
             </div>
             <div className="chat-history" ref={chatHistoryRef}>
             {chatHistory.map((message, index) => (
-  <div key={index} className={`chat-message ${message.role}`}>
-    {renderContent(message.content)}
-  </div>
-))}
+            <div key={index} className={`chat-message ${message.role}`}>
+              {renderContent(message.content)}
+             </div>
+            ))}
             </div>
             <div className="user-input">
               <input
