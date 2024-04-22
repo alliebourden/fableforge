@@ -20,6 +20,8 @@ export default function Dashboard() {
   const [npcGenerated, setNpcGenerated] = useState(false);
   const [generatedImageURL, setGeneratedImageURL] = useState(null);
   const [loading, setLoading] = useState(false);
+
+  
   
   const generateNPCchatbtn = useRef(null);
 
@@ -57,7 +59,7 @@ export default function Dashboard() {
       setLoading(true);
       const response = await generateNPCchat(userInput, apiKey);
 
-      const npcContent = JSON.parse(response);
+      const npcContent = typeof response === 'string' ? JSON.parse(response) : response;
       const npcDescription = JSON.stringify(npcContent.description);
 
       setNpcDescriptions([npcDescription]);
@@ -65,7 +67,7 @@ export default function Dashboard() {
       setChatHistory([
         ...chatHistory,
         { role: "user", content: userInput },
-        { role: "npc", content: response },
+        { role: "npc", content: npcContent },
       ]);
       setUserInput("");
       setNpcGenerated(true);
@@ -103,7 +105,7 @@ export default function Dashboard() {
     const capitalizeFirstLetter = (str) => {
       return str.charAt(0).toUpperCase() + str.slice(1);
     };
-
+  
     if (typeof content === "object") {
       return (
         <div>
@@ -112,7 +114,7 @@ export default function Dashboard() {
               {typeof value === "object" ? (
                 <div>
                   <strong>{capitalizeFirstLetter(key)}:</strong>{" "}
-                  {JSON.stringify(value)}
+                  {key === "race" ? value.name : JSON.stringify(value)}
                 </div>
               ) : key === "friendliness" ? (
                 <div>
@@ -131,6 +133,9 @@ export default function Dashboard() {
       return content;
     }
   };
+  
+  
+  
 
   useEffect(() => {
     const handleEscKey = (e) => {
@@ -172,15 +177,11 @@ export default function Dashboard() {
               <p>NPC Generator</p>
             </div>
             <div className="chat-history" ref={chatHistoryRef}>
-              {chatHistory.map((message, index) => (
-                <div key={index} className={`chat-message ${message.role}`}>
-                  {renderContent(
-                    message.role === "npc"
-                      ? JSON.parse(message.content)
-                      : message.content
-                  )}
-                </div>
-              ))}
+            {chatHistory.map((message, index) => (
+  <div key={index} className={`chat-message ${message.role}`}>
+    {renderContent(message.content)}
+  </div>
+))}
             </div>
             <div className="user-input">
               <input
@@ -195,7 +196,7 @@ export default function Dashboard() {
                   onClick={handleGenerateNPC}
                   className="generate-npc-chat-button"
                   ref={generateNPCchatbtn}
-                  sx={{ my: 1, }}
+                  sx={{ my: 1, mr: 1, }}
                 >
                   GENERATE NPC
                 </Button>
@@ -205,6 +206,7 @@ export default function Dashboard() {
                   color="primary"
                   className="generate-npc-image-btn"
                     onClick={handleGenerateImage}
+                    sx={{ my: 1, ml: 1, }}
                   >
                     NPC IMAGE
                   </Button>
