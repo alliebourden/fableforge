@@ -34,6 +34,22 @@ function verifyPassword(password: string, salt: string, hash: string) {
   return hash === verifyHash;
 }
 
+router.post("/login", (req: Request, res: Response) => {
+  const { username, password } = req.body;
+
+  const user = DEMO_USERS.find((u) => u.username === username);
+
+  if (!user) {
+    return res.status(404).json(error("User not found"));
+  }
+
+  if (!verifyPassword(password, user.salt, user.password_hash)) {
+    return res.status(401).json(error("Invalid username or password"));
+  }
+
+  return res.status(200).json(success("Login successful"));
+});
+
 router.post("/", (req: Request, res: Response) => {
   const user = validateUser(req.body);
   if (user === null) {

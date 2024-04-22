@@ -18,8 +18,8 @@ const UserSchema = Joi.object<User>({
   email: Joi.string().email().required(),
   username: Joi.string().required(),
   password: Joi.string().required(),
-  password_hash: Joi.string().required(),
-  salt: Joi.string().required(),
+  password_hash: Joi.string().optional(),
+  salt: Joi.string().optional(),
 })
 
 export const validateUser = (user: any): User | null => {
