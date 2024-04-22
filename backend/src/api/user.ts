@@ -6,9 +6,12 @@ const router = Router();
 
 const DEMO_USERS: User[] = [];
 DEMO_USERS.push({
-  id: 12345,
+  user_id: 12345,
   name: "John Doe",
-  email: "john@doe.com",
+  email: "johndoe@testemail.com",
+  username: "johndoe123",
+  password_hash: "hash12345",
+  salt: "salt12345",
 });
 
 router.post("/", (req: Request, res: Response) => {
