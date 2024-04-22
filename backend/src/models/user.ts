@@ -29,3 +29,4 @@ export const validateUser = (user: any): User | null => {
   }
   return value
 }
+

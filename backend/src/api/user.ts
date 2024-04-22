@@ -1,7 +1,8 @@
 import { Router, type Request, type Response } from "express";
 import { error, success } from "../utils/rest";
 import { type User, validateUser } from "../models";
-import { hashPassword } from "salthash";
+// import { hashPassword, verifyPassword } from "../db/salthash";
+const crypto = require('crypto');
 
 const router = Router();
 
@@ -15,6 +16,20 @@ DEMO_USERS.push({
   password_hash: "hash12345",
   salt: "salt12345",
 });
+
+const SALT_LENGTH = 16;
+const ITERATIONS = 100000;
+const KEY_LENGTH = 64;
+
+
+function hashPassword(password: string) {
+  const salt = crypto.randomBytes(SALT_LENGTH).toString('hex');
+  const hash = crypto.pbkdf2Sync(password, salt, ITERATIONS, KEY_LENGTH, 'sha512');
+  return {
+    salt,
+    hash: hash.toString('hex')
+  };
+}
 
 router.post("/", (req: Request, res: Response) => {
   const user = validateUser(req.body);
