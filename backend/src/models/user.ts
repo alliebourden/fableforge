@@ -3,19 +3,21 @@ import Joi from 'joi'
 type email = string
 
 export interface User {
-  user_id?: number
+  id?: number
   name: string
   email: email
   username: string
+  password: string,
   password_hash: string
   salt: string
 }
 
 const UserSchema = Joi.object<User>({
-  user_id: Joi.number().optional(),
+  id: Joi.number().optional(),
   name: Joi.string().required(),
   email: Joi.string().email().required(),
   username: Joi.string().required(),
+  password: Joi.string().required(),
   password_hash: Joi.string().required(),
   salt: Joi.string().required(),
 })

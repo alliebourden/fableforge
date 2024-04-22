@@ -8,8 +8,8 @@ const app = express()
 
 app.use(express.json())
 
-app.use('/api/users', userRouter)
-app.use('/api/sessions', SessionRouter)
+app.use('/api/user', userRouter)
+app.use('/api/session', SessionRouter)
 
 // async function select() {
 //     let res = await pool.query("select * from loot_manager where item = 'crossbow'")

@@ -2,14 +2,18 @@ import { Router, type Request, type Response } from "express";
 import { error, success } from "../utils/rest";
 import { type User, validateUser } from "../models";
 
+
 const router = Router();
+
+const { hashPassword, verifyPassword } = require('../utils/salthash');
 
 const DEMO_USERS: User[] = [];
 DEMO_USERS.push({
-  user_id: 12345,
+  id: 12345,
   name: "John Doe",
   email: "johndoe@testemail.com",
   username: "johndoe123",
+  password: 'myPassword123',
   password_hash: "hash12345",
   salt: "salt12345",
 });
@@ -26,11 +30,14 @@ router.post("/", (req: Request, res: Response) => {
       .json(error("User ID will be generated automatically"));
   }
 
+  const { salt, hash } = hashPassword(user.password);
   const id = Math.floor(Math.random() * 1000000);
 
   const createdUser = {
     ...user,
     id,
+    password_hash: hash,
+    salt,
   };
   DEMO_USERS.push(createdUser);
 
@@ -43,7 +50,7 @@ router.get("/:id", (req: Request, res: Response) => {
     return res.status(400).json(error("Invalid user ID"));
   }
 
-  const user = DEMO_USERS.find((u) => u.user_id === id);
+  const user = DEMO_USERS.find((u) => u.id === id);
   if (user === undefined) {
     return res.status(404).json(error("User not found"));
   }
@@ -53,7 +60,7 @@ router.get("/:id", (req: Request, res: Response) => {
 
 router.put("/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const users = DEMO_USERS.findIndex((user) => user.user_id === id);
+  const users = DEMO_USERS.findIndex((user) => user.id === id);
 
   if (users === -1) {
     return res.status(404).json(error("User not found"));
@@ -83,7 +90,7 @@ router.put("/:id", (req: Request, res: Response) => {
 
 router.delete("/:id", (req: Request, res: Response) => {
   const id = parseInt(req.params.id);
-  const selectedUser = DEMO_USERS.findIndex((user) => user.user_id === id);
+  const selectedUser = DEMO_USERS.findIndex((user) => user.id === id);
 
   if (selectedUser === -1) {
     return res.status(404).json(error("User not found"));
@@ -95,5 +102,6 @@ router.delete("/:id", (req: Request, res: Response) => {
     return res.status(500).json(error("Error deleting user"));
   }
 });
+
 
 export default router;
