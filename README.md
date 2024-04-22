@@ -114,6 +114,8 @@ In Module 3, I will be building on this application to add the following feature
 
 To ensure the effectiveness and accuracy of AI tools such as the NPC Generator and Map Generator, I plan to utilize a tool like LangSmith for testing and evaluation. LangSmith provides comprehensive testing capabilities for natural language processing models, allowing for thorough evaluation of AI-powered features within FableForge.
 
+## Recent Updates
+- FableForge is now using MUI for buttons!
 
 
 
