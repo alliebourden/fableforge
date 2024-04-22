@@ -5,7 +5,6 @@ import { hashPassword } from "salthash";
 
 const router = Router();
 
-
 const DEMO_USERS: User[] = [];
 DEMO_USERS.push({
   id: 12345,
