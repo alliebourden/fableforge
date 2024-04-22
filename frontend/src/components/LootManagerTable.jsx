@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import LootManagementIcon from "../../assets/icons/LootManagementIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 const LootManager = () => {
   const [lootItems, setLootItems] = useState([]);
@@ -130,6 +132,7 @@ const LootManager = () => {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="loot-manager-table">
       <div className="loot-manager-top">
         <img src={LootManagementIcon} height={20} />
@@ -177,9 +180,13 @@ const LootManager = () => {
           </div>
         </div>
         <div className="add-new-item-btn">
-          <button onClick={addLootItem} className="add-item-btn">
+          <Button 
+          variant="contained" color="primary"
+          onClick={addLootItem} 
+          // className="add-item-btn"
+          sx={{ my: 1, }}>
             Add Item
-          </button>
+          </Button>
         </div>
       </div>
       <div className="loot-manager-table-content">
@@ -220,13 +227,18 @@ const LootManager = () => {
               <p>Description: {selectedItem.desc}</p>
             )}
             {note && <p>Note: {note}</p>}
-            <button onClick={closeModal} className="close-modal-btn">
+            <Button
+             variant="contained" color="primary"
+             onClick={closeModal} 
+            //  className="close-modal-btn"
+             >
               Close
-            </button>
+            </Button>
           </dialog>
         )}
       </div>
     </div>
+    </ThemeProvider>
   );
 };
 

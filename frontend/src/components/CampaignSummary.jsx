@@ -2,6 +2,8 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import CampaignSummarizer from "./CampaignSummarizer";
 import { SessionContext } from "./SessionContext";
 import CampaignIcon from "../../assets/icons/CampaignIcon.svg";
+import theme from "../Theme";
+import { Button, ThemeProvider } from "@mui/material";
 
 export default function CampaignSummary() {
   const [showApiKeyPrompt, setShowApiKeyPrompt] = useState(false);
@@ -79,6 +81,7 @@ export default function CampaignSummary() {
   };
 
   return (
+    <ThemeProvider theme={theme}>
     <div className="campaign-container">
       <div className="campaign-summary-content">
         <div className="campaign-summary-top">
@@ -95,33 +98,48 @@ export default function CampaignSummary() {
             )}
           </div>
           <div className="campaign-summary-btn-container">
-            <button ref={generateSummarybtn} onClick={handleGenerateSummary}>
+            <Button 
+            variant="contained" color="primary"
+            ref={generateSummarybtn} onClick={handleGenerateSummary}>
               Generate Campaign Summary
-            </button>
+            </Button>
           </div>
         </div>
       </div>
       {showApiKeyPrompt && (
-        <dialog open className="api-prompt">
-          <p>
-            To use our AI features, simply input your OpenAI API key once. Your
-            key remains secure, granting access to FableForge's AI suite until
-            you refresh your page.
-          </p>
-          <input
-            type="text"
-            value={contextApiKey}
-            onChange={handleApiKeyInputChange}
-            onKeyPress={handleApiKeyInputKeyPress}
-          />
-          <button
-            className="submit-api-button"
-            onClick={handleApiKeySubmission}
-          >
-            Submit
-          </button>
-        </dialog>
-      )}
+  <dialog open className="api-prompt">
+    <p>
+      To use our AI features, simply input your OpenAI API key once. Your
+      key remains secure, granting access to FableForge's AI suite until
+      you refresh your page.
+    </p>
+    <input
+      type="text"
+      value={contextApiKey}
+      onChange={handleApiKeyInputChange}
+      onKeyPress={handleApiKeyInputKeyPress}
+    />
+    <div className="api-prompt-buttons">
+      <Button
+        variant="contained"
+        color="primary"
+        className="submit-api-button"
+        onClick={handleApiKeySubmission}
+        sx={{ my: 1 }}
+      >
+        Submit
+      </Button>
+      <Button
+        variant="outlined"
+        color="primary"
+        onClick={() => setShowApiKeyPrompt(false)} // Close the dialog
+        sx={{ my: 1, ml: 1 }}
+      >
+        Close
+      </Button>
+    </div>
+  </dialog>
+)}
 
       {loading && (
         <dialog open className="loading-modal">
@@ -129,5 +147,6 @@ export default function CampaignSummary() {
         </dialog>
       )}
     </div>
+    </ThemeProvider>
   );
 }
