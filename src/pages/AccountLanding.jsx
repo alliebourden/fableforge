@@ -9,7 +9,7 @@ export default function AccountLanding() {
 
   return (
     <ThemeProvider theme={theme}>
-        <div className="account-landing">
+        <div className="account-landing-container">
           <div>
             <Login />
           </div>

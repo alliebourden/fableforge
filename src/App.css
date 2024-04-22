@@ -2243,6 +2243,20 @@ dialog input {
   margin-top: 20px;
 }
 
+/* account landing css */
+
+.account-landing{
+  width: 80%;
+}
+
+.account-landing-container {
+  display: flex;
+  margin-left: 275px;
+  margin-top: 125px;
+  margin-bottom: 25px;
+}
+
+
 /* campaign summary css */
 
 .campaign-summary {

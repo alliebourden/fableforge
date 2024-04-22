@@ -16,7 +16,7 @@ const router = createBrowserRouter(
       path: "/",
       element: <Layout />,
       children: [
-        { path: "/account-landing", element: <AccountLanding /> },
+        { path: "/account-landing", element: <div className="account-landing"><AccountLanding /></div> },
         { path: "/dashboard", element: <Dashboard /> },
         {
           path: "campaign-summary",
