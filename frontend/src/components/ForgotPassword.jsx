@@ -1,73 +1,57 @@
 import React, { useState } from 'react';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, TextField } from "@mui/material";
+import { Button, ThemeProvider } from "@mui/material";
 import theme from "../Theme";
 
 function ForgotPassword() {
-    const [open, setOpen] = useState(false);
-  const [email, setEmail] = useState('');
-  const [message, setMessage] = useState('');
+    const [email, setEmail] = useState('');
+    const [message, setMessage] = useState('');
 
-  const handleClickOpen = () => {
-    setOpen(true);
-  };
+    const handleSubmit = async (event) => { // Changed function name to handleSubmit
+        event.preventDefault();
 
-  const handleClose = () => {
-    setOpen(false);
-  };
+        try {
+            const response = await fetch('http://localhost:5001/api/user/forgot-password', {
+              method: 'POST',
+              headers: {
+                'Content-Type': 'application/json'
+              },
+              body: JSON.stringify({ email })
+            });
+      
+            if (!response.ok) {
+              throw new Error('Network response was not ok');
+            }
+      
+            setMessage('Password reset email sent successfully');
+          } catch (error) {
+            setMessage('Error sending password reset email');
+          }
+        };
 
-  const handleSubmit = async (event) => {
-    event.preventDefault();
-
-    try {
-      const response = await fetch('http://localhost:5001/api/user/forgot-password', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ email })
-      });
-
-      if (!response.ok) {
-        throw new Error('Network response was not ok');
-      }
-
-      setMessage('Password reset email sent successfully');
-    } catch (error) {
-      setMessage('Error sending password reset email');
-    }
-  };
-
-  return (
-    <div>
-      <Button variant="outlined" color="primary" onClick={handleClickOpen}>
-        Forgot Password
-      </Button>
-      <Dialog open={open} onClose={handleClose}>
-        <DialogTitle>Forgot Password</DialogTitle>
-        <DialogContent>
-          <form onSubmit={handleSubmit}>
-            <TextField
-              autoFocus
-              margin="dense"
-              id="email"
-              label="Email Address"
-              type="email"
-              fullWidth
-              value={email}
-              onChange={(e) => setEmail(e.target.value)}
-              required
-            />
-            <Button type="submit">Reset Password</Button>
-          </form>
-          <div>{message}</div>
-        </DialogContent>
-        <DialogActions>
-          <Button onClick={handleClose}>Cancel</Button>
-        </DialogActions>
-      </Dialog>
-    </div>
-  );
-}
+        return (
+            <ThemeProvider theme={theme}>
+            <div>
+              <h2>Forgot Password</h2>
+              <form onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="email">Email:</label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                  />
+                </div>
+                <Button 
+                  variant='contained'
+                  type="submit">Reset Password</Button>
+              </form>
+              <div>{message}</div>
+            </div>
+            </ThemeProvider>
+          );
+        }
 
 export default ForgotPassword;
-
