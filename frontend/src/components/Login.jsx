@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { Button, ThemeProvider } from "@mui/material";
 import theme from "../Theme";
 
+
 function Login() {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
@@ -56,6 +57,9 @@ function Login() {
                 onChange={(e) => setPassword(e.target.value)}
                 required
               />
+            </div>
+            <div>
+              <href>Forgot Password?</href>
             </div>
             <Button 
             variant='contained'
