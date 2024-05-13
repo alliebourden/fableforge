@@ -3,6 +3,7 @@ import { error, success } from "../utils/rest";
 import { type User, validateUser } from "../models";
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
+const jwt = require('jsonwebtoken');
 
 const router = Router();
 
@@ -37,10 +38,32 @@ function verifyPassword(password: string, salt: string, hash: string) {
 
 // CREATE token
 
-function generateToken() {
-  return crypto.randomBytes(32).toString('hex');
+function generateToken(userId) {
+  return jwt.sign({ userId }, 'your_secret_key', { expiresIn: '1h' });
 }
 
+// password reset email
+
+async function sendPasswordReset(email, token) {
+  const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+  let transporter = nodemailer.createTransport({
+    // service: 'gmail',
+    // auth: {
+    //   user: 'your-email@gmail.com',
+    //   pass: 'your-password'
+    // }
+  })
+
+  let mailOptions = {
+    from: 'your-email@example.com',
+    to: email,
+    subject: 'Password Reset',
+    text: `Click the following link to reset your password: http://localhost:3000/reset-password?token=${token}`,
+    html: `<p>Click the following link to reset your password: <a href="http://localhost:3000/reset-password?token=${token}">Reset Password</a></p>`
+  };
+  let info = await transporter.sendMail(mailOptions);
+  console.log("Email sent: %s", info.messageId);
+}
 
 // LOGIN request
 
@@ -181,5 +204,18 @@ export default router;
 
 router.post("/reset-password", (req: Request, res: Response) => {
   const { token, newPassword } = req.body;
-  return res.status(200).json(success("Password reset successfully"));
+  try {
+    const decodedToken = jwt.verify(token, 'your_secret_key');
+    const user = DEMO_USERS.find((u) => u.id === decodedToken.userId);
+    if (!user) {
+      return res.status(404).json(error('User not found'));
+    }
+    const { salt, hash } = hashPassword(newPassword);
+    user.password_hash = hash;
+    user.salt = salt;
+
+    return res.status(200).json(success("Password reset successfully"));
+  } catch (error) {
+  return res.status(400).json(error("Invalid or expired token"));
+  }
 });
