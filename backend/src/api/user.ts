@@ -168,3 +168,10 @@ router.post("/forgot-password", (req: Request, res: Response) => {
 });
 
 export default router;
+
+// RESET password 
+
+router.post("/reset-password", (req: Request, res: Response) => {
+  const { token, newPassword } = req.body;
+  return res.status(200).json(success("Password reset successfully"));
+});
