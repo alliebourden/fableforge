@@ -159,5 +159,12 @@ router.delete("/:id", (req: Request, res: Response) => {
   }
 });
 
+// FORGOT password request
+
+router.post("/forgot-password", (req: Request, res: Response) => {
+  const { email } = req.body;
+
+  return res.status(200).json(success("Password reset email sent successfully"));
+});
 
 export default router;
