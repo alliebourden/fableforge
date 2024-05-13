@@ -2,6 +2,7 @@ import { Router, type Request, type Response } from "express";
 import { error, success } from "../utils/rest";
 import { type User, validateUser } from "../models";
 const crypto = require('crypto');
+const nodemailer = require('nodemailer');
 
 const router = Router();
 
@@ -33,6 +34,13 @@ function verifyPassword(password: string, salt: string, hash: string) {
   const verifyHash = crypto.pbkdf2Sync(password, salt, ITERATIONS, KEY_LENGTH, 'sha512').toString('hex');
   return hash === verifyHash;
 }
+
+// CREATE token
+
+function generateToken() {
+  return crypto.randomBytes(32).toString('hex');
+}
+
 
 // LOGIN request
 
