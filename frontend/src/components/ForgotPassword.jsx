@@ -6,7 +6,7 @@ function ForgotPassword() {
     const [email, setEmail] = useState('');
     const [message, setMessage] = useState('');
 
-    const handleSubmit = async (event) => { // Changed function name to handleSubmit
+    const handleSubmit = async (event) => {
         event.preventDefault();
 
         try {
