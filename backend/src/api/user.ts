@@ -4,7 +4,8 @@ import { type User, validateUser } from "../models";
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
-import dotenv from 'dotenv'
+import dotenv from 'dotenv';
+const sgMail = require('@sendgrid/mail');
 
 
 const router = Router();
@@ -174,10 +175,34 @@ router.delete("/:id", (req: Request, res: Response) => {
   }
 });
 
+// FORGOT password request
+
+router.post("/forgot-password", async (req: Request, res: Response) => {
+  const { email } = req.body;
+  const user = getUserByEmail(email);
+  if (user) {
+    try {
+      if (user.id === undefined) {
+        throw new Error("User ID is undefined");
+      }
+      const token = generateToken(user.id);
+      await sendPasswordReset(email, token);
+      return res.status(200).json(success("Password reset email sent successfully"));
+    } catch (err) {
+      console.error("Error sending password reset email:", err);
+      return res.status(500).json(error("Failed to send password reset email"));
+    }
+  } else {
+    return res.status(404).json(error("User not found"));
+  }
+});
+
+export default router;
+
 async function sendPasswordReset(email: string, token: string) {
   const resetLink = `http://localhost:3000/reset-password?token=${token}`;
   let transporter = nodemailer.createTransport({
-    service: 'gmail',
+    service: 'SendGrid',
     auth: {
       user: 'fableforgenl@gmail.com',
       pass: process.env.EMAIL_PASSWORD
@@ -193,17 +218,25 @@ async function sendPasswordReset(email: string, token: string) {
   };
   let info = await transporter.sendMail(mailOptions);
   console.log("Email sent: %s", info.messageId);
+  
 }
 
-// FORGOT password request
+function getUserByEmail(email: string): User | undefined {
+  return DEMO_USERS.find((u) => u.email === email);
+}
 
-router.post("/forgot-password", (req: Request, res: Response) => {
-  const { email } = req.body;
-  sendPasswordReset(email, 'abcd1234');
-  return res.status(200).json(success("Password reset email sent successfully"));
+router.get("/email/:email", (req: Request, res: Response) => {
+  const email = req.params.email;
+
+  const user = getUserByEmail(email);
+  
+  if (!user) {
+    return res.status(404).json(error("User not found"));
+  }
+
+  return res.status(200).json(success(user));
 });
 
-export default router;
 
 // RESET password 
 
