@@ -4,8 +4,11 @@ import { type User, validateUser } from "../models";
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
+import dotenv from 'dotenv'
+
 
 const router = Router();
+dotenv.config()
 
 const DEMO_USERS: User[] = [];
 DEMO_USERS.push({
@@ -38,32 +41,13 @@ function verifyPassword(password: string, salt: string, hash: string) {
 
 // CREATE token
 
-function generateToken(userId) {
-  return jwt.sign({ userId }, 'your_secret_key', { expiresIn: '1h' });
+function generateToken(id: number) {
+  return jwt.sign({ id }, 'your_secret_key', { expiresIn: '1h' });
 }
 
 // password reset email
 
-async function sendPasswordReset(email, token) {
-  const resetLink = `http://localhost:3000/reset-password?token=${token}`;
-  let transporter = nodemailer.createTransport({
-    // service: 'gmail',
-    // auth: {
-    //   user: 'your-email@gmail.com',
-    //   pass: 'your-password'
-    // }
-  })
 
-  let mailOptions = {
-    from: 'your-email@example.com',
-    to: email,
-    subject: 'Password Reset',
-    text: `Click the following link to reset your password: http://localhost:3000/reset-password?token=${token}`,
-    html: `<p>Click the following link to reset your password: <a href="http://localhost:3000/reset-password?token=${token}">Reset Password</a></p>`
-  };
-  let info = await transporter.sendMail(mailOptions);
-  console.log("Email sent: %s", info.messageId);
-}
 
 // LOGIN request
 
@@ -190,11 +174,32 @@ router.delete("/:id", (req: Request, res: Response) => {
   }
 });
 
+async function sendPasswordReset(email: string, token: string) {
+  const resetLink = `http://localhost:3000/reset-password?token=${token}`;
+  let transporter = nodemailer.createTransport({
+    service: 'gmail',
+    auth: {
+      user: 'fableforgenl@gmail.com',
+      pass: process.env.EMAIL_PASSWORD
+    }
+  })
+
+  let mailOptions = {
+    from: 'your-email@example.com',
+    to: email,
+    subject: 'Password Reset',
+    text: `Click the following link to reset your password: http://localhost:3000/reset-password?token=${token}`,
+    html: `<p>Click the following link to reset your password: <a href="http://localhost:3000/reset-password?token=${token}">Reset Password</a></p>`
+  };
+  let info = await transporter.sendMail(mailOptions);
+  console.log("Email sent: %s", info.messageId);
+}
+
 // FORGOT password request
 
 router.post("/forgot-password", (req: Request, res: Response) => {
   const { email } = req.body;
-
+  sendPasswordReset(email, 'abcd1234');
   return res.status(200).json(success("Password reset email sent successfully"));
 });
 
@@ -215,7 +220,7 @@ router.post("/reset-password", (req: Request, res: Response) => {
     user.salt = salt;
 
     return res.status(200).json(success("Password reset successfully"));
-  } catch (error) {
-  return res.status(400).json(error("Invalid or expired token"));
+  } catch (err) {
+  return res.status(404).json(error("Invalid or expired token"));
   }
 });
