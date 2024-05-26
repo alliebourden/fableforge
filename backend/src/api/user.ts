@@ -188,7 +188,7 @@ router.post("/forgot-password", async (req: Request, res: Response) => {
       }
       const token = generateToken(user.id);
       await sendPasswordReset(email, token);
-      return res.status(200).json(success("Password reset email sent successfully"));
+      return res.status(200).json(success({ message: "Password reset email sent successfully", token }));
     } catch (err) {
       console.error("Error sending password reset email:", err);
       return res.status(500).json(error("Failed to send password reset email"));
@@ -197,6 +197,7 @@ router.post("/forgot-password", async (req: Request, res: Response) => {
     return res.status(404).json(error("User not found"));
   }
 });
+
 
 export default router;
 
@@ -214,6 +215,7 @@ async function sendPasswordReset(email: string, token: string) {
   try {
     await sgMail.send(msg);
     console.log("Password reset email sent successfully");
+
   } catch (error) {
     console.error("Error sending password reset email:", error);
     throw error;
