@@ -1,7 +1,6 @@
 import express from 'express'
 import { userRouter, SessionRouter } from './api'
 import pool from './db/connection'
-import dotenv from 'dotenv'
 
 var cors = require('cors')
 
@@ -11,7 +10,6 @@ const app = express()
 
 app.use(cors())
 app.use(express.json())
-dotenv.config()
 
 app.use('/api/user', userRouter)
 app.use('/api/session', SessionRouter)

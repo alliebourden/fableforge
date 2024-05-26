@@ -8,7 +8,10 @@
     "start": "npm run build && node dist/index.js",
     "clean": "rm -rf dist",
     "lint": "eslint . --ext .ts,.tsx",
-    "lint-fix": "eslint . --fix --ext .ts,.tsx"
+    "lint-fix": "eslint . --fix --ext .ts,.tsx",
+    "win-build": "powershell npm run win-clean; tsc",
+    "win-start": "powershell npm run win-build; node dist/index.js",
+    "win-clean": "powershell Remove-Item 'dist' -Recurse -ErrorAction SilentlyContinue"
   },
   "author": "",
   "license": "ISC",

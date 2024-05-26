@@ -4,12 +4,12 @@ import { type User, validateUser } from "../models";
 const crypto = require('crypto');
 const nodemailer = require('nodemailer');
 const jwt = require('jsonwebtoken');
-import dotenv from 'dotenv';
 const sgMail = require('@sendgrid/mail');
-
+import { apiKey } from "../config";
+sgMail.setApiKey(apiKey);
+console.log(apiKey)
 
 const router = Router();
-dotenv.config()
 
 const DEMO_USERS: User[] = [];
 DEMO_USERS.push({
@@ -21,6 +21,7 @@ DEMO_USERS.push({
   password_hash: "hash12345",
   salt: "salt12345",
 });
+
 
 const SALT_LENGTH = 16;
 const ITERATIONS = 100000;
@@ -200,27 +201,24 @@ router.post("/forgot-password", async (req: Request, res: Response) => {
 export default router;
 
 async function sendPasswordReset(email: string, token: string) {
-  const resetLink = `http://localhost:3000/reset-password?token=${token}`;
-  let transporter = nodemailer.createTransport({
-    service: 'SendGrid',
-    auth: {
-      user: 'fableforgenl@gmail.com',
-      pass: process.env.EMAIL_PASSWORD
-    }
-  })
+  const resetLink = `http://localhost:5001/reset-password?token=${token}`;
 
-  let mailOptions = {
-    from: 'your-email@example.com',
+  const msg = {
     to: email,
+    from: 'fableforgenl@gmail.com',
     subject: 'Password Reset',
-    text: `Click the following link to reset your password: http://localhost:3000/reset-password?token=${token}`,
-    html: `<p>Click the following link to reset your password: <a href="http://localhost:3000/reset-password?token=${token}">Reset Password</a></p>`
+    text: `Click the following link to reset your password: ${resetLink}`,
+    html: `<p>Click the following link to reset your password: <a href="${resetLink}">Reset Password</a></p>`,
   };
-  let info = await transporter.sendMail(mailOptions);
-  console.log("Email sent: %s", info.messageId);
-  
-}
 
+  try {
+    await sgMail.send(msg);
+    console.log("Password reset email sent successfully");
+  } catch (error) {
+    console.error("Error sending password reset email:", error);
+    throw error;
+  }
+}
 function getUserByEmail(email: string): User | undefined {
   return DEMO_USERS.find((u) => u.email === email);
 }
