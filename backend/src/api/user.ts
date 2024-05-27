@@ -44,8 +44,9 @@ function verifyPassword(password: string, salt: string, hash: string) {
 // CREATE token
 
 function generateToken(id: number) {
-  return jwt.sign({ id }, 'your_secret_key', { expiresIn: '1h' });
+  return jwt.sign({ userId: id }, 'your_secret_key', { expiresIn: '1h' });
 }
+
 
 // password reset email
 
@@ -244,16 +245,21 @@ router.post("/reset-password", (req: Request, res: Response) => {
   const { token, newPassword } = req.body;
   try {
     const decodedToken = jwt.verify(token, 'your_secret_key');
+    console.log("Decoded Token:", decodedToken);
     const user = DEMO_USERS.find((u) => u.id === decodedToken.userId);
     if (!user) {
+      console.log("User not found with ID:", decodedToken.userId);
       return res.status(404).json(error('User not found'));
     }
     const { salt, hash } = hashPassword(newPassword);
     user.password_hash = hash;
     user.salt = salt;
+    console.log("Password reset successfully for user:", user.id);
 
     return res.status(200).json(success("Password reset successfully"));
   } catch (err) {
-  return res.status(404).json(error("Invalid or expired token"));
+    console.error("Error in reset-password:", err);
+    return res.status(404).json(error("Invalid or expired token"));
   }
 });
+
