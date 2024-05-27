@@ -1,13 +1,27 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { Button } from "@mui/material";
 
-function ResetPassword({ token }) {
+function ResetPassword() {
+  const [searchParams] = useSearchParams();
+  const token = searchParams.get('token');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [message, setMessage] = useState('');
 
+  useEffect(() => {
+    if (!token) {
+      setMessage('Invalid or expired token');
+    }
+  }, [token]);
+
   const handleSubmit = async (event) => {
     event.preventDefault();
+
+    if (password !== confirmPassword) {
+      setMessage('Passwords do not match');
+      return;
+    }
 
     try {
       const response = await fetch('http://localhost:5001/api/user/reset-password', {
@@ -56,7 +70,11 @@ function ResetPassword({ token }) {
         </div>
         <Button 
           variant='contained'
-          type="submit">Reset Password</Button>
+          type="submit"
+          disabled={!token}
+        >
+          Reset Password
+        </Button>
       </form>
       <div>{message}</div>
     </div>

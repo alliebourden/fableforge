@@ -2367,3 +2367,10 @@ dialog input {
 * {
   margin: 0;
 }
+
+.reset-password-container {
+  display: flex;
+  margin-left: 275px;
+  margin-top: 125px;
+  margin-bottom: 25px;
+}

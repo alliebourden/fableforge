@@ -12,6 +12,7 @@ import QuestTrackerForm from "./components/QuestTrackerForm";
 import SelectedQuestDetails from "./components/SelectedQuestDetails";
 import CampaignSummary from "./components/CampaignSummary";
 import About from "./pages/About";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 
 
@@ -31,6 +32,7 @@ const App = () => {
                 <SelectedQuestDetails />
                 <CampaignSummary />
                 <About />
+                <ResetPasswordPage />
               </Layout>
             )}
           </Route>

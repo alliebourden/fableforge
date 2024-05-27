@@ -9,6 +9,7 @@ import LootManager from "./components/LootManagerTable";
 import CampaignSummary from "./components/CampaignSummary";
 import About from "./pages/About";
 import AccountLanding from "./pages/AccountLanding";
+import ResetPasswordPage from "./pages/ResetPasswordPage";
 
 const router = createBrowserRouter(
   [
@@ -72,6 +73,14 @@ const router = createBrowserRouter(
           element: (
             <div className="about">
               <About />
+            </div>
+          ),
+        },
+        {
+          path: "/reset-password",
+          element: (
+            <div className="reset-password">
+              <ResetPasswordPage />
             </div>
           ),
         },

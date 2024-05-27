@@ -1,12 +1,12 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
-import ResetPassword from './ResetPassword';
+import ResetPassword from '../components/ResetPassword';
 
 function ResetPasswordPage() {
   const { token } = useParams();
 
   return (
-    <div>
+    <div className='reset-password-container'>
       <ResetPassword token={token} />
     </div>
   );
