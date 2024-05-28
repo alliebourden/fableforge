@@ -68,15 +68,15 @@ function Login() {
                 />
               </div>
               <div>
-                <a href="#" onClick={openEditorModal}>
+              <Button variant='contained' type="submit">Login</Button>
+              </div>
+            </form>
+            <a href="#" onClick={openEditorModal}>
                   Forgot Password?
                 </a>
                 <dialog className="modal" ref={editorModal}>
                   <ForgotPassword closeModal={closeModal} />
                 </dialog>
-              </div>
-              <Button variant='contained' type="submit">Login</Button>
-            </form>
             <div>{message}</div>
           </div>
         </ThemeProvider>

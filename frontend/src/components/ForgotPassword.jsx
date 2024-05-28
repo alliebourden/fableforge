@@ -38,7 +38,7 @@ function ForgotPassword() {
                         <label htmlFor="email">Email:</label>
                         <input
                             type="email"
-                            id="email"
+                            id="forgot-password-email"
                             name="email"
                             value={email}
                             onChange={(e) => setEmail(e.target.value)}

@@ -203,7 +203,7 @@ router.post("/forgot-password", async (req: Request, res: Response) => {
 export default router;
 
 async function sendPasswordReset(email: string, token: string) {
-  const resetLink = `http://localhost:5001/reset-password?token=${token}`;
+  const resetLink = `http://localhost:5174/reset-password?token=${token}`;
 
   const msg = {
     to: email,
