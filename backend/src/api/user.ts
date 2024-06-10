@@ -48,10 +48,6 @@ function generateToken(id: number) {
 }
 
 
-// password reset email
-
-
-
 // LOGIN request
 
 router.post("/login", (req: Request, res: Response) => {

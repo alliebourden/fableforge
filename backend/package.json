@@ -11,7 +11,14 @@
     "lint-fix": "eslint . --fix --ext .ts,.tsx",
     "win-build": "powershell npm run win-clean; tsc",
     "win-start": "powershell npm run win-build; node dist/index.js",
-    "win-clean": "powershell Remove-Item 'dist' -Recurse -ErrorAction SilentlyContinue"
+    "win-clean": "powershell Remove-Item 'dist' -Recurse -ErrorAction SilentlyContinue",
+    "test": "jest"
+    
+  },
+  "jest": {
+    "preset": "ts-jest",
+    "testEnvironment": "node",
+    "testPathIgnorePatterns": ["dist"]
   },
   "author": "",
   "license": "ISC",
@@ -33,8 +40,10 @@
     "cors": "^2.8.5",
     "dotenv": "^16.4.5",
     "express": "^4.18.3",
+    "jest": "^29.7.0",
     "joi": "^17.12.2",
     "mysql2": "^3.9.3",
-    "nodemailer": "^6.9.13"
+    "nodemailer": "^6.9.13",
+    "ts-jest": "^29.1.4"
   }
 }
