@@ -104,7 +104,7 @@ const SessionEditor = ({ closeModal }) => {
       tags: selectedTags.map((tag) => tag.label),
     };
     handleAddSession(sessionData);
-
+    console.log(sessionData);
     closeModal();
     reset();
   };

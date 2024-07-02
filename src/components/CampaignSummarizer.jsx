@@ -17,14 +17,14 @@ async function CampaignSummarizer(sessions, apiKey) {
         {
           role: "system",
           content:
-            "You are an expert in summarizing sessions from a Dungeons and Dragons 5th edition campaign. You will use campaign session data from a JSON object and summarize it into an exciting fantasy story with multiple paragraphs. It should be a minimum of 800 words.",
+            "You are an expert in summarizing sessions from a Dungeons and Dragons 5th edition campaign. You will use campaign session data from a JSON object and summarize it into an exciting fantasy story with multiple paragraphs. The entire summarization should be included in a minimum of 800 words.",
         },
         {
           role: "assistant",
           content: JSON.stringify(sessions),
         },
       ],
-      model: "gpt-3.5-turbo-0125",
+      model: "gpt-4",
       temperature: 1,
       max_tokens: 800,
       top_p: 1,
