@@ -14,6 +14,7 @@ async function generateNPCimage(apiKey, npcDescriptions) {
 
     const noText = ", photographic";
     const descriptionString = npcDescriptions.join(" ") + " " + noText;
+    console.log(descriptionString);
 
     const image = await openai.images.generate({
       model: "dall-e-3",

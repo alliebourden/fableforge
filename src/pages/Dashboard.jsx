@@ -58,12 +58,19 @@ export default function Dashboard() {
     try {
       setLoading(true);
       const response = await generateNPCchat(userInput, apiKey);
-
+      console.log("Response from API:", response);
+  
       const npcContent = typeof response === 'string' ? JSON.parse(response) : response;
-      const npcDescription = JSON.stringify(npcContent.description);
-
-      setNpcDescriptions([npcDescription]);
-
+      console.log("Parsed NPC Content:", npcContent);
+  
+      const npcDescription = npcContent.Description;
+  
+      if (npcDescription) {
+        setNpcDescriptions([npcDescription]);
+        console.log("Generated NPC Description:", npcDescription);
+      } else {
+        console.warn("Description not found in the NPC content");
+      }
       setChatHistory([
         ...chatHistory,
         { role: "user", content: userInput },
