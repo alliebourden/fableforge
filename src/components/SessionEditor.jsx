@@ -112,12 +112,26 @@ const SessionEditor = ({ closeModal }) => {
   return (
     <ThemeProvider theme={theme} >
     <div className="session-editor-content">
-      <div>
-        <div className="category-container">
-          <div className="category-tags-top">
-            <img src={CategoryTagIcon} height={20} />
-            <p>TAG CATEGORIES</p>
+      <form
+        onSubmit={handleSubmit(onSubmit)}
+        className="session-form"
+        method="dialog"
+      >
+        <div className="add-new-session">
+          <img src={AddSessionIcon} height={20} />
+          <p>Add New Session</p>
+        </div>
+        <div className="top-section">
+          <div className="session-title">
+            <label htmlFor="header">Session Title</label>
+            <input
+              type="text"
+              id="header"
+              {...register("header", { required: true })}
+            />
           </div>
+          <div>
+          <label htmlFor="header">Select Tags</label>
           <Select
             options={tags}
             styles={{
@@ -182,25 +196,6 @@ const SessionEditor = ({ closeModal }) => {
             onChange={handleChange}
             isMulti
           />
-        </div>
-      </div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className="session-form"
-        method="dialog"
-      >
-        <div className="add-new-session">
-          <img src={AddSessionIcon} height={20} />
-          <p>Add New Session</p>
-        </div>
-        <div className="top-section">
-          <div className="session-title">
-            <label htmlFor="header">Session Title</label>
-            <input
-              type="text"
-              id="header"
-              {...register("header", { required: true })}
-            />
           </div>
           <div className="session-date">
             <label htmlFor="date">Date</label>
@@ -210,6 +205,7 @@ const SessionEditor = ({ closeModal }) => {
               {...register("date", { required: true })}
             />
           </div>
+          <div></div>
         </div>
         <div className="session-body">
           <label htmlFor="body">Session details</label>
