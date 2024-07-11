@@ -6,6 +6,10 @@ const theme = createTheme({
       main: '#c2ab38',
       contrastText: "#FFFFFF"
     },
+    secondary: {
+      main: '#FFFFFF',
+      contrastText: "#FFFFFF"
+    }
   },
   components: {
     MuiButton: {
@@ -14,6 +18,9 @@ const theme = createTheme({
           borderRadius: '10px', 
           '&:hover': {
             backgroundColor: '#132730',
+          },
+          '&.MuiButton-secondary:hover': {
+            backgroundColor: '#F0DFC8',
           },
         },
       },

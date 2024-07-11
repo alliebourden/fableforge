@@ -150,8 +150,8 @@ export default function Layout() {
               className="try-button"
               sx={{
                 '&:hover': {
-                  backgroundColor: 'initial', 
-                    color: 'initial',
+                  backgroundColor: '#F0DFC8', 
+                    color: '#132730',
                 },
               }}
               onClick={startFableForge}
@@ -180,7 +180,7 @@ export default function Layout() {
             <div className="landing-info-card">
               <img src={TrackLandingIcon} height={40} alt="Loot" />
               <p>
-                Sort sessions, quests, and loot effortlessly, ensuring a
+                Sort sessions, quests, and loot, ensuring a
                 structured adventure for both you and your players.
               </p>
             </div>
