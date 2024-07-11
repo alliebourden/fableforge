@@ -131,7 +131,7 @@ const SessionEditor = ({ closeModal }) => {
             />
           </div>
           <div>
-          <label htmlFor="header">Select Tags</label>
+          <label htmlFor="header" className="select-title">Select Tags</label>
           <Select
             options={tags}
             styles={{
@@ -142,7 +142,7 @@ const SessionEditor = ({ closeModal }) => {
               }),
               control: (provided, state) => ({
                 ...provided,
-                width: "200px",
+                width: "315px",
                 minHeight: "25px",
                 marginRight: "10px",
                 marginLeft: "10px",
@@ -164,6 +164,7 @@ const SessionEditor = ({ closeModal }) => {
                 ...provided,
                 backgroundColor: "#F0DFC8",
                 color: "#132730",
+                fontSize: "12px",
               }),
               indicatorSeparator: (provided) => ({
                 ...provided,
@@ -189,7 +190,7 @@ const SessionEditor = ({ closeModal }) => {
               }),
               menuList: (provided) => ({
                 ...provided,
-                maxHeight: "100px",
+                maxHeight: "150px",
               }),
             }}
             value={selectedTags}
@@ -198,7 +199,7 @@ const SessionEditor = ({ closeModal }) => {
           />
           </div>
           <div className="session-date">
-            <label htmlFor="date">Date</label>
+            <label htmlFor="date">Session Date</label>
             <input
               type="date"
               id="date"

@@ -642,7 +642,6 @@ dialog::backdrop {
   border: 3px solid #c2ac38;
   font-family: Poppins;
   line-height: 1.125em;
-
   box-shadow: rgba(0, 0, 0, 0.1) 5px 8px 10px 0px;
 }
 
@@ -894,33 +893,44 @@ dialog {
 
 .session-title input {
   width: 150%;
-  height: 25px;
+  height: 40px;
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
-  margin-top: 20px;
+  margin-top: 10px;
   border-top: none;
   border-left: none;
   border-right: none;
+  font-family: Poppins;
+  font-size: 1rem;
+}
+
+.select-title {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
 }
 
 .session-date {
   display: flex;
   flex-direction: column;
-  margin-top: 10px;
   align-items: center;
 }
 
 .session-date input {
   width: 150%;
-  height: 25px;
+  height: 40px;
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
-  margin-top: 20px;
+  margin-top: 10px;
   border-top: none;
   border-left: none;
   border-right: none;
+  font-family: Poppins;
+  padding-left: 5px;
+  font-size: 1rem;
 }
 
 .session-body {
@@ -942,6 +952,8 @@ dialog {
   border-right: none;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
+  font-family: Poppins;
+  padding: 5px;
 }
 
 .submit-btn {
