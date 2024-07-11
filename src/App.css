@@ -115,8 +115,17 @@ html {
 
 /* about page */
 
+.about-ff {
+  padding-right: 10px;
+  color: white;
+}
+
 .about {
   width: 80%;
+}
+
+.about2 {
+  text-decoration: none;
 }
 
 .about-content {
@@ -189,8 +198,9 @@ html {
 
 .top-bar-children-2 {
   display: flex;
-  margin-top: 25px;
+
   margin-right: 25px;
+  align-items: center;
 }
 
 .top-logo {

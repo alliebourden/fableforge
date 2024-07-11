@@ -78,6 +78,11 @@ export default function Layout() {
           />
         </div>
         <div className="top-bar-children-2">
+        <Link to="/about" className="about2">
+          <div className="about-ff">
+        <h4>About FableForge</h4>
+        </div>
+        </Link>
           <Link to="/about">
             <img
               src={Headshot}
