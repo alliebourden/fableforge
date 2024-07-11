@@ -2,7 +2,7 @@ body,
 html {
   margin: 0;
   padding: 0;
-  background-color:#f5ede2;
+  background-color: #e9e9e9;
 }
 
 .layout-wrapper {
@@ -132,6 +132,7 @@ html {
   justify-self: center;
   border-radius: 10px;
   border: 3px solid #c2ac38;
+  background-color: white;
 }
 
 .about-content h2 {
@@ -364,6 +365,7 @@ html {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  background-color: white;
 }
 
 .next-session-top {
@@ -1041,6 +1043,7 @@ dialog {
   border-bottom: 3px solid #c2ac38;
   justify-content: center;
   align-items: center;
+  background-color: white;
 }
 
 .quest-tracker-top {
@@ -2097,6 +2100,7 @@ dialog input {
   border: 3px solid #c2ac38;
   border-radius: 10px;
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+  background-color: white;
 }
 
 .loot-manager-top {
@@ -2272,6 +2276,7 @@ dialog input {
   margin-left: 275px;
   margin-top: 125px;
   margin-bottom: 25px;
+  background-color: white;
 }
 
 .campaign-summary-content {
