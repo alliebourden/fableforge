@@ -2051,10 +2051,14 @@ dialog input {
   border-left: none;
   border-right: none;
   margin-left: 10px;
+  height: 25px;
+  font-family: Poppins;
+  font-size: 1rem;
 }
 
 .number-of-dice {
   width: 100%;
+  margin-top: 10px;
 }
 
 .number-of-dice input {
@@ -2065,6 +2069,10 @@ dialog input {
   border-left: none;
   border-right: none;
   margin-left: 10px;
+  height: 25px;
+  font-family: Poppins;
+  font-size: 1rem;
+  padding-left: 10px;
 }
 
 .roll-dice-btn {
