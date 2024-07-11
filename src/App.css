@@ -1011,6 +1011,11 @@ dialog {
   width: 100%;
   margin-left: 20px;
   margin-top: 10px;
+  font-family: Poppins;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 .quest-form {
@@ -1029,12 +1034,13 @@ dialog {
 .quest-title {
   display: flex;
   flex-direction: column;
+  width: 50%;
 }
 
 .quest-type {
   display: flex;
   flex-direction: column;
-  margin-left: 25px;
+  width: 50%;
 }
 
 .quest-tracker {
@@ -1094,15 +1100,11 @@ dialog {
   width: 300px;
 }
 
-.quest-list-item.selected {
-  color: #c2ac38;
-}
-
 .quest-details-body {
   flex-direction: column;
+ align-items: center;
   display: flex;
   width: 100%;
-  margin-left: 20px;
   margin-top: 15px;
 }
 
@@ -1164,7 +1166,7 @@ dialog {
 
 .quest-details-body textarea {
   margin-top: 20px;
-  width: 375px;
+  width: 95%;
   height: 250px;
   border-radius: 5px 5px 0px 0px;
   border-top: none;
@@ -1172,6 +1174,7 @@ dialog {
   border-right: none;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
+  font-family: Poppins;
 }
 
 .quest-details h2 {
@@ -1184,7 +1187,7 @@ dialog {
 
 .quest-title input {
   width: 175px;
-  height: 25px;
+  height: 40px;
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
@@ -1192,11 +1195,13 @@ dialog {
   border-top: none;
   border-left: none;
   border-right: none;
+  font-family: Poppins;
+  font-size: 1rem;
 }
 
 .quest-type select {
   width: 175px;
-  height: 25px;
+  height: 40px;
   border-radius: 5px 5px 0px 0px;
   border-bottom: 1px solid #1e1e1e;
   background: #d9d9d9;
@@ -1204,6 +1209,8 @@ dialog {
   border-top: none;
   border-left: none;
   border-right: none;
+  font-size: 1rem;
+  font-family: Poppins;
 }
 
 .quest-list-item {
@@ -1225,6 +1232,14 @@ dialog {
   text-transform: uppercase;
   font-style: italic;
   border-bottom: solid #c2ac38 1px;
+}
+
+.quest-details-body label {
+  font-family: Poppins;
+  font-size: 1.25rem;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 /* dashboard css */

@@ -31,7 +31,7 @@ const QuestTrackerForm = ({ closeModal }) => {
         </div>
         <div className="quest-form-top-section">
           <div className="quest-title">
-            <label htmlFor="header">Quest Title</label>
+            <label htmlFor="header">QUEST TITLE</label>
             <input
               type="text"
               id="header"
@@ -39,7 +39,7 @@ const QuestTrackerForm = ({ closeModal }) => {
             />
           </div>
           <div className="quest-type">
-            <label htmlFor="type">Quest Type</label>
+            <label htmlFor="type">QUEST TYPE</label>
             <select id="type" {...register("type", { required: true })}>
               <option value="">Select a quest type</option>
               <option value="mainQuest">Main Quest</option>
@@ -48,7 +48,7 @@ const QuestTrackerForm = ({ closeModal }) => {
           </div>
         </div>
         <div className="quest-details-body">
-          <label htmlFor="body">Quest details</label>
+          <label htmlFor="body">QUEST DETAILS</label>
           <textarea id="body" {...register("body", { required: true })} />
         </div>
         <div className="submit-btn">
