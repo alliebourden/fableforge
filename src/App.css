@@ -441,7 +441,7 @@ html {
   margin-left: 20px;
 }
 
-.next-session-button {
+/* .next-session-button {
   width: 90px;
   height: 40px;
   margin: 5px;
@@ -464,7 +464,7 @@ html {
   background: #132730;
   transition: ease-in-out 0.3s;
   cursor: pointer;
-}
+} */
 
 /* session list */
 
@@ -819,11 +819,14 @@ dialog {
   align-items: center;
   flex-direction: column;
   display: flex;
+  z-index: 999;
 }
 
 .session-editor-content {
   justify-content: center;
   display: flex;
+  width: 100%;
+  z-index: 999;
 }
 
 .session-form {

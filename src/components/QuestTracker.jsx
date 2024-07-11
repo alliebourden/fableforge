@@ -1,5 +1,5 @@
 import { SessionContext } from "./SessionContext";
-import { useContext, useRef, useState } from "react";
+import { useContext, useEffect, useRef, useState } from "react";
 import QuestTrackerForm from "./QuestTrackerForm";
 import SelectedQuestDetails from "./SelectedQuestDetails";
 import QuestIcon from "../../assets/icons/QuestIcon.svg";
@@ -8,7 +8,6 @@ import { Button, ThemeProvider } from "@mui/material";
 
 const QuestTracker = () => {
   const { quests, handleRemoveQuest } = useContext(SessionContext);
-  const modalRef = useRef(null);
   const [selectedQuest, setSelectedQuest] = useState(null);
   const [isModalOpen, setIsModalOpen] = useState(false);
 
@@ -33,6 +32,24 @@ const QuestTracker = () => {
       return prevSelectedQuest;
     });
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event) => {
+      if (event.key === "Escape") {
+        closeModal();
+      }
+    };
+
+    if (isModalOpen) {
+      document.addEventListener("keydown", handleKeyDown);
+    } else {
+      document.removeEventListener("keydown", handleKeyDown);
+    }
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModalOpen]);
 
   const mainQuests = quests.filter((quest) => quest.type === "mainQuest");
   const sideQuests = quests.filter((quest) => quest.type === "sideQuest");
