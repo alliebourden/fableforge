@@ -67,34 +67,6 @@ const SessionList = () => {
         </div>
       </div>
       <div className="sessions-right">
-        <div className="next-session-container">
-          <div className="next-session">
-            <div className="next-session-top">
-              <img src={NextSessionIcon} height={20} />
-              <p>Next Session</p>
-            </div>
-            <div className="next-session-body">
-              <p className="next-session-date-display">
-                <strong>Next Session Date:</strong>
-                <span className="selected-date-display">
-                  {selectedDates.map(formatSelectedDate).join(", ")}
-                </span>
-              </p>
-              <Button
-              variant="contained" color="primary"
-                // className="next-session-button"
-                onClick={openCalendarModal}
-                sx={{ mb: 1,
-                }}
-              >
-                NEXT SESSION
-              </Button>
-              <dialog className="modal" ref={calendarModal}>
-                <NextSessionCalendar closeModal={closeModal} />
-              </dialog>
-            </div>
-          </div>
-        </div>
         <div className="session-list-container">
           <div className="session-list">
             <div className="session-list-top">
@@ -126,6 +98,34 @@ const SessionList = () => {
               </Button>
               <dialog className="modal" ref={editorModal}>
                 <SessionEditor closeModal={closeModal} />
+              </dialog>
+            </div>
+          </div>
+        </div>
+        <div className="next-session-container">
+          <div className="next-session">
+            <div className="next-session-top">
+              <img src={NextSessionIcon} height={20} />
+              <p>Next Session</p>
+            </div>
+            <div className="next-session-body">
+              <p className="next-session-date-display">
+                <strong>Next Session Date:</strong>
+                <span className="selected-date-display">
+                  {selectedDates.map(formatSelectedDate).join(", ")}
+                </span>
+              </p>
+              <Button
+              variant="contained" color="primary"
+                // className="next-session-button"
+                onClick={openCalendarModal}
+                sx={{ mb: 1,
+                }}
+              >
+                NEXT SESSION
+              </Button>
+              <dialog className="modal" ref={calendarModal}>
+                <NextSessionCalendar closeModal={closeModal} />
               </dialog>
             </div>
           </div>
