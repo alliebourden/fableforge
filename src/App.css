@@ -810,13 +810,15 @@ dialog::backdrop {
 dialog {
   border-radius: 10px;
   max-height: 80%;
-  min-width: 550px;
+  width: 600px;
   position: absolute;
   top: 110px;
   left: 30%;
   box-shadow: rgba(0, 0, 0, 0.1) 5px 8px 10px 0px;
   border: solid #c2ac38 2px;
   align-items: center;
+  flex-direction: column;
+  display: flex;
 }
 
 .session-editor-content {
@@ -1016,6 +1018,10 @@ dialog {
   font-style: normal;
   font-weight: 500;
   line-height: normal;
+}
+
+.quest-form-content {
+  width: 100%;
 }
 
 .quest-form {

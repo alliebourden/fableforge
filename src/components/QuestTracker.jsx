@@ -10,13 +10,14 @@ const QuestTracker = () => {
   const { quests, handleRemoveQuest } = useContext(SessionContext);
   const modalRef = useRef(null);
   const [selectedQuest, setSelectedQuest] = useState(null);
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
   const openModal = () => {
-    modalRef.current.showModal();
+    setIsModalOpen(true);
   };
 
   const closeModal = () => {
-    modalRef.current.close();
+    setIsModalOpen(false);
   };
 
   const handleQuestClick = (quest) => {
@@ -99,9 +100,11 @@ const QuestTracker = () => {
               <button className="add-new-quest-btn" onClick={openModal}>
                 NEW QUEST
               </button>
-              <dialog className="modal" ref={modalRef}>
-                <QuestTrackerForm closeModal={closeModal} />
-              </dialog>
+              {isModalOpen && (
+                <dialog className="modal" open>
+                  <QuestTrackerForm closeModal={closeModal} />
+                </dialog>
+              )}
             </div>
           </div>
           <div className="selected-quest-details">
