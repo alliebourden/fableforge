@@ -2,6 +2,7 @@ body,
 html {
   margin: 0;
   padding: 0;
+  background-color:#f5ede2;
 }
 
 .layout-wrapper {
@@ -1591,6 +1592,7 @@ dialog {
   border-radius: 10px;
   flex: 1;
   box-shadow: 5px 8px 10px 0px rgba(0, 0, 0, 0.1);
+  background-color: white;
 }
 
 .chat-container-top {
@@ -1877,6 +1879,7 @@ dialog input {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  background-color: white;
 }
 
 .image-generation-form-top {
@@ -1968,6 +1971,7 @@ dialog input {
   flex-direction: column;
   align-items: center;
   border-radius: 10px;
+  background-color: white;
 }
 
 .dice-roller-top {
