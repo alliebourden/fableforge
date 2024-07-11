@@ -27,6 +27,7 @@ const theme = createTheme({
     },
   },
   typography: {
+    fontFamily: 'Poppins',
     button: {
       fontWeight: 'bold',
       fontPalette: '#FFFFFF',

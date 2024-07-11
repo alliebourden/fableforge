@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from "react";
 import LootManagementIcon from "../../assets/icons/LootManagementIcon.svg";
 import theme from "../Theme";
-import { Button, ThemeProvider } from "@mui/material";
+import { Button, ThemeProvider, Dialog, DialogActions, DialogContent, DialogTitle, Typography } from "@mui/material";
 
 const LootManager = () => {
   const [lootItems, setLootItems] = useState([]);
@@ -133,111 +133,113 @@ const LootManager = () => {
 
   return (
     <ThemeProvider theme={theme}>
-    <div className="loot-manager-table">
-      <div className="loot-manager-top">
-        <img src={LootManagementIcon} height={20} />
-        <p>Loot Manager</p>
-      </div>
-      <div className="loot-manager-add-new">
-        <h3>Add New Item</h3>
-        <div className="add-new-item-input">
-          <div className="select-item">
-            <label>
-              Item:
-              <input
-                ref={inputRef}
-                type="text"
-                value={newItemIndex}
-                onChange={(e) => handleInputChange(e.target.value)}
-              />
-              <div className="predictions">
-                {predictions.length > 0 && (
-                  <div>
-                    <ul>
-                      {predictions.map((item, index) => (
-                        <li
-                          key={index}
-                          onClick={() => handlePredictionClick(index)}
-                        >
-                          {item.name}
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                )}
-              </div>
-            </label>
-          </div>
-          <div className="note">
-            <label className="note-label">
-              Note:
-              <input
-                type="text"
-                value={note}
-                onChange={(e) => setNote(e.target.value)}
-              />
-            </label>
-          </div>
+      <div className="loot-manager-table">
+        <div className="loot-manager-top">
+          <img src={LootManagementIcon} height={20} />
+          <p>Loot Manager</p>
         </div>
-        <div className="add-new-item-btn">
-          <Button 
-          variant="contained" color="primary"
-          onClick={addLootItem} 
-          // className="add-item-btn"
-          sx={{ my: 1, }}>
-            Add Item
-          </Button>
-        </div>
-      </div>
-      <div className="loot-manager-table-content">
-        <table className="item-table">
-          <thead>
-            <tr>
-              <th className="item-name" onClick={handleSort}>
-                Item
-                {sortOrder === "asc" ? " ▲" : " ▼"}
-              </th>
-              <th className="item-note">Note</th>
-            </tr>
-          </thead>
-          <tbody>
-            {lootItems.map((item, index) => (
-              <tr key={index} className="loot-item">
-                <td onClick={() => openModal(item)}>
-                  {item.name}
-                  <span
-                    className="remove-icon"
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      removeItem(index);
-                    }}
-                  >
-                    &#10006;
-                  </span>
-                </td>
-                <td>{item.note}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-        {selectedItem && (
-          <dialog open={isModalOpen} onClose={closeModal}>
-            <h2>{selectedItem.name}</h2>
-            {selectedItem.desc && selectedItem.desc.length > 0 && (
-              <p>Description: {selectedItem.desc}</p>
-            )}
-            {note && <p>Note: {note}</p>}
-            <Button
-             variant="contained" color="primary"
-             onClick={closeModal} 
-            //  className="close-modal-btn"
-             >
-              Close
+        <div className="loot-manager-add-new">
+          <h3>Add New Item</h3>
+          <div className="add-new-item-input">
+            <div className="select-item">
+              <label>
+                Item:
+                <input
+                  ref={inputRef}
+                  type="text"
+                  value={newItemIndex}
+                  onChange={(e) => handleInputChange(e.target.value)}
+                />
+                <div className="predictions">
+                  {predictions.length > 0 && (
+                    <div>
+                      <ul>
+                        {predictions.map((item, index) => (
+                          <li
+                            key={index}
+                            onClick={() => handlePredictionClick(index)}
+                          >
+                            {item.name}
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  )}
+                </div>
+              </label>
+            </div>
+            <div className="note">
+              <label className="note-label">
+                Note:
+                <input
+                  type="text"
+                  value={note}
+                  onChange={(e) => setNote(e.target.value)}
+                />
+              </label>
+            </div>
+          </div>
+          <div className="add-new-item-btn">
+            <Button 
+              variant="contained" color="primary"
+              onClick={addLootItem} 
+              sx={{ my: 1, }}
+            >
+              Add Item
             </Button>
-          </dialog>
-        )}
+          </div>
+        </div>
+        <div className="loot-manager-table-content">
+          <table className="item-table">
+            <thead>
+              <tr>
+                <th className="item-name" onClick={handleSort}>
+                  Item
+                  {sortOrder === "asc" ? " ▲" : " ▼"}
+                </th>
+                <th className="item-note">Note</th>
+              </tr>
+            </thead>
+            <tbody>
+              {lootItems.map((item, index) => (
+                <tr key={index} className="loot-item">
+                  <td onClick={() => openModal(item)}>
+                    {item.name}
+                    <span
+                      className="remove-icon"
+                      onClick={(e) => {
+                        e.stopPropagation();
+                        removeItem(index);
+                      }}
+                    >
+                      &#10006;
+                    </span>
+                  </td>
+                  <td>{item.note}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          <Dialog open={isModalOpen} onClose={closeModal}>
+            <DialogTitle>{selectedItem?.name}</DialogTitle>
+            <DialogContent>
+              {selectedItem?.desc && (
+                <Typography variant="body2">Description: {selectedItem.desc}</Typography>
+              )}
+              {note && <Typography variant="body2">Note: {note}</Typography>}
+            </DialogContent>
+            <DialogActions>
+              <Button
+                variant="contained"
+                color="primary"
+                onClick={closeModal}
+              >
+                Close
+              </Button>
+            </DialogActions>
+          </Dialog>
+        </div>
       </div>
-    </div>
     </ThemeProvider>
   );
 };
