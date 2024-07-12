@@ -261,7 +261,7 @@ export default function Dashboard() {
               className="generated-image"
               src={generatedImageURL}
               alt="Generated NPC Image"
-              style={{ width: "100%", height: "auto" }}
+              style={{ width: "100%", height: "100%" }}
             />
             <div className="npc-image-modal-btns">
               <Button variant="contained" color="primary" onClick={() => setGeneratedImageURL(null)}
