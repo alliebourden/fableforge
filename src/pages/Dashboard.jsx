@@ -256,20 +256,22 @@ export default function Dashboard() {
       )}
       {generatedImageURL && (
         <dialog open className="generated-image-modal">
-          <img
-            className="generated-image"
-            src={generatedImageURL}
-            alt="Generated NPC Image"
-            style={{ width: "100%", height: "auto" }}
-          />
-          <div className="npc-image-modal-btns">
-            <Button variant="contained" color="primary" onClick={() => setGeneratedImageURL(null)}
-            sx={{ my: 1, mr: 1 }}>Close</Button>
-            <Button 
-            variant="outlined" 
-            color="primary" 
-            onClick={downloadImage}
-            sx={{ my: 1, ml: 1 }}>Download</Button>
+          <div>
+            <img
+              className="generated-image"
+              src={generatedImageURL}
+              alt="Generated NPC Image"
+              style={{ width: "100%", height: "auto" }}
+            />
+            <div className="npc-image-modal-btns">
+              <Button variant="contained" color="primary" onClick={() => setGeneratedImageURL(null)}
+              sx={{ my: 1, mr: 1 }}>Close</Button>
+              <Button 
+              variant="outlined" 
+              color="primary" 
+              onClick={downloadImage}
+              sx={{ my: 1, ml: 1 }}>Download</Button>
+            </div>
           </div>
         </dialog>
       )}
