@@ -1851,12 +1851,12 @@ dialog {
   border-style: none;
 }
 
-.loading-modal {
+dialog.loading-modal {
   justify-content: center;
   align-items: center;
   display: flex;
   height: 100px;
-  width: 100px;
+  width: 200px;
 }
 
 .submit-api-button {
